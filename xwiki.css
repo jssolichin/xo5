@@ -1,0 +1,646 @@
+#template('colorThemeInit.vm')
+article, aside, details, figcaption, figure, footer, header,
+  hgroup, menu, nav, section { display: block; } /*html 5*/
+
+body {background: #eee url(img/bg.png); font-family: sans-serif; color: #222; margin: 0px; padding: 0px; overflow-x: hidden;}
+h1,h2,h3,h4,h5,h6, #sidebar-control-links ul li {margin: 0px; padding: 0px; letter-spacing: -4px; font-weight: bold;}
+h1 {font-size:2.5em;}
+h2 {font-size:2.2em;}
+h3 {font-size:2em;}
+h4 {font-size:1.8em;}
+h5 {font-size:1.6em;}
+h6 {font-size:1.5em;}
+.mobile {display: none;}
+
+h2, #sidebar-control-links ul li a {letter-spacing: -2px; font-size: 2em;}
+.search:after, .each-comment:after, #nav-icons:after, #page-actions:after, #breadcrumb:after, #content:after, #gadget-container:after, #sidebar-control-links ul li:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+
+header {position: fixed; right: 0px; top: 0px; width: 20%;}
+header h1 {margin: 14px 10px;font-size: 3em; font-weight:bold;}
+nav#search {background: #fff; padding: 5px; border: 10px solid rgba(0,0,0,0.1);
+  -moz-background-clip: padding; -webkit-background-clip: padding;background-clip: padding-box; }
+.no-rgba nav#search {border: 10px solid #eee;}
+form{width:100%;}
+form .text-field{float: left;border: 0px ;padding: 2px;width:86%;}
+input.submit{width:20px;height:20x;display:block;overflow:hidden;
+text-indent:-999px; /* To remove any default text on the button*/
+line-height:16px; /* required for IE */
+background: url(img/sprite-icons.png) no-repeat 0 0; /* This will display the search icon by default */
+cursor:pointer; /* Hand cursor for the normal state */
+border: none;float: left;margin: 3px;padding: 0;}
+
+#sidebar {width: 20%; position: fixed; right: 0px; top:130px; bottom: 0px; overflow-y: auto; z-index: 999; overflow-x: hidden; 
+  min-width:290px;}
+.no-js #sidebar {min-width:0px;}
+#sidebar-handle {display: none;}
+#sidebar h3 {font-size: 1.6em; letter-spacing: -1px;}
+
+nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
+#sidebar-control-icons {margin: 0 0 10px 10px;}
+#sidebar-control-links {position: absolute; clip: rect(0px 300px 40px 0px); z-index: 999; width: 100%; top: 60px;}
+#sidebar-control-links h2 { padding: 5px; visibility: hidden;}
+#sidebar-control-links:hover {clip: auto;}
+#sidebar-control-links ul {list-style-type: none; margin: 0px; padding: 0px; width: 100%; }
+#sidebar-control-links ul li {background: #333; padding: 5px 10px; width: 100%;}
+#sidebar-control-links ul li a {text-decoration: none; color: #000; float: left;}
+#sidebar-control-links ul li span {color: #d25400; margin-left: 3px;}
+.active {background: none !important; position: absolute; top: 0px;}
+#sidebar-control-links:hover .active {background:  #555 !important; box-shadow: inset 30px 0px 0px rgba(0, 0, 0,.1); }
+#sidebar-control-links:hover a {color: #eee; !important;}
+#sidebar-control-links:hover a:hover {color: #fff; !important;}
+
+#change {overflow-x:hidden;overflow-y:hidden;position:absolute; top: 100px; bottom: 0px;padding: 0px 10px 100px 10px;}
+#change:hover {overflow-y:auto;}
+#change a, #change a:visited {color: #d25400;}
+#change a:hover {color: #555;}
+#change h3 {margin: 10px 0 5px 0;}
+#change ul li a {text-decoration: none; font-size: 1.2em; letter-spacing: -1px;}
+#change section { margin-bottom: 100px; }
+#change section h2 span {position: absolute; right: 10px; color: #d25400; font-weight: bold;}
+
+#page-suplemental {box-shadow: inset 30px 0px 0px rgba(0, 0, 0,.1); background: #fff; margin:10px -10px 10px -10px; padding: 10px;}
+#page-meta a:hover {background: #fff;}
+#page-meta {font-size:.8em; background:  url(img/bg.png); margin: 0 -10px; padding: 10px;}
+#page-meta dl dt, #page-meta dl dd {display: inline;}
+#page-meta dl dt {font-weight: bold;}
+#table-of-contents {margin: 0px 0;}
+#table-of-contents h3 {margin: 0px 0 5px 0;}
+#table-of-contents ul li ul {border-left: 2px solid rgba(0, 0, 0,.1); padding: 5px 10px; font-size: .8em;}
+
+.each-comment {font-size: .9em; background: rgba(255, 255, 255,.4); margin:0px -10px 10px -10px; padding: 10px;}
+.no-rgba .each-comment {background: #eee;}
+.each-comment-user img {float: left; margin: 0 10px 0 0;}
+.each-comment-user h4 {font-size: 1.4em; letter-spacing: -1px;margin: 10px 0 0 0 ;}
+
+#main-area {width: 80%;}
+#breadcrumb {padding: 5px 10px ; margin-right:-30px;}
+#breadcrumb ul {list-style-type:none; margin: 0px; padding: 0px;}
+#breadcrumb ul li {float: left; font-weight: bold; padding: 5px;}
+#breadcrumb ul li span {font-weight: normal; margin-right: 2px;}
+#breadcrumb ul li:before{content: "\00BB"; margin: 0 10px;}
+#breadcrumb ul li:first-child:before{content: ""; margin: 0px;}
+#breadcrumb ul li:hover {background: rgba(0,0,0,.5); color: #fff;}
+#breadcrumb ul li ul {background: rgba(0,0,0,.5); padding: 5px; position: absolute; margin: 5px 0 0 -5px; font-size: .8em; display: none; }
+.no-rgba #breadcrumb ul li:hover, .no-rgba #breadcrumb ul li ul {background: #333;}
+.no-rgba #breadcrumb ul li ul li:hover {background: #000;}
+#breadcrumb ul li:hover ul {display: block;}
+#breadcrumb ul li ul hr {visibility: hidden; height: 1px;}
+#breadcrumb ul li ul a {color: #fff; text-decoration: none;}
+#breadcrumb ul li ul li{float: none;}
+#breadcrumb ul li ul li:before{content: ""; margin: 0px;}
+
+article#content {color: #555;  font-size: .9em;background: #fff; border-top: 20px solid $theme.highlightColor; padding: 10px 10px 15px 10px; box-shadow: 30px 0px 0px rgba(0, 0, 0,.1); }
+article h1 {margin-bottom: 10px; font-size:3.5em;}
+#info {color: #333;  background: #eee; display: block; padding: 10px; margin: 10px -10px;}
+#gadget-left, #gadget-right {float: left; width: 48.618784527%;
+    *width: 48.5655930376383%;}
+#gadget-left {margin-left: .7%;}
+#gadget-right {margin-right: .7%; float: right; }
+article section {margin: 0 0 10px 0; padding: 10px 0;border: 3px solid #eee; border-left: 0px; border-right: 0px;}
+article section h2 {font-size:2.2em; color: #005aa9;  letter-spacing: -3px;}
+article section p { margin-top: 10px;}
+
+::-webkit-scrollbar {width: 10px;}
+::-webkit-scrollbar-track {background: #ccc;}
+::-webkit-scrollbar-thumb {background: #aaa;}
+::-webkit-scrollbar-thumb:hover {background: #777;}
+::-webkit-scrollbar-thumb:active {background: #888;}
+
+@media only screen and (max-width: 1024px) {
+
+  #sidebar, header {width: 30%;}
+  #main-area {width: 70%;}
+  #gadget-left, #gadget-right {float: none; width: 100%;}
+
+}
+
+@media all and (max-width: 480px) {
+  .mobile {display: block;}
+  header:after, #breadcrumb ul li:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+
+  header {position: static; width: 95%;}
+  header h1 {text-align: center;}
+  nav#search {width: 90%; margin: 0 auto;}
+  .hint {text-align: center; background: rgba(0,0,0,.1); padding: 3px; margin: 5px; font-weight: bold;}
+  .no-touch #swipe-hint {display: none;}
+  
+  #sidebar { width: 100%; bottom: auto; height: auto; position: static; }
+  #sidebar-wrapper {background: #ccc url(img/bg.png); position: absolute; top: 0; right: -90%; width: 90%; padding: 0 0 0 5%;}
+  #sidebar-handle {display: block; position: absolute; 
+    top: 200px;left: -98px;}
+  #sidebar-handle h2{ font-size:1.45em; text-transform: lowercase;
+    -webkit-transform: rotate(90deg); 
+     -moz-transform: rotate(90deg); 
+      -ms-transform: rotate(90deg); 
+       -o-transform: rotate(90deg); 
+          transform: rotate(90deg);
+  }
+  .no-csstransforms  #sidebar-handle { filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1); left: 0px;}
+  #sidebar-handle h2 a:link, #sidebar-handle h2 a:visited{color: #005aa9;}
+  #sidebar-handle h2 a:hover {color: #d25400;}
+  #change {overflow-x:hidden;overflow-y:auto;position:static; top: auto; bottom: auto;}
+  section { margin-bottom: 20px;}
+  #page-suplemental { box-shadow: none;}
+  #sidebar-control-selector {margin: 40px 10px 10px 10px;}
+  #sidebar-control-links {display: none;}
+  
+  #main-area {width: 95%;}
+  article {box-shadow: none; }
+
+  #breadcrumb {margin: 0px;}
+  #breadcrumb ul li {float: none; background: rgba(0,0,0,.5); color: #fff; margin: 5px 0;}
+  .no-rgba #breadcrumb ul li {background: #333;}
+  #breadcrumb ul li:hover ul {display: none;}
+  #breadcrumb ul li:before{content: ""; margin: 0px;}
+  .breadcrumb-drop {display: inline ; float: right;}
+
+  #gadget-left, #gadget-right {float: none; width: 100%;}
+  article section h2:after {content: ' +';}
+  .expanded:after {content: ' -';}
+  .section-content {display: none;}
+
+}
+
+.sprite {background: url(img/sprite-icons.png) no-repeat; float: left; position: relative; margin-right: 20px; width: 20px; height: 20px;}
+.sprite span {position: absolute; top: -5px; right: -10px; color: #d25400; font-weight: bold;}
+.sprite-search-png {background-position: -0px -0px;}
+.sprite-navigation-png {background-position: -0px -31px;}
+.sprite-comments-png {background-position: -62px 0px;}
+.sprite-attachments-png {background-position: -31px -62px;}
+.sprite-history-png {background-position: -62px -31px;}
+.sprite-information-png {background-position: -31px -31px;}
+.sprite-export-png {background-position: -31px -0px;}
+.sprite-edit-png {background-position: -0px -62px;}
+
+
+.clearfloats {
+  clear: both;
+  height: 1px;
+  margin: -1px 220px 0;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.invisible {
+  visibility: hidden !important;
+}
+
+.loading {
+  background: transparent url($xwiki.getSkinFile('icons/xwiki/spinner.gif')) no-repeat center;
+}
+
+.separator {
+  color: $theme.textSecondaryColor;
+}
+
+.column {
+  float: left;
+}
+.full {
+  /* Leave a bit of space for borders. */
+  width: 99.8%;
+}
+.half {
+  /* Rounding errors with 50%, might end up with one more pixel which pushes the column down. */
+  width: 49.9%;
+}
+.third {
+  /* Rounding errors with 33.3%, might end up with one more pixel which pushes the column down. */
+  width: 33.2%;
+}
+
+.avatar_30 {
+  max-width: 30px;
+  max-height: 30px;
+}
+* html .avatar_30 {
+  width: 30px;
+}
+.avatar_50 {
+  max-width: 50px;
+  max-height: 50px;
+}
+* html .avatar_50 {
+  width: 50px;
+}
+.avatar_120 {
+  max-width: 120px;
+  max-height: 120px;
+}
+* html .avatar_120 {
+  width: 120px;
+}
+th.avatar {
+  width: 50px;
+}
+
+/**
+ * Fix places where the "default avatar" image height is hardcoded in the DOM instead
+ * of being set in CSS (For example in livetable user columns).
+ * This ultimately should be fixed right in XWiki/XE.
+ */
+img[height][src*="noavatar.png"] {
+  height: 40px;
+}
+
+
+form div.activityContent {
+  margin-bottom:50px;
+}
+
+#document-title h1 {
+    font-size: 36px;
+}
+
+.edit_section {
+  display: none;
+  height: 24px;
+  line-height: 24px;
+  margin: -19px 0 0;
+  overflow: hidden;
+  position: relative;
+  visibility:hidden;
+}
+
+.edit_section a {
+  background: transparent url($xwiki.getSkinFile('icons/xwiki/edit-section.png')) no-repeat left top;
+  line-height: 999px;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  visibility:visible;
+  width: 20px;
+}
+
+/* @group COMPONENTS*/
+/* --------------XWiki items types list -----------------*/
+ul.xlist {
+  margin: 0 0 0 .5em !important;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+ul.xlist li.xunderline {
+  border-bottom: solid 1px $theme.borderColor !important;
+}
+
+ul.xlist li.xhighlight:hover {
+  background-color: $theme.highlightColor;
+}
+
+ul.xlist li {
+  float: right;
+  height: 100%;
+  list-style-type: none;
+  padding-top: .2em;
+  width: 100% !important;
+}
+
+ul.xlist li.space, ul.xlist li.page, ul.xlist li.comment, ul.xlist li.attachment {
+  background-position: 2px 3px;
+  background-repeat: no-repeat;
+}
+
+ul.xlist li.space {
+  background-image: url($xwiki.getSkinFile('icons/silk/folder.gif'));
+}
+
+ul.xlist li.page {
+  background-image: url($xwiki.getSkinFile('icons/silk/page_white_text.gif'));
+}
+
+ul.xlist li.comment {
+  background-image: url($xwiki.getSkinFile('icons/silk/comment.gif'));
+}
+
+ul.xlist li.attachment {
+  background-image: url($xwiki.getSkinFile('icons/silk/attach.gif'));
+  padding-bottom: 0;
+}
+
+ul.xlist li.create a {
+  background: url($xwiki.getSkinFile('icons/silk/bullet_add.gif')) 7px 3px no-repeat;
+  color: $theme.textSecondaryColor;
+  text-decoration: none;
+  padding-left: 1.5em;
+}
+
+ul.xlist li.xitem div.xitemcontainer {
+  text-indent: 1.5em;
+}
+
+ul.xlist li.xitem div.xitemcontainer ul.xlist {
+  text-indent: 0;
+}
+
+.xspacer {
+  display: none;
+}
+
+/* @group forms */
+
+.xform fieldset {
+  margin: 2em 0;
+}
+.xform fieldset:first-of-type {
+  margin-top: 1em;
+}
+.xform fieldset:last-of-type {
+  margin-bottom: 1em;
+}
+
+.xform input[type="text"], .xform input[type="password"] {
+  width: 99%;
+}
+/* Duplicated because IE6 chokes on the first two selectors. Don't recombine! */
+.xform select, .xform textarea {
+  width: 99%;
+}
+
+.xform .xRequired {
+    color: #888888;
+    font-size: 0.9em;
+    font-style: italic;
+    font-weight: normal;
+    margin-left: 1ex;
+    text-transform: none;
+}
+
+.xform .xErrorMsg {
+    color: #CC3333;
+    display: block;
+    font-size: 0.8em;
+    font-weight: normal;
+    margin-bottom: 0.3em;
+}
+
+/* @group VERTICAL MENU */
+/* General styling */
+.vertical-menu {
+  border: 1px solid $theme.borderColor;
+  border-top-width: 0;
+  float: left;
+  font-size: .857em;/* 14px -> 12px */
+  margin: 0 2em 2em 0;
+  width: 15em;
+}
+
+.vertical-menu ul {
+  list-style-type: none;
+  margin: 0;
+}
+.vertical-menu ul ul ul {
+  margin-left: 2em;
+}
+
+.vertical-menu li {
+  border-top: 1px solid $theme.borderColor;
+  position: relative;
+}
+
+.vertical-menu span {
+  background: none no-repeat scroll 7px transparent;
+  display: block;
+}
+
+.vertical-menu a {
+  display: block;
+  padding: .5em .5em .5em 30px;
+  text-decoration: none;
+  word-wrap: break-word;
+}
+
+/* Section titles */
+.vertical-menu .group {
+  background-color: $theme.panelCollapsedBackgroundColor;
+  font-weight: 700;
+  font-variant: small-caps;
+}
+.vertical-menu .group * {
+  color: $theme.panelCollapsedTextColor;
+}
+
+/* Highlight items when hovering */
+.vertical-menu span:hover {
+  background-color: $theme.highlightColor;
+}
+.vertical-menu .group:hover {
+  background-color: $theme.panelHeaderBackgroundColor;
+}
+.vertical-menu .group:hover * {
+  color: $theme.panelHeaderTextColor;
+}
+
+/* Selected item */
+.vertical-menu .current {
+  background-color: $theme.highlightColor;
+  font-weight: bold;
+}
+.vertical-menu .current-group {
+  background-color: $theme.panelHeaderBackgroundColor;
+  color: $theme.panelHeaderTextColor;
+}
+.vertical-menu .current-group *, .vertical-menu .current-group *:visited, .vertical-menu .current-group *:active {
+  color: $theme.panelHeaderTextColor;
+}
+
+/* Draw an arrow pointing right for the selected item */
+.vertical-menu .current:after, .vertical-menu .current a:after {
+  border-left: 10px solid $theme.highlightColor;
+  border-top: 1.2em solid transparent;
+  border-bottom: 1.2em solid transparent;
+  content: "";
+  display: block;
+  position: absolute;
+  right: -10px;
+  top: 0%;
+}
+.vertical-menu .current a:after {
+  border-left-color: $theme.borderColor;
+  right: -11px;
+}
+.vertical-menu .current-group:after {
+  border-left-color: $theme.panelHeaderBackgroundColor !important;
+}
+
+/* Livetable */
+.container-fluid .xwiki-livetable-pagination .xwiki-livetable-pagesize,
+.container-fluid .xwiki-livetable-pagination .xwiki-livetable-limits  {
+  line-height:30px;
+}
+
+.container-fluid .xwiki-livetable-pagination .xwiki-livetable-pagination-text {
+  display:none;
+}
+
+.container-fluid .controlPagination {
+  width:200px;
+  height:36px;
+  line-height: 34px;
+  padding: 0 14px;
+}
+
+.container-fluid .controlPagination a {
+  position:relative;
+  float:left;
+}
+
+.container-fluid .controlPagination a.prevPagination,
+.container-fluid .controlPagination a.noPrevPagination,
+.container-fluid .controlPagination a.nextPagination,
+.container-fluid .controlPagination a.noNextPagination {
+    background-image: none;
+    height: auto;
+    width: auto;
+    padding-top: 5px;
+}
+
+.container-fluid a.noPrevPagination,
+.container-fluid a.prevPagination{
+    margin-left: 20px;
+}
+
+.container-fluid .pagination {
+  margin:0;
+}
+
+.container-fluid a.prevPagination span,
+.container-fluid a.nextPagination span,
+.container-fluid a.noPrevPagination span,
+.container-fluid a.noNextPagination span {
+  display:block !important;
+}
+
+.container-fluid a.noPrevPagination,
+.container-fluid a.noNextPagination {
+  color: #BFBFBF;
+  cursor:normal;
+}
+
+.container-fluid a.noPrevPagination:hover,
+.container-fluid a.noNextPagination:hover {
+  text-decoration:none;
+}
+
+.container-fluid table td.actions {
+  padding: 10px 10px 9px;
+  background: inherit;
+}
+
+/* Fix panels */
+
+.xwikipanelcontents p span.panelitem {
+  display:block;
+}
+
+.xwikipanelcontents p span.pitemseparator {
+  display:none;
+}
+
+/* Fix content menu. */
+
+#contentmenu .rightmenu {
+  display:none; /* Just an empty content menu is not enough : the annotation app automatically recreates the menu if it does not exists. */
+}
+
+#contentmenu a.edit:after {
+  content: "\270E";
+  font-size: 40px;
+  position: relative;
+  top: 15px;
+}
+
+#contentmenu a.edit:hover {
+  text-decoration: none;
+}
+
+div.main.layoutsubsection {
+  position:relative;
+}
+
+#contentmenu {
+  position:absolute;
+  right:6px;
+  top:52px;
+}
+
+/* Edition */
+
+textarea#content {
+  width:100%;
+  color:#303030;
+}
+
+.metadata input#title {
+  font-size: 32px;
+  height: 36px;
+}
+
+.metadata .help-block {
+  font-size: 11px;
+}
+
+form#edit div.metadata {
+  margin-bottom:15px;
+}
+
+table.xRichTextEditorTabPanel {
+  background-color:transparent;
+}
+
+.metamodifs,
+#autosaveControl {
+  display:none !important;
+}
+
+.edit-meta-tools {
+  display:none !important;
+}
+
+#*
+#xwikieditcontent .fullScreenEditButton {
+  display:none;
+}
+
+.fullScreenWrapper #mainEditArea {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.fullScreenWrapper ul.tabs {
+  position:fixed;
+  width:100%
+}
+
+.fullScreenWrapper div.pill-content {
+  margin-top:45px;
+}
+*#
+
+/* data editors */
+
+.xproperty-title h2, .xobject-title h3 {
+  line-height: inherit !important;
+  font-weight: normal !important;
+}
+
+#xwikiobjects .label {
+  background-color:inherit !important;
+}
+
+#body #xwikiobjects label, #body #xwikiclassproperties label {
+  float:none;
+  background-color: inherit !important;
+  line-height: inherit !important;
+}
+/* footer */
+
+#footerglobal {
+  margin-top:100px;
+}
