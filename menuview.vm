@@ -1,51 +1,7 @@
 #if ($isInServletMode)## Visible only in a page
-<div id="mainmenu" class="layoutsubsection actionmenu">
-<div class="gradientfilterIE"></div>
-<div class="componentcontainer">
 <strong id="xwikimenutitle" class="hidden">$msg.get('core.menu.main.title')</strong>
-<div class="rightmenu">
-#set ($workspaceManagerMainDocumentReference = $services.model.createDocumentReference($xcontext.mainWikiName, 'WorkspaceManager', 'WebHome'))
-#set ($isWorkspaceManagerAppInstalled = $xwiki.exists($workspaceManagerMainDocumentReference))
-#set ($isWorkspace = $services.workspace.isWorkspace($xcontext.database))
-#set ($isMainWikiUser = ($xcontext.mainWikiName == "$!{xcontext.userReference.wikiReference.name}"))
-##
-## User
-##
-#if (!$xcontext.action.startsWith('login'))
-  #if ($isGuest)
-    #set ($loginurl = $xwiki.getURL('XWiki.XWikiLogin', 'login', "xredirect=$escapetool.url($xwiki.relativeRequestURL)"))
-    #xwikitopmenuentry($!loginurl $!msg.get('login') 'tmLogin')
-  #else
-    #set ($logouturl = $xwiki.getURL('XWiki.XWikiLogout', 'logout', "xredirect=$escapetool.url($xwiki.relativeRequestURL)"))
-    #xwikitopmenuentry($!logouturl $!msg.get('logout') 'tmLogout')
-  #end
-#end
-#if ($isGuest && $xwiki.hasAccessLevel('register', 'XWiki.XWikiPreferences'))
-  #set ($regurl = $xwiki.getURL('XWiki.Register', 'register'))
-  #xwikitopmenuentry($!regurl $!msg.get('core.register') 'tmRegister')
-#end
-##
-##
-#if (!$isGuest)
-#if ($isSuperAdmin)
-  #xwikitopmenuentry('#' $!msg.get('superadmin') 'tmUser' 'hasIcon')
-#else
-  #xwikitopmenuentrystart($xwiki.getURL($xcontext.user, 'view') "$msg.get('core.menu.type.profile')__SEPARATOR__$!xwiki.getUserName($xcontext.user, false)" 'tmUser' 'hasIcon')
-  #submenuitem($xwiki.getURL($xcontext.user, 'view') $msg.get('core.menu.profile') 'tmProfile', '')
-  #submenuitem($xwiki.getURL($xcontext.user, 'view', 'category=preferences') $msg.get('core.menu.userPreferences') 'tmUserPreferences', '')
-  #if ($hasWatch)
-    #submenuitem($xwiki.getURL($xcontext.user, 'view', 'category=watchlist') $msg.get('core.menu.watchlist.management') 'tmWatchlistManager', '')
-    #submenuitem($xwiki.getURL($xcontext.user, 'view', 'category=network') $msg.get('core.menu.network') 'tmUserNetwork', '')
-  #end
-  #if ($isWorkspaceManagerAppInstalled && $isMainWikiUser)
-    #submenuitem($xwiki.getURL($xcontext.user, 'view', 'category=workspaces') $msg.get('workspacemanager.menu.user.workspaces') 'tmUserWorkspaces', '')
-  #end
-  #submenuitem($xwiki.getURL($xcontext.user, 'view', 'category=dashboard') $msg.get('core.menu.userDashboard') 'tmUserDashboard', '')
-  #xwikitopmenuentryend()
-#end
-#end
-</div>
-<div id="breadcrumb">
+
+<div class="menu-drop" id="breadcrumb">
   <ul>
 ##
 ## Create
@@ -311,7 +267,6 @@
   #end
 #end
   </ul>
-</div>
-</div>
-</div>
+</div><!--breadcrumb-->
+
 #end

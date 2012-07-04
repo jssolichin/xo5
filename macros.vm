@@ -756,15 +756,14 @@ $doc.display("content", $obj)
 ###
 #macro(xwikitopmenuentrystart $actionurl $linktext $id $class)
 #set($sep = '__SEPARATOR__')
-<div id="$id" class="$id topmenuentry dropdownmenuentry #if($actionurl == '')dropdownnolink#end $!class" onmouseover="showsubmenu(this);" onmouseout="hidesubmenu(this);">
+<li id="$id" class="$id topmenuentry">
 <span class="tme-extensible">
   #if (!$linktext.contains($sep)) <a class="tme"#if ($actionurl != '') href="$actionurl"#end><strong>$linktext</strong></a>
   #else
     #set ($linktextwords = $linktext.split($sep))
     <span class="tmetype">$linktextwords.get(0): </span><a class="tme hastype" href="$actionurl"><strong>$linktextwords.get(1)</strong></a>
   #end
-  <span class="menuarrow">&#9660;xx</span><span class="hidden menucolon">: </span>
-</span><span class="submenu hidden">
+</span><ul>
 #end
 
 ###
@@ -777,13 +776,13 @@ $doc.display("content", $obj)
 ###
 #macro(xwikitopmenuentry $actionurl $linktext $id $class)
 #set($sep = '__SEPARATOR__')
-<div id="$id" class="$id topmenuentry $!class">
+<li id="$id" class="$id topmenuentry">
   #if (! $linktext.contains($sep)) <a class="tme" href="$actionurl"><strong>$linktext</strong></a>
   #else
     #set ($linktextwords = $linktext.split($sep))
     <span class="tmetype">$linktextwords.get(0): </span><a class="tme hastype" href="$actionurl"><strong>$linktextwords.get(1)</strong></a>
   #end
-</div>
+</span>
 #end
 
 ###
@@ -795,7 +794,7 @@ $doc.display("content", $obj)
 ### @param linktext The menu item text
 ###
 #macro(submenuitem $actionurl $linktext $linkid $class)
-<li class="submenuitem $!class"><a href="$actionurl" id="$linkid" class="$linkid">$linktext</a></span>
+<li class="submenuitem $!class"><a href="$actionurl" id="$linkid" class="$linkid">$linktext</a></li>
 #end
 
 ###
@@ -813,7 +812,7 @@ $doc.display("content", $obj)
 ###    Toplevel Menu entry separator
 ###
 #macro(xwikitopmenuseparator)
-<div class="topmenuentry"><span class="separator">&raquo;</span></div>
+<span class="separator" style="float:left">&raquo;</span>
 #end
 
 ###
@@ -829,7 +828,8 @@ $doc.display("content", $obj)
 ### End the subitem section
 ###
 #macro(xwikitopmenuentryend)
-</span></div>
+</ul>
+</li>
 #end
 
 ###

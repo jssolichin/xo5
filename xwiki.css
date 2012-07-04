@@ -2,7 +2,7 @@
 article, aside, details, figcaption, figure, footer, header,
   hgroup, menu, nav, section { display: block; } /*html 5*/
 
-body {background: #eee url(img/bg.png); font-family: sans-serif; color: #222; margin: 0px; padding: 0px; overflow-x: hidden;}
+body {background: $theme.pageBackgroundColor url(img/bg.png); font-family: sans-serif; color: #222; margin: 0px; padding: 0px; overflow-x: hidden;}
 h1,h2,h3,h4,h5,h6, #sidebar-control-links ul li {margin: 0px; padding: 0px; letter-spacing: -4px; font-weight: bold;}
 h1 {font-size:2.5em;}
 h2 {font-size:2.2em;}
@@ -13,7 +13,7 @@ h6 {font-size:1.5em;}
 .mobile {display: none;}
 
 h2, #sidebar-control-links ul li a {letter-spacing: -2px; font-size: 2em;}
-.search:after, .each-comment:after, #nav-icons:after, #page-actions:after, #breadcrumb:after, #content:after, #gadget-container:after, #sidebar-control-links ul li:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.search:after, .menu-drop ul:after,.each-comment:after, #nav-icons:after, #page-actions:after, .menu-drop:after, #content:after, #gadget-container:after, #sidebar-control-links ul li:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
 
 header {position: fixed; right: 0px; top: 0px; width: 20%;}
 header h1 {margin: 14px 10px;font-size: 3em; font-weight:bold;}
@@ -73,31 +73,36 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 .each-comment-user h4 {font-size: 1.4em; letter-spacing: -1px;margin: 10px 0 0 0 ;}
 
 #main-area {width: 80%;}
-#breadcrumb {padding: 5px 10px ; margin-right:-30px;}
-#breadcrumb ul {list-style-type:none; margin: 0px; padding: 0px;}
-#breadcrumb ul li {float: left; font-weight: bold; padding: 5px;}
-#breadcrumb ul li span {font-weight: normal; margin-right: 2px;}
-#breadcrumb ul li:before{content: "\00BB"; margin: 0 10px;}
-#breadcrumb ul li:first-child:before{content: ""; margin: 0px;}
-#breadcrumb ul li:hover {background: rgba(0,0,0,.5); color: #fff;}
-#breadcrumb ul li ul {background: rgba(0,0,0,.5); padding: 5px; position: absolute; margin: 5px 0 0 -5px; font-size: .8em; display: none; }
-.no-rgba #breadcrumb ul li:hover, .no-rgba #breadcrumb ul li ul {background: #333;}
-.no-rgba #breadcrumb ul li ul li:hover {background: #000;}
-#breadcrumb ul li:hover ul {display: block;}
-#breadcrumb ul li ul hr {visibility: hidden; height: 1px;}
-#breadcrumb ul li ul a {color: #fff; text-decoration: none;}
-#breadcrumb ul li ul li{float: none;}
-#breadcrumb ul li ul li:before{content: ""; margin: 0px;}
+.menu-drop {padding: 5px 10px ; margin-right:-30px; position: relative; z-index: 9999;}
+.menu-drop ul {list-style-type:none; margin: 0px; padding: 0px;}
+.menu-drop ul li {float: left; font-weight: bold; padding: 5px;}
+.menu-drop ul li span {font-weight: normal; margin-right: 2px;}
+.menu-drop ul li:hover {background: rgba(0,0,0,.5); color: #fff;}
+.menu-drop ul li ul {background: rgba(0,0,0,.5); padding: 5px; position: absolute; margin: 5px 0 0 -5px; font-size: .8em; display: none; }
+.no-rgba .menu-drop ul li:hover, .no-rgba .menu-drop ul li ul {background: #333;}
+.no-rgba .menu-drop ul li ul li:hover {background: #000;}
+.menu-drop ul li:hover ul {display: block;}
+.menu-drop ul li ul hr {visibility: hidden; height: 1px;}
+.menu-drop ul li ul a {color: #fff; text-decoration: none;}
+.menu-drop ul li ul li{float: none;}
+.menu-drop ul li ul li:before{content: ""; margin: 0px;}
+#viewer { padding: 0px; width: 100%;}
+#viewer ul li {float: right; font-size:.8em;}
+#viewer ul li ul li{float: left; font-size:1.2em;}
+#viewer ul li:nth-child(2) {margin-left: 10px;}
+#viewer ul li:nth-child(2) ul {margin-left: -30px;}
+#tmCreate { margin-right: 10px;}
+#tmCreate:after {content:" + ";}
 
-article#content {color: #555;  font-size: .9em;background: #fff; border-top: 20px solid $theme.highlightColor; padding: 10px 10px 15px 10px; box-shadow: 30px 0px 0px rgba(0, 0, 0,.1); }
+article#content {color: #555;  font-size: .9em;background: #fff; border-top: 20px solid #d25400; padding: 10px 10px 15px 10px; box-shadow: 30px 0px 0px rgba(0, 0, 0,.1); }
 article h1 {margin-bottom: 10px; font-size:3.5em;}
 #info {color: #333;  background: #eee; display: block; padding: 10px; margin: 10px -10px;}
 #gadget-left, #gadget-right {float: left; width: 48.618784527%;
     *width: 48.5655930376383%;}
 #gadget-left {margin-left: .7%;}
 #gadget-right {margin-right: .7%; float: right; }
-article section {margin: 0 0 10px 0; padding: 10px 0;border: 3px solid #eee; border-left: 0px; border-right: 0px;}
-article section h2 {font-size:2.2em; color: #005aa9;  letter-spacing: -3px;}
+.gadget {margin: 0 0 10px 0; padding: 10px 0;border: 3px solid #eee; border-left: 0px; border-right: 0px;}
+.gadget-title {font-size:2.2em; color: #005aa9;  letter-spacing: -3px;}
 article section p { margin-top: 10px;}
 
 ::-webkit-scrollbar {width: 10px;}
@@ -116,7 +121,7 @@ article section p { margin-top: 10px;}
 
 @media all and (max-width: 480px) {
   .mobile {display: block;}
-  header:after, #breadcrumb ul li:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+  header:after, .menu-drop ul li:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
 
   header {position: static; width: 95%;}
   header h1 {text-align: center;}
@@ -147,11 +152,11 @@ article section p { margin-top: 10px;}
   #main-area {width: 95%;}
   article {box-shadow: none; }
 
-  #breadcrumb {margin: 0px;}
-  #breadcrumb ul li {float: none; background: rgba(0,0,0,.5); color: #fff; margin: 5px 0;}
-  .no-rgba #breadcrumb ul li {background: #333;}
-  #breadcrumb ul li:hover ul {display: none;}
-  #breadcrumb ul li:before{content: ""; margin: 0px;}
+  .menu-drop {margin: 0px;}
+  .menu-drop ul li {float: none; background: rgba(0,0,0,.5); color: #fff; margin: 5px 0;}
+  .no-rgba .menu-drop ul li {background: #333;}
+  .menu-drop ul li:hover ul {display: none;}
+  .menu-drop ul li:before{content: ""; margin: 0px;}
   .breadcrumb-drop {display: inline ; float: right;}
 
   #gadget-left, #gadget-right {float: none; width: 100%;}
@@ -193,7 +198,9 @@ article section p { margin-top: 10px;}
 }
 
 .separator {
-  color: $theme.textSecondaryColor;
+  /*color: $theme.textSecondaryColor; */
+  padding-top: 3px;
+  margin: 0 10px;
 }
 
 .column {
@@ -249,10 +256,6 @@ img[height][src*="noavatar.png"] {
 
 form div.activityContent {
   margin-bottom:50px;
-}
-
-#document-title h1 {
-    font-size: 36px;
 }
 
 .edit_section {

@@ -18,14 +18,22 @@
 
   <nav id="search">
     <form class="search" action="#if($xwiki.exists('Main.Search'))$xwiki.getURL('Main.Search')#else$xwiki.getURL('Main.WebSearch')#end">
-      <input class="globalsearchinput withTip" id="headerglobalsearchinput" type="text" name="text" value="$msg.get('panels.search.inputText')" class="text-field"/>
+      <input type="text" class="text-field" value="$msg.get('panels.search.inputText')"/>
       <input type="submit" class="submit" value="submit" value="$msg.get('panels.search.submit')" alt="$msg.get('panels.search.submit')"/>
     </form>
   </nav>
 
   <span class="mobile" id="hint">Swipe horizontally to access menu</span>
 
-  <span class="hint" id="headerlanguages">
+  ##
+  ## User
+  ##
+  <div class="menu-drop" id="viewer">
+    <ul>
+
+      <li id="headerlanguages">
+        Lang.
+        <ul>
   #set($defaultLanguage = "$!{doc.getDefaultLanguage()}")
   #if($defaultLanguage == '')
     #set($defaultLanguage = "$!{doc.getLanguage()}")
@@ -33,13 +41,51 @@
   #if($defaultLanguage == '')
     #set($defaultLanguage = "default")
   #end
-  <a href="$!doc.getURL("view", "language=$defaultLanguage")" class="language-default#if($tdoc.realLanguage == $defaultLanguage || ($defaultLanguage == 'default' && $tdoc.realLanguage == '')) language-current#end">$defaultLanguage</a>
+  <li><a href="$!doc.getURL("view", "language=$defaultLanguage")" class="language-default#if($tdoc.realLanguage == $defaultLanguage || ($defaultLanguage == 'default' && $tdoc.realLanguage == '')) language-current#end">$defaultLanguage</a><li>
   #set ($wikiSettingsLanguages = $!xwiki.getXWikiPreference('languages').trim().split('\s*[,| ]\s*'))
   #set ($hasLanguagesSet = $wikiSettingsLanguages.size() > 1 || "$!wikiSettingsLanguages.get(0)" != '')
   #foreach($lang in $doc.translationList)
     #if(!$hasLanguagesSet || $wikiSettingsLanguages.contains($lang))
-      <a href="$!doc.getURL("view", "language=$lang")" class="language-translation#if($tdoc.realLanguage == $lang) language-current#end">$!lang</a>
+      <li><a href="$!doc.getURL("view", "language=$lang")" class="language-translation#if($tdoc.realLanguage == $lang) language-current#end">$!lang</a></li>
     #end
   #end
-  </span>
+        </ul>
+      </li>
+
+
+  #if (!$xcontext.action.startsWith('login'))
+    #if ($isGuest)
+      #set ($loginurl = $xwiki.getURL('XWiki.XWikiLogin', 'login', "xredirect=$escapetool.url($xwiki.relativeRequestURL)"))
+      #xwikitopmenuentry($!loginurl $!msg.get('login') 'tmLogin')
+    #else
+      #set ($logouturl = $xwiki.getURL('XWiki.XWikiLogout', 'logout', "xredirect=$escapetool.url($xwiki.relativeRequestURL)"))
+      #xwikitopmenuentry($!logouturl $!msg.get('logout') 'tmLogout')
+    #end
+  #end
+  #if ($isGuest && $xwiki.hasAccessLevel('register', 'XWiki.XWikiPreferences'))
+    #set ($regurl = $xwiki.getURL('XWiki.Register', 'register'))
+    #xwikitopmenuentry($!regurl $!msg.get('core.register') 'tmRegister')
+  #end
+  ##
+  ##
+  #if (!$isGuest)
+  #if ($isSuperAdmin)
+    #xwikitopmenuentry('#' $!msg.get('superadmin') 'tmUser' 'hasIcon')
+  #else
+    #xwikitopmenuentrystart($xwiki.getURL($xcontext.user, 'view') "$msg.get('core.menu.type.profile')__SEPARATOR__$!xwiki.getUserName($xcontext.user, false)" 'tmUser' 'hasIcon')
+    #submenuitem($xwiki.getURL($xcontext.user, 'view') $msg.get('core.menu.profile') 'tmProfile', '')
+    #submenuitem($xwiki.getURL($xcontext.user, 'view', 'category=preferences') $msg.get('core.menu.userPreferences') 'tmUserPreferences', '')
+    #if ($hasWatch)
+      #submenuitem($xwiki.getURL($xcontext.user, 'view', 'category=watchlist') $msg.get('core.menu.watchlist.management') 'tmWatchlistManager', '')
+      #submenuitem($xwiki.getURL($xcontext.user, 'view', 'category=network') $msg.get('core.menu.network') 'tmUserNetwork', '')
+    #end
+    #if ($isWorkspaceManagerAppInstalled && $isMainWikiUser)
+      #submenuitem($xwiki.getURL($xcontext.user, 'view', 'category=workspaces') $msg.get('workspacemanager.menu.user.workspaces') 'tmUserWorkspaces', '')
+    #end
+    #submenuitem($xwiki.getURL($xcontext.user, 'view', 'category=dashboard') $msg.get('core.menu.userDashboard') 'tmUserDashboard', '')
+    #xwikitopmenuentryend()
+  #end
+  #end
+</ul>
+  </div>
 </header>
