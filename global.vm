@@ -52,7 +52,7 @@
         </ul>
       </li>
 
-
+<div class="column">
   #if (!$xcontext.action.startsWith('login'))
     #if ($isGuest)
       #set ($loginurl = $xwiki.getURL('XWiki.XWikiLogin', 'login', "xredirect=$escapetool.url($xwiki.relativeRequestURL)"))
@@ -86,6 +86,8 @@
     #xwikitopmenuentryend()
   #end
   #end
+</div>
 </ul>
   </div>
+
 </header>

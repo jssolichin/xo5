@@ -1,8 +1,111 @@
 
-#set ($workspaceManagerMainDocumentReference = $services.model.createDocumentReference($xcontext.mainWikiName, 'WorkspaceManager', 'WebHome'))
-#set ($isWorkspaceManagerAppInstalled = $xwiki.exists($workspaceManagerMainDocumentReference))
-#set ($isWorkspace = $services.workspace.isWorkspace($xcontext.database))
-#set ($isMainWikiUser = ($xcontext.mainWikiName == "$!{xcontext.userReference.wikiReference.name}"))
+    #template("layoutvars.vm")
 
 
-#template("leftpanels.vm")
+#if (!$docextras)
+  #set ($docextras = [])
+  #if ($showcomments)
+    #set ($discard = $docextras.add(['Comments', 'comments', $msg.get('docextra.comments'), $doc.getObjects('XWiki.XWikiComments').size(), 'commentsinline.vm', $msg.get('core.shortcuts.view.comments')]))
+  #end
+  #if ($showannotations)
+    #if (!$annotationCount)
+      ## Annotation count is supposed to be defined in xwikivars.vm. If for a reason or another it is not
+      ## defined at this point, we tap into the standard annotation class, and do not load again the
+      ## config document. This however should not happen.
+      #set ($annotationCount = $doc.getObjects('AnnotationCode.AnnotationClass').size())
+    #end
+    #set ($discard = $docextras.add(['Annotations', 'annotations', $msg.get('docextra.annotations'), $annotationCount, 'annotationsinline.vm', $msg.get('core.shortcuts.view.annotations')]))
+  #end
+  #if ($showattachments)
+    #set ($discard = $docextras.add(['Attachments', 'attachments', $msg.get('docextra.attachments'), $doc.getAttachmentList().size(), 'attachmentsinline.vm', $msg.get('core.shortcuts.view.attachments')]))
+  #end
+  #if (!$showhistory)
+    ## Pagination style
+    $xwiki.ssfx.use('uicomponents/pagination/pagination.css', true)##
+    #set ($discard = $docextras.add(['History', 'history', $msg.get('docextra.history'), -1, 'historyinline.vm', $msg.get('core.shortcuts.view.history')]))
+  #end
+  #if ($showinformation)
+    #set ($discard = $docextras.add(['Information', 'information', $msg.get('docextra.information'), -1, 'informationinline.vm', $msg.get('core.shortcuts.view.information')]))
+  #end
+#end
+  ##
+## Display tabs
+##
+#if($docextras.size() > 0)
+    <nav id="sidebar-control">
+      <div id="sidebar-control-links">
+        <h2>navigation</h2>
+        <ul>
+        #foreach($docextra in $docextras)
+          <li>
+            <a id="${docextra.get(0).toLowerCase()}-link" href="#${docextra.get(0).toLowerCase()}">
+              $docextra.get(2) 
+              #if($docextra.get(3) >= 0) 
+                <span class="itemCount">$msg.get('docextra.extranb', [$docextra.get(3)])</span> 
+              #end
+            </a>
+          </li>
+        #end
+      </ul>
+    </div>
+  </nav>
+#end
+
+
+<div id="change">
+
+ #if( $displayDocExtra)
+    #template("docextra.vm")
+  #end
+
+
+  #if($showLeftPanels == "1" || $request.getParameter("forceLeftPanels"))
+  <div id="leftPanels" class="panels left"#if($showLeftPanels != "1" && $request.getParameter("forceLeftPanels")) style="display: none;"#end>
+  #foreach($panel in $leftPanels)
+  #displaypanel($panel.trim())
+  #end
+  </div>
+  #end
+
+#if($displayContentMenu)
+#if($hasEdit && !$isReadOnly)
+  #if($doc.fullName != 'Main.WebHome')
+    #template("editmenu.vm")
+  #end
+#end
+
+##
+## Export menu
+##
+
+      <section id="export-wrapper">
+        <h2>Export</h2>
+        <div id="export">
+## Actions menu
+#if(!$doc.isNew())
+          <ul>
+#submenuitem($doc.getURL('view', "xpage=print&amp;$!docvariant") $msg.get('core.menu.preview') 'tmPrintPreview', '')
+#submenuitem($doc.getURL('view', "viewer=code") $msg.get('core.menu.view.source') 'tmViewSource', '')
+          </ul>
+#end
+#if(!$doc.isNew())
+          <h3 class="sub-menu">Save As</h3>
+          <ul>
+## Save As
+  #submenuitem($doc.getURL('view', "xpage=pdfoptions&amp;$!docvariant") $msg.get('core.menu.export.pdf') 'tmExportPdf', '')
+#if("$!{oomanager.serverState}" == "Connected")
+  #submenuitem($doc.getURL('export', "format=odt&amp;$!docvariant") $msg.get('core.menu.export.odt') 'tmExportOdt', '')
+#end
+  #submenuitem($doc.getURL('export', "format=rtf&amp;$!docvariant") $msg.get('core.menu.export.rtf') 'tmExportRtf', '')
+  #submenuitem($doc.getURL('export', "format=html&amp;$!docvariant") $msg.get('core.menu.export.html') 'tmExportHtml', '')
+#if($hasAdmin)
+  #submenuitem($doc.getURL('export', "format=xar&amp;name=$escapetool.url($doc.fullName)&amp;pages=$escapetool.url($doc.fullName)&amp;$!docvariant") $msg.get('core.menu.export.xar') 'tmExportXar', '')
+#end
+          </ul>
+        </div>
+      </section>
+
+#end
+#end <!--displayContentMenu-->
+
+</div>

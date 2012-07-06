@@ -1,0 +1,69 @@
+<strong id="xwikicontentmenutitle" class="hidden">$msg.get('core.menu.content.title')</strong>
+
+#if($hasEdit && !$isReadOnly)
+  ##
+  ## Edit menu
+  ##
+
+    <div class="pull-right">
+    <label for="parent">Parent</label>
+    #set($spaceDocuments = $xwiki.searchDocuments("where doc.space=? and doc.name!=? and doc.name!='WebHome'", [$doc.space, $doc.name]))
+    #if("$!doc.parent" != '')
+      #set($currentParentDocument = $xwiki.getDocument($doc.parent))
+    #end
+    #if($currentParentDocument && $currentParentDocument.space != $doc.space)
+    <input type="text" id="parent" name="parent" value="$!doc.parent" class="span3" value="${currentParentDocument.fullName}"/>
+    #else
+    <select id="parent" name="parent" class="span4">
+      <option value="${doc.space}.WebHome">$xwiki.getDocument("${doc.space}.WebHome").displayTitle</option>
+      #foreach($name in $spaceDocuments)
+      <option value="${name}"
+       #if($currentParentDocument && $currentParentDocument.fullName == $name) selected #end
+      >
+        $xwiki.getDocument($name).displayTitle
+      </option>
+      #end
+    </select>
+    #end
+    </div>
+
+  <section id="edit-wrapper">
+      <div id="edit">
+
+  #set($editorName = $msg.get("core.menu.edit.${editor}"))
+  #set($currentEditorId = "tmEdit${editor.substring(0, 1).toUpperCase()}${editor.substring(1)}")
+  #if($isAdvancedUser)
+    ## Compute the default edit mode
+    #set($editaction = $doc.getDefaultEditMode())
+    <h3 class="sub-menu">Edit</h3>
+    <ul>
+    #submenuitem($doc.getURL('edit', "$!{languageparams}&amp;editor=wiki") $msg.get('core.menu.edit.wiki') 'tmEditWiki', '')
+    #submenuitem($doc.getURL('edit', "$!{languageparams}&amp;editor=wysiwyg") $msg.get('core.menu.edit.wysiwyg') 'tmEditWysiwyg', '')
+    #submenuitem($doc.getURL($editaction, "$!{languageparams}&amp;editor=inline") $msg.get('core.menu.edit.inline') 'tmEditInline', '')
+    #submenuseparator()
+    #submenuitem($doc.getURL('edit', 'editor=rights') $msg.get('core.menu.edit.rights') 'tmEditRights', '')
+    #submenuitem($doc.getURL('edit', 'editor=object') $msg.get('core.menu.edit.object') 'tmEditObject', '')
+    #submenuitem($doc.getURL('edit', 'editor=class') $msg.get('core.menu.edit.class') 'tmEditClass', '')
+    </li>
+  #else ## !isAdvanced
+    #xwikitopmenuentry('' $currentEditorTitle 'tmCurrentEditor' "$currentEditorId hasIcon")
+  #end
+  #if($keyboardShortcutsEnabled && $isAdvancedUser)
+    <script type="text/javascript">
+    //<![CDATA[
+      shortcut.add("$msg.get('core.shortcuts.view.wiki')",function() { location.href=$('tmEditWiki').href; }, { 'type':'keypress', 'propagate':false, 'disable_in_input':true });
+      shortcut.add("$msg.get('core.shortcuts.view.wysiwyg')",function() { location.href=$('tmEditWysiwyg').href; }, { 'type':'keypress', 'propagate':false, 'disable_in_input':true });
+      shortcut.add("$msg.get('core.shortcuts.view.inline')",function() { location.href=$('tmEditInline').href; }, { 'type':'keypress', 'propagate':false, 'disable_in_input':true });
+      shortcut.add("$msg.get('core.shortcuts.view.rights')",function() { location.href=$('tmEditRights').href; }, { 'type':'keypress', 'propagate':false, 'disable_in_input':true });
+      shortcut.add("$msg.get('core.shortcuts.view.objects')",function() { location.href=$('tmEditObject').href; }, { 'type':'keypress', 'propagate':false, 'disable_in_input':true });
+      #if($hasAdmin)
+        shortcut.add("$msg.get('core.shortcuts.view.class')",function() { location.href=$('tmEditClass').href; }, { 'type':'keypress', 'propagate':false, 'disable_in_input':true });
+      #end
+    //]]>
+    </script>
+  #end
+</div><!--edit-->
+</section>
+#end
+
+

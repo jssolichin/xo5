@@ -10,7 +10,7 @@
 #if($tdoc.getLocked() && "$!request.get('force')" == '')
   #template("startpage.vm")
   <div class="main layoutsubsection">
-   <div id="mainContentArea">hello 
+   <div id="mainContentArea"> 
     ##
     $response.setStatus(423)
     #set($newquerystring = "$!{request.getQueryString().replaceAll('&', '&amp;').replaceAll('&amp;amp;', '&amp;')}"
@@ -44,7 +44,6 @@
   #if($editor == 'inline')
     ## The inline editor uses the view layout, unlike the rest of the editors.
     #template('startpage.vm')
-    #template('editinline.vm')
     #template('endpage.vm')
   #else
   ##
@@ -66,74 +65,46 @@
   <div> ## -> fullScreenWrapper
   <div id="mainEditArea" #* class="maximizable" *#>
 
-  #if($isAdvancedUser)
-  <div class="pull-right">
-    <div class="btn-group">
-      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-        Editor
-        <span class="caret"></span>
-      </a>
-
-      <ul class="dropdown-menu">
-        <li #if("$!request.editor" == 'wysiwyg' || "$!request.editor" == '')class="active"#end><a href="$doc.getURL('edit', 'editor=wysiwyg')">WYSIWYG</a></li>
-        <li #if("$!request.editor" == 'wiki')class="active"#end><a href="$doc.getURL('edit', 'editor=wiki')">Wiki</a></li>
-        <li #if("$!request.editor" == 'object')class="active"#end><a href="$doc.getURL('edit', 'editor=object')">Objects</a></li>
-        <li #if("$!request.editor" == 'class')class="active"#end><a href="$doc.getURL('edit', 'editor=class')">Class</a></li>
-        <li #if("$!request.editor" == 'rights')class="active"#end><a href="$doc.getURL('edit', 'editor=rights')">Rights</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="clearfix"></div>
-  #end
-
-
-  <div #* class="pill-content" *#>
+  <div class="pill-content" *#>
 ##  #foreach($editor in ["wiki", "object"])
-    <div id="$editor" #if($editor == 'wiki') class="active" #end>
+    <div id="$editor">
     #if($editor == 'wiki' || $editor == 'wysiwyg')
-      <form id="edit" method="post" action="$doc.getURL('preview')" class="form-horizontal">
+      <form id="edit" method="post" action="$doc.getURL('preview')" class="form-horizontal page-form">
       <div class="hidden">
-      ## CSRF prevention
-      <input type="hidden" name="form_token" value="$!{services.csrf.getToken()}" />
-      ## Pass the section number when the form is submitted in order to affect only the specified section.
-      ## We need to test if the section number is present to prevent a NumberFormatException for the empty string.
-      #if("$!{request.section}" != '')
-        <input type="hidden" name="section" value="$!{escapetool.xml($request.section)}" />
-      #end
-      ## This input is used by the full screen widget: it stores the selector of the maximized element, so that the full screen can be restored when coming back from preview.
-      <input type="hidden" name="x-maximized" value="$!{escapetool.xml($request.get('x-maximized'))}"/>
-      </div>
-      <div>
-      <div class="metadata">
-        #if($doc.fullName != 'Main.WebHome')
-        <div class="pull-right">
-        <label for="parent">Parent</label>
-        #set($spaceDocuments = $xwiki.searchDocuments("where doc.space=? and doc.name!=? and doc.name!='WebHome'", [$doc.space, $doc.name]))
-        #if("$!doc.parent" != '')
-          #set($currentParentDocument = $xwiki.getDocument($doc.parent))
+        ## CSRF prevention
+        <input type="hidden" name="form_token" value="$!{services.csrf.getToken()}" />
+        ## Pass the section number when the form is submitted in order to affect only the specified section.
+        ## We need to test if the section number is present to prevent a NumberFormatException for the empty string.
+        #if("$!{request.section}" != '')
+          <input type="hidden" name="section" value="$!{escapetool.xml($request.section)}" />
         #end
-        #if($currentParentDocument && $currentParentDocument.space != $doc.space)
-        <input type="text" id="parent" name="parent" value="$!doc.parent" class="span3" value="${currentParentDocument.fullName}"/>
-        #else
-        <select id="parent" name="parent" class="span4">
-          <option value="${doc.space}.WebHome">$xwiki.getDocument("${doc.space}.WebHome").displayTitle</option>
-          #foreach($name in $spaceDocuments)
-          <option value="${name}"
-           #if($currentParentDocument && $currentParentDocument.fullName == $name) selected #end
-          >
-            $xwiki.getDocument($name).displayTitle
-          </option>
-          #end
-        </select>
-        #end
+        ## This input is used by the full screen widget: it stores the selector of the maximized element, so that the full screen can be restored when coming back from preview.
+        <input type="hidden" name="x-maximized" value="$!{escapetool.xml($request.get('x-maximized'))}"/>
         </div>
-        #end
-        <label for="title">Title</label><input type="text" id="title" name="title" value="$escapetool.xml($!doc.title)" class="span6" />
-        <p class="help-block">permalink is <tt>$doc.getURL('view')</tt> - <a href="$doc.getURL('view', 'xpage=rename')">change</a></p>
+      <div>
+
+
+      <dl>
+        <dt>
+          <label for="title">Title</label>
+        </dt>
+        <dd>
+          <input type="text" id="title" name="title" value="$escapetool.xml($!doc.title)" class="span6" />
+        </dd>
+        <dt>
+          Permalink
+        </dt>
+        <dd>
+          <tt>$doc.getURL('view')</tt> - <a href="$doc.getURL('view', 'xpage=rename')">change</a>
+        </dd>
       </div>
-      <div class="clearfix"></div>
     #end
-    #template("edit${editor}.vm")
+        <dt>
+          Edit
+        </dt>
+        <dd>
+          #template("edit${editor}.vm")
+        </dd>
     #if($editor == 'wiki' || $editor == 'wysiwyg')
 ##      #template("tagedit.vm")
       </form>
@@ -175,7 +146,6 @@
   ##
   ## Footer
   ##
-  #template("footer.vm")
-  #template("htmlfooter.vm")
   #end ## $editor != 'inline'
 #end
+  #template("endpage.vm")

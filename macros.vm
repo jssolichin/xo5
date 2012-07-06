@@ -657,11 +657,11 @@ $fn
 #end
 #if ($paneldoc.syntax.toIdString() == 'xwiki/1.0')
 <div class="panel expanded $!specialClassAttribute">
-<h1 class="xwikipaneltitle">$title</h1>
+<h3 class="sub-menu">$title</h3>fdsa
 <div class="xwikipanelcontents">
 #else
 (% class="panel expanded $specialClassAttribute" %)(((
-{{html}}<h1 class="xwikipaneltitle">$title</h1>{{/html}}
+{{html}}<h3 class="sub-menu">$title</h3>{{/html}}
 (% class="xwikipanelcontents" %)(((
 #end
 #end
@@ -675,11 +675,11 @@ $fn
 #end
 #if ($paneldoc.syntax.toIdString() == 'xwiki/1.0')
 <div class="panel expanded $!specialClassAttribute">
-<h1 class="xwikipaneltitle hidden">$title</h1>
+<h3 class="sub-menu xwikipaneltitle hidden">$title</h3>
 <div class="xwikipanelcontents">
 #else
 (% class="panel expanded $specialClassAttribute" %)(((
-{{html}}<h1 class="xwikipaneltitle hidden">$title</h1>{{/html}}
+{{html}}<h3 class="sub-menu xwikipaneltitle hidden">$title</h3>{{/html}}
 (% class="xwikipanelcontents" %)(((
 #end
 #end
@@ -693,11 +693,11 @@ $fn
 #end
 #if ($paneldoc.syntax.toIdString() == 'xwiki/1.0')
 <div class="large panel $expanded $!specialClassAttribute">
-<h1 class="xwikipaneltitle">$title</h1>
+<h3 class="sub-menu xwikipaneltitle">$title</h3>
 <div class="xwikipanelcontents">
 #else
 (% class="large panel expanded $!specialClassAttribute" %)(((
-{{html}}<h1 class="xwikipaneltitle">$title</h1>{{/html}}
+{{html}}<h3 class="sub-menu xwikipaneltitle">$title</h3>{{/html}}
 (% class="xwikipanelcontents" %)(((
 #end
 #end

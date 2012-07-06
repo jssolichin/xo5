@@ -61,12 +61,20 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" />
+<link href="$xwiki.getSkinFile('reset.css', true)" rel="stylesheet">
     <link href="$xwiki.getSkinFile('xwiki.css', true)" rel="stylesheet">
 
     ## Hook for inserting CSS skin extensions
     <!-- com.xpn.xwiki.plugin.skinx.CssSkinExtensionPlugin -->
     <!-- com.xpn.xwiki.plugin.skinx.CssSkinFileExtensionPlugin -->
+
+
+    <script type="text/javascript" src="$xwiki.getSkinFile("js/jquery-1.7.2.min.js")"></script>
+    <script type="text/javascript" src="$xwiki.getSkinFile("js/jquery-ui-1.8.21.custom.min.js")"></script>
+    <script type="text/javascript" src="$xwiki.getSkinFile("js/modernizr.js")"></script>
+    <script type="text/javascript" src="$xwiki.getSkinFile("js/respond.min.js")"></script>
+
 
 $xwiki.jsfx.use('js/scriptaculous/effects.js', true)
 $xwiki.jsfx.use('js/xwiki/widgets/modalPopup.js', true)
@@ -79,15 +87,8 @@ $xwiki.ssfx.use('uicomponents/widgets/notification.css', true)
 $xwiki.jsfx.use('uicomponents/widgets/list/xlist.js')
 $xwiki.jsfx.use('uicomponents/suggest/suggest.js')
 
-    <script type="text/javascript" src="$xwiki.getSkinFile("js/jquery-1.7.2.min.js")"></script>
-    <script type="text/javascript" src="$xwiki.getSkinFile("js/jquery-ui-1.8.21.custom.min.js")"></script>
-    <script type="text/javascript" src="$xwiki.getSkinFile("js/modernizr.js")"></script>
-    <script type="text/javascript" src="$xwiki.getSkinFile("js/respond.min.js")"></script>
-
     <script type="text/javascript">
-    //<![CDATA[
-    jQuery.noConflict();
-    // ]]>
+    var $j = jQuery.noConflict();
     </script>
     <script type="text/javascript" src="$xwiki.getSkinFile("js/prototype/prototype.js")"></script>
     <script type="text/javascript" src="$xwiki.getSkinFile("js/xwiki/xwiki.js", true)"></script>

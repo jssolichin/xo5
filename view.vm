@@ -1,0 +1,28 @@
+###
+### Main "view" template
+###
+### General wrapper for view actions
+###
+#if ($request.getParameter("raw").equals("1"))
+  #template("code.vm")
+#else
+  #template("startpage.vm")
+  #if("$!viewer" == '')
+    #set($viewer = $request.getParameter('viewer'))
+  #end
+  #if("$!viewer" == '')
+    #set($viewer = 'content')
+  #end
+  <div class="main layoutsubsection">
+  <div id="mainContentArea">
+  #if($viewer == 'content')
+    #template("contentview.vm")
+  #else
+    #template("${viewer}.vm")
+  #end
+  <div class="clearfloats"></div>
+  </div>## mainContentArea
+  
+  </div>## main
+  #template("endpage.vm")
+#end

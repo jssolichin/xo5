@@ -28,6 +28,7 @@ line-height:16px; /* required for IE */
 background: url(img/sprite-icons.png) no-repeat 0 0; /* This will display the search icon by default */
 cursor:pointer; /* Hand cursor for the normal state */
 border: none;float: left;margin: 3px;padding: 0;}
+#headerlanguages {float: right;}
 
 #sidebar {width: 20%; position: fixed; right: 0px; top:130px; bottom: 0px; overflow-y: auto; z-index: 999; overflow-x: hidden; 
   min-width:290px;}
@@ -56,7 +57,7 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #change h3 {margin: 10px 0 5px 0;}
 #change ul li a {text-decoration: none; font-size: 1.2em; letter-spacing: -1px;}
 #change section { margin-bottom: 100px; }
-#change section h2 span {position: absolute; right: 10px; color: #d25400; font-weight: bold;}
+#change section h2 span {color: #d25400; font-weight: bold;}
 
 #page-suplemental {box-shadow: inset 30px 0px 0px rgba(0, 0, 0,.1); background: #fff; margin:10px -10px 10px -10px; padding: 10px;}
 #page-meta a:hover {background: #fff;}
@@ -71,6 +72,8 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 .no-rgba .each-comment {background: #eee;}
 .each-comment-user img {float: left; margin: 0 10px 0 0;}
 .each-comment-user h4 {font-size: 1.4em; letter-spacing: -1px;margin: 10px 0 0 0 ;}
+.each-comment legend {font-weight: bold; margin-bottom: 10px;}
+.version {vertical-align: super; }
 
 #main-area {width: 80%;}
 .menu-drop {padding: 5px 10px ; margin-right:-30px; position: relative; z-index: 9999;}
@@ -82,15 +85,14 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 .no-rgba .menu-drop ul li:hover, .no-rgba .menu-drop ul li ul {background: #333;}
 .no-rgba .menu-drop ul li ul li:hover {background: #000;}
 .menu-drop ul li:hover ul {display: block;}
-.menu-drop ul li ul hr {visibility: hidden; height: 1px;}
+.menu-drop ul li ul hr, #sidebar section hr{visibility: hidden; height: 1px;}
 .menu-drop ul li ul a {color: #fff; text-decoration: none;}
 .menu-drop ul li ul li{float: none;}
 .menu-drop ul li ul li:before{content: ""; margin: 0px;}
 #viewer { padding: 0px; width: 100%;}
 #viewer ul li {float: right; font-size:.8em;}
 #viewer ul li ul li{float: left; font-size:1.2em;}
-#viewer ul li:nth-child(2) {margin-left: 10px;}
-#viewer ul li:nth-child(2) ul {margin-left: -30px;}
+
 #tmCreate { margin-right: 10px;}
 #tmCreate:after {content:" + ";}
 
@@ -110,6 +112,28 @@ article section p { margin-top: 10px;}
 ::-webkit-scrollbar-thumb {background: #aaa;}
 ::-webkit-scrollbar-thumb:hover {background: #777;}
 ::-webkit-scrollbar-thumb:active {background: #888;}
+
+.page-form dt {
+    float: left;
+    clear: left;
+    width: 140px;
+    text-align: right;
+    font-weight: bold;
+    padding: 10px 0;
+  }
+.page-form dt:after {
+    content: ":";
+  }
+.page-form dd {
+    margin: 0 0 0 150px;
+    padding: 10px 0;
+  }
+.page-form dt, dd {border-top: 1px solid #eee;}
+  .fullScreenEditLink {background: #fff; padding: 5px;}
+.page-form textarea {margin-top: 5px;}
+
+.bottombuttons { background: #eee; padding: 20px; margin: 20px 0; text-align: right}
+
 
 @media only screen and (max-width: 1024px) {
 
@@ -396,15 +420,17 @@ ul.xlist li.xitem div.xitemcontainer ul.xlist {
 
 .vertical-menu ul {
   list-style-type: none;
-  margin: 0;
+  padding: 0;
+  margin: 0px;
 }
 .vertical-menu ul ul ul {
-  margin-left: 2em;
+  margin-left: 0;
 }
 
 .vertical-menu li {
   border-top: 1px solid $theme.borderColor;
   position: relative;
+  margin-left: 0px;
 }
 
 .vertical-menu span {
