@@ -1,58 +1,7 @@
+
+
 ##
-## Document footer: tags, creation date, modification date
-##
-##
-<div id="xdocFooter">
-  #template("documentTags.vm")
-  <div id="xdocAuthors">
-    <div class="xdocCreation"> ## Creation
-      $msg.get('core.footer.creation', [$xwiki.getUserName($doc.creator), $xwiki.formatDate($doc.creationDate)])<br/>
-      #if($tdoc.realLanguage != $doc.realLanguage)
-        $msg.get('core.footer.translationCreation', [$tdoc.realLanguage, $xwiki.getUserName($tdoc.creator), $xwiki.formatDate($tdoc.creationDate)])<br/>
-      #end
-    </div>
-##    <div class="xdocLastModification"> ## Last modification
-##      $msg.get('core.footer.modification', [$xwiki.getUserName($tdoc.author), $xwiki.formatDate($tdoc.date)])
-##    </div>
-  </div>
-</div>
-##
-##
-## More document related data: comments, attachments ...
-##
-<div id="xwikidata" class="layoutsubsection">
-##
-## Build the list of documents extras to display, if it does not exist (default).
-## List format : ['ExtraAnchor', 'ExtraName', 'ExtraTabText', ExtraNumberOfItems, 'extratemplate.vm', 'keyboardShortcut']
-##
-#if (!$docextras)
-  #set ($docextras = [])
-  #if ($showcomments)
-    #set ($discard = $docextras.add(['Comments', 'comments', $msg.get('docextra.comments'), $doc.getObjects('XWiki.XWikiComments').size(), 'commentsinline.vm', $msg.get('core.shortcuts.view.comments')]))
-  #end
-  #if ($showannotations)
-    #if (!$annotationCount)
-      ## Annotation count is supposed to be defined in xwikivars.vm. If for a reason or another it is not
-      ## defined at this point, we tap into the standard annotation class, and do not load again the
-      ## config document. This however should not happen.
-      #set ($annotationCount = $doc.getObjects('AnnotationCode.AnnotationClass').size())
-    #end
-    #set ($discard = $docextras.add(['Annotations', 'annotations', $msg.get('docextra.annotations'), $annotationCount, 'annotationsinline.vm', $msg.get('core.shortcuts.view.annotations')]))
-  #end
-  #if ($showattachments)
-    #set ($discard = $docextras.add(['Attachments', 'attachments', $msg.get('docextra.attachments'), $doc.getAttachmentList().size(), 'attachmentsinline.vm', $msg.get('core.shortcuts.view.attachments')]))
-  #end
-  #if (!$showhistory)
-    ## Pagination style
-    $xwiki.ssfx.use('uicomponents/pagination/pagination.css', true)##
-    #set ($discard = $docextras.add(['History', 'history', $msg.get('docextra.history'), -1, 'historyinline.vm', $msg.get('core.shortcuts.view.history')]))
-  #end
-  #if ($showinformation)
-    #set ($discard = $docextras.add(['Information', 'information', $msg.get('docextra.information'), -1, 'informationinline.vm', $msg.get('core.shortcuts.view.information')]))
-  #end
-#end
-##
-## Put anchors before the footer, otherwise the top of each section would be hidden by the floating topmenu
+## section wrapper
 ##
 #if ($docextras.size() > 0)
  
@@ -72,5 +21,5 @@
 #end
 
 #end
-</div>  ## xwikidata
+
 

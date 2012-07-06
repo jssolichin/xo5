@@ -1,0 +1,72 @@
+###
+### Display document information
+###
+<div id="informationcontent" class="xwikiintracontent">
+<div id="_information">
+  
+  ##
+## Document footer: tags, creation date, modification date
+##
+##
+<div id="page-suplemental">
+    <div id="page-meta">
+      <dl>
+        <dt>Last Modified:</dt>
+         <dd><a href="#">$xwiki.getUserName($tdoc.author)</a> on <time datetime="$xwiki.formatDate($tdoc.date)">$xwiki.formatDate($tdoc.date)</time></dd></br>
+        <dt>Created: </dt>
+         <dd>$xwiki.getUserName($tdoc.creator) on <time datetime="$xwiki.formatDate($tdoc.creationDate)">$xwiki.formatDate($tdoc.creationDate)</time></dd></br>
+       <dt>$msg.get('core.tags.list.label')</dt>
+         #template("documentTags.vm")
+      </dl>
+    </div>
+  </div>
+
+
+    <dl>
+      <dt><h3 class="sub-menu">$msg.get('core.viewers.information.parent')</h3></dt>
+      <dd>
+        ## <input type="text" id="xwikidocparentinput2" name="parent" value="$!tdoc.parent" size="30"/>
+        #if("$!tdoc.parent" != '')
+          #displayDocumentList([$tdoc.parent] false [])
+        #else
+          $msg.get('core.viewers.information.noParent')
+        #end
+      </dd>
+      <dt><h3 class="sub-menu">$msg.get('core.viewers.information.children')<h3></dt>
+      <dd>
+        #set($children = $doc.getChildren())
+        #if($children.size() > 0)
+          #displayDocumentList($children true $blacklistedSpaces)
+        #else
+          $msg.get('core.viewers.information.noChildren')
+        #end
+      </dd>
+    </dl>
+
+  
+    <dl>
+      #if($tdoc.realLanguage != $doc.realLanguage)
+        <dt><h3 class="sub-menu">$msg.get('core.viewers.information.translationCreation', [$tdoc.realLanguage])</h3></dt>
+        <dd>$msg.get('core.viewers.information.translationCreationData', [$xwiki.getUserName($tdoc.creator), $xwiki.formatDate($tdoc.creationDate)])</dd>
+      #end
+      #if($isAdvancedUser)
+        #set($pages = $tdoc.includedPages)
+        #if($pages.size() > 0)
+          <dt>$msg.get('core.viewers.information.includedPages')</dt>
+          <dd>
+            #displayDocumentList($pages true $blacklistedSpaces)
+          </dd>
+      #end
+      #end
+      #set($blinks = $sorttool.sort($doc.getBacklinks()))
+      #if($blinks.size()>0)
+        <dt>$msg.get('core.viewers.information.backlinks')</dt>
+        <dd>
+          #displayDocumentList($blinks true $blacklistedSpaces)
+        </dd>
+      #end
+    </dl>
+
+
+</div>## _information
+</div>## informationcontent

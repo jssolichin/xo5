@@ -33,9 +33,28 @@
 ##
 #if($docextras.size() > 0)
     <nav id="sidebar-control">
+      <div id="sidebar-control-icons">
+        <a href="#navigation"><div class="sprite sprite-navigation-png"></div></a>
+        #foreach($docextra in $docextras)
+            <a href="#${docextra.get(0).toLowerCase()}">
+              <div class="sprite sprite-${docextra.get(0).toLowerCase()}-png">
+                #if($docextra.get(3) >= 0) 
+                  <span class="itemCount">$docextra.get(3)</span> 
+                #end
+              </div>
+            </a>
+        #end
+        <a href="#export"><div class="sprite sprite-export-png"></div></a>
+        #if($hasEdit && !$isReadOnly)
+        #if($doc.fullName != 'Main.WebHome')
+          <a href="#edit"><div class="sprite sprite-edit-png"></div></a>
+        #end
+        #end
+      </div>
       <div id="sidebar-control-links">
         <h2>navigation</h2>
         <ul>
+          <li id="navigation-link" class="active"><a href="#navigation">Navigation</a></li>
         #foreach($docextra in $docextras)
           <li>
             <a id="${docextra.get(0).toLowerCase()}-link" href="#${docextra.get(0).toLowerCase()}">
@@ -54,17 +73,23 @@
 
 <div id="change">
 
+
+  <section id="navigation">
+        <nav class="global-nav">
+          #if($showLeftPanels == "1" || $request.getParameter("forceLeftPanels"))
+          <div id="leftPanels" class="panels left"#if($showLeftPanels != "1" && $request.getParameter("forceLeftPanels")) style="display: none;"#end>
+          #foreach($panel in $leftPanels)
+          #displaypanel($panel.trim())
+          #end
+          </div>
+        #end
+  </section>
+
+
  #if( $displayDocExtra)
+  <aside>
     #template("docextra.vm")
-  #end
-
-
-  #if($showLeftPanels == "1" || $request.getParameter("forceLeftPanels"))
-  <div id="leftPanels" class="panels left"#if($showLeftPanels != "1" && $request.getParameter("forceLeftPanels")) style="display: none;"#end>
-  #foreach($panel in $leftPanels)
-  #displaypanel($panel.trim())
-  #end
-  </div>
+  </aside>
   #end
 
 #if($displayContentMenu)

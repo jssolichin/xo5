@@ -10,6 +10,7 @@ h3 {font-size:2em;}
 h4 {font-size:1.8em;}
 h5 {font-size:1.6em;}
 h6 {font-size:1.5em;}
+time {font-style: italic;}
 .mobile {display: none;}
 
 h2, #sidebar-control-links ul li a {letter-spacing: -2px; font-size: 2em;}
@@ -62,7 +63,8 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #page-suplemental {box-shadow: inset 30px 0px 0px rgba(0, 0, 0,.1); background: #fff; margin:10px -10px 10px -10px; padding: 10px;}
 #page-meta a:hover {background: #fff;}
 #page-meta {font-size:.8em; background:  url(img/bg.png); margin: 0 -10px; padding: 10px;}
-#page-meta dl dt, #page-meta dl dd {display: inline;}
+#page-meta dl dt, #page-meta dl dd {}
+#page-meta dl dd  {margin-left: 10px}
 #page-meta dl dt {font-weight: bold;}
 #table-of-contents {margin: 0px 0;}
 #table-of-contents h3 {margin: 0px 0 5px 0;}
@@ -134,7 +136,7 @@ article section p { margin-top: 10px;}
 
 .bottombuttons { background: #eee; padding: 20px; margin: 20px 0; text-align: right}
 
-
+#sidebar .page-form dt, dd {border: 0px;}
 @media only screen and (max-width: 1024px) {
 
   #sidebar, header {width: 30%;}
