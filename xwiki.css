@@ -79,10 +79,13 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 
 #main-area {width: 80%;}
 .menu-drop {padding: 5px 10px ; margin-right:-30px; position: relative; z-index: 9999;}
+.menu-drop a {text-decoration: none; color: #000;}
+.menu-drop strong {font-weight: bold}
 .menu-drop ul {list-style-type:none; margin: 0px; padding: 0px;}
 .menu-drop ul li {float: left; font-weight: bold; padding: 5px;}
 .menu-drop ul li span {font-weight: normal; margin-right: 2px;}
-.menu-drop ul li:hover {background: rgba(0,0,0,.5); color: #fff;}
+.menu-drop ul li:hover {background: rgba(0,0,0,.5); color: #eee;}
+.menu-drop ul li:hover a {color: #fff;}
 .menu-drop ul li ul {background: rgba(0,0,0,.5); padding: 5px; position: absolute; margin: 5px 0 0 -5px; font-size: .8em; display: none; }
 .no-rgba .menu-drop ul li:hover, .no-rgba .menu-drop ul li ul {background: #333;}
 .no-rgba .menu-drop ul li ul li:hover {background: #000;}
@@ -100,16 +103,33 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 
 article#content {color: #555;  font-size: .9em;background: #fff; border-top: 20px solid #d25400; padding: 10px 10px 15px 10px; box-shadow: 30px 0px 0px rgba(0, 0, 0,.1); }
 article h1 {margin-bottom: 10px; font-size:3.5em;}
-#info {color: #333;  background: #eee; display: block; padding: 10px; margin: 10px -10px;}
+.box {color: #333;  background: #eee; display: block; padding: 10px; margin: 10px -10px;}
+.warningmessage {background: #fca4a4; font-weight: bold}
 #gadget-left, #gadget-right {float: left; width: 48.618784527%;
     *width: 48.5655930376383%;}
 #gadget-left {margin-left: .7%;}
 #gadget-right {margin-right: .7%; float: right; }
 .gadget {margin: 0 0 10px 0; padding: 10px 0;border: 3px solid #eee; border-left: 0px; border-right: 0px;}
-.gadget-title {font-size:2.2em; color: #005aa9;  letter-spacing: -3px;}
-article section p { margin-top: 10px;}
+.gadget-title {font-size:2.2em; color: #005aa9;  letter-spacing: -3px; margin-top: 0px !important;}
+article p { margin-top: 10px; color: #333; font-size: .9em; line-height: 1.3em;}
+article p strong {font-weight: bold;}
+article ul, article ol {margin: 5px 1.5em; list-style-position: inside; list-style-type:disc; line-height: 1.3em;}
+article ol {list-style-type: decimal}
+#xwikicontent a {color: #d25400;}
+#xwikicontent a:hover {background: #eee; color: #c14d00;}
+#xwikicontent a:active {color: #ff6a06;}
+#xwikicontent h1, article h2, article h3, article h4, article h5, article h6 {font-size:2.2em; color: #005aa9;  letter-spacing: -3px; margin-top: 10px;}
+article h2 {font-size: 1.9em; letter-spacing: -2px; color: #108fff;}
+article h3 {font-size: 1.7em; letter-spacing: -2px; color: #108fff;}
+article h4 {font-size: 1.6em; letter-spacing: -2px; color: #329fff;}
+article h5 {font-size: 1.2em; letter-spacing: -1px; color: #65b7ff;}
+article h6 {font-size: 1em; letter-spacing: -1px; color: #98cfff;}
+article sub, article sup {font-size: .8em;}
+article sub {vertical-align: sub;}
+article sup {vertical-align: super;}
+article table { line-height: 1.3em;}
+article th { font-weight: bolder; text-align: center; }
 
-::-webkit-scrollbar {width: 10px;}
 ::-webkit-scrollbar-track {background: #ccc;}
 ::-webkit-scrollbar-thumb {background: #aaa;}
 ::-webkit-scrollbar-thumb:hover {background: #777;}
@@ -141,7 +161,7 @@ article section p { margin-top: 10px;}
 
   #sidebar, header {width: 30%;}
   #main-area {width: 70%;}
-  #gadget-left, #gadget-right {float: none; width: 100%;}
+  .first-column, .last-column {float: none !important; width: 100% !important;}
 
 }
 
@@ -150,11 +170,13 @@ article section p { margin-top: 10px;}
   header:after, .menu-drop ul li:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
 
   header {position: static; width: 95%;}
-  header h1 {text-align: center;}
+  header {text-align: center;}
   nav#search {width: 90%; margin: 0 auto;}
-  .hint {text-align: center; background: rgba(0,0,0,.1); padding: 3px; margin: 5px; font-weight: bold;}
+  #hint {text-align: center; background: rgba(0,0,0,.1); padding: 3px; margin: 5px; font-weight: bold;}
+  #hint { text-decoration: none; color: #000;}
   .no-touch #swipe-hint {display: none;}
-  
+  .menu-drop a {color: #fff;}
+
   #sidebar { width: 100%; bottom: auto; height: auto; position: static; }
   #sidebar-wrapper {background: #ccc url(img/bg.png); position: absolute; top: 0; right: -90%; width: 90%; padding: 0 0 0 5%;}
   #sidebar-handle {display: block; position: absolute; 
@@ -184,8 +206,8 @@ article section p { margin-top: 10px;}
   .menu-drop ul li:hover ul {display: none;}
   .menu-drop ul li:before{content: ""; margin: 0px;}
   .breadcrumb-drop {display: inline ; float: right;}
+    #viewer {margin: 0px 10px; width: auto;}
 
-  #gadget-left, #gadget-right {float: none; width: 100%;}
   article section h2:after {content: ' +';}
   .expanded:after {content: ' -';}
   .section-content {display: none;}

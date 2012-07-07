@@ -21,7 +21,6 @@
   #end
   #if (!$showhistory)
     ## Pagination style
-    $xwiki.ssfx.use('uicomponents/pagination/pagination.css', true)##
     #set ($discard = $docextras.add(['History', 'history', $msg.get('docextra.history'), -1, 'historyinline.vm', $msg.get('core.shortcuts.view.history')]))
   #end
   #if ($showinformation)

@@ -34,12 +34,6 @@
 ## --------------------------------------------------------------------------
 $xcontext.dropPermissions()
 ## ----------------------------
-## Display the shortcuts
-## ----------------------------
-#if($displayShortcuts)
-  #template("shortcuts.vm")
-#end
-## ----------------------------
 ## Display the rendered content
 ## ----------------------------
 <div id="xwikicontent">

@@ -32,7 +32,7 @@
     <ul>
 
       <li id="headerlanguages">
-        Lang.
+        Languages
         <ul>
   #set($defaultLanguage = "$!{doc.getDefaultLanguage()}")
   #if($defaultLanguage == '')
