@@ -34,6 +34,12 @@
     <nav id="sidebar-control">
       <div id="sidebar-control-icons">
         <a href="#navigation"><div class="sprite sprite-navigation-png"></div></a>
+        <a href="#export"><div class="sprite sprite-export-png"></div></a>
+        #if($hasEdit && !$isReadOnly)
+        #if($doc.fullName != 'Main.WebHome')
+          <a href="#edit"><div class="sprite sprite-edit-png"></div></a>
+        #end
+        #end
         #foreach($docextra in $docextras)
             <a href="#${docextra.get(0).toLowerCase()}">
               <div class="sprite sprite-${docextra.get(0).toLowerCase()}-png">
@@ -43,17 +49,17 @@
               </div>
             </a>
         #end
-        <a href="#export"><div class="sprite sprite-export-png"></div></a>
-        #if($hasEdit && !$isReadOnly)
-        #if($doc.fullName != 'Main.WebHome')
-          <a href="#edit"><div class="sprite sprite-edit-png"></div></a>
-        #end
-        #end
       </div>
       <div id="sidebar-control-links">
-        <h2>navigation</h2>
+        <h2 style="visibility: hidden">navigation</h2>
         <ul>
           <li id="navigation-link" class="active"><a href="#navigation">Navigation</a></li>
+          <li id="export-link"><a href="#export">Export</a></li>
+          #if($hasEdit && !$isReadOnly)
+          #if($doc.fullName != 'Main.WebHome')
+            <li id="edit-link"><a href="#edit">Edit</a></li>
+          #end
+          #end
         #foreach($docextra in $docextras)
           <li>
             <a id="${docextra.get(0).toLowerCase()}-link" href="#${docextra.get(0).toLowerCase()}">
@@ -83,13 +89,6 @@
           </div>
         #end
   </section>
-
-
- #if( $displayDocExtra)
-  <aside>
-    #template("docextra.vm")
-  </aside>
-  #end
 
 #if($displayContentMenu)
 #if($hasEdit && !$isReadOnly)
@@ -131,5 +130,14 @@
 
 #end
 #end <!--displayContentMenu-->
+
+
+
+ #if( $displayDocExtra)
+  <aside>
+    #template("docextra.vm")
+  </aside>
+  #end
+
 
 </div>
