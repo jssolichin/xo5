@@ -14,9 +14,9 @@
           </h2>
           <div id="$docextra.get(2).toLowerCase()">
 
- #template($docextra.get(4))
+			 #template($docextra.get(4))
 
-</div>
+			</div>
 </section>
 #end
 
