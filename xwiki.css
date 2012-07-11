@@ -170,7 +170,7 @@ article th { font-weight: bolder; text-align: center; }
 
 
 /* Table styles */
-table {
+.xwiki-livetable-container table {
   width: 100%;
 }
 thead th {
@@ -183,7 +183,8 @@ th, td {
   background-color: #fff;
   text-align: right;
 }
-th {padding: .5em; background:#eee;border-left: 2px solid #fff;}
+th {padding: .5em; background:#eee;border-right: 2px solid #fff;}
+th:last-child {border: 0px;}
 tr td tr td{padding: .5em;}
 .xwiki-livetable-display-header-filter input {width: 100%;}
 th:first-child, 
@@ -329,6 +330,29 @@ tbody th, td {
 .sprite-export-png {background-position: -31px -0px;}
 .sprite-edit-png {background-position: -0px -62px;}
 
+
+.panel {margin-bottom: 10px;}
+.commenttool a{background:transparent left top no-repeat;display:block;float:left;height:16px;line-height:30px;margin:0 0 0 4px;overflow:hidden;text-indent:30px;width:16px;}
+.comment-permalink a{background-image:url("/xwiki/resources/icons/silk/link.png");}
+.commentdelete a{background-image:url("/xwiki/resources/icons/silk/cross.png");}
+.commentreply a{background-image:url("/xwiki/resources/icons/silk/comments_add.png");}
+.commentedit a{background-image:url("/xwiki/resources/icons/silk/pencil.png");}
+
+.attachment:hover{background:#FFFFCC;}
+.attachment .information{color:#9F9F9F;overflow:hidden;}
+.attachment .mime{float:left;padding:0 8px 0 0;}
+.attachment .name{font-size:1.35em;}
+.attachment .meta{clear:left;}
+.attachment .size{color:#9F9F9F;}
+.attachment .xwikibuttonlinks{float:right;width:60px;}
+.attachmentActionButton{background-color:transparent;border:none;padding:2px 4px;font-size:80%;margin-bottom:4px;background:transparent 2px center no-repeat;padding-left:20px;cursor:pointer;}
+.add-file-input{color:#0089DC;background-position:2px top;background-image:url("/xwiki/resources/icons/silk/textfield_add.png");}
+.remove-file-input{background-image:url("/xwiki/resources/icons/silk/cross.png");width:16px;text-indent:30px;}
+.uploadFileInput{margin:5px 10px 5px 0!important;}
+.attachment .xwikibuttonlinks a{width:16px;height:16px;text-indent:-1000em;overflow:hidden;background:transparent left top no-repeat;display:block;float:right;margin:0 0 0 4px;}
+.attachment .xwikibuttonlinks a.deletelink{background-image:url("/xwiki/resources/icons/silk/cross.png");}
+.attachment .xwikibuttonlinks a.editlink{background-image:url("/xwiki/resources/icons/silk/pencil.png");}
+.attachment .xwikibuttonlinks a.viewlink{background-image:url("/xwiki/resources/icons/silk/eye.png");}
 
 .clearfloats {
   clear: both;

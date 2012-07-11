@@ -1,6 +1,6 @@
    #template("layoutvars.vm")
 
-
+#if (!$inEdit)
 #if (!$docextras)
   #set ($docextras = [])
   #if ($showcomments)
@@ -26,19 +26,26 @@
     #set ($discard = $docextras.add(['Information', 'information', $msg.get('docextra.information'), -1, 'informationinline.vm', $msg.get('core.shortcuts.view.information')]))
   #end
 #end
+#end 
 ##
 ## Display tabs
 ##
-#if($docextras.size() > 0)
+
     <nav id="sidebar-control">
       <div id="sidebar-control-icons">
         <a href="#navigation"><div class="sprite sprite-navigation-png"></div></a>
-        <a href="#export"><div class="sprite sprite-export-png"></div></a>
-        #if($hasEdit && !$isReadOnly)
-        #if($doc.fullName != 'Main.WebHome')
-          <a href="#edit"><div class="sprite sprite-edit-png"></div></a>
+        
+        #if(!$inEdit)
+          <a href="#export"><div class="sprite sprite-export-png"></div></a>
         #end
+
+        #if($hasEdit && !$isReadOnly && !$inEdit)
+          #if($doc.fullName != 'Main.WebHome')
+            <a href="#edit"><div class="sprite sprite-edit-png"></div></a>
+          #end
         #end
+
+#if($docextras.size() > 0)
         #foreach($docextra in $docextras)
             <a href="#${docextra.get(0).toLowerCase()}">
               <div class="sprite sprite-${docextra.get(0).toLowerCase()}-png">
@@ -48,17 +55,25 @@
               </div>
             </a>
         #end
+#end
+
       </div>
       <div id="sidebar-control-links">
         <h2 style="visibility: hidden">navigation</h2>
         <ul>
           <li id="navigation-link" class="active"><a href="#navigation">Navigation</a></li>
-          <li id="export-link"><a href="#export">Export</a></li>
-          #if($hasEdit && !$isReadOnly)
-          #if($doc.fullName != 'Main.WebHome')
-            <li id="edit-link"><a href="#edit">Edit</a></li>
+          
+          #if(!$inEdit)
+            <li id="export-link"><a href="#export">Export</a></li>
+          #end 
+
+          #if($hasEdit && !$isReadOnly && !$inEdit)
+            #if($doc.fullName != 'Main.WebHome')
+              <li id="edit-link"><a href="#edit">Edit</a></li>
+            #end
           #end
-          #end
+
+#if($docextras.size() > 0)
         #foreach($docextra in $docextras)
           <li>
             <a id="${docextra.get(0).toLowerCase()}-link" href="#${docextra.get(0).toLowerCase()}">
@@ -69,10 +84,11 @@
             </a>
           </li>
         #end
+#end       
       </ul>
     </div>
   </nav>
-#end
+
 
 
 <div id="change">
@@ -90,7 +106,7 @@
   </section>
 
 #if($displayContentMenu)
-  #if($hasEdit && !$isReadOnly)
+  #if($hasEdit && !$isReadOnly && !$inEdit)
     #if($doc.fullName != 'Main.WebHome')
       #template("editmenu.vm")
     #end
@@ -99,7 +115,7 @@
   ##
   ## Export menu
   ##
-
+#if(!$inEdit)
         <section id="export-wrapper">
           <h2>Export</h2>
           <div id="export">
@@ -128,6 +144,8 @@
         </section>
 
   #end
+#end
+
 #end <!--displayContentMenu-->
 
 

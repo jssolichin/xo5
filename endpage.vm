@@ -29,7 +29,7 @@ function resizeControl () {
   if( $j('html.no-touch').length && $j(window).width() > 600 ) {
     $j("#main-area").width($j(window).width()-$j("#sidebar").width());
     $j( "#sidebar" ).resizable({ minWidth: 242, maxWidth: 500, handles: "w"}).css({'left': $j("#main-area").position().left+$j("#main-area").width(), 'bottom': 0, 'top': ''});
-   $j('#change').width($j('#sidebar').width());
+   $j('#change').width($j('#sidebar').width()-20);
     $j('header').width($j('#sidebar').width());
   }
   else {
