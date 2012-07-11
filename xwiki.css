@@ -354,6 +354,7 @@ tbody th, td {
 .attachment .xwikibuttonlinks a.editlink{background-image:url("/xwiki/resources/icons/silk/pencil.png");}
 .attachment .xwikibuttonlinks a.viewlink{background-image:url("/xwiki/resources/icons/silk/eye.png");}
 
+.DocumentInformation h1 {display: none;}
 .clearfloats {
   clear: both;
   height: 1px;

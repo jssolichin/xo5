@@ -28,13 +28,17 @@
 #end
 #end 
 ##
-## Display tabs
+## Display control icons
 ##
 
     <nav id="sidebar-control">
       <div id="sidebar-control-icons">
         <a href="#navigation"><div class="sprite sprite-navigation-png"></div></a>
-        
+
+        #if($inEdit)
+          <a href="#information"><div class="sprite sprite-information-png"></div></a>
+        #end
+
         #if(!$inEdit)
           <a href="#export"><div class="sprite sprite-export-png"></div></a>
         #end
@@ -58,10 +62,17 @@
 #end
 
       </div>
+##
+## Display control links
+##
       <div id="sidebar-control-links">
         <h2 style="visibility: hidden">navigation</h2>
         <ul>
           <li id="navigation-link" class="active"><a href="#navigation">Navigation</a></li>
+
+          #if($inEdit)
+            <li id="information-link"><a href="#information">Information</a></li>
+           #end
           
           #if(!$inEdit)
             <li id="export-link"><a href="#export">Export</a></li>
@@ -93,7 +104,6 @@
 
 <div id="change">
 
-
   <section id="navigation">
         <nav class="global-nav">
           #if($showLeftPanels == "1" || $request.getParameter("forceLeftPanels"))
@@ -104,6 +114,17 @@
           </div>
         #end
   </section>
+
+#if($inEdit)
+  <section id="information-wrapper">
+    <h2>Information</h2>
+    <div id="page-suplemental">
+      <div id="information">
+         #template("editpanels.vm")
+      </div>
+    </div>
+  </section>
+#end
 
 #if($displayContentMenu)
   #if($hasEdit && !$isReadOnly && !$inEdit)
