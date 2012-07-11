@@ -75,7 +75,6 @@
     <script type="text/javascript" src="$xwiki.getSkinFile("js/modernizr.js")"></script>
     <script type="text/javascript" src="$xwiki.getSkinFile("js/respond.min.js")"></script>
 
-
 $xwiki.jsfx.use('js/scriptaculous/effects.js', true)
 $xwiki.jsfx.use('js/xwiki/widgets/modalPopup.js', true)
 $xwiki.ssfx.use('js/xwiki/widgets/modalPopup.css', true)

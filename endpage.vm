@@ -1,4 +1,3 @@
- 
 </article><!--article#content-->
 </div><!--main-area-->
   #set ($version = $xwiki.getSpacePreference('version'))
@@ -25,11 +24,12 @@ $j(window).resize(function () {
   resizeControl();
 });
 
-// allow resizing of sidebar&create dropdown only if no-touch (provided by modernizr) & greater than 480px
+// allow resizing of sidebar&create dropdown only if no-touch (provided by modernizr) & greater than 600px
 function resizeControl () {
-  if( $j('html.no-touch').length && $j(window).width() > 480 ) {
+  if( $j('html.no-touch').length && $j(window).width() > 600 ) {
     $j("#main-area").width($j(window).width()-$j("#sidebar").width());
-    $j( "#sidebar" ).resizable({ minWidth: 290, maxWidth: 500, handles: "w"}).css({'left': $j("#main-area").position().left+$j("#main-area").width(), 'bottom': 0, 'top': ''});
+    $j( "#sidebar" ).resizable({ minWidth: 242, maxWidth: 500, handles: "w"}).css({'left': $j("#main-area").position().left+$j("#main-area").width(), 'bottom': 0, 'top': ''});
+   $j('#change').width($j('#sidebar').width());
     $j('header').width($j('#sidebar').width());
   }
   else {
@@ -66,8 +66,8 @@ function resizeControl () {
     }
   }
 
-  //changing the link header only matters if >480px and you see it.
-  if($j(window).width() > 480 ) {
+  //changing the link header only matters if >600px and you see it.
+  if($j(window).width() > 600 ) {
     // .active is used to put the current section as the title header (for the dropdown menu)
     // apply .active on click since scroll detection might not be triggered
     $j("#nav-control ul li").click(function(){

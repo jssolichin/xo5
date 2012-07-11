@@ -112,3 +112,427 @@
  *
  * @param id ID of the google account to display the calendar for
  *#
+
+#**
+ * AJAX Live table that displays XWiki data.
+ *
+ * Example of usage, in syntax 2.0:
+ * <code>
+ * {{velocity}}
+ * #set($columns = [ "_avatar", "first_name", "last_name", "email"])
+ * #set($columnsProperties = {
+ *                  "first_name" : { "type" : "text" , "size" : 10, "link" : "view"},
+ *                  "last_name" : { "type" : "text" , "size" : 10, "link" : "view"},
+ *                  "email" : { "type" : "text" , "size" : 20, "link" : "editor"},
+ *                  "_avatar" : { "type" : "none" , "size" : 20, "link" : "none", "html" : "true", "sortable":false }
+ *                })
+ * #set($options = {  "className":"XWiki.XWikiUsers",
+ *                    "translationPrefix" : "platform.index.",
+ *                    "tagCloud" : true,
+ *                    "rowCount": 15,
+ *                    "javascriptName" : "MyModule.myTable",
+ *                    "description: "The description of this table here", })
+ * #livetable("userstable" $columns $columnsProperties $options)
+ * {{/velocity}}
+ * </code>
+ *
+ * @param divid the id of the table div
+ * @param collist the column list
+ * @param colprops the columns properties
+ * @param options the livetable options.
+ *#
+#macro(livetable $divid $collist $colprops $options)
+## Do not indent:
+#if($xwiki.getCurrentContentSyntaxId() != "xwiki/1.0")
+
+
+{{html}}
+#else {pre} #end
+  ##
+  ## SX deps.
+  ##
+  #set($ok = $xwiki.jsfx.use('js/xwiki/table/livetable.js', true))
+  ##
+  ## Options / defaults
+  ##
+  #if("$!options.translationPrefix" != '') #set($transprefix = $options.translationPrefix) #else #set($transprefix = '') #end
+  #if("$!options.selectedColumn" != '')  #set($selectedColumn = $options.selectedColumn) #end
+  #if("$!options.defaultOrder" == 'desc') #set($defaultOrder = 'desc') #else #set($defaultOrder = 'asc') #end
+  #if("$!options.rowCount" != '') #set($count = $options.rowCount) #else #set($count = 15) #end
+  #if("$!options.maxPages" != '') #set($maxPages = $options.maxPages) #else #set($maxPages = 10) #end
+  #if("$!options.selectedColumn" != '') #set($selectedColumn = $options.selectedColumn) #end
+  #if("$!options.callback" != '') #set($callback = $options.callback) #end
+  #if("$!options.tagCloud" == '' || $options.tagCloud == false) #set($tagcloud=false) #else #set($tagcloud = true) #end
+  #if("$!options.javascriptName" != '') #set($jsName = $options.javascriptName) #else #set($jsName = "livetable_$divid") #end
+  #if("$!options.topFilters" != '') #set($topfilters = $options.topFilters) #end
+  #if("$options.pageSize" == '' || $!options.pageSize == false) #set($hasPageSize=false) #else #set($hasPageSize = true) #end
+  #if("$!options.pageSizeBounds" != '') #set($pageSizeBounds = $options.pageSizeBounds) #end
+  #set($classname = "$!options.className")
+  #set($extraparams = "$!options.extraParams")
+  ##
+  ## Columns informations
+  ##
+  #set($collist2 = '')
+  #set($classparams = '')
+  #foreach($colname in $collist)
+    #if("$!selectedColumn" == '' && !$colname.startsWith('_'))
+      #set($selectedColumn = $colname)
+    #end
+    #if($colname != '_actions')
+      #set($collist2 = "${collist2},${colname}")
+      #set($propClassName = "$!{colprops.get($colname).get('class')}")
+      #if($propClassName != '')
+        #set($classparams = "${classparams}&${colname}_class=${propClassName}")
+      #end
+    #end
+  #end
+  #set($collist2 = $collist2.substring(1))
+  #if("$!options.url" != '')
+    #set($dataurl = $options.url)
+  #elseif("$!options.resultPage" != '')
+    #set($dataurl = $xwiki.getURL($options.resultPage, 'get', "outputSyntax=plain&transprefix=${transprefix}&classname=$!{classname}&collist=${collist2}&$!{extraparams}${classparams}") )
+  #else
+    #set($dataurl = $xwiki.getURL('XWiki.LiveTableResults', 'get', "outputSyntax=plain&transprefix=${transprefix}&classname=$!{classname}&collist=${collist2}$!{extraparams}${classparams}"))
+  #end
+  ##
+  ## HTML Table
+  ##
+<div class="xwiki-livetable-container table-wrapper">
+  #if("$!topfilters" !='') #set($hasTopFilters = true) #else #set($hasTopFilters = false) #end
+  #if($tagcloud || $hasTopFilters)
+  <div class="tipfilters">
+  #end
+  #if($hasTopFilters)
+  <div id="${divid}-topfilters" class="xwiki-livetable-topfilters-tip #if($tagcloud)splitted#end">
+    <div>
+      <div class="xwiki-livetable-topfilters-container">
+      $topfilters
+      </div>
+      <div class="tippointer">
+        <div></div>
+      </div>
+    </div>
+  </div>
+  #end
+  #if($tagcloud)
+    #set($discard = $xwiki.ssx.use('XWiki.TagCloud'))
+    <div id="${divid}-tagcloud" class="xwiki-livetable-tagcloud-tip hidden #if($hasTopFilters)splitted#end">
+      <div>
+        <div class="xwiki-livetable-tagcloud-container">
+          <h2>$msg.get('platform.livetable.tagsHelp')
+          <span>$msg.get('platform.livetable.tagsHelpCancel')</span>
+          </h2>
+          <div class="xwiki-livetable-tagcloud"></div>
+        </div>
+        <div class="tippointer">
+          <div></div>
+        </div>
+      </div>
+    </div>
+  #end
+  #if($tagcloud || $hasTopFilters)
+  </div>
+  #end
+  <table id="${divid}" class="xwiki-livetable"#if("$!options.description" != '') summary="$options.description"#end>
+    <tr>
+      <td class="xwiki-livetable-pagination">
+        <span id="${divid}-limits" class="xwiki-livetable-limits"></span>
+  #if($hasPageSize)
+        <span id="${divid}-pagesize" class="xwiki-livetable-pagesize">
+            <span>$msg.get('platform.livetable.pagesizeLabel')</span>
+            <span class="xwiki-livetable-pagesize-content" ></span>
+        </span>
+  #end
+        <span id="${divid}-ajax-loader" class="xwiki-livetable-loader hidden">
+          <img src="$xwiki.getSkinFile('icons/xwiki/ajax-loader-large.gif')" alt="$msg.get('platform.livetable.loading')" title="" />
+        </span>
+        <span class="controlPagination">
+          <a title="$msg.get('platform.livetable.paginationPagePrevTitle')" class="prevPagination" href="#"><span class="hidden">$msg.get('platform.livetable.paginationPagePrevTitle')</span></a>
+          <a title="$msg.get('platform.livetable.paginationPageNextTitle')" class="nextPagination" href="#"><span class="hidden">$msg.get('platform.livetable.paginationPageNextTitle')</span></a>
+        </span>
+        <span class="pagination">
+          <span class="xwiki-livetable-pagination-text">$msg.get("platform.livetable.paginationPage")</span>
+          <span class="xwiki-livetable-pagination-content" ></span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="xwiki-livetable-display-container">
+        <table class="xwiki-livetable-display">
+          <thead class="xwiki-livetable-display-header">
+            <tr>
+            #set($columnCount = 0)
+            #foreach($colname in $collist)
+              #set($colprop = $colprops.get($colname))
+              #if(("$!colprop.filterable" == '' || $colprop.filterable != false) && "$!colname" != '_actions')
+                #set($isFilterable = true)
+              #else
+                #set($isFilterable = false)
+              #end
+              #if(("$!colprop.sortable" == '' || $colprop.sortable != false) && "$!colname" != '_actions')
+                #set($isSortable = true)
+              #else
+                #set($isSortable = false)
+              #end
+              ## Determine the name to be displayed in the column header. Strategy is as following :
+              ## - If defined the displayName passed as a column option wins
+              ## - If not, and if a i18n prefix has been passed, we use the localization tool with the prefix + the column name
+              ## - Finally, we fall back on the column name
+              #if("$!colprop.displayName" != '')
+                #set($displayName = $colprop.displayName)
+              #elseif($transprefix != '')
+                #set($displayName = $msg.get("${transprefix}${colname}"))
+              #else
+                #set($displayName = $colname)
+              #end
+              <th class="xwiki-livetable-display-header-text $!colprop.headerClass #if($!colprop.type=='hidden')hidden#end #if($isSortable)sortable #if($colname == $selectedColumn)selected $defaultOrder#else asc#end#end#if ($colname == '_avatar') avatar#end 
+              #if($displayName=='Page' || $displayName=='Space' )
+                essential
+              #else 
+                #if($displayName=='Date')
+                  optional#end
+              #end 
+                #if($displayName=='Page')persist#end" scope="col">
+                #if($isSortable)<a rel="${colname}">#end
+                #if($isFilterable && ("$!colprop.type"=="text"||"$!colprop.type"=="number"))<label for="xwiki-livetable-${divid}-filter-${velocityCount}">#end
+                $displayName
+                #if($isFilterable && ("$!colprop.type"=="text"||"$!colprop.type"=="number"))</label>#end
+                #if($isSortable)</a>#end
+                #set($columnCount = $mathtool.add($columnCount, 1))
+              </th>
+            #end
+            </tr>
+            <tr class="xwiki-livetable-display-filters">
+            #foreach($colname in $collist)
+              #set($colprop = $colprops.get($colname))
+              #if(("$!colprop.filterable" == '' || $colprop.filterable != false) && "$!colname" != '_actions')
+                #set($isFilterable = true)
+              #else
+                #set($isFilterable = false)
+              #end
+              #if("$!colprop.type" == 'list' && $isFilterable)
+                <td class="xwiki-livetable-display-header-filter ">
+                #if($colprop.get('class'))
+                  #set($propClassName = $colprop.get('class'))
+                #else
+                  #set($propClassName = $classname)
+                #end
+                #set($class = $xwiki.getDocument($propClassName).getxWikiClass())
+                #set($list = '')
+                #set($list = $class.get($colname).getListValues())
+                <select id="xwiki-livetable-${divid}-filter-${velocityCount}" name='${colname}'><option value=''>$msg.get('platform.livetable.selectAll')</option>
+                #set($map = $class.get($colname).getMapValues())
+                #foreach($listitem in $list)
+                  #set ($l10n_key = "${propClassName}_${colname}_${listitem}")
+                  #set ($l10n_value = $msg.get($l10n_key))
+                  #if ($l10n_value == $l10n_key)
+                    #set ($l10n_value = $map.get($listitem).getValue())
+                  #end
+                  <option value="$listitem">$l10n_value</option>
+                #end
+                </select>
+                </td>
+              #elseif(("$!colprop.type" == 'text' || "$!colprop.type" == 'number') && $isFilterable)
+                <td class="xwiki-livetable-display-header-filter 
+                #if(${colname}=='doc.name' || ${colname}=='doc.space' )
+                  essential
+                #else 
+                  #if(${colname}=='doc.date')
+                    optional#end
+                #end 
+              "><input id="xwiki-livetable-${divid}-filter-${velocityCount}" name="${colname}" type="text" #if("!$colprop.size" != '') title="$msg.get('platform.livetable.filtersTitle', [$msg.get("${transprefix}${colname}")])"#end /></td>
+              #elseif("$!colprop.type" == 'hidden')
+              #elseif($colname != '_actions' || $hasAdmin)
+              <td class="xwiki-livetable-display-header-filter "></td>
+              #end
+            #end
+            </tr>
+            <tr class="xwiki-livetable-initial-message">
+              <td colspan="${columnCount}">
+                <div class="warningmessage">$msg.get('platform.livetable.environmentCannotLoadTableMessage')</div>
+              </td>
+            </tr>
+          </thead>
+          <tbody id="${divid}-display" class="xwiki-livetable-display-body"><tr><td>&nbsp;</td></tr></tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td class="xwiki-livetable-pagination">
+        <span class="controlPagination">
+          <a title="$msg.get('platform.livetable.paginationPagePrevTitle')" class="prevPagination" href="#"><span class="hidden">$msg.get('platform.livetable.paginationPagePrevTitle')</span></a>
+          <a title="$msg.get('platform.livetable.paginationPageNextTitle')" class="nextPagination" href="#"><span class="hidden">$msg.get('platform.livetable.paginationPageNextTitle')</span></a>
+        </span>
+        <span class="pagination">
+          <span class="xwiki-livetable-pagination-text">$msg.get('platform.livetable.paginationPage')</span>
+          <span class="xwiki-livetable-pagination-content" ></span>
+        </span>
+      </td>
+    </tr>
+  </table>
+  <div id="${divid}-inaccessible-docs" class="hidden">
+    #info($msg.get('rightsmanager.documentrequireviewrights'))
+  </div>
+  <script type="text/javascript">
+  //<![CDATA[
+(function() {
+  function startup() {
+    if (XWiki && XWiki.widgets && XWiki.widgets.LiveTable) {
+      // Make sure the Livetable widgets exists (It does not in the WYSIWYG for example).
+    #if($callback)
+      window["$jsName"] = new XWiki.widgets.LiveTable("$dataurl", "${divid}", $callback ,{
+                           "maxPages":$maxPages
+                        ,"limit":$count
+       #if($hasTopFilters),"filterNodes" : [$("${divid}").down(".xwiki-livetable-display-filters"), $('${divid}-topfilters')]#end
+       #if($hasPageSize && "$!pageSizeBounds" != ''),"pageSizeBounds" : $pageSizeBounds#end
+              });
+    #else
+      window["$jsName"] = new XWiki.widgets.LiveTable("$dataurl", "${divid}", #livetablecallback($divid $collist $colprops $transprefix), {
+                           "maxPages":$maxPages
+                        ,"limit":$count
+       #if($hasTopFilters),"filterNodes" : [$("${divid}").down(".xwiki-livetable-display-filters"), $('${divid}-topfilters')]#end
+       #if($hasPageSize && "$!pageSizeBounds" != ''),"pageSizeBounds" : $pageSizeBounds#end
+              });
+    #end
+    #if($!hasPageSize)
+      document.observe("xwiki:livetable:${divid}:loadingEntries", function() { $('${divid}-pagesize').addClassName("hidden"); } );
+      document.observe("xwiki:livetable:${divid}:loadingComplete", function() { $('${divid}-pagesize').removeClassName("hidden"); } );
+    #end
+      return true;
+    }
+    return false;
+  }
+  // Initialize liveTable
+  (XWiki && XWiki.isInitialized && startup()) || document.observe('xwiki:livetable:loading', startup);
+
+  document.observe("xwiki:livetable:${divid}:loadingComplete", function() { $j(".xwiki-livetable-display").table({
+      idprefix: "co-",
+      persist: "persist"
+   });} );
+
+})();
+   //]]>
+/* Scripts for the tables test page 
+   Author: Maggie Wachs, www.filamentgroup.com
+   Date: November 2011
+   Dependencies: jQuery, jQuery UI widget factory
+*/
+
+(function( $ ) {
+  $.widget( "filament.table", { // need to come up with a better namespace var...
+ 
+    options: { 
+      idprefix: null,   // specify a prefix for the id/headers values
+      persist: null, // specify a class assigned to column headers (th) that should always be present; the script not create a checkbox for these columns
+      checkContainer: null // container element where the hide/show checkboxes will be inserted; if none specified, the script creates a menu
+    },
+ 
+    // Set up the widget
+    _create: function() {
+      var self = this,
+            o = self.options,
+            table = self.element,
+            thead = table.find("thead"),
+            tbody = table.find("tbody"),
+            hdrCols = thead.find("th"),
+            bodyRows = tbody.find("tr"),
+            container = o.checkContainer ? $(o.checkContainer) : $('<div class="table-menu table-menu-hidden"><ul /></div>');         
+      
+      // add class for scoping styles - cells should be hidden only when JS is on
+      table.addClass("enhanced");
+      
+      hdrCols.each(function(i){
+         var th = $(this),
+               id = th.attr("id"), 
+               classes = th.attr("class");
+          
+          // assign an ID to each header, if none is in the markup
+         if (!id) {
+            id = ( o.idprefix ? o.idprefix : "col-" ) + i;
+            th.attr("id", id);
+         };      
+         
+         // assign matching "headers" attributes to the associated cells
+         // TEMP - needs to be edited to accommodate colspans
+         
+          tbody.find('tr').each(function(){
+            var cell = $(this).find("th, td").eq(i);               
+            cell.attr("headers", id);
+            if (classes) { cell.addClass(classes); };
+         });     
+           
+         
+         // create the hide/show toggles
+         if ( !th.is("." + o.persist) ) {
+            var toggle = $('<li><input type="checkbox" name="toggle-cols" id="toggle-col-'+i+'" value="'+id+'" /> <label for="toggle-col-'+i+'">'+th.text()+'</label></li>');
+            
+            container.find("ul").append(toggle);         
+            
+            toggle.find("input")
+               .change(function(){
+                  var input = $(this), 
+                     val = input.val(), 
+                     cols = $("#" + val + ", [headers="+ val +"]");
+                  
+                  if (input.is(":checked")) { cols.show(); }
+                  else { cols.hide(); };     
+               })
+               .bind("updateCheck", function(){
+                  if ( th.css("display") == "table-cell" || th.css("display") == "inline" ) {
+                     $(this).attr("checked", true);
+                  }
+                  else {
+                     $(this).attr("checked", false);
+                  }
+               })
+               .trigger("updateCheck");  
+         };          
+               
+      }); // end hdrCols loop 
+      
+      // update the inputs' checked status
+      $(window).bind("orientationchange resize", function(){
+         container.find("input").trigger("updateCheck");
+      });      
+            
+      // if no container specified for the checkboxes, create a "Display" menu      
+      if (!o.checkContainer) {
+         var menuWrapper = $('<div class="table-menu-wrapper" />'),
+               menuBtn = $('<a href="#" class="table-menu-btn">Display</a>');
+               
+         menuBtn.click(function(){
+            container.toggleClass("table-menu-hidden");            
+            return false;
+         });
+               
+         menuWrapper.append(menuBtn).append(container);
+         table.before(menuWrapper);
+         
+         // assign click-to-close event
+         $(document).click(function(e){                        
+            if ( !$(e.target).is( container ) && !$(e.target).is( container.find("*") ) ) {        
+               container.addClass("table-menu-hidden");
+            }           
+         });
+      };   
+      
+              
+   }, // end _create
+    
+   disable: function() {
+      // TBD
+   },
+
+   enable: function() {
+      // TBD
+   }   
+    
+  });
+}( jQuery ) );
+
+  </script>
+</div> ## xwiki-livetable-container
+  #if($xwiki.getCurrentContentSyntaxId() != "xwiki/1.0"){{/html}}
+
+#else {/pre} #end
+#end
