@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.xwiki.platform</groupId>
+    <artifactId>xwiki-platform-core</artifactId>
+    <version>4.1</version>
+  </parent>
+  <groupId>org.xwiki.contrib</groupId>
+  <artifactId>xwiki-skin-xorange</artifactId>
+  <name>XWiki Contrib - Skin - XOrange</name>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <description>A respoonsive skin</description>
+  <scm>
+    <connection>scm:git:git://github.com/jssolichin/xo5</connection>
+    <developerConnection>scm:git:git@github.com:jssolichin/xo5.git</developerConnection>
+    <url>https://github.com/jssolichin/xo5</url>
+  </scm>
+  <distributionManagement>
+    <repository>
+      <id>xwiki-staging</id>
+      <name>XWiki Staging Repository</name>
+      <url>http://nexus.xwiki.org/nexus/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+            <descriptor>${basedir}/src/assemble/skin.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
