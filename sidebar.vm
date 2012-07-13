@@ -1,6 +1,6 @@
    #template("layoutvars.vm")
 
-#if (!$inEdit)
+#if ($xcontext.action != 'edit')
 #if (!$docextras)
   #set ($docextras = [])
   #if ($showcomments)
@@ -18,7 +18,7 @@
   #if ($showattachments)
     #set ($discard = $docextras.add(['Attachments', 'attachments', $msg.get('docextra.attachments'), $doc.getAttachmentList().size(), 'attachmentsinline.vm', $msg.get('core.shortcuts.view.attachments')]))
   #end
-  #if (!$showhistory)
+  #if ($showhistory)
     ## Pagination style
     #set ($discard = $docextras.add(['History', 'history', $msg.get('docextra.history'), -1, 'historyinline.vm', $msg.get('core.shortcuts.view.history')]))
   #end
@@ -35,15 +35,15 @@
       <div id="sidebar-control-icons">
         <a href="#navigation"><div class="sprite sprite-navigation-png"></div></a>
 
-        #if($inEdit)
+        #if($xcontext.action == 'edit')
           <a href="#information"><div class="sprite sprite-information-png"></div></a>
         #end
 
-        #if(!$inEdit)
+        #if($xcontext.action != 'edit')
           <a href="#export"><div class="sprite sprite-export-png"></div></a>
         #end
 
-        #if($hasEdit && !$isReadOnly && !$inEdit)
+        #if($hasEdit && !$isReadOnly && $xcontext.action != 'edit')
           #if($doc.fullName != 'Main.WebHome')
             <a href="#edit"><div class="sprite sprite-edit-png"></div></a>
           #end
@@ -66,19 +66,19 @@
 ## Display control links
 ##
       <div id="sidebar-control-links">
-        <h2 style="visibility: hidden">navigation</h2>
+        <h2 style="visibility: hidden">x</h2>
         <ul>
           <li id="navigation-link" class="active"><a href="#navigation">Navigation</a></li>
 
-          #if($inEdit)
+          #if($xcontext.action == 'edit')
             <li id="information-link"><a href="#information">Information</a></li>
            #end
           
-          #if(!$inEdit)
+          #if($xcontext.action != 'edit')
             <li id="export-link"><a href="#export">Export</a></li>
           #end 
 
-          #if($hasEdit && !$isReadOnly && !$inEdit)
+          #if($hasEdit && !$isReadOnly && $xcontext.action != 'edit')
             #if($doc.fullName != 'Main.WebHome')
               <li id="edit-link"><a href="#edit">Edit</a></li>
             #end
@@ -115,7 +115,7 @@
         #end
   </section>
 
-#if($inEdit)
+#if($xcontext.action == 'edit')
   <section id="information-wrapper">
     <h2>Information</h2>
     <div id="page-suplemental">
@@ -127,7 +127,7 @@
 #end
 
 #if($displayContentMenu)
-  #if($hasEdit && !$isReadOnly && !$inEdit)
+  #if($hasEdit && !$isReadOnly && $xcontext.action != 'edit')
     #if($doc.fullName != 'Main.WebHome')
       #template("editmenu.vm")
     #end
@@ -136,7 +136,7 @@
   ##
   ## Export menu
   ##
-#if(!$inEdit)
+#if($xcontext.action != 'edit')
         <section id="export-wrapper">
           <h2>Export</h2>
           <div id="export">

@@ -177,7 +177,7 @@ $xwiki.jsfx.use('uicomponents/viewers/comments.js', {'forceSkinAction': true, 'l
     <div class="each-comment">
       <legend>$msg.get('core.viewers.comments.add.title')</legend>
     <div class="each-comment-content">
-      <textarea id='${xCommentClass}_comment' rows='5' cols="25" name='${xCommentClass}_comment'>$!comment</textarea>
+      <textarea id='${xCommentClass}_comment' rows='5' cols="27" name='${xCommentClass}_comment'>$!comment</textarea>
     </div>
     <div class="each-comment-user">
       <div class="commentavatar">#mediumUserAvatar($context.user)</div>

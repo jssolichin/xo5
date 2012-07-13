@@ -14,9 +14,9 @@ time {font-style: italic;}
 .mobile {display: none;}
 
 h2, #sidebar-control-links ul li a {letter-spacing: -2px; font-size: 2em;}
-.search:after, .menu-drop ul:after,.each-comment:after, #nav-icons:after, #page-actions:after, .menu-drop:after, #content:after, #gadget-container:after, #sidebar-control-links ul li:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.xwikitabbar:after, .floatcontainer:after, .search:after, #historycontent-wrapper:after, .menu-drop ul:after,.each-comment:after, #nav-icons:after, #page-actions:after, .menu-drop:after, #content:after, #gadget-container:after, #sidebar-control-links ul li:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
 
-header {position: fixed; right: 0px; top: 0px; width: 20%;}
+header {position: fixed; right: 0px; top: 0px; width: 20%; min-width:290px;}
 header h1 {margin: 14px 10px;font-size: 3em; font-weight:bold;}
 nav#search {background: #fff; padding: 5px; border: 10px solid rgba(0,0,0,0.1);
   -moz-background-clip: padding; -webkit-background-clip: padding;background-clip: padding-box; }
@@ -32,14 +32,14 @@ border: none;float: left;margin: 3px;padding: 0;}
 #headerlanguages {float: right;}
 
 #sidebar {width: 20%; position: fixed; right: 0px; top:130px; bottom: 0px; overflow-y: auto; z-index: 999; overflow-x: hidden; 
-  min-width:242px;}
+  min-width:290px;}
 .no-js #sidebar {min-width:0px;}
 #sidebar-handle {display: none;}
 #sidebar h3, .xwikipaneltitle {font-size: 1.6em; letter-spacing: -1px;}
 
 nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #sidebar-control-icons {margin: 0 0 10px 10px;}
-#sidebar-control-links {position: absolute; clip: rect(0px 300px 40px 0px); z-index: 999; width: 100%; top: 60px;}
+#sidebar-control-links {position: absolute; clip: rect(0px 300px 40px 0px); z-index: 999; top: 60px;}
 #sidebar-control-links h2 { padding: 5px; visibility: hidden;}
 #sidebar-control-links:hover {clip: auto;}
 #sidebar-control-links ul {list-style-type: none; margin: 0px; padding: 0px; width: 100%; }
@@ -51,12 +51,12 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #sidebar-control-links:hover a {color: #eee; !important;}
 #sidebar-control-links:hover a:hover {color: #fff; !important;}
 
-#change {overflow-x:hidden;overflow-y:hidden;position:absolute; top: 100px; bottom: 0px;padding: 0px 10px 100px 10px;}
+#change {overflow-x:auto;overflow-y:hidden;position:absolute; top: 100px; bottom: 0px;padding: 0px 10px 100px 10px;}
 #change:hover {overflow-y:auto;}
 #change a, #change a:visited {color: #d25400;}
 #change a:hover {color: #555;}
 #change h3 {margin: 10px 0 5px 0;}
-#change ul li a {text-decoration: none; font-size: 1.2em; letter-spacing: -1px;}
+#change ul li a, .panels a {text-decoration: none; font-size: 1.2em; letter-spacing: -1px;}
 #change section { margin-bottom: 100px; }
 #change section h2 span {color: #d25400; font-weight: bold;}
 
@@ -71,6 +71,7 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #table-of-contents ul li ul {border-left: 2px solid rgba(0, 0, 0,.1); padding: 5px 10px; font-size: .8em;}
 
 .each-comment {font-size: .9em; background: rgba(255, 255, 255,.4); margin:0px -10px 10px -10px; padding: 10px;}
+.each-comment:hover {background: #ffc;}
 .no-rgba .each-comment {background: #eee;}
 .each-comment-user img {float: left; margin: 0 10px 0 0;}
 .each-comment-user h4 {font-size: 1.4em; letter-spacing: -1px;margin: 10px 0 0 0 ;}
@@ -78,7 +79,7 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 .version {vertical-align: super; }
 
 #main-area {width: 80%;}
-.menu-drop {padding: 5px 10px ; margin-right:-30px; position: relative; z-index: 9999;}
+.menu-drop {padding: 5px 10px ; margin-right:-30px; position: relative; z-index: 1;}
 .menu-drop a {text-decoration: none; color: #000;}
 .menu-drop strong {font-weight: bold}
 .menu-drop ul {list-style-type:none; margin: 0px; padding: 0px;}
@@ -99,7 +100,9 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #viewer ul li ul li{float: left; font-size:1.2em;}
 
 #tmCreate { margin-right: 10px;}
+#tmCreate a, #tmCreate {color: #005AA9;}
 #tmCreate:after {content:" + ";}
+#tmCreate:hover a, #tmCreate:hover {color: #fff;}
 
 article#content {color: #555;  font-size: .9em;background: #fff; border-top: 20px solid #d25400; padding: 10px 10px 15px 10px; box-shadow: 30px 0px 0px rgba(0, 0, 0,.1); }
 article h1 {margin-bottom: 10px; font-size:3.5em;}
@@ -132,24 +135,27 @@ article th { font-weight: bolder; text-align: center; }
 
 /* Styles for the tables test page */
 
+.xwiki-livetable-display-container {position: relative;}
 
 .table-wrapper {
    position: relative;
 }
+.table-menu-btn {color: #000 !important;}
 .table-menu-wrapper {
    position: absolute;
-   top: -3em;
-   right: 0;
+   bottom: -1em;
+   left: 0;
+}
+#content .table-menu-wrapper {
+   bottom: -.9em;
 }
 .table-menu {
    position: absolute;
-   background-color: #fff;
+   background-color: #eee;
+   font-size: .8em;
    padding: 10px;
-   border: 1px solid #ccc;
-   font-size: 1.2em;
    width: 12em;
-   right: 0;
-   left: auto;
+   left: 0;
 }
 .table-menu-hidden {
    left: -999em;
@@ -158,11 +164,14 @@ article th { font-weight: bolder; text-align: center; }
 .table-menu-btn {
    text-decoration: none;
    color: #333;
-   font-size: 1.2em;
-   background: #eee url(../_img/icon-menu.png) no-repeat 5px center;
-   padding: .3em 10px .3em 20px;
-   border: 1px solid #ccc;
+   font-size: .8em;
+   background: #eee;
+   padding: .2em 1em;
+   font-weight: bold;
+   text-transform: uppercase;
+      border-bottom: 1px solid #ccc;
 }
+.table-menu ul {list-style-type: none; margin: 0px; padding: 0px}
 .table-menu li {
    padding: .3em 0;
 }
@@ -234,6 +243,12 @@ tbody th, td {
    }
 }
 
+.xwikitabbar {background: #eee; list-style-type: none; margin: 0px; padding: 0px;}
+.xwikitabbar a {text-decoration: none}
+.xwikitabbar li {float: left; padding: .5em; margin: 0 .3em;}
+.xwikitabbar li:hover {background: #ccc;}
+.xwikitabbar li a:hover {background: none !important;}
+.xwikitabbar .active {position: static; border-bottom: 2px solid #D25400;}
 
 ::-webkit-scrollbar-track {background: #ccc;}
 ::-webkit-scrollbar-thumb {background: #aaa;}
@@ -267,7 +282,6 @@ tbody th, td {
   #sidebar, header {width: 30%;}
   #main-area {width: 70%;}
   .first-column, .last-column {float: none !important; width: 100% !important;}
-
 }
 
 @media all and (max-width: 600px) {
@@ -311,7 +325,7 @@ tbody th, td {
   .menu-drop ul li:hover ul {display: none;}
   .menu-drop ul li:before{content: ""; margin: 0px;}
   .breadcrumb-drop {display: inline ; float: right;}
-    #viewer {margin: 0px 10px; width: auto;}
+  #viewer {margin: 0px 10px; width: auto;}
 
   article section h2:after {content: ' +';}
   .expanded:after {content: ' -';}
@@ -353,8 +367,15 @@ tbody th, td {
 .attachment .xwikibuttonlinks a.deletelink{background-image:url("/xwiki/resources/icons/silk/cross.png");}
 .attachment .xwikibuttonlinks a.editlink{background-image:url("/xwiki/resources/icons/silk/pencil.png");}
 .attachment .xwikibuttonlinks a.viewlink{background-image:url("/xwiki/resources/icons/silk/eye.png");}
+#xwikiuploadfile {width: 80%}
 
 .DocumentInformation h1 {display: none;}
+
+#close-history {float: right; margin: .2em 1em;}
+#historycontent-wrapper-helper {background: rgba(0,0,0,.5); width: 100%; height: 100%;position: fixed; z-index: 9999999; top: 0; left: 0; display: none;}
+#historycontent-wrapper {background: #fff; padding: 1em; margin-top: 10%; position: relative;}
+#historycontent-wrapper table {width: 100%;}
+#historycontent-wrapper .buttonwrapper {float: right; margin: 1em 0 0 0;}
 .clearfloats {
   clear: both;
   height: 1px;

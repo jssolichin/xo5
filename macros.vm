@@ -197,7 +197,7 @@
   ##
   ## HTML Table
   ##
-<div class="xwiki-livetable-container table-wrapper">
+<div class="xwiki-livetable-container">
   #if("$!topfilters" !='') #set($hasTopFilters = true) #else #set($hasTopFilters = false) #end
   #if($tagcloud || $hasTopFilters)
   <div class="tipfilters">
@@ -340,7 +340,9 @@
                   #if(${colname}=='doc.date')
                     optional#end
                 #end 
-              "><input id="xwiki-livetable-${divid}-filter-${velocityCount}" name="${colname}" type="text" #if("!$colprop.size" != '') title="$msg.get('platform.livetable.filtersTitle', [$msg.get("${transprefix}${colname}")])"#end /></td>
+              ">
+                  <input id="xwiki-livetable-${divid}-filter-${velocityCount}" name="${colname}" type="text" #if("!$colprop.size" != '') title="$msg.get('platform.livetable.filtersTitle', [$msg.get("${transprefix}${colname}")])"#end />
+                </td>
               #elseif("$!colprop.type" == 'hidden')
               #elseif($colname != '_actions' || $hasAdmin)
               <td class="xwiki-livetable-display-header-filter "></td>
@@ -353,7 +355,8 @@
               </td>
             </tr>
           </thead>
-          <tbody id="${divid}-display" class="xwiki-livetable-display-body"><tr><td>&nbsp;</td></tr></tbody>
+          <tbody id="${divid}-display" class="xwiki-livetable-display-body"><tr><td>&nbsp;</td></tr>
+          </tbody>
         </table>
       </td>
     </tr>
@@ -498,7 +501,7 @@
       // if no container specified for the checkboxes, create a "Display" menu      
       if (!o.checkContainer) {
          var menuWrapper = $('<div class="table-menu-wrapper" />'),
-               menuBtn = $('<a href="#" class="table-menu-btn">Display</a>');
+               menuBtn = $('<a href="#" class="table-menu-btn">Display Columns</a>');
                
          menuBtn.click(function(){
             container.toggleClass("table-menu-hidden");            
