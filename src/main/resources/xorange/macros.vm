@@ -411,7 +411,7 @@
   document.observe("xwiki:livetable:${divid}:loadingComplete", function() { $j(".xwiki-livetable-display").table({
       idprefix: "co-",
       persist: "persist"
-   });} );
+   }); resizeControl(); $j('#change').width($j('#sidebar').width()-20);} );
 
 })();
    //]]>
@@ -420,6 +420,10 @@
    Date: November 2011
    Dependencies: jQuery, jQuery UI widget factory
 */
+
+$j( "#sidebar" ).bind( "resizestop", function(event, ui) {
+  $j('#change').width($j('#sidebar').width()-20);
+});
 
 (function( $ ) {
   $.widget( "filament.table", { // need to come up with a better namespace var...

@@ -29,7 +29,6 @@ function resizeControl () {
   if( $j('html.no-touch').length && $j(window).width() > 600 ) {
     $j("#main-area").width($j(window).width()-$j("#sidebar").width());
     $j( "#sidebar" ).resizable({ minWidth: 290, maxWidth: 800, handles: "w"}).css({'left': $j("#main-area").position().left+$j("#main-area").width(), 'bottom': 0, 'top': ''});
-
     $j('header').width($j('#sidebar').width());
   }
   else {
@@ -49,7 +48,7 @@ function resizeControl () {
       });
       // shortcut to menu/content in #sidebar-handle
       $j( "#to-menu" ).click(function() {
-          window.scrollTo(390,window.pageYOffset);
+          window.scrollTo($j("#sidebar").width(),window.pageYOffset);
           return false;
       });
       $j( "#to-content" ).click(function() {
@@ -121,7 +120,7 @@ function createDrop () {
     window.location = $j(this).find("option:selected").val();
   });
 
-  //samething for breadcrumb
+  //same thing for breadcrumb
   $j('#breadcrumb > ul > li').each(function(index){
     $j("<select />").addClass('mobile breadcrumb-drop').appendTo($j(this));
     var dropdown= $j(this).find($j('select'));
@@ -143,6 +142,29 @@ function createDrop () {
       window.location = $j(this).find("option:selected").val();
     });
   });
+
+  $j('#viewer ul li').each(function(index){
+    $j("<select />").addClass('mobile breadcrumb-drop').appendTo($j(this));
+    var dropdown= $j(this).find($j('select'));
+    $j("<option />", {
+       "selected": "selected",
+       "value"   : "",
+       "text"    : "Go to..."
+    }).appendTo(dropdown);
+    
+    $j(this).find('a').each(function() {
+     var el = $j(this);
+     $j("<option />", {
+         "value"   : el.attr("href"),
+         "text"    : el.text()
+     }).appendTo(dropdown);
+    });
+
+    $j($j(this).children($j('select'))).change(function() {
+      window.location = $j(this).find("option:selected").val();
+    });
+  });
+
 //--- end drop down creator 
 }
 </script>

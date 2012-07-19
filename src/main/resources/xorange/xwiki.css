@@ -12,13 +12,14 @@ h5 {font-size:1.6em;}
 h6 {font-size:1.5em;}
 time {font-style: italic;}
 .mobile {display: none;}
+.clear {clear:both;}
 
 h2, #sidebar-control-links ul li a {letter-spacing: -2px; font-size: 2em;}
-.xwikitabbar:after, .floatcontainer:after, .search:after, #historycontent-wrapper:after, .menu-drop ul:after,.each-comment:after, #nav-icons:after, #page-actions:after, .menu-drop:after, #content:after, #gadget-container:after, #sidebar-control-links ul li:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+form dd:after, .xwikitabbar:after, .floatcontainer:after, .search:after, #historycontent-wrapper:after, .menu-drop ul:after,.each-comment:after, #nav-icons:after, #page-actions:after, .menu-drop:after, #content:after, #gadget-container:after, #sidebar-control-links ul li:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
 
-header {position: fixed; right: 0px; top: 0px; width: 20%; min-width:290px;}
+header {position: fixed; right: 0px; top: 0px; width: 20%; min-width:290px; z-index: 9999999;}
 header h1 {margin: 14px 10px;font-size: 3em; font-weight:bold;}
-nav#search {background: #fff; padding: 5px; border: 10px solid rgba(0,0,0,0.1);
+nav#search {margin-top: -10px; background: #fff; padding: 5px; border: 10px solid rgba(0,0,0,0.1);
   -moz-background-clip: padding; -webkit-background-clip: padding;background-clip: padding-box; }
 .no-rgba nav#search {border: 10px solid #eee;}
 form{width:100%;}
@@ -120,6 +121,10 @@ article ul, article ol {margin: 5px 1.5em; list-style-position: inside; list-sty
 article ol {list-style-type: decimal}
 #xwikicontent a {color: #d25400;}
 #xwikicontent a:hover {background: #eee; color: #c14d00;}
+.nextPagination:hover {background:url("/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png") right top !important;}
+.prevPagination:hover {background:url("/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png") left top !important;}
+.noNextPagination:hover {background:url("/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png") right bottom !important;}
+.noPrevPagination:hover {background:url("/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png") left bottom !important;}
 #xwikicontent a:active {color: #ff6a06;}
 #xwikicontent h1, article h2, article h3, article h4, article h5, article h6 {font-size:2.2em; color: #005aa9;  letter-spacing: -3px; margin-top: 10px;}
 article h2 {font-size: 1.9em; letter-spacing: -2px; color: #108fff;}
@@ -255,7 +260,7 @@ tbody th, td {
 ::-webkit-scrollbar-thumb:hover {background: #777;}
 ::-webkit-scrollbar-thumb:active {background: #888;}
 
-.page-form dt {
+#content form dt {
     float: left;
     clear: left;
     width: 140px;
@@ -263,37 +268,95 @@ tbody th, td {
     font-weight: bold;
     padding: 10px 0;
   }
-.page-form dt:after {
+#content form dt:after {
     content: ":";
   }
-.page-form dd {
+#content form dd {
     margin: 0 0 0 150px;
     padding: 10px 0;
   }
-.page-form dt, dd {border-top: 1px solid #eee;}
-  .fullScreenEditLink {background: #fff; padding: 5px;}
-.page-form textarea {margin-top: 5px;}
+#content fieldset legend{
+font-weight: bold; color: #005AA9;
+  }
 
-.bottombuttons { background: #eee; padding: 20px; margin: 20px 0; text-align: right}
+#content form dt, form dd {border-top: 1px solid #eee; margin-right:10px;}
+.fullScreenEditLink {background: #fff; padding: 5px; }
+#content form textarea {margin-top: 5px; width: 80%;}
+
+.buttons { background: #eee; padding: 20px; margin: 20px 0; text-align: right}
 
 #sidebar .page-form dt, dd {border: 0px;}
+
+  #hint {text-align: center; background: rgba(0,0,0,.1); padding: 3px; font-weight: bold;}
+  #hint a{ text-decoration: none; color: #000;}
+  .no-touch #swipe-hint {display: none;}
+
 @media only screen and (max-width: 1024px) {
 
   #sidebar, header {width: 30%;}
   #main-area {width: 70%;}
   .first-column, .last-column {float: none !important; width: 100% !important;}
 }
+@media all and (max-width: 1024px) and (min-width: 600px) {
+  .touch .mobile {display: block;}
+  .touch header:after, .menu-drop ul li:after, #menu-drop:before {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+
+  .touch header {position: static; width: 40%; text-align: left;}
+  .touch header h1{margin: 10px auto 4px 10px; display: inline;  float: left;}
+  .touch nav#search {width: 40%; margin: 10px 10px; float: right;}
+  .touch .menu-drop a {color: #fff;}
+
+  .touch #sidebar { width: 100%; bottom: auto; height: auto; position: static; }
+  .touch #sidebar-wrapper {background: #ccc url(img/bg.png); position: absolute; top: 0; right: -90%; width: 90%; padding: 0 0 0 5%;}
+  .touch #sidebar-handle {display: block; position: absolute; 
+    top: 200px;left: -98px;}
+  .touch #sidebar-handle h2{ font-size:1.45em; text-transform: lowercase;
+    -webkit-transform: rotate(90deg); 
+     -moz-transform: rotate(90deg); 
+      -ms-transform: rotate(90deg); 
+       -o-transform: rotate(90deg); 
+          transform: rotate(90deg);
+  }
+  .touch .no-csstransforms  #sidebar-handle { filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1); left: 0px;}
+  .touch #sidebar-handle h2 a:link, #sidebar-handle h2 a:visited{color: #005aa9;}
+  .touch #sidebar-handle h2 a:hover {color: #d25400;}
+  .touch #change {overflow-x:hidden;overflow-y:auto;position:static; top: auto; bottom: auto;}
+  .touch section { margin-bottom: 20px;}
+  .touch #page-suplemental { box-shadow: none;}
+  .touch #sidebar-control-selector {margin: 40px 10px 10px 10px;}
+  .touch #sidebar-control-links {display: none;}
+  
+  .touch #main-area {width: 95%;}
+  .touch article {box-shadow: none; }
+
+  .touch .menu-drop {margin: 0px;}
+  .touch .menu-drop ul li {float: none; background: rgba(0,0,0,.5); color: #fff; margin: 5px 0;}
+  .touch .no-rgba .menu-drop ul li {background: #333;}
+  .touch .menu-drop ul li:hover ul {display: none;}
+  .touch .menu-drop ul li:before{content: ""; margin: 0px;}
+  .touch .breadcrumb-drop {display: inline ; float: right;}
+  .touch #viewer {margin: 0px 10px; width: auto;}
+  .touch #tmCreate {margin: 0px; background: rgba(256,256,256,.5);}
+  .touch #tmCreate a {color: #000;}
+  .touch #tmCreate:hover a {color: #333;}
+
+  .touch article section h2:after {content: ' +';}
+  .touch .expanded:after {content: ' -';}
+  .touch .section-content {display: none;}
+
+  .touch .column li {margin-right: 10px !important;}
+  .touch .column li a, #viewer li a {float: left;}
+  .touch .column li select, #viewer li select {margin: 0 0px 0 10px;}
+}
+
 
 @media all and (max-width: 600px) {
   .mobile {display: block;}
   header:after, .menu-drop ul li:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
 
-  header {position: static; width: 95%;}
-  header {text-align: center;}
+  header {position: static; width: 95%; text-align: center;}
+  header h1{margin: 10px auto 4px auto; }
   nav#search {width: 90%; margin: 0 auto;}
-  #hint {text-align: center; background: rgba(0,0,0,.1); padding: 3px; margin: 5px; font-weight: bold;}
-  #hint { text-decoration: none; color: #000;}
-  .no-touch #swipe-hint {display: none;}
   .menu-drop a {color: #fff;}
 
   #sidebar { width: 100%; bottom: auto; height: auto; position: static; }
@@ -326,11 +389,17 @@ tbody th, td {
   .menu-drop ul li:before{content: ""; margin: 0px;}
   .breadcrumb-drop {display: inline ; float: right;}
   #viewer {margin: 0px 10px; width: auto;}
+  #tmCreate {margin: 0px; background: rgba(256,256,256,.5);}
+  #tmCreate a {color: #000;}
+  #tmCreate:hover a {color: #333;}
 
   article section h2:after {content: ' +';}
   .expanded:after {content: ' -';}
   .section-content {display: none;}
 
+  .column li {margin-right: 10px !important;}
+  .column li a, #viewer li a {float: left;}
+  .column li select, #viewer li select {margin: 0 0px 0 10px;}
 }
 
 .sprite {background: url(img/sprite-icons.png) no-repeat; float: left; position: relative; margin-right: 20px; width: 20px; height: 20px;}
@@ -376,6 +445,81 @@ tbody th, td {
 #historycontent-wrapper {background: #fff; padding: 1em; margin-top: 10%; position: relative;}
 #historycontent-wrapper table {width: 100%;}
 #historycontent-wrapper .buttonwrapper {float: right; margin: 1em 0 0 0;}
+
+
+/*dataeditors.css*/
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+ #xwikiobjects,#xwikiclassproperties{padding:0 8px;overflow:auto;border:none!important;}
+#body #xwikiobjects label,#body #xwikiclassproperties label{display:inline;text-transform:none;font-variant:normal;color:#9F9F9F;}
+#body .xclass-title h2 span{border:none;color:inherit;display:inline;margin:0;position:static;}
+.boolean-property input{width:auto!important;border:none!important;}
+#xwikiobjects input:hover,#xwikiobjects textarea:hover,#xwikiobjects input:focus,#xwikiobjects textarea:focus,#xwikiclassproperties input:hover,#xwikiclassproperties textarea:hover,#xwikiclassproperties input:focus,#xwikiclassproperties textarea:focus{border:1px solid #9F9F9F;}
+#xwikiobjects input:focus,#xwikiobjects textarea:focus,#xwikiclassproperties input:focus,#xwikiclassproperties textarea:focus{background-color:#FFFFCC;}
+.more-actions{padding:8px 2px;}
+.more-actions .edit-all{display:block;padding:2px 18px;background:transparent url("/xwiki/resources/icons/silk/pencil.png") left top no-repeat;}
+.xclass-title{margin:16px 0 2px;}
+.xclass-content{padding:0 0 0 16px;margin:0 0 10px 0;}
+.xobject-title,.add_xobject-title{position:relative;border:none;cursor:default;background:transparent;}
+.xobject:hover .xobject-title,.xproperty:hover .xproperty-title{background-color:#FFFFCC;color:#9F9F9F;}
+.xobject-content{padding:4px 14px 8px;border:none;margin-bottom:2px;}
+.xobject dl,.xproperty dl{margin:0;}
+#body .xobject-title h3,#body .xclass-title,.add_xobject-title{padding-left:14px!important;}
+.xobject-title:hover,.xclass-title:hover,.xproperty-title:hover{cursor:default;}
+.xobject-action{display:block;overflow:hidden;position:absolute;top:2px;width:16px;height:16px;text-indent:30px;line-height:30px;background:transparent left top no-repeat;}
+.xobject-title .delete{right:0;background-image:url("/xwiki/resources/icons/silk/cross.png");}
+.xobject-title .edit{right:16px;background-image:url("/xwiki/resources/icons/silk/pencil.png");}
+.xproperty{border:none;}
+.xproperty-content{padding:4px 16px 8px 16px;margin-bottom:2px;}
+.xproperty-content dl{margin:0;padding-left:16px;}
+.xproperty-title{cursor:default;padding:0;overflow:hidden;}
+.xproperty-title .xproperty-property{float:left;margin-right:8px;}
+.xproperty_number_input input{width:2em;}
+.xproperty-content{clear:both;}
+.xproperty-title .xproperty-prettyName{float:none;clear:both;}
+.xobject-content dd,.xproperty-content dd{margin:0 0 4px;}
+#body .collapsable .xobject-title h3,#body .collapsable .xclass-title,#body .collapsable .xproperty-title{background-image:url("/xwiki/resources/icons/silk/bullet_toggle_minus.png");background-position:0 center;background-repeat:no-repeat;}
+#body .collapsed .xobject-title h3,#body .collapsed .xclass-title,#body .collapsed .xproperty-title{background-image:url("/xwiki/resources/icons/silk/bullet_toggle_plus.png");}
+.xclass.collapsed .xclass-content,.xobject.collapsed .xobject-content,.xproperty.collapsed .xproperty-content{display:none;}
+.collapsable dt .collapser{background-image:url("/xwiki/resources/icons/silk/bullet_toggle_minus.png");background-position:-4px center;background-repeat:no-repeat;cursor:default;display:inline-block;width:10px;height:10px;vertical-align:middle;}
+#xwikiobjects .collapsable dd{padding-left:10px;}
+#xwikiclassproperties .collapsable dt{margin-left:-10px;}
+.collapsable dt .collapsed{background-image:url("/xwiki/resources/icons/silk/bullet_toggle_plus.png");}
+.disabled{opacity:.5;}
+.disabled *{font-style:italic;}
+.disabled .xproperty-title h2,#body #xwikiclassproperties .disabled dt label,#body #xwikiobjects dt.disabled label{color:#636B75;}
+.syncProperties{font-weight:900;display:inline-block;padding:2px 0 2px 22px;background:transparent url("/xwiki/resources/icons/silk/cross.png") left center no-repeat;margin-left:-22px;}
+.disabletool label{font-weight:900;}
+.xproperty-title .tools{float:right;margin-top:-18px;}
+.xproperty-title .tools .tool{width:16px;height:16px;float:left;background:transparent none center no-repeat;text-indent:-9999px;}
+.xproperty-title .tools .delete{background-image:url(/xwiki/resources/icons/silk/cross.png);}
+.xproperty-title .tools .move{background-image:url(/xwiki/resources/icons/datamodel/move.png);cursor:move;}
+.dragged .xproperty-title{border:1px solid #E8E8E8;}
+.StringClass h2{background-image:url("/xwiki/resources/icons/datamodel/string.png");}
+.DateClass h2{background-image:url("/xwiki/resources/icons/datamodel/calendar.png");}
+.TextAreaClass h2{background-image:url("/xwiki/resources/icons/datamodel/textarea.png");}
+.NumberClass h2{background-image:url("/xwiki/resources/icons/datamodel/number.png");}
+.BooleanClass h2{background-image:url("/xwiki/resources/icons/datamodel/boolean.png");}
+.StaticListClass h2{background-image:url("/xwiki/resources/icons/datamodel/staticlist.png");}
+.GroupsClass h2{background-image:url("/xwiki/resources/icons/datamodel/groups.png");}
+.UsersClass h2{background-image:url("/xwiki/resources/icons/datamodel/users.png");}
+.LevelsClass h2{background-image:url("/xwiki/resources/icons/datamodel/rights.png");}
+.DBListClass h2{background-image:url("/xwiki/resources/icons/datamodel/database.png");}
+.DBTreeListClass h2{background-image:url("/xwiki/resources/icons/datamodel/tree.png");}
+.PasswordClass h2{background-image:url("/xwiki/resources/icons/datamodel/password.png");}
+#add_xproperty{background:transparent url("/xwiki/resources/icons/silk/bullet_add.png") left center no-repeat;padding-left:14px;margin-left:16px;}
+#xwikiclassproperties #add_xproperty input,#xwikiclassproperties #add_xproperty select,#xwikiobjects #add_xobject input,#xwikiobjects #add_xobject select{width:auto!important;}
+#add_xobject{margin:1em 0 0;}
+#add_xobject .add_xobject-title{background-position:left .5em;padding-top:8px;margin-top:8px;border-top:none;}
+.xclass-content .add_xobject-title{display:block;}
+.add_xobject-title a{color:#0089DC;text-decoration:none;display:block;padding:2px 0;}
+.add_xobject-title a:hover{text-decoration:underline;background-color:#FFFFCC;}
+#switch-xclass{text-align:right;margin:4px 0 -16px;}
+/*end dataeditors.css */
+
+
+
+
+
 .clearfloats {
   clear: both;
   height: 1px;

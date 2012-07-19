@@ -7,7 +7,7 @@
 ## Is the document being edited by another user?
 ## If yes, warn about it and show a forcing link:
 ##
-#set ($inEdit = 1)
+
 #if($tdoc.getLocked() && "$!request.get('force')" == '')
   #template("startpage.vm")
   <div class="main layoutsubsection">
