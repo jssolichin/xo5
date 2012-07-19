@@ -137,7 +137,7 @@ article sub {vertical-align: sub;}
 article sup {vertical-align: super;}
 article table { line-height: 1.3em;}
 article th { font-weight: bolder; text-align: center; }
-
+.xwikimessage legend {font-size: 2.2em; padding-bottom: 10px}
 /* Styles for the tables test page */
 
 .xwiki-livetable-display-container {position: relative;}
