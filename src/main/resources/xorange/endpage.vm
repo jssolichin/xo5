@@ -67,27 +67,27 @@ function resizeControl () {
 
   //changing the link header only matters if >600px and you see it.
   if($j(window).width() > 600 ) {
-    // .active is used to put the current section as the title header (for the dropdown menu)
-    // apply .active on click since scroll detection might not be triggered
+    // .active-control is used to put the current section as the title header (for the dropdown menu)
+    // apply .active-control on click since scroll detection might not be triggered
     $j("#nav-control ul li").click(function(){
-        $j(".active").removeClass('active');
-        $j(this).addClass('active')
+        $j(".active-control").removeClass('active-control');
+        $j(this).addClass('active-control')
       });
 
-    // indicate which section at while scrolling and apply .active to active section
+    // indicate which section at while scrolling and apply .active-control to active-control section
     $j("#change").scroll(function(){
       // first get position of div from the top. then check if that position has now become 0. if it has become 0, then viewer is in that section. However since, we originally have a title there, we will offset 25 so that the section is activated once the original title go above the view. Additionally, check that it is within the div's position from the top + the height of the div. 
       $j('#sidebar-control-links ul li').each(function(){
         var el = $j(this).children('a').attr('href');
         if($j(el).position().top <= 0 && $j(el).position().top >0-$j(el).height()){
-          $j(".active").removeClass('active');
-          $j(this).addClass('active');
+          $j(".active-control").removeClass('active-control');
+          $j(this).addClass('active-control');
         }
       });
       //the last section is a bit different since if the viewer can no longer scroll, that means he is in the last section. 
       if($j("#change")[0].scrollHeight - $j("#change").scrollTop() == $j("#change").outerHeight()){
-        $j(".active").removeClass('active');
-        $j("#edit-link").addClass('active')
+        $j(".active-control").removeClass('active-control');
+        $j("#edit-link").addClass('active-control')
       }
     });
   }

@@ -43,8 +43,14 @@
     #end
   #end
   #if($editor == 'inline')
+  
     ## The inline editor uses the view layout, unlike the rest of the editors.
     #template('startpage.vm')
+    <div id="xwikieditor" class="layoutsection">
+      <div id="mainEditArea" #* class="maximizable" *#>
+        #template("edit${editor}.vm")
+      </div>
+    </div>
     #template('endpage.vm')
   #else
   ##

@@ -15,7 +15,7 @@ time {font-style: italic;}
 .clear {clear:both;}
 
 h2, #sidebar-control-links ul li a {letter-spacing: -2px; font-size: 2em;}
-form dd:after, .xwikitabbar:after, .floatcontainer:after, .search:after, #historycontent-wrapper:after, .menu-drop ul:after,.each-comment:after, #nav-icons:after, #page-actions:after, .menu-drop:after, #content:after, #gadget-container:after, #sidebar-control-links ul li:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+form dd:after, .xwikitabbar:after, .floatcontainer:after, .search:after, #historycontent-wrapper:after, .menu-drop ul:after,.each-comment:after, #nav-icons:after, #page-actions:after, .menu-drop:after, #xo-content:after, #gadget-container:after, #sidebar-control-links ul li:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
 
 header {position: fixed; right: 0px; top: 0px; width: 20%; min-width:290px; z-index: 9999999;}
 header h1 {margin: 14px 10px;font-size: 3em; font-weight:bold;}
@@ -47,8 +47,8 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #sidebar-control-links ul li {background: #333; padding: 5px 10px; width: 100%;}
 #sidebar-control-links ul li a {text-decoration: none; color: #000; float: left;}
 #sidebar-control-links ul li span {color: #d25400; margin-left: 3px;}
-.active {background: none !important; position: absolute; top: 0px;}
-#sidebar-control-links:hover .active {background:  #555 !important; box-shadow: inset 30px 0px 0px rgba(0, 0, 0,.1); }
+.active-control {background: none !important; position: absolute; top: 0px;}
+#sidebar-control-links:hover .active-control {background:  #555 !important; box-shadow: inset 30px 0px 0px rgba(0, 0, 0,.1); }
 #sidebar-control-links:hover a {color: #eee; !important;}
 #sidebar-control-links:hover a:hover {color: #fff; !important;}
 
@@ -105,7 +105,7 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #tmCreate:after {content:" + ";}
 #tmCreate:hover a, #tmCreate:hover {color: #fff;}
 
-article#content {color: #555;  font-size: .9em;background: #fff; border-top: 20px solid #d25400; padding: 10px 10px 15px 10px; box-shadow: 30px 0px 0px rgba(0, 0, 0,.1); }
+article#xo-content {color: #555;  font-size: .9em;background: #fff; border-top: 20px solid #d25400; padding: 10px 10px 15px 10px; box-shadow: 30px 0px 0px rgba(0, 0, 0,.1); }
 article h1 {margin-bottom: 10px; font-size:3.5em;}
 .box {color: #333;  background: #eee; display: block; padding: 10px; margin: 10px -10px;}
 .warningmessage {background: #fca4a4; font-weight: bold}
@@ -151,7 +151,7 @@ article th { font-weight: bolder; text-align: center; }
    bottom: -1em;
    left: 0;
 }
-#content .table-menu-wrapper {
+#xo-content .table-menu-wrapper {
    bottom: -.9em;
 }
 .table-menu {
@@ -260,7 +260,7 @@ tbody th, td {
 ::-webkit-scrollbar-thumb:hover {background: #777;}
 ::-webkit-scrollbar-thumb:active {background: #888;}
 
-#content form dt {
+#xo-content form dt {
     float: left;
     clear: left;
     width: 140px;
@@ -268,20 +268,20 @@ tbody th, td {
     font-weight: bold;
     padding: 10px 0;
   }
-#content form dt:after {
+#xo-content form dt:after {
     content: ":";
   }
-#content form dd {
+#xo-content form dd {
     margin: 0 0 0 150px;
     padding: 10px 0;
   }
-#content fieldset legend{
+#xo-content fieldset legend{
 font-weight: bold; color: #005AA9;
   }
 
-#content form dt, form dd {border-top: 1px solid #eee; margin-right:10px;}
+#xo-content form dt, form dd {border-top: 1px solid #eee; margin-right:10px;}
 .fullScreenEditLink {background: #fff; padding: 5px; }
-#content form textarea {margin-top: 5px; width: 80%;}
+#xo-content form textarea {margin-top: 5px; width: 80%;}
 
 .buttons { background: #eee; padding: 20px; margin: 20px 0; text-align: right}
 
@@ -291,11 +291,18 @@ font-weight: bold; color: #005AA9;
   #hint a{ text-decoration: none; color: #000;}
   .no-touch #swipe-hint {display: none;}
 
+#change-context {width: auto; padding: 0px !important; border: 5px solid #eee;}
+#hierarchy { background: #eee; display: block; padding: 5px 10px; margin: -10px -10px 10px -10px;}
+#hierarchy p {margin-top: 0px;}
+#hierarchy {font-weight: bold; text-transform: uppercase; font-size: .8em;}
+#hierarchy a { color: #005AA9; text-decoration: none}
+#hierarchy a:hover {color: #333;}
+
 @media only screen and (max-width: 1024px) {
 
   #sidebar, header {width: 30%;}
   #main-area {width: 70%;}
-  .first-column, .last-column {float: none !important; width: 100% !important;}
+  .first-column, .last-column, .half {float: none !important; width: 100% !important;}
 }
 @media all and (max-width: 1024px) and (min-width: 600px) {
   .touch .mobile {display: block;}

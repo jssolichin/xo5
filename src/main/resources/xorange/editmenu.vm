@@ -5,28 +5,6 @@
   ## Edit menu
   ##
 
-    <div class="pull-right">
-    <label for="parent">Parent</label>
-    #set($spaceDocuments = $xwiki.searchDocuments("where doc.space=? and doc.name!=? and doc.name!='WebHome'", [$doc.space, $doc.name]))
-    #if("$!doc.parent" != '')
-      #set($currentParentDocument = $xwiki.getDocument($doc.parent))
-    #end
-    #if($currentParentDocument && $currentParentDocument.space != $doc.space)
-    <input type="text" id="parent" name="parent" value="$!doc.parent" class="span3" value="${currentParentDocument.fullName}"/>
-    #else
-    <select id="parent" name="parent" class="span4">
-      <option value="${doc.space}.WebHome">$xwiki.getDocument("${doc.space}.WebHome").displayTitle</option>
-      #foreach($name in $spaceDocuments)
-      <option value="${name}"
-       #if($currentParentDocument && $currentParentDocument.fullName == $name) selected #end
-      >
-        $xwiki.getDocument($name).displayTitle
-      </option>
-      #end
-    </select>
-    #end
-    </div>
-
   <section id="edit-wrapper">
       <div id="edit">
 
