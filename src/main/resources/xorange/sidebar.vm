@@ -161,10 +161,9 @@
     #submenuitem($doc.getURL('export', "format=xar&amp;name=$escapetool.url($doc.fullName)&amp;pages=$escapetool.url($doc.fullName)&amp;$!docvariant") $msg.get('core.menu.export.xar') 'tmExportXar', '')
   #end
             </ul>
-          </div>
-        </section>
-
   #end
+            </div>
+        </section>
 #end
 
 #end <!--displayContentMenu-->
