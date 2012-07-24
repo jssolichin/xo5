@@ -1,8 +1,7 @@
-<a href="javascript:callHistory();">Click to see history</a>
 <div id="historycontent-wrapper-helper">
 <div id="historycontent-wrapper">
   <span id="close-history">
-    <a href="javascript:callHistory();" title="Close History">close</a>
+    <a href="javascript:callHistory();" title="$msg.get('xe.themes.colors.wizard.close')">$msg.get('xe.themes.colors.wizard.close')</a>
   </span>
 ###
 ### Document history table
@@ -252,20 +251,20 @@ $xwiki.ssfx.use('uicomponents/pagination/pagination.css', true)##
 }( jQuery ) );
 
 
-function callHistory() {
+callHistory = function () {
   $j("#historycontent-wrapper-helper").toggle();
-  $j(".xwikidatatable").table();
-
   $j(document).mouseup(function (e)
-{
-    var container = $j("#historycontent-wrapper");
+  {
+      var container = $j("#historycontent-wrapper");
 
-    if (container.has(e.target).length === 0)
-    {
-        $j("#historycontent-wrapper-helper").hide();
-    }
-});
+      if (container.has(e.target).length === 0)
+      {
+          $j("#historycontent-wrapper-helper").hide();
+      }
+  });
 }
+
+document.observe("dom:loaded",   $j(".xwikidatatable").table());
 
 $j(document).keyup(function(e) {
   if (e.keyCode == 27) { $j("#historycontent-wrapper-helper").hide();} // esc closes history

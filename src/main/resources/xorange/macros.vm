@@ -377,7 +377,8 @@
     #info($msg.get('rightsmanager.documentrequireviewrights'))
   </div>
   <script type="text/javascript">
-  //<![CDATA[
+  //<![CDATA[.table
+  
 (function() {
   function startup() {
     if (XWiki && XWiki.widgets && XWiki.widgets.LiveTable) {

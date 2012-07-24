@@ -1,25 +1,71 @@
-
-
 ##
 ## section wrapper
 ##
 #if ($docextras.size() > 0)
  
-#foreach ($docextra in $docextras)    
- <section id="${docextra.get(2).toLowerCase()}-wrapper">
-          <h2>${docextra.get(2)}
-#if($docextra.get(3) >= 0) 
-                <span class="itemCount">$msg.get('docextra.extranb', [$docextra.get(3)])</span> 
-              #end
-          </h2>
-          <div id="$docextra.get(2).toLowerCase()">
+	#foreach ($docextra in $docextras)    
+		##history is different because it is not always used, so it loads a loader that has a link to load the actual history content
+		#if($docextra.get(2) == 'History') 
+			<section id="${docextra.get(2).toLowerCase()}-wrapper">
+				<h2>${docextra.get(2)}
+				#if($docextra.get(3) >= 0) 
+				<span class="itemCount">$msg.get('docextra.extranb', [$docextra.get(3)])</span> 
+				#end
+				</h2>
+				<div id="$docextra.get(2).toLowerCase()">
+				<ul>
+			        <li id="${docextra.get(0)}tab">
+			            <a id="${docextra.get(0)}link" href="$doc.getURL('view', "viewer=${docextra.get(1)}")" onClick="JavaScript:callHistory; return false">
+			              $msg.get('xe.invitation.displayMessageTable.showHistory')
+			            </a>
+			         </li>
+				</ul>
+			    <div id="docextrapanes">
+			        <div id="Historypane" class="hidden empty"></div>
+			    </div>
+			</section>
 
-			 #template($docextra.get(4))
+			<script type="text/javascript">
+		      var hashviewer = self.document.location.hash.substring(1);
+		      #foreach($docextra in $docextras)
+		        #set ($extraAnchor = $listtool.get($docextra, 0))
+		        #set ($extraName = $listtool.get($docextra, 1))
+		        #set ($extraTemplate = $listtool.get($docextra, 4))
+		        #set ($extraShortcut = $listtool.get($docextra, 5))
+		        ##
+		        ## Set the extra to load
+		        ##
+		        if (hashviewer == "${extraAnchor}") {
+		          var extraInit = function(){ XWiki.displayDocExtra("${extraAnchor}", "${extraTemplate}", true) };
+		        }
+		        ##
+		        ## Replace tab link
+		        ##
+		        if ($("${extraAnchor}link") != null) {
+		          $("${extraAnchor}link").href="#${extraAnchor}";
+		          Event.observe($("${extraAnchor}link"), "click", function(){ 
+		          	XWiki.displayDocExtra("${extraAnchor}", "${extraTemplate}", false); 
 
-			</div>
-</section>
+		          }, false);
+		        }
+		      #end
+		      document.observe("dom:loaded", extraInit, false);
+		    </script>
+
+		#else
+			<section id="${docextra.get(2).toLowerCase()}-wrapper">
+			          <h2>${docextra.get(2)}
+			#if($docextra.get(3) >= 0) 
+			                <span class="itemCount">$msg.get('docextra.extranb', [$docextra.get(3)])</span> 
+			              #end
+			          </h2>
+			          <div id="$docextra.get(2).toLowerCase()">
+
+						 #template($docextra.get(4))
+
+						</div>
+			</section>
+		#end
+	#end
+
 #end
-
-#end
-
-
