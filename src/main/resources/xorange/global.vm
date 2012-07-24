@@ -20,9 +20,12 @@
   </h1>
 
   <nav id="search">
-    <form class="search" action="#if($xwiki.exists('Main.Search'))$xwiki.getURL('Main.Search')#else$xwiki.getURL('Main.WebSearch')#end">
-      <input type="text" class="text-field" value="$msg.get('panels.search.inputText')"/>
-      <input type="submit" class="submit" value="submit" value="$msg.get('panels.search.submit')" alt="$msg.get('panels.search.submit')"/>
+    <form action="#if($xwiki.exists('Main.Search'))$xwiki.getURL('Main.Search')#else$xwiki.getURL('Main.WebSearch')#end">
+      <div class="globalsearch">
+        <label class="hidden" for="headerglobalsearchinput">$msg.get('panels.search.inputLabel')</label>
+        <input class="globalsearchinput withTip text-field" id="headerglobalsearchinput" name="text"  type="text" value="$msg.get('panels.search.inputText')"/>
+        <input type="submit" class="submit" value="$msg.get('panels.search.submit')" value="$msg.get('panels.search.submit')" alt="$msg.get('panels.search.submit')"/>
+      </div>
     </form>
   </nav>
 <div class="clearfloats"></div>
