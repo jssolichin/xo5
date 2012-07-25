@@ -35,6 +35,7 @@
 			</section>
 
 			<script type="text/javascript">
+				(function(){
 				##
 		        ## if can see history: Replace close link, make it toggle. also toggle if click outside the history or hit esc. 
 				$('close-modal').href="#";
@@ -67,6 +68,7 @@
 						$j("#historycontent-wrapper-helper").toggle();
 					}
 				}, false);
+			})();
 		    </script>
 
 		#else
