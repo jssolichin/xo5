@@ -43,7 +43,7 @@
           <a href="#export"><div class="sprite sprite-export-png"></div></a>
         #end
 
-        #if($hasEdit && !$isReadOnly && $xcontext.action != 'edit')
+        #if($hasEdit && !$isReadOnly)
           #if($doc.fullName != 'Main.WebHome')
             <a href="#edit"><div class="sprite sprite-edit-png"></div></a>
           #end
@@ -71,16 +71,16 @@
           <li id="navigation-link" class="active-control"><a href="#navigation">Navigation</a></li>
 
           #if($xcontext.action == 'edit' && $editor != 'inline')
-            <li id="information-link"><a href="#information">Information</a></li>
+            <li id="information-link"><a href="#information">$msg.get('docextra.information')</a></li>
            #end
           
           #if($xcontext.action != 'edit')
-            <li id="export-link"><a href="#export">Export</a></li>
+            <li id="export-link"><a href="#export">$msg.get('admin.export')</a></li>
           #end 
 
-          #if($hasEdit && !$isReadOnly && $xcontext.action != 'edit')
+          #if($hasEdit && !$isReadOnly )
             #if($doc.fullName != 'Main.WebHome')
-              <li id="edit-link"><a href="#edit">Edit</a></li>
+              <li id="edit-link"><a href="#edit">$msg.get('platform.appwithinminutes.appLiveTableEditEntryActionName')</a></li>
             #end
           #end
 
@@ -117,7 +117,7 @@
 
 #if($xcontext.action == 'edit' && $editor != 'inline')
   <section id="information-wrapper">
-    <h2>Information</h2>
+    <h2>$msg.get('docextra.information')</h2>
     <div id="page-suplemental">
       <div id="information">
          #template("editpanels.vm")
@@ -127,7 +127,7 @@
 #end
 
 #if($displayContentMenu)
-  #if($hasEdit && !$isReadOnly && $xcontext.action != 'edit')
+  #if($hasEdit && !$isReadOnly)
     #if($doc.fullName != 'Main.WebHome')
       #template("editmenu.vm")
     #end

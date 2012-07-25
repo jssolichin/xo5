@@ -3,7 +3,7 @@ article, aside, details, figcaption, figure, footer, header,
   hgroup, menu, nav, section { display: block; } /*html 5*/
 
 body {background: $theme.pageBackgroundColor url(img/bg.png); font-family: sans-serif; color: #222; margin: 0px; padding: 0px; overflow-x: hidden;}
-h1,h2,h3,h4,h5,h6, #sidebar-control-links ul li {margin: 0px; padding: 0px; letter-spacing: -4px; font-weight: bold;}
+h1,h2,h3,h4,h5,h6, #sidebar-control-links ul li, .xwikimessage legend  {margin: 0px; padding: 0px; letter-spacing: -4px; font-weight: bold;}
 h1 {font-size:2.5em;}
 h2 {font-size:2.2em;}
 h3 {font-size:2em;}
@@ -13,6 +13,10 @@ h6 {font-size:1.5em;}
 time {font-style: italic;}
 .mobile {display: none;}
 .clear {clear:both;}
+a {color: #d25400;}
+a:visited {color:#8f54c4;}
+a:hover {color: #555;}
+#xo-content a:hover {background: #eee; color: #c14d00;}
 
 h2, #sidebar-control-links ul li a {letter-spacing: -2px; font-size: 2em;}
 .globalsearch:after, form dd:after, .xwikitabbar:after, .floatcontainer:after, .search:after, #historycontent-wrapper:after, .menu-drop ul:after,.each-comment:after, #nav-icons:after, #page-actions:after, .menu-drop:after, #xo-content:after, #gadget-container:after, #sidebar-control-links ul li:after
@@ -107,8 +111,8 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #tmCreate:hover a, #tmCreate:hover {color: #fff;}
 
 article#xo-content {color: #555;  font-size: .9em;background: #fff; border-top: 20px solid #d25400; padding: 10px 10px 15px 10px; box-shadow: 30px 0px 0px rgba(0, 0, 0,.1); }
-article h1 {margin-bottom: 10px; font-size:3.5em;}
-.box {color: #333;  background: #eee; display: block; padding: 10px; margin: 10px -10px;}
+article h1, .xwikimessage legend  {margin-bottom: 10px; font-size:3.5em;}
+.box, .xwikimessage p {color: #333;  background: #eee; display: block; padding: 10px; margin: 10px -10px;}
 .warningmessage {background: #fca4a4; font-weight: bold}
 #gadget-left, #gadget-right {float: left; width: 48.618784527%;
     *width: 48.5655930376383%;}
@@ -138,7 +142,9 @@ article sub {vertical-align: sub;}
 article sup {vertical-align: super;}
 article table { line-height: 1.3em;}
 article th { font-weight: bolder; text-align: center; }
-.xwikimessage legend {font-size: 2.2em; padding-bottom: 10px}
+.xwikimessage {margin: 0px;padding: 0px}
+.xwikimessage legend {padding-bottom: 10px}
+.xwikimessage p {margin: 0 -10px;}
 /* Styles for the tables test page */
 
 .xwiki-livetable-display-container {position: relative;}
@@ -361,6 +367,10 @@ font-weight: bold; color: #005AA9;
 
 
 @media all and (max-width: 600px) {
+
+    .xwikitabbar li {width: 50%; border-bottom: 2px solid #eee; margin: 0px; padding: .5em 0px;}
+    .xwikitabbar li a {margin-left: .5em;}
+
   .mobile {display: block;}
   header:after, .menu-drop ul li:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
 
@@ -411,7 +421,10 @@ font-weight: bold; color: #005AA9;
   .column li a, #viewer li a {float: left;}
   .column li select, #viewer li select {margin: 0 0px 0 10px;}
 }
+@media all and (max-width: 300px) {
 
+    .xwikitabbar li {width: 100%; border-bottom: 2px solid #eee; margin: 0px; padding: .5em 0px;}
+}
 .sprite {background: url(img/sprite-icons.png) no-repeat; float: left; position: relative; margin-right: 20px; width: 20px; height: 20px;}
 .sprite span {position: absolute; top: -5px; right: -10px; color: #d25400; font-weight: bold;}
 .sprite-search-png {background-position: -0px -0px;}

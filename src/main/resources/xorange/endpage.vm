@@ -30,6 +30,7 @@ function resizeControl () {
     $j("#main-area").width($j(window).width()-$j("#sidebar").width());
     $j( "#sidebar" ).resizable({ minWidth: 290, maxWidth: 800, handles: "w"}).css({'left': $j("#main-area").position().left+$j("#main-area").width(), 'bottom': 0, 'top': ''});
     $j('header').width($j('#sidebar').width());
+    $j('#sidebar').css('top', $j('header').height()-10);
   }
   else {
     $j("#main-area").width('95%');

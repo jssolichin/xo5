@@ -13,7 +13,7 @@
   #if($isAdvancedUser)
     ## Compute the default edit mode
     #set($editaction = $doc.getDefaultEditMode())
-    <h3 class="sub-menu">Edit</h3>
+    <h3 class="sub-menu">$msg.get('platform.appwithinminutes.appLiveTableEditEntryActionName')</h3>
     <ul>
     #submenuitem($doc.getURL('edit', "$!{languageparams}&amp;editor=wiki") $msg.get('core.menu.edit.wiki') 'tmEditWiki', '')
     #submenuitem($doc.getURL('edit', "$!{languageparams}&amp;editor=wysiwyg") $msg.get('core.menu.edit.wysiwyg') 'tmEditWysiwyg', '')
