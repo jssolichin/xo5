@@ -15,7 +15,8 @@ time {font-style: italic;}
 .clear {clear:both;}
 
 h2, #sidebar-control-links ul li a {letter-spacing: -2px; font-size: 2em;}
-form dd:after, .xwikitabbar:after, .floatcontainer:after, .search:after, #historycontent-wrapper:after, .menu-drop ul:after,.each-comment:after, #nav-icons:after, #page-actions:after, .menu-drop:after, #xo-content:after, #gadget-container:after, #sidebar-control-links ul li:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.globalsearch:after, form dd:after, .xwikitabbar:after, .floatcontainer:after, .search:after, #historycontent-wrapper:after, .menu-drop ul:after,.each-comment:after, #nav-icons:after, #page-actions:after, .menu-drop:after, #xo-content:after, #gadget-container:after, #sidebar-control-links ul li:after
+{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
 
 header {position: fixed; right: 0px; top: 0px; width: 20%; min-width:290px; z-index: 999999;}
 header h1 {margin: 14px 10px;font-size: 3em; font-weight:bold;}
@@ -24,12 +25,12 @@ nav#search {margin-top: -10px; background: #fff; padding: 5px; border: 10px soli
 .no-rgba nav#search {border: 10px solid #eee;}
 form{width:100%;}
 form .text-field{float: left;border: 0px ;padding: 2px;width:86%;}
-input.submit{width:20px;height:20x;display:block;overflow:hidden;
-text-indent:-999px; /* To remove any default text on the button*/
-line-height:16px; /* required for IE */
-background: url(img/sprite-icons.png) no-repeat 0 0; /* This will display the search icon by default */
-cursor:pointer; /* Hand cursor for the normal state */
-border: none;float: left;margin: 3px;padding: 0;}
+input.submit{width:20px;  display:block;overflow:hidden;
+  text-indent:-999px; /* To remove any default text on the button*/
+  line-height:16px; /* required for IE */
+  background: url(img/sprite-icons.png) no-repeat 0 0; /* This will display the search icon by default */
+  cursor:pointer; /* Hand cursor for the normal state */
+  border: none;float: left;margin: 3px;padding: 0;}
 #headerlanguages {float: right;}
 
 #sidebar {width: 20%; position: fixed; right: 0px; top:130px; bottom: 0px; overflow-y: auto; z-index: 999; overflow-x: hidden; 
@@ -210,6 +211,7 @@ tbody th, td {
 }
 
 
+.enhanced {width: 100%}
 .enhanced th,
 .enhanced td {
    display: none;
@@ -449,7 +451,7 @@ font-weight: bold; color: #005AA9;
 .DocumentInformation h1 {display: none;}
 
 #close-history {float: right; margin: .2em 1em;}
-#historycontent-wrapper-helper {background: rgba(0,0,0,.5); width: 100%; height: 100%;position: fixed; z-index: 9999999; top: 0; left: 0;}
+#historycontent-wrapper-helper {background: rgba(0,0,0,.5); width: 100%; height: 100%;position: fixed; z-index: 9999999; top: 0; left: 0; display: none;}
 #historycontent-wrapper {background: #fff; padding: 1em; margin-top: 12%; position: relative;}
 #historycontent-wrapper table {width: 100%;}
 #historycontent-wrapper .buttons {padding: 0px;}

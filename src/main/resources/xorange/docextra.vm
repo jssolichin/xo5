@@ -15,41 +15,58 @@
 				<div id="$docextra.get(2).toLowerCase()">
 				<ul>
 			        <li id="${docextra.get(0)}tab">
-			            <a id="${docextra.get(0)}link" href="$doc.getURL('view', "viewer=${docextra.get(1)}")" onClick="JavaScript:callHistory; return false">
+			            <a id="${docextra.get(0)}link" href="$doc.getURL('view', "viewer=${docextra.get(1)}")">
 			              $msg.get('xe.invitation.displayMessageTable.showHistory')
 			            </a>
 			         </li>
 				</ul>
 			    <div id="docextrapanes">
-			        <div id="Historypane" class="hidden empty"></div>
+			    	<div id="historycontent-wrapper-helper">
+<div id="historycontent-wrapper">
+  <span id="close-history">
+    <a href="$doc.getURL()" id="close-modal" title="$msg.get('xe.themes.colors.wizard.close')">$msg.get('xe.themes.colors.wizard.close')</a>
+  </span>
+			        <div id="Historypane" class="hidden empty">
+
+			        </div>
+			    </div>
+			</div>
 			    </div>
 			</section>
 
 			<script type="text/javascript">
-		      var hashviewer = self.document.location.hash.substring(1);
-		      #foreach($docextra in $docextras)
-		        #set ($extraAnchor = $listtool.get($docextra, 0))
-		        #set ($extraName = $listtool.get($docextra, 1))
-		        #set ($extraTemplate = $listtool.get($docextra, 4))
-		        #set ($extraShortcut = $listtool.get($docextra, 5))
-		        ##
-		        ## Set the extra to load
-		        ##
-		        if (hashviewer == "${extraAnchor}") {
-		          var extraInit = function(){ XWiki.displayDocExtra("${extraAnchor}", "${extraTemplate}", true) };
-		        }
+				##
+		        ## if can see history: Replace close link, make it toggle. also toggle if click outside the history or hit esc. 
+				$('close-modal').href="#";
+					Event.observe($("close-modal"), "click", function(){ $j("#historycontent-wrapper-helper").toggle();}, false);
+					$j(document).keyup(function(e) {
+						if (e.keyCode == 27) { $j("#historycontent-wrapper-helper").hide();} // esc closes history
+					});
+					 $j(document).mouseup(function (e)
+					  {
+					      var container = $j("#historycontent-wrapper");
+					      if (container.has(e.target).length === 0) {$j("#historycontent-wrapper-helper").hide();}
+					  });
+
 		        ##
 		        ## Replace tab link
-		        ##
-		        if ($("${extraAnchor}link") != null) {
-		          $("${extraAnchor}link").href="#${extraAnchor}";
-		          Event.observe($("${extraAnchor}link"), "click", function(){ 
-		          	XWiki.displayDocExtra("${extraAnchor}", "${extraTemplate}", false); 
+		        if ($("Historylink") != null) {
+        			$("Historylink").href="#History";
+        			Event.observe($("Historylink"), "click", function(){ 
+        				XWiki.displayDocExtra("History", "historyinline.vm", false); 
+        				$j("#historycontent-wrapper-helper").toggle();
 
-		          }, false);
-		        }
-		      #end
-		      document.observe("dom:loaded", extraInit, false);
+        			}, false);
+				}
+
+				##
+		       	## Set the extra to load if link has hashtag
+				document.observe("dom:loaded", function() {
+					if (self.document.location.hash.substring(1) == "History") {
+						XWiki.displayDocExtra("History", "historyinline.vm", true);
+						$j("#historycontent-wrapper-helper").toggle();
+					}
+				}, false);
 		    </script>
 
 		#else

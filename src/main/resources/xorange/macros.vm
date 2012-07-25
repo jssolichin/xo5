@@ -377,7 +377,6 @@
     #info($msg.get('rightsmanager.documentrequireviewrights'))
   </div>
   <script type="text/javascript">
-  //<![CDATA[.table
   
 (function() {
   function startup() {
