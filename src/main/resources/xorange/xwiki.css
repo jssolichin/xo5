@@ -2,6 +2,12 @@
 article, aside, details, figcaption, figure, footer, header,
   hgroup, menu, nav, section { display: block; } /*html 5*/
 
+::-webkit-scrollbar-track {background: #ccc;}
+::-webkit-scrollbar-thumb {background: #aaa;}
+::-webkit-scrollbar-thumb:hover {background: #777;}
+::-webkit-scrollbar-thumb:active {background: #888;}
+
+
 body {background: $theme.pageBackgroundColor url(img/bg.png); font-family: sans-serif; color: #222; margin: 0px; padding: 0px; overflow-x: hidden;}
 h1,h2,h3,h4,h5,h6, #sidebar-control-links ul li, .xwikimessage legend  {margin: 0px; padding: 0px; letter-spacing: -4px; font-weight: bold;}
 h1 {font-size:2.5em;}
@@ -21,6 +27,10 @@ a:hover {color: #555;}
 h2, #sidebar-control-links ul li a {letter-spacing: -2px; font-size: 2em;}
 .globalsearch:after, form dd:after, .xwikitabbar:after, .floatcontainer:after, .search:after, #historycontent-wrapper:after, .menu-drop ul:after,.each-comment:after, #nav-icons:after, #page-actions:after, .menu-drop:after, #xo-content:after, #gadget-container:after, #sidebar-control-links ul li:after
 {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+
+#hint {text-align: center; background: rgba(0,0,0,.1); padding: 3px; font-weight: bold;}
+#hint a{ text-decoration: none; color: #000;}
+.no-touch #swipe-hint {display: none;}
 
 header {position: fixed; right: 0px; top: 0px; width: 20%; min-width:290px; z-index: 999999;}
 header h1 {margin: 14px 10px;font-size: 3em; font-weight:bold;}
@@ -110,7 +120,7 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #tmCreate:after {content:" + ";}
 #tmCreate:hover a, #tmCreate:hover {color: #fff;}
 
-article#xo-content {color: #555;  font-size: .9em;background: #fff; border-top: 20px solid #d25400; padding: 10px 10px 15px 10px; box-shadow: 30px 0px 0px rgba(0, 0, 0,.1); }
+article#xo-content, div.suggestItems {color: #555;  font-size: .9em;background: #fff; border-top: 20px solid #d25400; padding: 10px 10px 15px 10px; box-shadow: 30px 0px 0px rgba(0, 0, 0,.1); }
 article h1, .xwikimessage legend  {margin-bottom: 10px; font-size:3.5em;}
 .box, .xwikimessage p {color: #333;  background: #eee; display: block; padding: 10px; margin: 10px -10px;}
 .warningmessage {background: #fca4a4; font-weight: bold}
@@ -124,14 +134,14 @@ article p { margin-top: 10px; color: #333; font-size: .9em; line-height: 1.3em;}
 article p strong {font-weight: bold;}
 article ul, article ol {margin: 5px 1.5em; list-style-position: inside; list-style-type:disc; line-height: 1.3em;}
 article ol {list-style-type: decimal}
-#xwikicontent a {color: #d25400;}
-#xwikicontent a:hover {background: #eee; color: #c14d00;}
+#xwikicontent p a {color: #d25400;}
+#xwikicontent p a:hover {background: #eee; color: #c14d00;}
 .nextPagination:hover {background:url("/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png") right top !important;}
 .prevPagination:hover {background:url("/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png") left top !important;}
 .noNextPagination:hover {background:url("/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png") right bottom !important;}
 .noPrevPagination:hover {background:url("/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png") left bottom !important;}
 #xwikicontent a:active {color: #ff6a06;}
-#xwikicontent h1, article h2, article h3, article h4, article h5, article h6 {font-size:2.2em; color: #005aa9;  letter-spacing: -3px; margin-top: 10px;}
+#xwikicontent h1, article h2, article h3, article h4, article h5, article h6, article .itemTitle {font-size:2.2em; color: #005aa9;  letter-spacing: -3px; margin-top: 10px;}
 article h2 {font-size: 1.9em; letter-spacing: -2px; color: #108fff;}
 article h3 {font-size: 1.7em; letter-spacing: -2px; color: #108fff;}
 article h4 {font-size: 1.6em; letter-spacing: -2px; color: #329fff;}
@@ -145,93 +155,77 @@ article th { font-weight: bolder; text-align: center; }
 .xwikimessage {margin: 0px;padding: 0px}
 .xwikimessage legend {padding-bottom: 10px}
 .xwikimessage p {margin: 0 -10px;}
-/* Styles for the tables test page */
+
+article .itemTitle {margin-top: 0px;}
+article .itemTitle a {text-decoration: none; color: #005aa9; }
+article .resultItem {border-bottom: 1px solid #eee; padding: 10px 0; margin: 0px;}
+article .resultItem a:visited {color: #aaa;}
+article .resultItem:hover a:visited {color: #d25400;}
+article .resultItem:hover .itemTitle a:visited {color: #005aa9;}
 
 .xwiki-livetable-display-container {position: relative;}
-
-.table-wrapper {
-   position: relative;
-}
+.table-wrapper {position: relative;}
 .table-menu-btn {color: #000 !important;}
-.table-menu-wrapper {
-   position: absolute;
-   bottom: -1em;
-   left: 0;
-}
-#xo-content .table-menu-wrapper {
-   bottom: -.9em;
-}
-.table-menu {
-   position: absolute;
-   background-color: #eee;
-   font-size: .8em;
-   padding: 10px;
-   width: 12em;
-   left: 0;
-}
-.table-menu-hidden {
-   left: -999em;
-   right: auto;
-}
-.table-menu-btn {
-   text-decoration: none;
-   color: #333;
-   font-size: .8em;
-   background: #eee;
-   padding: .2em 1em;
-   font-weight: bold;
-   text-transform: uppercase;
-      border-bottom: 1px solid #ccc;
-}
+.table-menu-wrapper {position: absolute;bottom: -1em;left: 0;}
+#xo-content .table-menu-wrapper {bottom: -.9em;}
+.table-menu { position: absolute; background-color: #eee  font-size: .8em; padding: 10px; width: 12em; left: 0;}
+.table-menu-hidden { left: -999em; right: auto;}
+.table-menu-btn { text-decoration: none; color: #333; font-size: .8em; background: #eee; padding: .2em 1em; font-weight: bold; text-transform: uppercase;    border-bottom: 1px solid #ccc;}
 .table-menu ul {list-style-type: none; margin: 0px; padding: 0px}
-.table-menu li {
-   padding: .3em 0;
-}
-
-
+.table-menu li {padding: .3em 0;}
 
 /* Table styles */
-.xwiki-livetable-container table {
-  width: 100%;
-}
-thead th {
-  white-space: nowrap;
-  border-bottom: 1px solid #ccc;
-  color: #888;
-}
-th, td {
-   padding: .5em 0;
-  background-color: #fff;
-  text-align: right;
-}
+.xwiki-livetable-container table {width: 100%;}
+thead th {white-space: nowrap;border-bottom: 1px solid #ccc;color: #888;}
+th, td {padding: .5em 0;background-color: #fff;text-align: right;}
 th {padding: .5em; background:#eee;border-right: 2px solid #fff;}
 th:last-child {border: 0px;}
 tr td tr td{padding: .5em;}
 .xwiki-livetable-display-header-filter input {width: 100%;}
-th:first-child, 
-td:first-child {
-   text-align: left;
-}
-tbody th, td {
-  border-bottom: 1px solid #e6e6e6;
-}
-
+th:first-child, td:first-child {text-align: left;}
+tbody th, td {border-bottom: 1px solid #e6e6e6;}
 
 .enhanced {width: 100%}
 .enhanced th,
-.enhanced td {
-   display: none;
-}
+.enhanced td {display: none;}
+.legacy-ie .enhanced th.essential, .legacy-ie .enhanced td.essential {display: inline;}
+.enhanced th.essential, .enhanced td.essential {display: table-cell;}
 
-.legacy-ie .enhanced th.essential, 
-.legacy-ie .enhanced td.essential {
-  display: inline;
-}
-.enhanced th.essential, 
-.enhanced td.essential {
-   display: table-cell;
-}
+.xwikitabbar {background: #eee; list-style-type: none; margin: 0px; padding: 0px;}
+.xwikitabbar a {text-decoration: none}
+.xwikitabbar li {float: left; padding: .5em; margin: 0 .3em;}
+.xwikitabbar li:hover {background: #ccc;}
+.xwikitabbar li a:hover {background: none !important;}
+.xwikitabbar .active {position: static; border-bottom: 2px solid #D25400;}
 
+#xo-content form dt, form dd, .sourceName,.suggestItem {border-top: 1px solid #eee; margin-right:10px;}
+#xo-content form dt, .sourceName {float: left;clear: left;width: 140px;text-align: right;font-weight: bold;padding: 10px 0;}
+#xo-content form dt:after {content: ":";}
+#xo-content form dd {margin: 0 0 0 150px;padding: 10px 0;}
+#xo-content fieldset legend {font-weight: bold; color: #005AA9;}
+.fullScreenEditLink {background: #fff; padding: 5px; }
+#xo-content form textarea {margin-top: 5px; width: 80%;}
+
+.buttons { background: #eee; padding: 20px; margin: 20px 0; text-align: right}
+
+div.suggestItems {padding: 0px 0px 10px 0px; margin-bottom: 10px;}
+li.showAllResuts { background: #eee; display: block; padding: 5px 10px !important;font-weight: bold; text-transform: uppercase; font-size: .7em; margin: 0 0 010px 0; float: none !important; }
+li.showAllResuts a {color: #333;}
+.suggestItem {margin-top: -.2em; padding: 5px;}
+.showAllResuts .suggestItem {padding: 0px;} 
+.suggestItem .value {font-size: 1.2em;}
+.suggestItem .info {font-style: italic; font-size: .78em; color: #777; margin-top: 3px;}
+.sourceName {margin-left: 10px;}
+div.resultContainer div.sourceName{background-position:3px 3px; background-repeat:no-repeat;}
+.horizontalLayout div.resultContainer div.sourceName{float:left; padding-right:25px; text-align:right;background-position:right center;}
+
+#sidebar .page-form dt, dd {border: 0px;}
+
+#change-context {width: auto; padding: 0px !important; border: 5px solid #eee;}
+#hierarchy { background: #eee; display: block; padding: 5px 10px;font-weight: bold; text-transform: uppercase; font-size: .8em; margin: -10px -10px 10px -10px; }
+#hierarchy p {margin-top: 0px;}
+#hierarchy a { color: #005AA9; text-decoration: none}
+#hierarchy a:hover {color: #333;}
 
 
 @media screen and (min-width: 400px) {
@@ -244,7 +238,6 @@ tbody th, td {
     display: table-cell;
   }
 }
-
 @media screen and (min-width: 800px) {
    .legacy-ie .enhanced th, 
    .legacy-ie .enhanced td {
@@ -255,56 +248,6 @@ tbody th, td {
       display: table-cell;
    }
 }
-
-.xwikitabbar {background: #eee; list-style-type: none; margin: 0px; padding: 0px;}
-.xwikitabbar a {text-decoration: none}
-.xwikitabbar li {float: left; padding: .5em; margin: 0 .3em;}
-.xwikitabbar li:hover {background: #ccc;}
-.xwikitabbar li a:hover {background: none !important;}
-.xwikitabbar .active {position: static; border-bottom: 2px solid #D25400;}
-
-::-webkit-scrollbar-track {background: #ccc;}
-::-webkit-scrollbar-thumb {background: #aaa;}
-::-webkit-scrollbar-thumb:hover {background: #777;}
-::-webkit-scrollbar-thumb:active {background: #888;}
-
-#xo-content form dt {
-    float: left;
-    clear: left;
-    width: 140px;
-    text-align: right;
-    font-weight: bold;
-    padding: 10px 0;
-  }
-#xo-content form dt:after {
-    content: ":";
-  }
-#xo-content form dd {
-    margin: 0 0 0 150px;
-    padding: 10px 0;
-  }
-#xo-content fieldset legend{
-font-weight: bold; color: #005AA9;
-  }
-
-#xo-content form dt, form dd {border-top: 1px solid #eee; margin-right:10px;}
-.fullScreenEditLink {background: #fff; padding: 5px; }
-#xo-content form textarea {margin-top: 5px; width: 80%;}
-
-.buttons { background: #eee; padding: 20px; margin: 20px 0; text-align: right}
-
-#sidebar .page-form dt, dd {border: 0px;}
-
-  #hint {text-align: center; background: rgba(0,0,0,.1); padding: 3px; font-weight: bold;}
-  #hint a{ text-decoration: none; color: #000;}
-  .no-touch #swipe-hint {display: none;}
-
-#change-context {width: auto; padding: 0px !important; border: 5px solid #eee;}
-#hierarchy { background: #eee; display: block; padding: 5px 10px; margin: -10px -10px 10px -10px;}
-#hierarchy p {margin-top: 0px;}
-#hierarchy {font-weight: bold; text-transform: uppercase; font-size: .8em;}
-#hierarchy a { color: #005AA9; text-decoration: none}
-#hierarchy a:hover {color: #333;}
 
 @media only screen and (max-width: 1024px) {
 
@@ -367,7 +310,7 @@ font-weight: bold; color: #005AA9;
 
 
 @media all and (max-width: 600px) {
-
+.sourceName {width: 100px}
     .xwikitabbar li {width: 50%; border-bottom: 2px solid #eee; margin: 0px; padding: .5em 0px;}
     .xwikitabbar li a {margin-left: .5em;}
 
@@ -650,7 +593,6 @@ form div.activityContent {
 /* @group COMPONENTS*/
 /* --------------XWiki items types list -----------------*/
 ul.xlist {
-  margin: 0 0 0 .5em !important;
   overflow: hidden;
   padding: 0 !important;
 }
