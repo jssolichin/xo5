@@ -168,6 +168,13 @@ function createDrop () {
 
 //--- end drop down creator 
 }
+
+$j('.globalsearch').keyup(function() {
+  $j('.searchSuggest').removeAttr('style');
+  $j('.searchSuggest').width($j("#main-area").width());
+  $j('.searchSuggest').insertBefore('#xo-content')
+});
+
 </script>
   </body>
 </html>

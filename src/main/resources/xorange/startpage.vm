@@ -188,7 +188,7 @@ Event.observe(document, "dom:loaded", prepareCancelEdit);
     ## - Skin extension hook
     <!-- com.xpn.xwiki.plugin.skinx.JsSkinExtensionPlugin -->
 
-$xwiki.jsfx.use("js/suggest.js")
+$xwiki.jsfx.use('uicomponents/suggest/suggest.js')
 
 #if($xwiki.exists('XWiki.SearchSuggestConfig'))
   ## Hook to request the search suggest script if search suggest configuration is present.

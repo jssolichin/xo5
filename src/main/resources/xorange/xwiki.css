@@ -208,7 +208,7 @@ tbody th, td {border-bottom: 1px solid #e6e6e6;}
 
 .buttons { background: #eee; padding: 20px; margin: 20px 0; text-align: right}
 
-div.suggestItems {padding: 0px 0px 10px 0px; margin-bottom: 10px;}
+div.suggestItems {padding: 0px 0px 10px 0px; margin-bottom: 20px;}
 li.showAllResuts { background: #eee; display: block; padding: 5px 10px !important;font-weight: bold; text-transform: uppercase; font-size: .7em; margin: 0 0 010px 0; float: none !important; }
 li.showAllResuts a {color: #333;}
 .suggestItem {margin-top: -.2em; padding: 5px;}
@@ -363,6 +363,9 @@ div.resultContainer div.sourceName{background-position:3px 3px; background-repea
   .column li {margin-right: 10px !important;}
   .column li a, #viewer li a {float: left;}
   .column li select, #viewer li select {margin: 0 0px 0 10px;}
+}
+@media all and (max-width: 410px) {
+  .column li {margin-right: 0px !important;}
 }
 @media all and (max-width: 300px) {
 
