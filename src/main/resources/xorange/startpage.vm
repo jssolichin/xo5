@@ -81,7 +81,7 @@
     ## Hook for inserting CSS skin extensions
     <!-- com.xpn.xwiki.plugin.skinx.CssSkinExtensionPlugin -->
     <!-- com.xpn.xwiki.plugin.skinx.CssSkinFileExtensionPlugin -->
-    
+
     #template("analytics.vm")
     #template("javascript.vm")
     $xwiki.ssfx.use('js/xwiki/widgets/modalPopup.css', true)
@@ -109,7 +109,7 @@
   </head>
   #set($bodyTagName = 'body')
 #else ## Portlet Mode
-  #template("stylesheets.vm")
+
   #template("javascript.vm")
   #set($bodyTagName = 'div')
 #end

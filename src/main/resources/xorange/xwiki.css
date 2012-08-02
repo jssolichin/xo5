@@ -91,7 +91,7 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #tmCreate:after{content:" + "}
 
 /* main content styling */
-article#xo-content,div.suggestItems{background:#fff;border-top:20px solid #d25400;box-shadow:30px 0 0 rgba(0,0,0,.1);color:#555;font-size:.9em;padding:10px 10px 15px 30px}
+article#xo-content,div.suggestItems{background:#fff;border-top:20px solid #d25400;  -moz-box-shadow:30px 0 0 rgba(0,0,0,.1);-webkit-box-shadow:30px 0 0 rgba(0,0,0,.1); box-shadow:30px 0 0 rgba(0,0,0,.1);color:#555;font-size:.9em;padding:10px 10px 15px 30px}
 article h1,.xwikimessage legend{font-size:3.5em;margin-bottom:10px}
 .box, .warningmessage, .errormessage{background:#eee;color:#333;display:block;font-weight: 400; margin:10px -10px 10px -30px;padding:10px 10px 10px 30px}
 .box span,.xwikimessage span, .warningmessage span, .errormessage span {font-weight: 700}
@@ -174,10 +174,15 @@ input.button:hover, a.button:hover {border: 1px solid #888; background: #eee}
 input.button:active, a.button:active {background: #888; color: #fff}
 a.button {font-size: .85em; background: #fff;  color: #555; text-decoration: none; padding: 1px 2px;}
 
-div.suggestItems{margin-bottom:20px;padding:0 0 10px}
-li.showAllResuts{background:#eee;display:block;float:none!important;font-size:.7em;font-weight:700;margin:0 0 10px;padding:5px 10px!important;text-transform:uppercase}
+div.suggestItems{margin-bottom:20px;padding:0 0 10px; position: static;
+  -moz-box-shadow:30px 0 0 rgba(0,0,0,.1);-webkit-box-shadow:30px 0 0 rgba(0,0,0,.1);
+  border: none; border-top:20px solid #d25400 !important;box-shadow:30px 0 0 rgba(0,0,0,.1) !important}
+.horizontalLayout div.resultContainer div.results, div.resultContainer div.sourceName{clear:both;background: none;}
+ul.xlist li.showAllResuts div.xitemcontainer{border: none;height: auto;padding-right:0px;padding-top:0px;}
+li.showAllResuts{background:#eee;display:block;float:none!important;font-size:.7em;font-weight:700;text-transform:uppercase; margin-bottom: 10px;}
 .suggestItem{margin-top:-.2em;padding:5px}
-.suggestItem .value{font-size:1.2em}
+.suggestItem{border-top:1px solid #eee;margin-right:10px}
+.suggestItem .value{font-size:1.2em;}
 .suggestItem .info{color:#777;font-size:.78em;font-style:italic;margin-top:3px}
 div.resultContainer div.sourceName{background-position:3px 3px;background-repeat:no-repeat}
 .horizontalLayout div.resultContainer div.sourceName{background-position:right center;float:left;padding-right:25px;text-align:right}
