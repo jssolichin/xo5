@@ -90,10 +90,12 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #tmCreate:after{content:" + "}
 
 /* main content styling */
-article#xo-content,div.suggestItems{background:#fff;border-top:20px solid #d25400;box-shadow:30px 0 0 rgba(0,0,0,.1);color:#555;font-size:.9em;padding:10px 10px 15px}
+article#xo-content,div.suggestItems{background:#fff;border-top:20px solid #d25400;box-shadow:30px 0 0 rgba(0,0,0,.1);color:#555;font-size:.9em;padding:10px 10px 15px 30px}
 article h1,.xwikimessage legend{font-size:3.5em;margin-bottom:10px}
-.box,.xwikimessage p, .warningmessage{background:#eee;color:#333;display:block;margin:10px -10px;padding:10px}
-.warningmessage{background:#fca4a4;font-weight:700}
+.box, .warningmessage, .errormessage{background:#eee;color:#333;display:block;font-weight: 400; margin:10px -10px 10px -30px;padding:10px 10px 10px 30px}
+.box span,.xwikimessage span, .warningmessage span, .errormessage span {font-weight: 700}
+.warningmessage {background: #fffaa5;}
+.errormessage{background:#fca4a4;}
 #gadget-left,#gadget-right{float:left;width:48.5655930376%}
 #gadget-left{margin-left:.7%}
 #gadget-right{float:right;margin-right:.7%}
@@ -150,7 +152,7 @@ tbody th,td{border-bottom:1px solid #e6e6e6}
 #xo-content fieldset legend{color:#005AA9;font-weight:700}
 .fullScreenEditLink{background:#fff;padding:5px}
 #xo-content form textarea{margin-top:5px;width:80%}
-.buttons{background:#eee;margin:20px 0;padding:20px;text-align:right}
+.buttons{background:#eee;margin:20px 0;padding:20px;}
 div.suggestItems{margin-bottom:20px;padding:0 0 10px}
 li.showAllResuts{background:#eee;display:block;float:none!important;font-size:.7em;font-weight:700;margin:0 0 10px;padding:5px 10px!important;text-transform:uppercase}
 .suggestItem{margin-top:-.2em;padding:5px}

@@ -44,9 +44,7 @@
         #end
 
         #if($hasEdit && !$isReadOnly)
-          #if($doc.fullName != 'Main.WebHome')
             <a href="#edit"><div class="sprite sprite-edit-png"></div></a>
-          #end
         #end
 
 #if($docextras.size() > 0)
@@ -79,9 +77,7 @@
           #end 
 
           #if($hasEdit && !$isReadOnly )
-            #if($doc.fullName != 'Main.WebHome')
               <li id="edit-link"><a href="#edit">$msg.get('platform.appwithinminutes.appLiveTableEditEntryActionName')</a></li>
-            #end
           #end
 
 #if($docextras.size() > 0)
@@ -128,9 +124,7 @@
 
 #if($displayContentMenu)
   #if($hasEdit && !$isReadOnly)
-    #if($doc.fullName != 'Main.WebHome')
       #template("editmenu.vm")
-    #end
   #end
 
   ##

@@ -103,6 +103,9 @@
      <script type="text/javascript">
     var $j = jQuery.noConflict();
     </script>
+
+    $xwiki.ssfx.use('js/xwiki/widgets/modalPopup.css', true)
+    
   </head>
   #set($bodyTagName = 'body')
 #else ## Portlet Mode
