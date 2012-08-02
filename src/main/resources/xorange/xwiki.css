@@ -20,7 +20,8 @@ time{font-style:italic}
 a:visited{color:#8f54c4}
 
 h2,#sidebar-control-links ul li a{font-size:2em;letter-spacing:-2px}
-.globalsearch:after,form dd:after,.xwikitabbar:after,.floatcontainer:after,.search:after,#historycontent-wrapper:after,.menu-drop ul:after,.each-comment:after,#nav-icons:after,#page-actions:after,.menu-drop:after,#xo-content:after,#gadget-container:after,#sidebar-control-links ul li:after{clear:both;content:".";display:block;height:0;visibility:hidden}
+.globalsearch:after,form dd:after,.xwikitabbar:after,.floatcontainer:after,.search:after,#historycontent-wrapper:after,.menu-drop ul:after,.each-comment:after,#nav-icons:after,#page-actions:after,.menu-drop:after,#xo-content:after,#gadget-container:after,#sidebar-control-links ul li:after
+{clear:both;content:".";display:block;height:0;visibility:hidden}
 
 #hint{background:rgba(0,0,0,.1);font-weight:700;padding:3px;text-align:center}
 header{min-width:290px;position:fixed;right:0;top:0;width:20%;z-index:999999}
@@ -145,14 +146,34 @@ tbody th,td{border-bottom:1px solid #e6e6e6}
 .xwikitabbar li{float:left;margin:0 .3em;padding:.5em}
 .xwikitabbar li a:hover{background:none!important}
 .xwikitabbar .active{border-bottom:2px solid #D25400;position:static}
-#xo-content form dt,form dd,.sourceName,.suggestItem{border-top:1px solid #eee;margin-right:10px}
+#xo-content form h2 {display: inline; background: #eee; padding: 1px 10px;}
+.xHint {margin: 0 0 0 3px; font-size: .8em; color: #777; display: inline; font-style: italic}
+#xo-content form dl {border-top: 2px solid #eee}
+#xo-content form dt,form dd,.sourceName,.suggestItem{border-top:1px solid #eee;}
 #xo-content form dt,.sourceName{clear:left;float:left;font-weight:700;padding:10px 0;text-align:right;width:140px}
 #xo-content form dt:after{content:":"}
+#xo-content form dt .xHint{display: none;}
+#xo-content form dt:hover .xHint {display: block; font-weight: 400; font-size: .8em;}
+#xo-content form dt:hover label {display: none;}
+#xo-content form dt:hover:after{content:""}
 #xo-content form dd{margin:0 0 0 150px;padding:10px 0}
 #xo-content fieldset legend{color:#005AA9;font-weight:700}
 .fullScreenEditLink{background:#fff;padding:5px}
 #xo-content form textarea{margin-top:5px;width:80%}
 .buttons{background:#eee;margin:20px 0;padding:20px;}
+
+.xdialog-box{ border-radius: 0px; box-shadow: none}
+.xdialog-title {background: none;}
+.xdialog-title dt {padding: 5px;}
+.xdialog-box dt {margin-top: 20px; font-size: .8em; text-transform: uppercase;}
+.xdialog-box dt label {font-weight: 700;}
+.mail-preview {padding: 10px !important; border-radius: 0px !important; margin-top: 3px; font-size: .8em}
+.mail-preview p {margin-bottom: 10px;}
+input.button, a.button {background: #fff; border: 1px solid #999;}
+input.button:hover, a.button:hover {border: 1px solid #888; background: #eee}
+input.button:active, a.button:active {background: #888; color: #fff}
+a.button {font-size: .85em; background: #fff;  color: #555; text-decoration: none; padding: 1px 2px;}
+
 div.suggestItems{margin-bottom:20px;padding:0 0 10px}
 li.showAllResuts{background:#eee;display:block;float:none!important;font-size:.7em;font-weight:700;margin:0 0 10px;padding:5px 10px!important;text-transform:uppercase}
 .suggestItem{margin-top:-.2em;padding:5px}
@@ -163,7 +184,7 @@ div.resultContainer div.sourceName{background-position:3px 3px;background-repeat
 
 /* edit */
 #change-context{border:5px solid #eee;padding:0!important;width:auto}
-#hierarchy{background:#eee;display:block;font-size:.8em;font-weight:700;margin:-10px -10px 10px;padding:5px 10px;text-transform:uppercase}
+#hierarchy{background:#eee;display:block;font-size:.8em;font-weight:700;margin:-10px -10px 10px -30px;padding:5px 10px 5px 30px;text-transform:uppercase}
 #hierarchy a{color:#005AA9;text-decoration:none}
 
 /* docextras */
@@ -199,6 +220,10 @@ div.resultContainer div.sourceName{background-position:3px 3px;background-repeat
 #historycontent-wrapper{background:#fff;margin-top:12%;padding:1em;position:relative}
 #historycontent-wrapper .buttonwrapper{float:right;margin:-.8em 0 0}
 
+.vertical-menu {border: 1px solid $theme.borderColor;border-top-width: 0;float: left;font-size: .857em;/* 14px -> 12px */margin: 0 2em 2em 0;width: 20%;}
+#admin-page-content {width: 70%; float: left; margin: 0px  !important;}
+
+
 /* compression of similar styles */
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
 ::-webkit-scrollbar-track,.xwikitabbar li:hover{background:#ccc}
@@ -230,6 +255,7 @@ li.showAllResuts a,#hierarchy a:hover{color:#333}
 @media screen and (min-width: 800px) {
   .legacy-ie .enhanced th,.legacy-ie .enhanced td{display:inline}
   .enhanced th,.enhanced td{display:table-cell}
+
 }
 
 /* layout reponsive */
@@ -276,6 +302,11 @@ li.showAllResuts a,#hierarchy a:hover{color:#333}
   .touch .column li select,#viewer li select{margin:0 0 0 10px}
   .touch #page-suplemental,.touch article{box-shadow:none}
   .touch #sidebar-control-links,.touch .menu-drop ul li:hover ul,.touch .section-content{display:none}
+}
+
+@media all and (max-width: 850px) {
+  .vertical-menu {width: 100%; float: none; }
+  #admin-page-content {width:100%; float: none; }
 }
 /* layout regular small width */
 @media all and (max-width: 600px) {
@@ -355,11 +386,11 @@ li.showAllResuts a,#hierarchy a:hover{color:#333}
 }
 .half {
   /* Rounding errors with 50%, might end up with one more pixel which pushes the column down. */
-  width: 49.9%;
+  width: 99.8%;
 }
 .third {
   /* Rounding errors with 33.3%, might end up with one more pixel which pushes the column down. */
-  width: 33.2%;
+  width: 99.8%;
 }
 
 .avatar_30 {
@@ -527,15 +558,6 @@ ul.xlist li.xitem div.xitemcontainer ul.xlist {
 
 /* @group VERTICAL MENU */
 /* General styling */
-.vertical-menu {
-  border: 1px solid $theme.borderColor;
-  border-top-width: 0;
-  float: left;
-  font-size: .857em;/* 14px -> 12px */
-  margin: 0 2em 2em 0;
-  width: 15em;
-}
-
 .vertical-menu ul {
   list-style-type: none;
   padding: 0;
