@@ -7,488 +7,317 @@ article, aside, details, figcaption, figure, footer, header,
 ::-webkit-scrollbar-thumb:hover {background: #777;}
 ::-webkit-scrollbar-thumb:active {background: #888;}
 
+body{background:$theme.pageBackgroundColor url(img/bg.png);color:#222;font-family:sans-serif;margin:0;overflow-x:hidden;padding:0}
+h1,h2,h3,h4,h5,h6,#sidebar-control-links ul li,.xwikimessage legend{font-weight:700;letter-spacing:-4px;margin:0;padding:0}
+h1{font-size:2.5em}
+h2{font-size:2.2em}
+h3{font-size:2em}
+h4{font-size:1.8em}
+h5{font-size:1.6em}
+h6{font-size:1.5em}
+time{font-style:italic}
+.clear{clear:both}
+a:visited{color:#8f54c4}
 
-body {background: $theme.pageBackgroundColor url(img/bg.png); font-family: sans-serif; color: #222; margin: 0px; padding: 0px; overflow-x: hidden;}
-h1,h2,h3,h4,h5,h6, #sidebar-control-links ul li, .xwikimessage legend  {margin: 0px; padding: 0px; letter-spacing: -4px; font-weight: bold;}
-h1 {font-size:2.5em;}
-h2 {font-size:2.2em;}
-h3 {font-size:2em;}
-h4 {font-size:1.8em;}
-h5 {font-size:1.6em;}
-h6 {font-size:1.5em;}
-time {font-style: italic;}
-.mobile {display: none;}
-.clear {clear:both;}
-a {color: #d25400;}
-a:visited {color:#8f54c4;}
-a:hover {color: #555;}
-#xo-content a:hover {background: #eee; color: #c14d00;}
+h2,#sidebar-control-links ul li a{font-size:2em;letter-spacing:-2px}
+.globalsearch:after,form dd:after,.xwikitabbar:after,.floatcontainer:after,.search:after,#historycontent-wrapper:after,.menu-drop ul:after,.each-comment:after,#nav-icons:after,#page-actions:after,.menu-drop:after,#xo-content:after,#gadget-container:after,#sidebar-control-links ul li:after{clear:both;content:".";display:block;height:0;visibility:hidden}
 
-h2, #sidebar-control-links ul li a {letter-spacing: -2px; font-size: 2em;}
-.globalsearch:after, form dd:after, .xwikitabbar:after, .floatcontainer:after, .search:after, #historycontent-wrapper:after, .menu-drop ul:after,.each-comment:after, #nav-icons:after, #page-actions:after, .menu-drop:after, #xo-content:after, #gadget-container:after, #sidebar-control-links ul li:after
-{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+#hint{background:rgba(0,0,0,.1);font-weight:700;padding:3px;text-align:center}
+header{min-width:290px;position:fixed;right:0;top:0;width:20%;z-index:999999}
+header h1{font-size:3em;font-weight:700;margin:14px 10px}
+nav#search{-moz-background-clip:padding;-webkit-background-clip:padding;background:#fff;background-clip:padding-box;border:10px solid rgba(0,0,0,0.1);margin-top:-10px;padding:5px}
+.no-rgba nav#search{border:10px solid #eee}
+form .text-field{border:0;float:left;padding:2px;width:86%}
+input.submit{background:url(img/sprite-icons.png) no-repeat 0 0;border:none;cursor:pointer;display:block;float:left;line-height:16px;margin:3px;overflow:hidden;padding:0;text-indent:-999px;width:20px}
+#headerlanguages{float:right}
 
-#hint {text-align: center; background: rgba(0,0,0,.1); padding: 3px; font-weight: bold;}
-#hint a{ text-decoration: none; color: #000;}
-.no-touch #swipe-hint {display: none;}
-
-header {position: fixed; right: 0px; top: 0px; width: 20%; min-width:290px; z-index: 999999;}
-header h1 {margin: 14px 10px;font-size: 3em; font-weight:bold;}
-nav#search {margin-top: -10px; background: #fff; padding: 5px; border: 10px solid rgba(0,0,0,0.1);
-  -moz-background-clip: padding; -webkit-background-clip: padding;background-clip: padding-box; }
-.no-rgba nav#search {border: 10px solid #eee;}
-form{width:100%;}
-form .text-field{float: left;border: 0px ;padding: 2px;width:86%;}
-input.submit{width:20px;  display:block;overflow:hidden;
-  text-indent:-999px; /* To remove any default text on the button*/
-  line-height:16px; /* required for IE */
-  background: url(img/sprite-icons.png) no-repeat 0 0; /* This will display the search icon by default */
-  cursor:pointer; /* Hand cursor for the normal state */
-  border: none;float: left;margin: 3px;padding: 0;}
-#headerlanguages {float: right;}
-
-#sidebar {width: 20%; position: fixed; right: 0px; top:130px; bottom: 0px; overflow-y: auto; z-index: 999; overflow-x: hidden; 
-  min-width:290px;}
-.no-js #sidebar {min-width:0px;}
-#sidebar-handle {display: none;}
-#sidebar h3, .xwikipaneltitle {font-size: 1.6em; letter-spacing: -1px;}
-
+#sidebar{bottom:0;min-width:290px;overflow-x:hidden;overflow-y:auto;position:fixed;right:0;top:130px;width:20%;z-index:999}
+.no-js #sidebar{min-width:0}
+#sidebar h3,.xwikipaneltitle{font-size:1.6em;letter-spacing:-1px}
 nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #sidebar-control-icons {margin: 0 0 10px 10px;}
-#sidebar-control-links {position: absolute; clip: rect(0px 300px 40px 0px); z-index: 999; top: 60px;}
+#sidebar-control-links {clip: rect(0px 300px 40px 0px); position: absolute; top: 60px; z-index: 999; }
 #sidebar-control-links h2 { padding: 5px; visibility: hidden;}
 #sidebar-control-links:hover {clip: auto;}
 #sidebar-control-links ul {list-style-type: none; margin: 0px; padding: 0px; width: 100%; }
 #sidebar-control-links ul li {background: #333; padding: 5px 10px; width: 100%;}
-#sidebar-control-links ul li a {text-decoration: none; color: #000; float: left;}
+#sidebar-control-links ul li a {color: #000; float: left; text-decoration: none; }
 #sidebar-control-links ul li span {color: #d25400; margin-left: 3px;}
 .active-control {background: none !important; position: absolute; top: 0px;}
 #sidebar-control-links:hover .active-control {background:  #555 !important; box-shadow: inset 30px 0px 0px rgba(0, 0, 0,.1); }
 #sidebar-control-links:hover a {color: #eee; !important;}
 #sidebar-control-links:hover a:hover {color: #fff; !important;}
 
-#change {overflow-x:auto;overflow-y:hidden;position:absolute; top: 100px; bottom: 0px;padding: 0px 10px 100px 10px;}
-#change:hover {overflow-y:auto;}
-#change a, #change a:visited {color: #d25400;}
-#change a:hover {color: #555;}
-#change h3 {margin: 10px 0 5px 0;}
-#change ul li a, .panels a {text-decoration: none; font-size: 1.2em; letter-spacing: -1px;}
-#change section { margin-bottom: 100px; }
-#change section h2 span {color: #d25400; font-weight: bold;}
+#change{bottom:0;overflow-x:auto;overflow-y:hidden;padding:0 10px 100px;position:absolute;top:100px}
+#change:hover{overflow-y:auto}
+#change h3{margin:10px 0 5px}
+#change ul li a,.panels a{font-size:1.2em;letter-spacing:-1px;text-decoration:none}
+#change section{margin-bottom:100px}
+#change section h2 span{color:#d25400;font-weight:700}
+#page-suplemental{background:#fff;box-shadow:inset 30px 0 0 rgba(0,0,0,.1);margin:10px -10px;padding:10px}
+#page-meta a:hover{background:#fff}
+#page-meta{background:url(img/bg.png);font-size:.8em;margin:0 -10px;padding:10px}
 
-#page-suplemental {box-shadow: inset 30px 0px 0px rgba(0, 0, 0,.1); background: #fff; margin:10px -10px 10px -10px; padding: 10px;}
-#page-meta a:hover {background: #fff;}
-#page-meta {font-size:.8em; background:  url(img/bg.png); margin: 0 -10px; padding: 10px;}
-#page-meta dl dt, #page-meta dl dd {}
-#page-meta dl dd  {margin-left: 10px}
-#page-meta dl dt {font-weight: bold;}
-#table-of-contents {margin: 0px 0;}
-#table-of-contents h3 {margin: 0px 0 5px 0;}
-#table-of-contents ul li ul {border-left: 2px solid rgba(0, 0, 0,.1); padding: 5px 10px; font-size: .8em;}
+#table-of-contents{margin:0}
+#table-of-contents h3{margin:0 0 5px}
+#table-of-contents ul li ul{border-left:2px solid rgba(0,0,0,.1);font-size:.8em;padding:5px 10px}
+.each-comment{background:rgba(255,255,255,.4);font-size:.9em;margin:0 -10px 10px;padding:10px}
+.each-comment:hover{background:#ffc}
+.no-rgba .each-comment{background:#eee}
+.each-comment-user img{float:left;margin:0 10px 0 0}
+.each-comment-user h4{font-size:1.4em;letter-spacing:-1px;margin:10px 0 0}
+.each-comment legend{font-weight:700;margin-bottom:10px}
 
-.each-comment {font-size: .9em; background: rgba(255, 255, 255,.4); margin:0px -10px 10px -10px; padding: 10px;}
-.each-comment:hover {background: #ffc;}
-.no-rgba .each-comment {background: #eee;}
-.each-comment-user img {float: left; margin: 0 10px 0 0;}
-.each-comment-user h4 {font-size: 1.4em; letter-spacing: -1px;margin: 10px 0 0 0 ;}
-.each-comment legend {font-weight: bold; margin-bottom: 10px;}
-.version {vertical-align: super; }
+.menu-drop{margin-right:-30px;padding:5px 10px;position:relative;z-index:1}
+.menu-drop ul li{float:left;font-weight:700;padding:5px}
+.menu-drop ul li span{font-weight:400;margin-right:2px}
+.menu-drop ul li:hover{background:rgba(0,0,0,.5);color:#eee}
+.menu-drop ul li ul{background:rgba(0,0,0,.5);display:none;font-size:.8em;margin:5px 0 0 -5px;padding:5px;position:absolute}
+.no-rgba .menu-drop ul li:hover,.no-rgba .menu-drop ul li ul{background:#333}
+.no-rgba .menu-drop ul li ul li:hover{background:#000}
+.menu-drop ul li ul hr,#sidebar section hr{height:1px;visibility:hidden}
+.menu-drop ul li ul a{color:#fff;text-decoration:none}
+.menu-drop ul li ul li{float:none}
+.menu-drop ul li ul li:before{content:"";margin:0}
+.menu-drop ul li:hover ul{display:block}
 
-#main-area {width: 80%;}
-.menu-drop {padding: 5px 10px ; margin-right:-30px; position: relative; z-index: 1;}
-.menu-drop a {text-decoration: none; color: #000;}
-.menu-drop strong {font-weight: bold}
-.menu-drop ul {list-style-type:none; margin: 0px; padding: 0px;}
-.menu-drop ul li {float: left; font-weight: bold; padding: 5px;}
-.menu-drop ul li span {font-weight: normal; margin-right: 2px;}
-.menu-drop ul li:hover {background: rgba(0,0,0,.5); color: #eee;}
-.menu-drop ul li:hover a {color: #fff;}
-.menu-drop ul li ul {background: rgba(0,0,0,.5); padding: 5px; position: absolute; margin: 5px 0 0 -5px; font-size: .8em; display: none; }
-.no-rgba .menu-drop ul li:hover, .no-rgba .menu-drop ul li ul {background: #333;}
-.no-rgba .menu-drop ul li ul li:hover {background: #000;}
-.menu-drop ul li:hover ul {display: block;}
-.menu-drop ul li ul hr, #sidebar section hr{visibility: hidden; height: 1px;}
-.menu-drop ul li ul a {color: #fff; text-decoration: none;}
-.menu-drop ul li ul li{float: none;}
-.menu-drop ul li ul li:before{content: ""; margin: 0px;}
-#viewer { padding: 0px; width: 100%;}
-#viewer ul li {float: right; font-size:.8em;}
-#viewer ul li ul li{float: left; font-size:1.2em;}
+#viewer{padding:0;width:100%}
+#viewer ul li{float:right;font-size:.8em}
+#viewer ul li ul li{float:left;font-size:1.2em}
 
-#tmCreate { margin-right: 10px;}
-#tmCreate a, #tmCreate {color: #005AA9;}
-#tmCreate:after {content:" + ";}
-#tmCreate:hover a, #tmCreate:hover {color: #fff;}
+#tmCreate{margin-right:10px}
+#tmCreate a,#tmCreate{color:#005AA9}
+#tmCreate:after{content:" + "}
 
-article#xo-content, div.suggestItems {color: #555;  font-size: .9em;background: #fff; border-top: 20px solid #d25400; padding: 10px 10px 15px 10px; box-shadow: 30px 0px 0px rgba(0, 0, 0,.1); }
-article h1, .xwikimessage legend  {margin-bottom: 10px; font-size:3.5em;}
-.box, .xwikimessage p {color: #333;  background: #eee; display: block; padding: 10px; margin: 10px -10px;}
-.warningmessage {background: #fca4a4; font-weight: bold}
-#gadget-left, #gadget-right {float: left; width: 48.618784527%;
-    *width: 48.5655930376383%;}
-#gadget-left {margin-left: .7%;}
-#gadget-right {margin-right: .7%; float: right; }
-.gadget {margin: 0 0 10px 0; padding: 10px 0;border: 3px solid #eee; border-left: 0px; border-right: 0px;}
-.gadget-title {font-size:2.2em; color: #005aa9;  letter-spacing: -3px; margin-top: 0px !important;}
-article p { margin-top: 10px; color: #333; font-size: .9em; line-height: 1.3em;}
-article p strong {font-weight: bold;}
-article ul, article ol {margin: 5px 1.5em; list-style-position: inside; list-style-type:disc; line-height: 1.3em;}
-article ol {list-style-type: decimal}
-#xwikicontent p a {color: #d25400;}
-#xwikicontent p a:hover {background: #eee; color: #c14d00;}
-.nextPagination:hover {background:url("/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png") right top !important;}
-.prevPagination:hover {background:url("/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png") left top !important;}
-.noNextPagination:hover {background:url("/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png") right bottom !important;}
-.noPrevPagination:hover {background:url("/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png") left bottom !important;}
-#xwikicontent a:active {color: #ff6a06;}
-#xwikicontent h1, article h2, article h3, article h4, article h5, article h6, article .itemTitle {font-size:2.2em; color: #005aa9;  letter-spacing: -3px; margin-top: 10px;}
-article h2 {font-size: 1.9em; letter-spacing: -2px; color: #108fff;}
-article h3 {font-size: 1.7em; letter-spacing: -2px; color: #108fff;}
-article h4 {font-size: 1.6em; letter-spacing: -2px; color: #329fff;}
-article h5 {font-size: 1.2em; letter-spacing: -1px; color: #65b7ff;}
-article h6 {font-size: 1em; letter-spacing: -1px; color: #98cfff;}
-article sub, article sup {font-size: .8em;}
-article sub {vertical-align: sub;}
-article sup {vertical-align: super;}
-article table { line-height: 1.3em;}
-article th { font-weight: bolder; text-align: center; }
-.xwikimessage {margin: 0px;padding: 0px}
-.xwikimessage legend {padding-bottom: 10px}
-.xwikimessage p {margin: 0 -10px;}
+/* main content styling */
+article#xo-content,div.suggestItems{background:#fff;border-top:20px solid #d25400;box-shadow:30px 0 0 rgba(0,0,0,.1);color:#555;font-size:.9em;padding:10px 10px 15px}
+article h1,.xwikimessage legend{font-size:3.5em;margin-bottom:10px}
+.box,.xwikimessage p, .warningmessage{background:#eee;color:#333;display:block;margin:10px -10px;padding:10px}
+.warningmessage{background:#fca4a4;font-weight:700}
+#gadget-left,#gadget-right{float:left;width:48.5655930376%}
+#gadget-left{margin-left:.7%}
+#gadget-right{float:right;margin-right:.7%}
+.gadget{border:3px solid #eee;border-left:0;border-right:0;margin:0 0 10px;padding:10px 0}
+.gadget-title{color:#005aa9;font-size:2.2em;letter-spacing:-3px;margin-top:0!important}
+article p{color:#333;font-size:.9em;line-height:1.3em;margin-top:10px}
+article ul,article ol{line-height:1.3em;list-style-position:inside;list-style-type:disc;margin:5px 1.5em}
+article ol{list-style-type:decimal}
+.nextPagination:hover{background:url(/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png) right top!important}
+.prevPagination:hover{background:url(/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png) left top!important}
+.noNextPagination:hover{background:url(/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png) right bottom!important}
+.noPrevPagination:hover{background:url(/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png) left bottom!important}
+#xwikicontent a:active{color:#ff6a06}
+#xwikicontent h1,article h2,article h3,article h4,article h5,article h6,article .itemTitle{color:#005aa9;font-size:2.2em;letter-spacing:-3px;margin-top:10px}
+article h2{color:#108fff;font-size:1.9em;letter-spacing:-2px}
+article h3{color:#108fff;font-size:1.7em;letter-spacing:-2px}
+article h4{color:#329fff;font-size:1.6em;letter-spacing:-2px}
+article h5{color:#65b7ff;font-size:1.2em;letter-spacing:-1px}
+article h6{color:#98cfff;font-size:1em;letter-spacing:-1px}
+article sub,article sup{font-size:.8em}
+article sub{vertical-align:sub}
+article table{line-height:1.3em}
+article th{font-weight:bolder;text-align:center}
+.xwikimessage{margin:0;padding:0}
+.xwikimessage legend{padding-bottom:10px}
+.xwikimessage p{margin:0 -10px}
+article .itemTitle a{color:#005aa9;text-decoration:none}
+article .resultItem{border-bottom:1px solid #eee;margin:0;padding:10px 0}
+article .resultItem a:visited{color:#aaa}
+article .resultItem:hover .itemTitle a:visited{color:#005aa9}
+.table-menu-btn{background:#eee;border-bottom:1px solid #ccc;color:#000!important;font-size:.8em;font-weight:700;padding:.2em 1em;text-decoration:none;text-transform:uppercase}
+.table-menu-wrapper{bottom:-1em;left:0;position:absolute}
+#xo-content .table-menu-wrapper{bottom:-.9em}
+.table-menu{background-color:#eee font-size: .8em;left:0;padding:10px;position:absolute;width:12em}
+.table-menu-hidden{left:-999em;right:auto}
+.table-menu li{padding:.3em 0}
+thead th{border-bottom:1px solid #ccc;color:#888;white-space:nowrap}
+th,td{background-color:#fff;padding:.5em 0;text-align:right}
+th{background:#eee;border-right:2px solid #fff;padding:.5em}
+tr td tr td{padding:.5em}
+th:first-child,td:first-child{text-align:left}
+tbody th,td{border-bottom:1px solid #e6e6e6}
+.legacy-ie .enhanced th.essential,.legacy-ie .enhanced td.essential{display:inline}
+.enhanced th.essential,.enhanced td.essential{display:table-cell}
+.xwikitabbar{background:#eee;list-style-type:none;margin:0;padding:0}
+.xwikitabbar a{text-decoration:none}
+.xwikitabbar li{float:left;margin:0 .3em;padding:.5em}
+.xwikitabbar li a:hover{background:none!important}
+.xwikitabbar .active{border-bottom:2px solid #D25400;position:static}
+#xo-content form dt,form dd,.sourceName,.suggestItem{border-top:1px solid #eee;margin-right:10px}
+#xo-content form dt,.sourceName{clear:left;float:left;font-weight:700;padding:10px 0;text-align:right;width:140px}
+#xo-content form dt:after{content:":"}
+#xo-content form dd{margin:0 0 0 150px;padding:10px 0}
+#xo-content fieldset legend{color:#005AA9;font-weight:700}
+.fullScreenEditLink{background:#fff;padding:5px}
+#xo-content form textarea{margin-top:5px;width:80%}
+.buttons{background:#eee;margin:20px 0;padding:20px;text-align:right}
+div.suggestItems{margin-bottom:20px;padding:0 0 10px}
+li.showAllResuts{background:#eee;display:block;float:none!important;font-size:.7em;font-weight:700;margin:0 0 10px;padding:5px 10px!important;text-transform:uppercase}
+.suggestItem{margin-top:-.2em;padding:5px}
+.suggestItem .value{font-size:1.2em}
+.suggestItem .info{color:#777;font-size:.78em;font-style:italic;margin-top:3px}
+div.resultContainer div.sourceName{background-position:3px 3px;background-repeat:no-repeat}
+.horizontalLayout div.resultContainer div.sourceName{background-position:right center;float:left;padding-right:25px;text-align:right}
 
-article .itemTitle {margin-top: 0px;}
-article .itemTitle a {text-decoration: none; color: #005aa9; }
-article .resultItem {border-bottom: 1px solid #eee; padding: 10px 0; margin: 0px;}
-article .resultItem a:visited {color: #aaa;}
-article .resultItem:hover a:visited {color: #d25400;}
-article .resultItem:hover .itemTitle a:visited {color: #005aa9;}
+/* edit */
+#change-context{border:5px solid #eee;padding:0!important;width:auto}
+#hierarchy{background:#eee;display:block;font-size:.8em;font-weight:700;margin:-10px -10px 10px;padding:5px 10px;text-transform:uppercase}
+#hierarchy a{color:#005AA9;text-decoration:none}
 
-.xwiki-livetable-display-container {position: relative;}
-.table-wrapper {position: relative;}
-.table-menu-btn {color: #000 !important;}
-.table-menu-wrapper {position: absolute;bottom: -1em;left: 0;}
-#xo-content .table-menu-wrapper {bottom: -.9em;}
-.table-menu { position: absolute; background-color: #eee  font-size: .8em; padding: 10px; width: 12em; left: 0;}
-.table-menu-hidden { left: -999em; right: auto;}
-.table-menu-btn { text-decoration: none; color: #333; font-size: .8em; background: #eee; padding: .2em 1em; font-weight: bold; text-transform: uppercase;    border-bottom: 1px solid #ccc;}
-.table-menu ul {list-style-type: none; margin: 0px; padding: 0px}
-.table-menu li {padding: .3em 0;}
+/* docextras */
+.sprite{background:url(img/sprite-icons.png) no-repeat;float:left;height:20px;margin-right:20px;position:relative;width:20px}
+.sprite span{color:#d25400;font-weight:700;position:absolute;right:-10px;top:-5px}
+.sprite-search-png{background-position:0 0}
+.sprite-navigation-png{background-position:0 -31px}
+.sprite-comments-png{background-position:-62px 0}
+.sprite-attachments-png{background-position:-31px -62px}
+.sprite-history-png{background-position:-62px -31px}
+.sprite-information-png{background-position:-31px -31px}
+.sprite-export-png{background-position:-31px 0}
+.sprite-edit-png{background-position:0 -62px}
+.panel{margin-bottom:10px}
+.commenttool a{background:transparent left top no-repeat;display:block;float:left;height:16px;line-height:30px;margin:0 0 0 4px;overflow:hidden;text-indent:30px;width:16px}
+.comment-permalink a{background-image:url(/xwiki/resources/icons/silk/link.png)}
+.commentreply a{background-image:url(/xwiki/resources/icons/silk/comments_add.png)}
+.attachment:hover{background:#FFC}
+.attachment .information{color:#9F9F9F;overflow:hidden}
+.attachment .mime{float:left;padding:0 8px 0 0}
+.attachment .name{font-size:1.35em}
+.attachment .meta{clear:left}
+.attachment .size{color:#9F9F9F}
+.attachment .xwikibuttonlinks{float:right;width:60px}
+.attachmentActionButton{background:transparent 2px center no-repeat;background-color:transparent;border:none;cursor:pointer;font-size:80%;margin-bottom:4px;padding:2px 4px 2px 20px}
+.add-file-input{background-image:url(/xwiki/resources/icons/silk/textfield_add.png);background-position:2px top;color:#0089DC}
+.remove-file-input{background-image:url(/xwiki/resources/icons/silk/cross.png);text-indent:30px;width:16px}
+.uploadFileInput{margin:5px 10px 5px 0 !important}
+.attachment .xwikibuttonlinks a{background:transparent left top no-repeat;display:block;float:right;height:16px;margin:0 0 0 4px;overflow:hidden;text-indent:-1000em;width:16px}
+.attachment .xwikibuttonlinks a.viewlink{background-image:url(/xwiki/resources/icons/silk/eye.png)}
+#close-history{float:right;margin:.2em 1em}
+#historycontent-wrapper-helper{background:rgba(0,0,0,.5);display:none;height:100%;left:0;position:fixed;top:0;width:100%;z-index:9999999}
+#historycontent-wrapper{background:#fff;margin-top:12%;padding:1em;position:relative}
+#historycontent-wrapper .buttonwrapper{float:right;margin:-.8em 0 0}
 
-/* Table styles */
-.xwiki-livetable-container table {width: 100%;}
-thead th {white-space: nowrap;border-bottom: 1px solid #ccc;color: #888;}
-th, td {padding: .5em 0;background-color: #fff;text-align: right;}
-th {padding: .5em; background:#eee;border-right: 2px solid #fff;}
-th:last-child {border: 0px;}
-tr td tr td{padding: .5em;}
-.xwiki-livetable-display-header-filter input {width: 100%;}
-th:first-child, td:first-child {text-align: left;}
-tbody th, td {border-bottom: 1px solid #e6e6e6;}
+/* compression of similar styles */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+::-webkit-scrollbar-track,.xwikitabbar li:hover{background:#ccc}
+.mobile,.no-touch #swipe-hint,#sidebar-handle,.enhanced th,.enhanced td,.DocumentInformation h1{display:none}
+a,#change a,#change a:visited,#xwikicontent p a,article .resultItem:hover a:visited{color:#d25400}
+#change a:hover{color:#555}
+#xo-content a:hover,#xwikicontent p a:hover{background:#eee;color:#c14d00}
+#hint a,.menu-drop a{color:#000;text-decoration:none}
+form,.xwiki-livetable-container table,.xwiki-livetable-display-header-filter input,.enhanced,#historycontent-wrapper table{width:100%}
+#sidebar-control-links:hover a:hover,.menu-drop ul li:hover a,#tmCreate:hover a,#tmCreate:hover{color:#fff}
+#page-meta dl dd,.sourceName{margin-left:10px}
+#page-meta dl dt,.menu-drop strong,article p strong{font-weight:700}
+.version,article sup{vertical-align:super}
+#main-area,#xwikiuploadfile{width:80%}
+.menu-drop ul,.table-menu ul{list-style-type:none;margin:0;padding:0}
+article .itemTitle,#hierarchy p{margin-top:0}
+.xwiki-livetable-display-container,.table-wrapper{position:relative}
+th:last-child,#sidebar .page-form dt,dd{border:0}
+li.showAllResuts a,#hierarchy a:hover{color:#333}
+.showAllResuts .suggestItem,#historycontent-wrapper .buttons{padding:0}
+.commentdelete a,.attachment .xwikibuttonlinks a.deletelink{background-image:url(/xwiki/resources/icons/silk/cross.png)}
+.commentedit a,.attachment .xwikibuttonlinks a.editlink{background-image:url(/xwiki/resources/icons/silk/pencil.png)}
 
-.enhanced {width: 100%}
-.enhanced th,
-.enhanced td {display: none;}
-.legacy-ie .enhanced th.essential, .legacy-ie .enhanced td.essential {display: inline;}
-.enhanced th.essential, .enhanced td.essential {display: table-cell;}
-
-.xwikitabbar {background: #eee; list-style-type: none; margin: 0px; padding: 0px;}
-.xwikitabbar a {text-decoration: none}
-.xwikitabbar li {float: left; padding: .5em; margin: 0 .3em;}
-.xwikitabbar li:hover {background: #ccc;}
-.xwikitabbar li a:hover {background: none !important;}
-.xwikitabbar .active {position: static; border-bottom: 2px solid #D25400;}
-
-#xo-content form dt, form dd, .sourceName,.suggestItem {border-top: 1px solid #eee; margin-right:10px;}
-#xo-content form dt, .sourceName {float: left;clear: left;width: 140px;text-align: right;font-weight: bold;padding: 10px 0;}
-#xo-content form dt:after {content: ":";}
-#xo-content form dd {margin: 0 0 0 150px;padding: 10px 0;}
-#xo-content fieldset legend {font-weight: bold; color: #005AA9;}
-.fullScreenEditLink {background: #fff; padding: 5px; }
-#xo-content form textarea {margin-top: 5px; width: 80%;}
-
-.buttons { background: #eee; padding: 20px; margin: 20px 0; text-align: right}
-
-div.suggestItems {padding: 0px 0px 10px 0px; margin-bottom: 20px;}
-li.showAllResuts { background: #eee; display: block; padding: 5px 10px !important;font-weight: bold; text-transform: uppercase; font-size: .7em; margin: 0 0 010px 0; float: none !important; }
-li.showAllResuts a {color: #333;}
-.suggestItem {margin-top: -.2em; padding: 5px;}
-.showAllResuts .suggestItem {padding: 0px;} 
-.suggestItem .value {font-size: 1.2em;}
-.suggestItem .info {font-style: italic; font-size: .78em; color: #777; margin-top: 3px;}
-.sourceName {margin-left: 10px;}
-div.resultContainer div.sourceName{background-position:3px 3px; background-repeat:no-repeat;}
-.horizontalLayout div.resultContainer div.sourceName{float:left; padding-right:25px; text-align:right;background-position:right center;}
-
-#sidebar .page-form dt, dd {border: 0px;}
-
-#change-context {width: auto; padding: 0px !important; border: 5px solid #eee;}
-#hierarchy { background: #eee; display: block; padding: 5px 10px;font-weight: bold; text-transform: uppercase; font-size: .8em; margin: -10px -10px 10px -10px; }
-#hierarchy p {margin-top: 0px;}
-#hierarchy a { color: #005AA9; text-decoration: none}
-#hierarchy a:hover {color: #333;}
-
-
-@media screen and (min-width: 400px) {
-  .legacy-ie .enhanced th.optional, 
-  .legacy-ie .enhanced td.optional {
-    display: inline;
-  }
-  .enhanced th.optional, 
-  .enhanced td.optional {
-    display: table-cell;
-  }
+/* live table responsive */
+@media screen and (min-width: 400px) { 
+  .legacy-ie .enhanced th.optional,.legacy-ie .enhanced td.optional{display:inline}
+  .enhanced th.optional,.enhanced td.optional{display:table-cell}
 }
 @media screen and (min-width: 800px) {
-   .legacy-ie .enhanced th, 
-   .legacy-ie .enhanced td {
-      display: inline;
-   }
-   .enhanced th, 
-   .enhanced td {
-      display: table-cell;
-   }
+  .legacy-ie .enhanced th,.legacy-ie .enhanced td{display:inline}
+  .enhanced th,.enhanced td{display:table-cell}
 }
 
+/* layout reponsive */
 @media only screen and (max-width: 1024px) {
-
-  #sidebar, header {width: 30%;}
-  #main-area {width: 70%;}
-  .first-column, .last-column, .half {float: none !important; width: 100% !important;}
+  #sidebar,header{width:30%}
+  #main-area{width:70%}
+  .first-column,.last-column,.half{float:none!important;width:100%!important}
 }
+/* layout high density tablet/phone equivalent to the next media-query*/
 @media all and (max-width: 1024px) and (min-width: 600px) {
-  .touch .mobile {display: block;}
-  .touch header:after, .menu-drop ul li:after, #menu-drop:before {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
-
-  .touch header {position: static; width: 40%; text-align: left;}
-  .touch header h1{margin: 10px auto 4px 10px; display: inline;  float: left;}
-  .touch nav#search {width: 40%; margin: 10px 10px; float: right;}
-  .touch .menu-drop a {color: #fff;}
-
-  .touch #sidebar { width: 100%; bottom: auto; height: auto; position: static; }
-  .touch #sidebar-wrapper {background: #ccc url(img/bg.png); position: absolute; top: 0; right: -90%; width: 90%; padding: 0 0 0 5%;}
-  .touch #sidebar-handle {display: block; position: absolute; 
-    top: 200px;left: -98px;}
-  .touch #sidebar-handle h2{ font-size:1.45em; text-transform: lowercase;
-    -webkit-transform: rotate(90deg); 
-     -moz-transform: rotate(90deg); 
-      -ms-transform: rotate(90deg); 
-       -o-transform: rotate(90deg); 
-          transform: rotate(90deg);
-  }
-
-  .touch .no-csstransforms  #sidebar-handle { filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1); left: 0px;}
-  .touch #sidebar-handle h2 a:link, #sidebar-handle h2 a:visited{color: #005aa9;}
-  .touch #sidebar-handle h2 a:hover {color: #d25400;}
-  .touch #change {overflow-x:hidden;overflow-y:auto;position:static; top: auto; bottom: auto;}
-  .touch section { margin-bottom: 20px;}
-  .touch #page-suplemental { box-shadow: none;}
-  .touch #sidebar-control-selector {margin: 40px 10px 10px 10px;}
-  .touch #sidebar-control-links {display: none;}
-  
-  .touch #main-area {width: 95%;}
-  .touch article {box-shadow: none; }
-
-  .touch .menu-drop {margin: 0px;}
-  .touch .menu-drop ul li {float: none; background: rgba(0,0,0,.5); color: #fff; margin: 5px 0;}
-  .touch .no-rgba .menu-drop ul li {background: #333;}
-  .touch .menu-drop ul li:hover ul {display: none;}
-  .touch .menu-drop ul li:before{content: ""; margin: 0px;}
-  .touch .breadcrumb-drop {display: inline ; float: right;}
-  .touch #viewer {margin: 0px 10px; width: auto;}
-  .touch #tmCreate {margin: 0px; background: rgba(256,256,256,.5);}
-  .touch #tmCreate a {color: #000;}
-  .touch #tmCreate:hover a {color: #333;}
-
-  .touch article section h2:after {content: ' +';}
-  .touch .expanded:after {content: ' -';}
-  .touch .section-content {display: none;}
-
-  .touch .column li {margin-right: 10px !important;}
-  .touch .column li a, #viewer li a {float: left;}
-  .touch .column li select, #viewer li select {margin: 0 0px 0 10px;}
+  .touch .sourceName{width:100px}
+  .touch .xwikitabbar li{border-bottom:2px solid #eee;margin:0;padding:.5em 0;width:50%}
+  .touch .xwikitabbar li a{margin-left:.5em}
+  .touch .mobile{display:block}
+  .touch header:after,.menu-drop ul li:after,#menu-drop:before{clear:both;content:".";display:block;height:0;visibility:hidden}
+  .touch header{position:static;text-align:left;width:40%}
+  .touch header h1{display:inline;float:left;margin:10px auto 4px 10px}
+  .touch nav#search{float:right;margin:10px;width:40%}
+  .touch .menu-drop a{color:#fff}
+  .touch #sidebar{bottom:auto;height:auto;position:static;width:100%}
+  .touch #sidebar-wrapper{background:#ccc url(img/bg.png);padding:0 0 0 5%;position:absolute;right:-90%;top:0;width:90%}
+  .touch #sidebar-handle{display:block;left:-98px;position:absolute;top:200px}
+  .touch #sidebar-handle h2{-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);-webkit-transform:rotate(90deg);font-size:1.45em;text-transform:lowercase;transform:rotate(90deg)}
+  .touch .no-csstransforms #sidebar-handle{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);left:0}
+  .touch #sidebar-handle h2 a:link,#sidebar-handle h2 a:visited{color:#005aa9}
+  .touch #sidebar-handle h2 a:hover{color:#d25400}
+  .touch #change{bottom:auto;overflow-x:hidden;overflow-y:auto;position:static;top:auto}
+  .touch section{margin-bottom:20px}
+  .touch #sidebar-control-selector{margin:40px 10px 10px}
+  .touch #main-area{width:95%}
+  .touch .menu-drop{margin:0}
+  .touch .menu-drop ul li{background:rgba(0,0,0,.5);color:#fff;float:none;margin:5px 0}
+  .touch .no-rgba .menu-drop ul li{background:#333}
+  .touch .menu-drop ul li:before{content:"";margin:0}
+  .touch .breadcrumb-drop{display:inline;float:right}
+  .touch #viewer{margin:0 10px;width:auto}
+  .touch #tmCreate{background:rgba(256,256,256,.5);margin:0}
+  .touch #tmCreate a{color:#000}
+  .touch #tmCreate:hover a{color:#333}
+  .touch article section h2:after{content:' +'}
+  .touch .expanded:after{content:' -'}
+  .touch .column li{margin-right:10px!important}
+  .touch .column li a,#viewer li a{float:left}
+  .touch .column li select,#viewer li select{margin:0 0 0 10px}
+  .touch #page-suplemental,.touch article{box-shadow:none}
+  .touch #sidebar-control-links,.touch .menu-drop ul li:hover ul,.touch .section-content{display:none}
 }
-
-
+/* layout regular small width */
 @media all and (max-width: 600px) {
-.sourceName {width: 100px}
-    .xwikitabbar li {width: 50%; border-bottom: 2px solid #eee; margin: 0px; padding: .5em 0px;}
-    .xwikitabbar li a {margin-left: .5em;}
-
-  .mobile {display: block;}
-  header:after, .menu-drop ul li:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
-
-  header {position: static; width: 95%; text-align: center;}
-  header h1{margin: 10px auto 4px auto; }
-  nav#search {width: 90%; margin: 0 auto;}
-  .menu-drop a {color: #fff;}
-
-  #sidebar { width: 100%; bottom: auto; height: auto; position: static; }
-  #sidebar-wrapper {background: #ccc url(img/bg.png); position: absolute; top: 0; right: -90%; width: 90%; padding: 0 0 0 5%;}
-  #sidebar-handle {display: block; position: absolute; 
-    top: 200px;left: -98px;}
-  #sidebar-handle h2{ font-size:1.45em; text-transform: lowercase;
-    -webkit-transform: rotate(90deg); 
-     -moz-transform: rotate(90deg); 
-      -ms-transform: rotate(90deg); 
-       -o-transform: rotate(90deg); 
-          transform: rotate(90deg);
-  }
-  .no-csstransforms  #sidebar-handle { filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1); left: 0px;}
-  #sidebar-handle h2 a:link, #sidebar-handle h2 a:visited{color: #005aa9;}
-  #sidebar-handle h2 a:hover {color: #d25400;}
-  #change {overflow-x:hidden;overflow-y:auto;position:static; top: auto; bottom: auto;}
-  section { margin-bottom: 20px;}
-  #page-suplemental { box-shadow: none;}
-  #sidebar-control-selector {margin: 40px 10px 10px 10px;}
-  #sidebar-control-links {display: none;}
-  
-  #main-area {width: 95%;}
-  article {box-shadow: none; }
-
-  .menu-drop {margin: 0px;}
-  .menu-drop ul li {float: none; background: rgba(0,0,0,.5); color: #fff; margin: 5px 0;}
-  .no-rgba .menu-drop ul li {background: #333;}
-  .menu-drop ul li:hover ul {display: none;}
-  .menu-drop ul li:before{content: ""; margin: 0px;}
-  .breadcrumb-drop {display: inline ; float: right;}
-  #viewer {margin: 0px 10px; width: auto;}
-  #tmCreate {margin: 0px; background: rgba(256,256,256,.5);}
-  #tmCreate a {color: #000;}
-  #tmCreate:hover a {color: #333;}
-
-  article section h2:after {content: ' +';}
-  .expanded:after {content: ' -';}
-  .section-content {display: none;}
-
-  .column li {margin-right: 10px !important;}
-  .column li a, #viewer li a {float: left;}
-  .column li select, #viewer li select {margin: 0 0px 0 10px;}
+  .mobile{display:block}
+  header:after,.menu-drop ul li:after{clear:both;content:".";display:block;height:0;visibility:hidden}
+  header{position:static;text-align:center;width:95%}
+  header h1{margin:10px auto 4px}
+  nav#search{margin:0 auto;width:90%}
+  .menu-drop a{color:#fff}
+  #sidebar{bottom:auto;height:auto;position:static;width:100%}
+  #sidebar-wrapper{background:#ccc url(img/bg.png);padding:0 0 0 5%;position:absolute;right:-90%;top:0;width:90%}
+  #sidebar-handle{display:block;left:-98px;position:absolute;top:200px}
+  #sidebar-handle h2{-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);-webkit-transform:rotate(90deg);font-size:1.45em;text-transform:lowercase;transform:rotate(90deg)}
+  .no-csstransforms #sidebar-handle{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);left:0}
+  #sidebar-handle h2 a:link,#sidebar-handle h2 a:visited{color:#005aa9}
+  #sidebar-handle h2 a:hover{color:#d25400}
+  #change{bottom:auto;overflow-x:hidden;overflow-y:auto;position:static;top:auto}
+  section{margin-bottom:20px}
+  #sidebar-control-selector{margin:40px 10px 10px}
+  #main-area{width:95%}
+  .menu-drop{margin:0}
+  .menu-drop ul li{background:rgba(0,0,0,.5);color:#fff;float:none;margin:5px 0}
+  .no-rgba .menu-drop ul li{background:#333}
+  .menu-drop ul li:before{content:"";margin:0}
+  .breadcrumb-drop{display:inline;float:right}
+  #viewer{margin:0 10px;width:auto}
+  #tmCreate{background:rgba(256,256,256,.5);margin:0}
+  #tmCreate a{color:#000}
+  #tmCreate:hover a{color:#333}
+  article section h2:after{content:' +'}
+  .expanded:after{content:' -'}
+  .column li{margin-right:10px!important}
+  .column li a,#viewer li a{float:left}
+  .column li select,#viewer li select{margin:0 0 0 10px}
+  #page-suplemental,article{box-shadow:none}
+  #sidebar-control-links,.menu-drop ul li:hover ul,.section-content{display:none}
 }
+/* detailing reponsive */
 @media all and (max-width: 410px) {
-  .column li {margin-right: 0px !important;}
+  .column li{margin-right:0!important}
 }
 @media all and (max-width: 300px) {
-
-    .xwikitabbar li {width: 100%; border-bottom: 2px solid #eee; margin: 0px; padding: .5em 0px;}
+  .xwikitabbar li{border-bottom:2px solid #eee;margin:0;padding:.5em 0;width:100%}
 }
-.sprite {background: url(img/sprite-icons.png) no-repeat; float: left; position: relative; margin-right: 20px; width: 20px; height: 20px;}
-.sprite span {position: absolute; top: -5px; right: -10px; color: #d25400; font-weight: bold;}
-.sprite-search-png {background-position: -0px -0px;}
-.sprite-navigation-png {background-position: -0px -31px;}
-.sprite-comments-png {background-position: -62px 0px;}
-.sprite-attachments-png {background-position: -31px -62px;}
-.sprite-history-png {background-position: -62px -31px;}
-.sprite-information-png {background-position: -31px -31px;}
-.sprite-export-png {background-position: -31px -0px;}
-.sprite-edit-png {background-position: -0px -62px;}
-
-
-.panel {margin-bottom: 10px;}
-.commenttool a{background:transparent left top no-repeat;display:block;float:left;height:16px;line-height:30px;margin:0 0 0 4px;overflow:hidden;text-indent:30px;width:16px;}
-.comment-permalink a{background-image:url("/xwiki/resources/icons/silk/link.png");}
-.commentdelete a{background-image:url("/xwiki/resources/icons/silk/cross.png");}
-.commentreply a{background-image:url("/xwiki/resources/icons/silk/comments_add.png");}
-.commentedit a{background-image:url("/xwiki/resources/icons/silk/pencil.png");}
-
-.attachment:hover{background:#FFFFCC;}
-.attachment .information{color:#9F9F9F;overflow:hidden;}
-.attachment .mime{float:left;padding:0 8px 0 0;}
-.attachment .name{font-size:1.35em;}
-.attachment .meta{clear:left;}
-.attachment .size{color:#9F9F9F;}
-.attachment .xwikibuttonlinks{float:right;width:60px;}
-.attachmentActionButton{background-color:transparent;border:none;padding:2px 4px;font-size:80%;margin-bottom:4px;background:transparent 2px center no-repeat;padding-left:20px;cursor:pointer;}
-.add-file-input{color:#0089DC;background-position:2px top;background-image:url("/xwiki/resources/icons/silk/textfield_add.png");}
-.remove-file-input{background-image:url("/xwiki/resources/icons/silk/cross.png");width:16px;text-indent:30px;}
-.uploadFileInput{margin:5px 10px 5px 0!important;}
-.attachment .xwikibuttonlinks a{width:16px;height:16px;text-indent:-1000em;overflow:hidden;background:transparent left top no-repeat;display:block;float:right;margin:0 0 0 4px;}
-.attachment .xwikibuttonlinks a.deletelink{background-image:url("/xwiki/resources/icons/silk/cross.png");}
-.attachment .xwikibuttonlinks a.editlink{background-image:url("/xwiki/resources/icons/silk/pencil.png");}
-.attachment .xwikibuttonlinks a.viewlink{background-image:url("/xwiki/resources/icons/silk/eye.png");}
-#xwikiuploadfile {width: 80%}
-
-.DocumentInformation h1 {display: none;}
-
-#close-history {float: right; margin: .2em 1em;}
-#historycontent-wrapper-helper {background: rgba(0,0,0,.5); width: 100%; height: 100%;position: fixed; z-index: 9999999; top: 0; left: 0; display: none;}
-#historycontent-wrapper {background: #fff; padding: 1em; margin-top: 12%; position: relative;}
-#historycontent-wrapper table {width: 100%;}
-#historycontent-wrapper .buttons {padding: 0px;}
-#historycontent-wrapper .buttonwrapper {float: right; margin: -.8em 0 0 0;}
-
-
-/*dataeditors.css*/
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
- #xwikiobjects,#xwikiclassproperties{padding:0 8px;overflow:auto;border:none!important;}
-#body #xwikiobjects label,#body #xwikiclassproperties label{display:inline;text-transform:none;font-variant:normal;color:#9F9F9F;}
-#body .xclass-title h2 span{border:none;color:inherit;display:inline;margin:0;position:static;}
-.boolean-property input{width:auto!important;border:none!important;}
-#xwikiobjects input:hover,#xwikiobjects textarea:hover,#xwikiobjects input:focus,#xwikiobjects textarea:focus,#xwikiclassproperties input:hover,#xwikiclassproperties textarea:hover,#xwikiclassproperties input:focus,#xwikiclassproperties textarea:focus{border:1px solid #9F9F9F;}
-#xwikiobjects input:focus,#xwikiobjects textarea:focus,#xwikiclassproperties input:focus,#xwikiclassproperties textarea:focus{background-color:#FFFFCC;}
-.more-actions{padding:8px 2px;}
-.more-actions .edit-all{display:block;padding:2px 18px;background:transparent url("/xwiki/resources/icons/silk/pencil.png") left top no-repeat;}
-.xclass-title{margin:16px 0 2px;}
-.xclass-content{padding:0 0 0 16px;margin:0 0 10px 0;}
-.xobject-title,.add_xobject-title{position:relative;border:none;cursor:default;background:transparent;}
-.xobject:hover .xobject-title,.xproperty:hover .xproperty-title{background-color:#FFFFCC;color:#9F9F9F;}
-.xobject-content{padding:4px 14px 8px;border:none;margin-bottom:2px;}
-.xobject dl,.xproperty dl{margin:0;}
-#body .xobject-title h3,#body .xclass-title,.add_xobject-title{padding-left:14px!important;}
-.xobject-title:hover,.xclass-title:hover,.xproperty-title:hover{cursor:default;}
-.xobject-action{display:block;overflow:hidden;position:absolute;top:2px;width:16px;height:16px;text-indent:30px;line-height:30px;background:transparent left top no-repeat;}
-.xobject-title .delete{right:0;background-image:url("/xwiki/resources/icons/silk/cross.png");}
-.xobject-title .edit{right:16px;background-image:url("/xwiki/resources/icons/silk/pencil.png");}
-.xproperty{border:none;}
-.xproperty-content{padding:4px 16px 8px 16px;margin-bottom:2px;}
-.xproperty-content dl{margin:0;padding-left:16px;}
-.xproperty-title{cursor:default;padding:0;overflow:hidden;}
-.xproperty-title .xproperty-property{float:left;margin-right:8px;}
-.xproperty_number_input input{width:2em;}
-.xproperty-content{clear:both;}
-.xproperty-title .xproperty-prettyName{float:none;clear:both;}
-.xobject-content dd,.xproperty-content dd{margin:0 0 4px;}
-#body .collapsable .xobject-title h3,#body .collapsable .xclass-title,#body .collapsable .xproperty-title{background-image:url("/xwiki/resources/icons/silk/bullet_toggle_minus.png");background-position:0 center;background-repeat:no-repeat;}
-#body .collapsed .xobject-title h3,#body .collapsed .xclass-title,#body .collapsed .xproperty-title{background-image:url("/xwiki/resources/icons/silk/bullet_toggle_plus.png");}
-.xclass.collapsed .xclass-content,.xobject.collapsed .xobject-content,.xproperty.collapsed .xproperty-content{display:none;}
-.collapsable dt .collapser{background-image:url("/xwiki/resources/icons/silk/bullet_toggle_minus.png");background-position:-4px center;background-repeat:no-repeat;cursor:default;display:inline-block;width:10px;height:10px;vertical-align:middle;}
-#xwikiobjects .collapsable dd{padding-left:10px;}
-#xwikiclassproperties .collapsable dt{margin-left:-10px;}
-.collapsable dt .collapsed{background-image:url("/xwiki/resources/icons/silk/bullet_toggle_plus.png");}
-.disabled{opacity:.5;}
-.disabled *{font-style:italic;}
-.disabled .xproperty-title h2,#body #xwikiclassproperties .disabled dt label,#body #xwikiobjects dt.disabled label{color:#636B75;}
-.syncProperties{font-weight:900;display:inline-block;padding:2px 0 2px 22px;background:transparent url("/xwiki/resources/icons/silk/cross.png") left center no-repeat;margin-left:-22px;}
-.disabletool label{font-weight:900;}
-.xproperty-title .tools{float:right;margin-top:-18px;}
-.xproperty-title .tools .tool{width:16px;height:16px;float:left;background:transparent none center no-repeat;text-indent:-9999px;}
-.xproperty-title .tools .delete{background-image:url(/xwiki/resources/icons/silk/cross.png);}
-.xproperty-title .tools .move{background-image:url(/xwiki/resources/icons/datamodel/move.png);cursor:move;}
-.dragged .xproperty-title{border:1px solid #E8E8E8;}
-.StringClass h2{background-image:url("/xwiki/resources/icons/datamodel/string.png");}
-.DateClass h2{background-image:url("/xwiki/resources/icons/datamodel/calendar.png");}
-.TextAreaClass h2{background-image:url("/xwiki/resources/icons/datamodel/textarea.png");}
-.NumberClass h2{background-image:url("/xwiki/resources/icons/datamodel/number.png");}
-.BooleanClass h2{background-image:url("/xwiki/resources/icons/datamodel/boolean.png");}
-.StaticListClass h2{background-image:url("/xwiki/resources/icons/datamodel/staticlist.png");}
-.GroupsClass h2{background-image:url("/xwiki/resources/icons/datamodel/groups.png");}
-.UsersClass h2{background-image:url("/xwiki/resources/icons/datamodel/users.png");}
-.LevelsClass h2{background-image:url("/xwiki/resources/icons/datamodel/rights.png");}
-.DBListClass h2{background-image:url("/xwiki/resources/icons/datamodel/database.png");}
-.DBTreeListClass h2{background-image:url("/xwiki/resources/icons/datamodel/tree.png");}
-.PasswordClass h2{background-image:url("/xwiki/resources/icons/datamodel/password.png");}
-#add_xproperty{background:transparent url("/xwiki/resources/icons/silk/bullet_add.png") left center no-repeat;padding-left:14px;margin-left:16px;}
-#xwikiclassproperties #add_xproperty input,#xwikiclassproperties #add_xproperty select,#xwikiobjects #add_xobject input,#xwikiobjects #add_xobject select{width:auto!important;}
-#add_xobject{margin:1em 0 0;}
-#add_xobject .add_xobject-title{background-position:left .5em;padding-top:8px;margin-top:8px;border-top:none;}
-.xclass-content .add_xobject-title{display:block;}
-.add_xobject-title a{color:#0089DC;text-decoration:none;display:block;padding:2px 0;}
-.add_xobject-title a:hover{text-decoration:underline;background-color:#FFFFCC;}
-#switch-xclass{text-align:right;margin:4px 0 -16px;}
-/*end dataeditors.css */
-
-
-
-
 
 .clearfloats {
   clear: both;
@@ -939,24 +768,7 @@ table.xRichTextEditorTabPanel {
 }
 *#
 
-/* data editors */
 
-.xproperty-title h2, .xobject-title h3 {
-  line-height: inherit !important;
-  font-weight: normal !important;
-}
-
-#xwikiobjects .label {
-  background-color:inherit !important;
-}
-
-#body #xwikiobjects label, #body #xwikiclassproperties label {
-  float:none;
-  background-color: inherit !important;
-  line-height: inherit !important;
-}
 /* footer */
 
-#footerglobal {
-  margin-top:100px;
-}
+#footerglobal{margin-top:100px}

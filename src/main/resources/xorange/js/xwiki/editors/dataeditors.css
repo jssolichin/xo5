@@ -1,0 +1,65 @@
+#xwikiobjects,#xwikiclassproperties{border:none!important;overflow:auto;padding:0 8px}
+#body #xwikiobjects label,#body #xwikiclassproperties label{background-color:inherit!important;color:#9F9F9F;display:inline;float:none;font-variant:normal;line-height:inherit!important;text-transform:none}
+#body .xclass-title h2 span{border:none;color:inherit;display:inline;margin:0;position:static}
+.boolean-property input{border:none!important;width:auto!important}
+#xwikiobjects input:hover,#xwikiobjects textarea:hover,#xwikiobjects input:focus,#xwikiobjects textarea:focus,#xwikiclassproperties input:hover,#xwikiclassproperties textarea:hover,#xwikiclassproperties input:focus,#xwikiclassproperties textarea:focus{border:1px solid #9F9F9F}
+#xwikiobjects input:focus,#xwikiobjects textarea:focus,#xwikiclassproperties input:focus,#xwikiclassproperties textarea:focus{background-color:#FFC}
+.more-actions{padding:8px 2px}
+.more-actions .edit-all{background:transparent url(/xwiki/resources/icons/silk/pencil.png) left top no-repeat;display:block;padding:2px 18px}
+.xclass-title{margin:16px 0 2px}
+.xclass-content{margin:0 0 10px;padding:0 0 0 16px}
+.xobject-title,.add_xobject-title{background:transparent;border:none;cursor:default;position:relative}
+.xobject:hover .xobject-title,.xproperty:hover .xproperty-title{background-color:#FFC;color:#9F9F9F}
+.xobject-content{border:none;margin-bottom:2px;padding:4px 14px 8px}
+.xobject dl,.xproperty dl{margin:0}
+#body .xobject-title h3,#body .xclass-title,.add_xobject-title{padding-left:14px!important}
+.xobject-title:hover,.xclass-title:hover,.xproperty-title:hover{cursor:default}
+.xobject-action{background:transparent left top no-repeat;display:block;height:16px;line-height:30px;overflow:hidden;position:absolute;text-indent:30px;top:2px;width:16px}
+.xobject-title .delete{background-image:url(/xwiki/resources/icons/silk/cross.png);right:0}
+.xobject-title .edit{background-image:url(/xwiki/resources/icons/silk/pencil.png);right:16px}
+.xproperty{border:none}
+.xproperty-content{clear:both;margin-bottom:2px;padding:4px 16px 8px}
+.xproperty-content dl{margin:0;padding-left:16px}
+.xproperty-title{cursor:default;overflow:hidden;padding:0}
+.xproperty-title .xproperty-property{float:left;margin-right:8px}
+.xproperty_number_input input{width:2em}
+.xproperty-title .xproperty-prettyname{clear:both;float:none}
+.xobject-content dd,.xproperty-content dd{margin:0 0 4px}
+#body .collapsable .xobject-title h3,#body .collapsable .xclass-title,#body .collapsable .xproperty-title{background-image:url(/xwiki/resources/icons/silk/bullet_toggle_minus.png);background-position:0 center;background-repeat:no-repeat}
+.xclass.collapsed .xclass-content,.xobject.collapsed .xobject-content,.xproperty.collapsed .xproperty-content{display:none}
+.collapsable dt .collapser{background-image:url(/xwiki/resources/icons/silk/bullet_toggle_minus.png);background-position:-4px center;background-repeat:no-repeat;cursor:default;display:inline-block;height:10px;vertical-align:middle;width:10px}
+#xwikiobjects .collapsable dd{padding-left:10px}
+#xwikiclassproperties .collapsable dt{margin-left:-10px}
+.disabled{opacity:.5}
+.disabled *{font-style:italic}
+.disabled .xproperty-title h2,#body #xwikiclassproperties .disabled dt label,#body #xwikiobjects dt.disabled label{color:#636B75}
+.syncproperties{background:transparent url(/xwiki/resources/icons/silk/cross.png) left center no-repeat;display:inline-block;font-weight:900;margin-left:-22px;padding:2px 0 2px 22px}
+.disabletool label{font-weight:900}
+.xproperty-title .tools{float:right;margin-top:-18px}
+.xproperty-title .tools .tool{background:transparent none center no-repeat;float:left;height:16px;text-indent:-9999px;width:16px}
+.xproperty-title .tools .delete{background-image:url(/xwiki/resources/icons/silk/cross.png)}
+.xproperty-title .tools .move{background-image:url(/xwiki/resources/icons/datamodel/move.png);cursor:move}
+.dragged .xproperty-title{border:1px solid #E8E8E8}
+.stringclass h2{background-image:url(/xwiki/resources/icons/datamodel/string.png)}
+.dateclass h2{background-image:url(/xwiki/resources/icons/datamodel/calendar.png)}
+.textareaclass h2{background-image:url(/xwiki/resources/icons/datamodel/textarea.png)}
+.numberclass h2{background-image:url(/xwiki/resources/icons/datamodel/number.png)}
+.booleanclass h2{background-image:url(/xwiki/resources/icons/datamodel/boolean.png)}
+.staticlistclass h2{background-image:url(/xwiki/resources/icons/datamodel/staticlist.png)}
+.groupsclass h2{background-image:url(/xwiki/resources/icons/datamodel/groups.png)}
+.usersclass h2{background-image:url(/xwiki/resources/icons/datamodel/users.png)}
+.levelsclass h2{background-image:url(/xwiki/resources/icons/datamodel/rights.png)}
+.dblistclass h2{background-image:url(/xwiki/resources/icons/datamodel/database.png)}
+.dbtreelistclass h2{background-image:url(/xwiki/resources/icons/datamodel/tree.png)}
+.passwordclass h2{background-image:url(/xwiki/resources/icons/datamodel/password.png)}
+#add_xproperty{background:transparent url(/xwiki/resources/icons/silk/bullet_add.png) left center no-repeat;margin-left:16px;padding-left:14px}
+#xwikiclassproperties #add_xproperty input,#xwikiclassproperties #add_xproperty select,#xwikiobjects #add_xobject input,#xwikiobjects #add_xobject select{width:auto!important}
+#add_xobject{margin:1em 0 0}
+#add_xobject .add_xobject-title{background-position:left .5em;border-top:none;margin-top:8px;padding-top:8px}
+.xclass-content .add_xobject-title{display:block}
+.add_xobject-title a{color:#0089DC;display:block;padding:2px 0;text-decoration:none}
+.add_xobject-title a:hover{background-color:#FFC;text-decoration:underline}
+#switch-xclass{margin:4px 0 -16px;text-align:right}
+.xproperty-title h2,.xobject-title h3{font-weight:400!important;line-height:inherit!important}
+#xwikiobjects .label{background-color:inherit!important}
+#body .collapsed .xobject-title h3,#body .collapsed .xclass-title,#body .collapsed .xproperty-title,.collapsable dt .collapsed{background-image:url(/xwiki/resources/icons/silk/bullet_toggle_plus.png)}

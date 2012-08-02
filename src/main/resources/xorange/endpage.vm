@@ -15,8 +15,9 @@
 
 <script>
 
-$j(document).ready(function() {
-  resizeControl();
+document.observe("dom:loaded", function() {
+  // initially hide all containers for tab content
+ resizeControl();
 });
 
 // make sure things are ok even when we adjust window && recheck positions of section when resized-- need to optimize somehow.

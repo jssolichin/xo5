@@ -1,33 +1,53 @@
+## -------------------------------------------------------------------------------------------------------------------
+## In non-Servlet mode (in Portlet mode for example) we don't display the <HTML>, <HEAD> and <BODY>
+## elements.
+## -------------------------------------------------------------------------------------------------------------------
 #template("xwikivars.vm")
-<!DOCTYPE html>
-<html lang="$xcontext.language" class="no-js">
+#if($isInServletMode)
+<?xml version="1.0" encoding="$xwiki.encoding" ?>
+## TODO this should be more specific
+#if("$!request.noDoctype" != "true")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+#end
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$xcontext.language" xml:lang="$xcontext.language">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=$xwiki.encoding" />
 
+    ## ---------------------------------------------------------------------------------------------------------------
+    ## Ensure that the Content-Type meta directive is the first one in the header.
+    ## See http://www.w3.org/International/tutorials/tutorial-char-enc/
+    ## ---------------------------------------------------------------------------------------------------------------
+    <meta http-equiv="Content-Type" content="text/html; charset=$xwiki.encoding" />
+    ## ---------------------------------------------------------------------------------------------------------------
+    ## Compute the title.
+    ## ---------------------------------------------------------------------------------------------------------------
     #if(!$title)
       #set($title = $!xwiki.getSpacePreference('title'))
       #if($title != '')
         #set($title = "$escapetool.xml($xwiki.parseContent($title))")
       #else
-        #set($title = "$escapetool.xml($!tdoc.displayTitle)")
+        #set($title = "XWiki - $escapetool.xml($!doc.space) - $escapetool.xml($!tdoc.displayTitle)")
       #end
     #else
       #set($title = $escapetool.xml($title))
     #end
     <title>$title</title>
-
-    ## Enable bootstrap responsive design
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width">
-
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <meta http-equiv="imagetoolbar" content="no"/>
+    ## ---------------------------------------------------------------------------------------------------------------
+    ## Define the default scripting language that is used for intrinsic events (e.g. onmouseover attributes).
+    ## ---------------------------------------------------------------------------------------------------------------
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
     ## ---------------------------------------------------------------------------------------------------------------
     ## Disable the toolbar that comes up when you mouse over an image in MSIE
+    ## TODO: Shouldn't this be moved to the Admin Presentation preferences instead (user-defined META), since
+    ## it's possible to imagine that the user might want it?  
     ## ---------------------------------------------------------------------------------------------------------------
-
+    <meta http-equiv="imagetoolbar" content="no"/>
+    ## ---------------------------------------------------------------------------------------------------------------
+    ## Universal edit button. See http://universaleditbutton.org
+    ## ---------------------------------------------------------------------------------------------------------------
+    #if($xcontext.action=="view")
+      <link rel="alternate" type="application/x-wiki" title="Edit" href="$doc.getURL("edit")" />
+    #end
     ## ---------------------------------------------------------------------------------------------------------------
     ## Make sure search engine spiders give the plain page instead of ?viewer=comments, ?viewer=code etc.
     ## ---------------------------------------------------------------------------------------------------------------    
@@ -44,6 +64,7 @@
     <meta name="page" content="$escapetool.xml($doc.name)"/>
     <meta name="version" content="$doc.version"/>
     <meta name="restURL" content="${request.contextPath}/rest/wikis/${xcontext.database}/spaces/$escapetool.url(${doc.space})/pages/$escapetool.url(${doc.name})"/>
+    <meta name="form_token" content="$!{services.csrf.token}"/>
     ## ---------------------------------------------------------------------------------------------------------------
     ## Localize GWT applications.
     ## ---------------------------------------------------------------------------------------------------------------
@@ -57,169 +78,46 @@
     ## ---------------------------------------------------------------------------------------------------------------
     <!-- com.xpn.xwiki.plugin.skinx.LinkExtensionPlugin -->
 
+    #template("analytics.vm")
+    #template("javascript.vm")
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" />
-<link href="$xwiki.getSkinFile('reset.css', true)" rel="stylesheet">
+    <link href="$xwiki.getSkinFile('reset.css', true)" rel="stylesheet">
     <link href="$xwiki.getSkinFile('xwiki.css', true)" rel="stylesheet">
 
     ## Hook for inserting CSS skin extensions
     <!-- com.xpn.xwiki.plugin.skinx.CssSkinExtensionPlugin -->
     <!-- com.xpn.xwiki.plugin.skinx.CssSkinFileExtensionPlugin -->
 
-
     <script type="text/javascript" src="$xwiki.getSkinFile("js/jquery-1.7.2.min.js")"></script>
     <script type="text/javascript" src="$xwiki.getSkinFile("js/jquery-ui-1.8.21.custom.min.js")"></script>
     <script type="text/javascript" src="$xwiki.getSkinFile("js/modernizr.js")"></script>
     <script type="text/javascript" src="$xwiki.getSkinFile("js/respond.min.js")"></script>
 
-$xwiki.jsfx.use('js/scriptaculous/effects.js', true)
-$xwiki.jsfx.use('js/xwiki/widgets/modalPopup.js', true)
-$xwiki.ssfx.use('js/xwiki/widgets/modalPopup.css', true)
-$xwiki.jsfx.use('uicomponents/widgets/confirmationBox.js', true)
-$xwiki.ssfx.use('uicomponents/widgets/confirmationBox.css', true)
-$xwiki.jsfx.use('uicomponents/widgets/confirmedAjaxRequest.js', true)
-$xwiki.jsfx.use('uicomponents/widgets/notification.js', true)
-$xwiki.ssfx.use('uicomponents/widgets/notification.css', true)
-$xwiki.jsfx.use('uicomponents/widgets/list/xlist.js')
-
-    <script type="text/javascript">
+     <script type="text/javascript">
     var $j = jQuery.noConflict();
     </script>
-    <script type="text/javascript" src="$xwiki.getSkinFile("js/prototype/prototype.js")"></script>
-    <script type="text/javascript" src="$xwiki.getSkinFile("js/xwiki/xwiki.js", true)"></script>
-
-    <script type="text/javascript">
-// <![CDATA[
-document.observe("dom:loaded", function(event){
-  // Remove livetable styles
-  $$('.xwiki-livetable-display-header').invoke("removeClassName", "xwiki-livetable-display-header");
-  $$('.xwiki-livetable-display-body').invoke("removeClassName", "xwiki-livetable-display-body");
-  $$('.xwiki-livetable-display').invoke("addClassName", "table table-striped table-condensed");
-});
-
-XWiki.webapppath = "${xwiki.webAppPath}";
-XWiki.servletpath = "${xwiki.servletPath}";
-XWiki.contextPath = "${request.contextPath}";
-XWiki.mainWiki = "$!{escapetool.javascript(${xcontext.mainWikiName})}";
-XWiki.currentWiki = "$!{escapetool.javascript(${xcontext.database})}";
-XWiki.currentSpace = "$!{escapetool.javascript($doc.space)}";
-XWiki.currentPage = "$!{escapetool.javascript($doc.name)}";
-XWiki.editor = "$!{escapetool.javascript($editor)}";
-XWiki.viewer = "$!{escapetool.javascript($viewer)}";
-XWiki.contextaction = "${xcontext.getAction()}";
-XWiki.docisnew = $!doc.isNew();
-XWiki.docsyntax = "$!doc.getSyntax().toIdString()";
-XWiki.blacklistedSpaces = [ #foreach($space in $blacklistedSpaces)#if($velocityCount > 1),#end"$space"#end ];
-XWiki.hasEdit = $hasEdit;
-XWiki.hasProgramming = $hasProgramming;
-XWiki.hasBackupPackImportRights =#if ($xwiki.package) $xwiki.package.hasBackupPackImportRights()#else false#end;
-window.docviewurl = "${doc.getURL('view')}";
-window.docediturl = "${doc.getURL('edit')}";
-window.docsaveurl = "${doc.getURL('save')}";
-window.docgeturl = "${doc.getURL('get')}";
-// ]]>
-    </script>
-
-#if(($xcontext.action=="inline")||($xcontext.action=="edit") || ($xcontext.action=="admin"))
-$xwiki.get('jsfx').use('uicomponents/widgets/validation/livevalidation_prototype.js')
-$xwiki.get('ssfx').use('uicomponents/widgets/validation/livevalidation.css')
-<script type="text/javascript">
-// <![CDATA[
-var cancelEditNextOnunload;
-var cancelCancelEditFlag = true;
-var lockEditFlag = false;
-
-function cancelEditResponse() {
-}
-
-function cancelEdit() {
-  if (cancelCancelEditFlag) {
-    var surl = "$doc.getExternalURL('cancel', 'ajax=1')";
-    var myAjax = new Ajax.Request(surl, {
-      method: 'get',
-      parameters: "",
-      asynchronous: true,
-      discardResponse: true
-    });
-    cancelCancelEditFlag = false;
-  }
-  if (cancelEditNextOnunload) {
-    cancelEditNextOnunload();
-  }
-}
-
-function lockEdit() {
-  if (!lockEditFlag) {
-#if ($xcontext.action == 'inline')
-    var surl = "$doc.getExternalURL('lock', "action=inline&ajax=1&${docvariant.replace('&amp;', '&')}")";
-#else
-    var surl = "$doc.getExternalURL('lock', "ajax=1&${docvariant.replace('&amp;', '&')}")";
-#end
-    var myAjax = new Ajax.Request(surl, {
-      method: 'get',
-      parameters: "",
-      asynchronous: true
-    });
-    lockEditFlag = false;
-  }
-}
-
-function prepareCancelEdit() {
-  lockEdit();
-}
-function cancelCancelEdit() {
-  cancelCancelEditFlag = false;
-}
-Event.observe(window, "unload", cancelEdit);
-Event.observe(window, "pagehide", cancelEdit);
-Event.observe(document, "dom:loaded", prepareCancelEdit);
-// ]]>
-</script>
-#end
-
-    ##
-    ## Hooks for inserting JavaScript skin extensions
-    ##
-    ## - Skin file extension hook. Placed first since skin extensions might need to have xwiki or external libraries included first to be able to work properly
-    <!-- com.xpn.xwiki.plugin.skinx.JsSkinFileExtensionPlugin -->
-    ## - Skin extension hook
-    <!-- com.xpn.xwiki.plugin.skinx.JsSkinExtensionPlugin -->
-
-$xwiki.jsfx.use('uicomponents/suggest/suggest.js')
-
-#if($xwiki.exists('XWiki.SearchSuggestConfig'))
-  ## Hook to request the search suggest script if search suggest configuration is present.
-  ## We can't just have it as a always-use SSX yet since we compute a hash to be sure to refresh
-  ## the file when the configuration changes.
-  ## Ideally, this code should be located in a interface extension, in the search application.
-  #set($searchSuggestConfigDocument = $xwiki.getDocument('XWiki.SearchSuggestConfig'))
-  #set($searchSuggestConfigObject = $searchSuggestConfigDocument.getObject('XWiki.SearchSuggestConfig'))
-  #if($searchSuggestConfigObject.getProperty('activated').value == 1)
-   #set($searchSuggestConfigHash = '')
-   #foreach($source in $searchSuggestConfigDocument.getObjects('XWiki.SearchSuggestSourceClass'))
-     #if($source.getProperty('activated').value == 1)
-       #set($sourceId = "${source.get('name')}:${source.get('url')}:${source.get('highlight')}:${source.get('icon')}}")
-       #set($searchSuggestConfigHash = "${searchSuggestConfigHash}|${sourceId}")
-     #end
-   #end
-   $xwiki.jsfx.use('uicomponents/search/searchSuggest.js', {
-    'forceSkinAction' : true,  
-    'h' : $searchSuggestConfigHash.hashCode()  
-   })
-  #end
-#end
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="$xwiki.getSkinFile('apple-touch-icon.png')">
-    <link rel="apple-touch-icon" sizes="72x72" href="$xwiki.getSkinFile('apple-touch-icon-72x72.png')">
-    <link rel="apple-touch-icon" sizes="114x114" href="$xwiki.getSkinFile('apple-touch-icon-114x114.png')">
   </head>
+  #set($bodyTagName = 'body')
+#else ## Portlet Mode
+  #template("stylesheets.vm")
+  #template("javascript.vm")
+  #set($bodyTagName = 'div')
+#end
+## TODO: fix this from css
+#set($bodyAction = $xcontext.action)
+#if($xcontext.action == "admin" || $xcontext.action == "import" || $xcontext.action == "export")
+  #set($bodyAction = "view")
+#end
+## These elements will be closed in the htmlfooter.vm file
+<$bodyTagName id="body" class="wiki-${xcontext.database} space-${escapetool.xml($doc.space.replaceAll(' ', '_'))} ${bodyAction}body #if($showLeftPanels == "0")hideleft#end#if($showRightPanels == "0")hideright#end#if($hidecolumns && ($!hidecolumns == 1))hidelefthideright#end">
 
-  <body>
     #template("global.vm")
 
     <div id="sidebar-wrapper">
