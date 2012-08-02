@@ -78,8 +78,13 @@
     ## ---------------------------------------------------------------------------------------------------------------
     <!-- com.xpn.xwiki.plugin.skinx.LinkExtensionPlugin -->
 
+    ## Hook for inserting CSS skin extensions
+    <!-- com.xpn.xwiki.plugin.skinx.CssSkinExtensionPlugin -->
+    <!-- com.xpn.xwiki.plugin.skinx.CssSkinFileExtensionPlugin -->
+    
     #template("analytics.vm")
     #template("javascript.vm")
+    $xwiki.ssfx.use('js/xwiki/widgets/modalPopup.css', true)
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
@@ -91,10 +96,6 @@
     <link href="$xwiki.getSkinFile('reset.css', true)" rel="stylesheet">
     <link href="$xwiki.getSkinFile('xwiki.css', true)" rel="stylesheet">
 
-    ## Hook for inserting CSS skin extensions
-    <!-- com.xpn.xwiki.plugin.skinx.CssSkinExtensionPlugin -->
-    <!-- com.xpn.xwiki.plugin.skinx.CssSkinFileExtensionPlugin -->
-
     <script type="text/javascript" src="$xwiki.getSkinFile("js/jquery-1.7.2.min.js")"></script>
     <script type="text/javascript" src="$xwiki.getSkinFile("js/jquery-ui-1.8.21.custom.min.js")"></script>
     <script type="text/javascript" src="$xwiki.getSkinFile("js/modernizr.js")"></script>
@@ -104,7 +105,6 @@
     var $j = jQuery.noConflict();
     </script>
 
-    $xwiki.ssfx.use('js/xwiki/widgets/modalPopup.css', true)
     
   </head>
   #set($bodyTagName = 'body')
