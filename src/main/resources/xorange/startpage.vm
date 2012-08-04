@@ -137,7 +137,6 @@
       </div><!--#sidebar-->
     </div><!--#sidebar-wrapper-->
 
-
 <div id="main-area">
     #template("menuview.vm")
     <article id="xo-content">

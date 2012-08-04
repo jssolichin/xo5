@@ -20,11 +20,13 @@ time{font-style:italic}
 a:visited{color:#8f54c4}
 
 h2,#sidebar-control-links ul li a{font-size:2em;letter-spacing:-2px}
-.globalsearch:after,form dd:after,.xwikitabbar:after,.floatcontainer:after,.search:after,#historycontent-wrapper:after,.menu-drop ul:after,.each-comment:after,#nav-icons:after,#page-actions:after,.menu-drop:after,#xo-content:after,#gadget-container:after,#sidebar-control-links ul li:after
-{clear:both;content:".";display:block;height:0;visibility:hidden}
+#xo-content dl:after, .globalsearch:after, form dd:after,.xwikitabbar:after,.floatcontainer:after,.search:after,#historycontent-wrapper:after
+.each-comment:after,#nav-icons:after,#page-actions:after,.menu-drop:after,#xo-content:after,#gadget-container:after,#sidebar-control-links ul li:after
+{clear:left;content:".";display:block;height:0;visibility:hidden}
+.wikigeneratedheader:before, .buttons:before {clear:left;content:".";display:block;height:0;visibility:hidden}
 
 #hint{background:rgba(0,0,0,.1);font-weight:700;padding:3px;text-align:center}
-header{min-width:290px;position:fixed;right:0;top:0;width:20%;z-index:999999}
+header{min-width:290px;position:fixed;right:0;top:0;width:23%;z-index:999999}
 header h1{font-size:3em;font-weight:700;margin:14px 10px}
 nav#search{-moz-background-clip:padding;-webkit-background-clip:padding;background:#fff;background-clip:padding-box;border:10px solid rgba(0,0,0,0.1);margin-top:-10px;padding:5px}
 .no-rgba nav#search{border:10px solid #eee}
@@ -32,10 +34,12 @@ form .text-field{border:0;float:left;padding:2px;width:86%}
 input.submit{background:url(img/sprite-icons.png) no-repeat 0 0;border:none;cursor:pointer;display:block;float:left;line-height:16px;margin:3px;overflow:hidden;padding:0;text-indent:-999px;width:20px}
 #headerlanguages{float:right}
 
-#sidebar{bottom:0;min-width:290px;overflow-x:hidden;overflow-y:auto;position:fixed;right:0;top:130px;width:20%;z-index:999}
+#sidebar{float: right; margin-top: 130px; bottom: 0px; right: 0px;z-index:999; min-width:290px; width:23%;}
+.panel {width: 200px;}
+#sidebar .panel {width: 100%}
 .no-js #sidebar{min-width:0}
 #sidebar h3,.xwikipaneltitle{font-size:1.6em;letter-spacing:-1px}
-nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
+nav#sidebar-control {height: 20%; padding: 30px 0 0px 0; position: relative;}
 #sidebar-control-icons {margin: 0 0 10px 10px;}
 #sidebar-control-links {clip: rect(0px 300px 40px 0px); position: absolute; top: 60px; z-index: 999; }
 #sidebar-control-links h2 { padding: 5px; visibility: hidden;}
@@ -49,7 +53,7 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #sidebar-control-links:hover a {color: #eee; !important;}
 #sidebar-control-links:hover a:hover {color: #fff; !important;}
 
-#change{bottom:0;overflow-x:auto;overflow-y:hidden;padding:0 10px 100px;position:absolute;top:100px}
+#change{bottom:0;overflow-x:auto;overflow-y:hidden; padding:0 10px 0 10px; position:absolute; top: 230px; }
 #change:hover{overflow-y:auto}
 #change h3{margin:10px 0 5px}
 #change ul li a,.panels a{font-size:1.2em;letter-spacing:-1px;text-decoration:none}
@@ -91,11 +95,12 @@ nav#sidebar-control {height: 70px; padding: 30px 0 0px 0; position: relative;}
 #tmCreate:after{content:" + "}
 
 /* main content styling */
+#main-area {width: 77%}
 article#xo-content,div.suggestItems{background:#fff;border-top:20px solid #d25400;  -moz-box-shadow:30px 0 0 rgba(0,0,0,.1);-webkit-box-shadow:30px 0 0 rgba(0,0,0,.1); box-shadow:30px 0 0 rgba(0,0,0,.1);color:#555;font-size:.9em;padding:10px 10px 15px 30px}
 article h1,.xwikimessage legend{font-size:3.5em;margin-bottom:10px}
 .box, .warningmessage, .errormessage{background:#eee;color:#333;display:block;font-weight: 400; margin:10px -10px 10px -30px;padding:10px 10px 10px 30px}
 .box span,.xwikimessage span, .warningmessage span, .errormessage span {font-weight: 700}
-.warningmessage {background: #fffaa5;}
+.warningmessage {background: #ffffcb;}
 .errormessage{background:#fca4a4;}
 #gadget-left,#gadget-right{float:left;width:48.5655930376%}
 #gadget-left{margin-left:.7%}
@@ -150,17 +155,17 @@ tbody th,td{border-bottom:1px solid #e6e6e6}
 .xHint {margin: 0 0 0 3px; font-size: .8em; color: #777; display: inline; font-style: italic}
 #xo-content form dl {border-top: 2px solid #eee}
 #xo-content form dt,form dd,.sourceName,.suggestItem{border-top:1px solid #eee;}
-#xo-content form dt,.sourceName{clear:left;float:left;font-weight:700;padding:10px 0;text-align:right;width:140px}
+#xo-content form dt,.sourceName{clear:left;float:left;font-weight:700;padding:10px 0;text-align:right;width:140px; position: relative}
 #xo-content form dt:after{content:":"}
 #xo-content form dt .xHint{display: none;}
-#xo-content form dt:hover .xHint {display: block; font-weight: 400; font-size: .8em;}
-#xo-content form dt:hover label {display: none;}
-#xo-content form dt:hover:after{content:""}
+#xo-content form dt:hover .xHint {display: block; font-weight: 400; font-size: .8em; position: absolute; text-align: left; padding: 3px; background: #ffffcb; left: 140px; top:10px; width: 350%; z-index: 9999999}
 #xo-content form dd{margin:0 0 0 150px;padding:10px 0}
 #xo-content fieldset legend{color:#005AA9;font-weight:700}
 .fullScreenEditLink{background:#fff;padding:5px}
 #xo-content form textarea{margin-top:5px;width:80%}
 .buttons{background:#eee;margin:20px 0;padding:20px;}
+.wikigeneratedheader {border-bottom: 3px solid #eee; margin: 10px 0 0 0; }
+#xwikicontent .wikigeneratedheader {border: 0; margin: 10px 0 ; }
 
 .xdialog-box{ border-radius: 0px; box-shadow: none}
 .xdialog-title {background: none;}
@@ -224,8 +229,9 @@ div.resultContainer div.sourceName{background-position:3px 3px;background-repeat
 #historycontent-wrapper-helper{background:rgba(0,0,0,.5);display:none;height:100%;left:0;position:fixed;top:0;width:100%;z-index:9999999}
 #historycontent-wrapper{background:#fff;margin-top:12%;padding:1em;position:relative}
 #historycontent-wrapper .buttonwrapper{float:right;margin:-.8em 0 0}
+#lb {margin-top: 12%}
 
-.vertical-menu {border: 1px solid $theme.borderColor;border-top-width: 0;float: left;font-size: .857em;/* 14px -> 12px */margin: 0 2em 2em 0;width: 20%;}
+.vertical-menu {border: 1px solid $theme.borderColor;border-top-width: 0;float: left;font-size: .857em;/* 14px -> 12px */margin: 0 2.5em 2em 0;width: 20%;}
 #admin-page-content {width: 70%; float: left; margin: 0px  !important;}
 
 
@@ -242,7 +248,7 @@ form,.xwiki-livetable-container table,.xwiki-livetable-display-header-filter inp
 #page-meta dl dd,.sourceName{margin-left:10px}
 #page-meta dl dt,.menu-drop strong,article p strong{font-weight:700}
 .version,article sup{vertical-align:super}
-#main-area,#xwikiuploadfile{width:80%}
+#xwikiuploadfile{width:80%}
 .menu-drop ul,.table-menu ul{list-style-type:none;margin:0;padding:0}
 article .itemTitle,#hierarchy p{margin-top:0}
 .xwiki-livetable-display-container,.table-wrapper{position:relative}

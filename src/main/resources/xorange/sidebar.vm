@@ -66,7 +66,7 @@
       <div id="sidebar-control-links">
         <h2 style="visibility: hidden">x</h2>
         <ul>
-          <li id="navigation-link" class="active-control"><a href="#navigation">Navigation</a></li>
+          <li id="navigation-link" class="active-control"><a href="#navigation">$msg.get('rendering.macroCategory.Navigation')</a></li>
 
           #if($xcontext.action == 'edit' && $editor != 'inline')
             <li id="information-link"><a href="#information">$msg.get('docextra.information')</a></li>
@@ -97,18 +97,13 @@
   </nav>
 
 
-
 <div id="change">
 
   <section id="navigation">
         <nav class="global-nav">
-          #if($showLeftPanels == "1" || $request.getParameter("forceLeftPanels"))
-          <div id="leftPanels" class="panels left"#if($showLeftPanels != "1" && $request.getParameter("forceLeftPanels")) style="display: none;"#end>
-          #foreach($panel in $leftPanels)
-          #displaypanel($panel.trim())
-          #end
-          </div>
-        #end
+          #template('leftpanels.vm')
+          <div class="clear"></div>
+          #template('rightpanels.vm')
   </section>
 
 #if($xcontext.action == 'edit' && $editor != 'inline')
