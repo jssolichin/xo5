@@ -18,6 +18,8 @@ h6{font-size:1.5em}
 time{font-style:italic}
 .clear{clear:both}
 a:visited{color:#8f54c4}
+strong {font-weight: 700}
+em {font-style: italic}
 
 h2,#sidebar-control-links ul li a{font-size:2em;letter-spacing:-2px}
 #xo-content dl:after, .globalsearch:after, form dd:after,.xwikitabbar:after,.floatcontainer:after,.search:after,#historycontent-wrapper:after
@@ -98,8 +100,9 @@ nav#sidebar-control {height: 20%; padding: 30px 0 0px 0; position: relative;}
 #main-area {width: 77%}
 article#xo-content,div.suggestItems{background:#fff;border-top:20px solid #d25400;  -moz-box-shadow:30px 0 0 rgba(0,0,0,.1);-webkit-box-shadow:30px 0 0 rgba(0,0,0,.1); box-shadow:30px 0 0 rgba(0,0,0,.1);color:#555;font-size:.9em;padding:10px 10px 15px 30px}
 article h1,.xwikimessage legend{font-size:3.5em;margin-bottom:10px}
-.box, .warningmessage, .errormessage{background:#eee;color:#333;display:block;font-weight: 400; margin:10px -10px 10px -30px;padding:10px 10px 10px 30px}
+.box, .errormessage, .warningmessage, .infomessage, .successmessage, .plainmessage{background:#eee no-repeat;color:#333;display:block;font-weight: 400; margin:10px -10px 10px -30px;padding:10px 10px 10px 30px}
 .box span,.xwikimessage span, .warningmessage span, .errormessage span {font-weight: 700}
+.plainmessage {padding-left: 50px; background-position: 30px center !important;}
 .warningmessage {background: #ffffcb;}
 .errormessage{background:#fca4a4;}
 #gadget-left,#gadget-right{float:left;width:48.5655930376%}
@@ -234,6 +237,24 @@ div.resultContainer div.sourceName{background-position:3px 3px;background-repeat
 .vertical-menu {border: 1px solid $theme.borderColor;border-top-width: 0;float: left;font-size: .857em;/* 14px -> 12px */margin: 0 2.5em 2em 0;width: 20%;}
 #admin-page-content {width: 70%; float: left; margin: 0px  !important;}
 
+.blogDay {border-top: 3px solid #eee; padding-bottom: 10px}
+.blogdate {margin: -13px 0 0 -56px; border: 5px solid #eee; background: #eee; font-size: 1em;}
+.blogdate .month, .blogdate .year {font-size: 1em; color: #aaa !important;}
+.blogdate .day {background: none}
+.hentry {margin-left: 10px;}
+.entry-title {font-size: 2.5em; border-bottom: 1px solid #eee; padding: 0 0 .35em 0 !important; margin: 0!important;}
+.entry-summary p, .entry-content p {font-size: 1.2em}
+.entry-summary ul, .entry-content p {margin-top:10px; margin-bottom: 10px;}
+.entry-summary li ul, .entry-content p, .entry-summary li ol {margin-top:0px;}
+.entry-footer {text-align: right; margin-top: .25em !important; padding: .5em 0; border-bottom: 2px solid #eee; }
+.entry-footer address {display: inline}
+#xwikicontent form {border: 1px solid #eee; border-left: 0px; border-right: 0px; margin: .35em 0 ; padding: .35em 0 .3em;}
+.gwt-MenuBar-vertical, .gwt-MenuItemSeparator {border: none !important}
+.gwt-MenuBarPopup table {background: #eee}
+.gwt-MenuBar td {border: 0px !important;}
+.menuPopupTopCenter, .menuPopupBottomCenter {height: 2px;}
+.blog-entry-toolbox {padding:3px; background: #eee; margin: -10px 0 10px 10px;}
+.hentry + .hentry {padding-top: .7em !important; border-top: 2px solid #eee !important;}
 
 /* compression of similar styles */
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
