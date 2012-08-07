@@ -106,7 +106,7 @@
           #template('rightpanels.vm')
   </section>
 
-#if($xcontext.action == 'edit' && $editor != 'inline')
+  #if($xcontext.action == 'edit' && $editor != 'inline')
   <section id="information-wrapper">
     <h2>$msg.get('docextra.information')</h2>
     <div id="page-suplemental">
@@ -115,52 +115,54 @@
       </div>
     </div>
   </section>
-#end
-
-#if($displayContentMenu)
-  #if($hasEdit && !$isReadOnly)
-      #template("editmenu.vm")
   #end
 
-  ##
-  ## Export menu
-  ##
-#if($xcontext.action != 'edit')
-        <section id="export-wrapper">
-          <h2>Export</h2>
-          <div id="export">
-  ## Actions menu
-  #if(!$doc.isNew())
-            <ul>
-  #submenuitem($doc.getURL('view', "xpage=print&amp;$!docvariant") $msg.get('core.menu.preview') 'tmPrintPreview', '')
-  #submenuitem($doc.getURL('view', "viewer=code") $msg.get('core.menu.view.source') 'tmViewSource', '')
-            </ul>
-  #end
-  #if(!$doc.isNew())
-            <h3 class="sub-menu">Save As</h3>
-            <ul>
-  ## Save As
-    #submenuitem($doc.getURL('view', "xpage=pdfoptions&amp;$!docvariant") $msg.get('core.menu.export.pdf') 'tmExportPdf', '')
-  #if("$!{oomanager.serverState}" == "Connected")
-    #submenuitem($doc.getURL('export', "format=odt&amp;$!docvariant") $msg.get('core.menu.export.odt') 'tmExportOdt', '')
-  #end
-    #submenuitem($doc.getURL('export', "format=rtf&amp;$!docvariant") $msg.get('core.menu.export.rtf') 'tmExportRtf', '')
-    #submenuitem($doc.getURL('export', "format=html&amp;$!docvariant") $msg.get('core.menu.export.html') 'tmExportHtml', '')
-  #if($hasAdmin)
-    #submenuitem($doc.getURL('export', "format=xar&amp;name=$escapetool.url($doc.fullName)&amp;pages=$escapetool.url($doc.fullName)&amp;$!docvariant") $msg.get('core.menu.export.xar') 'tmExportXar', '')
-  #end
-            </ul>
-          </div>
-        </section>
+  #if($displayContentMenu)
+    ##
+    ## Edit menu
+    ##
+    #if($hasEdit && !$isReadOnly)
+        #template("editmenu.vm")
+    #end
 
-  #end
-#end
+    ##
+    ## Export menu
+    ##
+    #if($xcontext.action != 'edit' && !$doc.isNew())
+          <section id="export-wrapper">
+            <h2>Export</h2>
+            <div id="export">
+    ## Actions menu
+      
+                <ul>
+      #submenuitem($doc.getURL('view', "xpage=print&amp;$!docvariant") $msg.get('core.menu.preview') 'tmPrintPreview', '')
+      #submenuitem($doc.getURL('view', "viewer=code") $msg.get('core.menu.view.source') 'tmViewSource', '')
+                </ul>
+      
+      
+                  <h3 class="sub-menu">Save As</h3>
+                  <ul>
+        ## Save As
+          #submenuitem($doc.getURL('view', "xpage=pdfoptions&amp;$!docvariant") $msg.get('core.menu.export.pdf') 'tmExportPdf', '')
+        #if("$!{oomanager.serverState}" == "Connected")
+          #submenuitem($doc.getURL('export', "format=odt&amp;$!docvariant") $msg.get('core.menu.export.odt') 'tmExportOdt', '')
+        #end
+          #submenuitem($doc.getURL('export', "format=rtf&amp;$!docvariant") $msg.get('core.menu.export.rtf') 'tmExportRtf', '')
+          #submenuitem($doc.getURL('export', "format=html&amp;$!docvariant") $msg.get('core.menu.export.html') 'tmExportHtml', '')
+        #if($hasAdmin)
+          #submenuitem($doc.getURL('export', "format=xar&amp;name=$escapetool.url($doc.fullName)&amp;pages=$escapetool.url($doc.fullName)&amp;$!docvariant") $msg.get('core.menu.export.xar') 'tmExportXar', '')
+        #end
+                  </ul>
+      
+            </div>
+          </section>
+    #end
 
-#end <!--displayContentMenu-->
+  #end <!--displayContentMenu-->
 
 
 
- #if( $displayDocExtra)
+  #if( $displayDocExtra)
   <aside>
     #template("docextra.vm")
   </aside>
