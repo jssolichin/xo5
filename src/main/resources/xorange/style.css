@@ -1,0 +1,55 @@
+#template('colorThemeInit.vm')
+article, aside, details, figcaption, figure, footer, header,
+  hgroup, menu, nav, section { display: block; } /*html 5*/
+
+/* sidebar control */
+#sidebar{float: right; margin-top: 130px; bottom: 0px; right: 0px;z-index:999; min-width:290px; width:23%;}
+.panel {width: 200px; margin-bottom:10px}
+#sidebar .panel {width: 100%}
+.no-js #sidebar{min-width:0}
+#sidebar h3,.xwikipaneltitle{font-size:1.6em;letter-spacing:-1px; color: $theme.panelHeaderTextColor; }
+nav#sidebar-control {height: 20%; padding: 30px 0 0px 0; position: relative;}
+#sidebar-control-icons {margin: 0 0 10px 10px;}
+.sprite{background:url(img/sprite-icons.png) no-repeat;float:left;height:20px;margin-right:20px;position:relative;width:20px}
+.sprite span{color:$theme.linkColor;font-weight:700;position:absolute;right:-10px;top:-5px}
+.sprite-search-png{background-position:0 0}
+.sprite-navigation-png{background-position:0 -31px}
+.sprite-comments-png{background-position:-62px 0}
+.sprite-attachments-png{background-position:-31px -62px}
+.sprite-history-png{background-position:-62px -31px}
+.sprite-information-png{background-position:-31px -31px}
+.sprite-export-png{background-position:-31px 0}
+.sprite-edit-png{background-position:0 -62px}
+#sidebar-control-links {clip: rect(0px 300px 40px 0px); position: absolute; top: 60px; z-index: 999; }
+#sidebar-control-links h2 { padding: 5px; visibility: hidden;}
+#sidebar-control-links:hover {clip: auto;}
+#sidebar-control-links ul {list-style-type: none; margin: 0px; padding: 0px; width: 100%; }
+#sidebar-control-links ul li {background: $theme.menuBackgroundColor; padding: 5px 10px; width: 100%;}
+#sidebar-control-links ul li a {float: left; text-decoration: none; }
+#sidebar-control-links ul li span {color: $theme.textSecondaryColor; margin-left: 3px;}
+.active-control {background: none !important; position: absolute; top: 0px; }
+.active-control a {color: $theme.titleColor;}
+#sidebar-control-links:hover .active-control {background:  $theme.textPrimaryColor !important; box-shadow: inset 30px 0px 0px rgba(0, 0, 0,.1); }
+#sidebar-control-links:hover a {color: $theme.menuLinkColor; !important;}
+#sidebar-control-links:hover a:hover {color: $theme.fieldGradientColor; !important;}
+
+/* sidebar content */
+#change{bottom:0;overflow-x:auto;overflow-y:hidden; padding:0 10px 0 10px; position:absolute; top: 230px; }
+#change:hover{overflow-y:auto}
+#change h3{margin:10px 0 5px}
+#change ul li a,.panels a{font-size:1.2em;letter-spacing:-1px;text-decoration:none}
+#change section{margin-bottom:100px}
+#change section h2 span{color:$theme.textSecondaryColor;font-weight:700}
+#page-suplemental{background:$theme.pageContentBackgroundColor;box-shadow:inset 30px 0 0 rgba(0,0,0,.1);margin:10px -10px;padding:10px}
+#page-meta{background:url(img/bg.png);font-size:.8em;margin:0 -10px;padding:10px}
+
+.each-comment{background:rgba(255,255,255,.4);font-size:.9em;margin:0 -10px 10px;padding:10px}
+.each-comment:hover, #page-suplemental:hover{background: $theme.highlightColor;}
+.no-rgba .each-comment{background:$theme.panelBackgroundColor}
+.each-comment-user img{float:left;margin:0 10px 0 0}
+.each-comment-user h4{font-size:1.4em;letter-spacing:-1px;margin:10px 0 0}
+.each-comment legend{font-weight:700;margin-bottom:10px}
+
+/* main content styling */
+#main-area {width: 77%}
+article#xo-content,div.suggestItems{background:$theme.pageContentBackgroundColor;border-top:20px solid $theme.linkColor !important; -moz-box-shadow:30px 0 0 rgba(0,0,0,.1);-webkit-box-shadow:30px 0 0 rgba(0,0,0,.1); box-shadow:30px 0 0 rgba(0,0,0,.1)  !important;color:$theme.textColor;font-size:.9em;padding:10px 10px 15px 30px;}

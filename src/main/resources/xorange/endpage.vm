@@ -34,7 +34,7 @@ function resizeControl () {
     $j('#sidebar').css({'top': $j('header').height()-10, 'position':'fixed', 'margin-top': 0});
     $j('#change').css({'top': 100});
 
-    if($j(window).width() > 600 ) {
+
       // .active-control is used to put the current section as the title header (for the dropdown menu)
       // apply .active-control on click since scroll detection might not be triggered
       $j("#nav-control ul li").click(function(){
@@ -58,7 +58,7 @@ function resizeControl () {
           $j("#sidebar-control-links > ul li:last-child").addClass('active-control')
         }
       });
-    }
+
   }
   else {
     $j("#main-area").width('95%');

@@ -1,6 +1,5 @@
 <header>
 
-  <span class="mobile" id="hint">Swipe horizontally to access menu</span>
   <h1>
     <a href="$!xwiki.getURL('Main.WebHome')" title="Home" rel="home">
       #set($logoname = $themeObj.getProperty('logoImage').value)
