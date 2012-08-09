@@ -1,6 +1,10 @@
 
 #template('colorThemeInit.vm')
 
+
+
+
+
 ::-webkit-scrollbar {width: 10px; height: 10px;}
 ::-webkit-scrollbar-track {background: #ccc;}
 ::-webkit-scrollbar-thumb {background: #aaa;}
@@ -20,8 +24,15 @@ time{font-style:italic}
 .clear{clear:both}
 a:link, a:active, a:visited { color: $theme.linkColor;}
 
+
+
+
+
 /* clearfixes */
-#xo-content dl:after, .globalsearch:after, form dd:after,.search:after {clear:left;content:".";display:block;height:0;visibility:hidden}
+#xo-content dl:after, .globalsearch:after, form dd:after,.search:after
+
+{clear:left;content:".";display:block;height:0;visibility:hidden}
+
 
 /* header + search */
 header{min-width:290px;position:fixed;right:0;top:0;width:23%;z-index:999999}
@@ -32,19 +43,105 @@ form .text-field{border:0;float:left;padding:2px;width:86%}
 input.submit{background:url(img/sprite-icons.png) no-repeat 0 0;border:none;cursor:pointer;display:block;float:left;line-height:16px;margin:3px;overflow:hidden;padding:0;text-indent:-999px;width:20px}
 #headerlanguages{float:right}
 
-/* breadcrumb/login . provides drop down */
-#viewer{padding:0;width:100%}
-#viewer ul li{float:right;font-size:.8em}
-#viewer ul li ul li{float:left;font-size:1.2em}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* main content styling */
+
 article#xo-content,div.suggestItems{border-top:20px solid $theme.linkColor !important; -moz-box-shadow:30px 0 0 rgba(0,0,0,.1);-webkit-box-shadow:30px 0 0 rgba(0,0,0,.1); box-shadow:30px 0 0 rgba(0,0,0,.1)  !important;color:$theme.textColor;font-size:.9em;padding:10px 10px 15px 30px;}
 article h1,.xwikimessage legend{font-size:3.5em;margin-bottom:10px}
+/* warnings and messages */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .gadget{border:3px solid $theme.borderColor;border-left:0;border-right:0;margin:0 0 10px;padding:10px 0}
 .gadget-title{font-size:2.2em;letter-spacing:-3px;margin-top:0!important}
 article p{color:$theme.textColor;font-size:.9em;line-height:1.3em;margin-top:10px}
 article ul,article ol{line-height:1.3em;list-style-position:inside;list-style-type:disc;margin:5px 1.5em}
 article ol{list-style-type:decimal}
+
+
+
+
 #xwikicontent a:active{color:$theme.textPrimaryColor}
 #xwikicontent h1,article h2,article h3,article h4,article h5,article h6,article .itemTitle{color:$theme.titleColor;font-size:2.2em;letter-spacing:-3px;margin-top:10px}
 article h2{color:$theme.titleColor;font-size:1.9em;letter-spacing:-2px}
@@ -52,6 +149,10 @@ article h3{color:$theme.titleColor;font-size:1.7em;letter-spacing:-2px}
 article h4{color:$theme.linkColor;font-size:1.6em;letter-spacing:-2px}
 article h5{color:$theme.linkColor;font-size:1.2em;letter-spacing:-1px}
 article h6{color:$theme.panelTextColor;font-size:1em;letter-spacing:-1px}
+
+
+
+
 .xwikimessage{margin:0;padding:0}
 .xwikimessage legend{padding-bottom:10px}
 .xwikimessage p{margin:0 -10px}
@@ -67,6 +168,21 @@ th:first-child,td:first-child{text-align:left}
 tbody th,td{border-bottom:1px solid $theme.borderColor}
 #xo-content dt {font-weight: 700; margin: 10px 0 0 0 ; text-transform: uppercase; font-size: .8em; color: $theme.textSecondaryColor;}
 #xo-content dd {font-weight: 400; margin: 3px 0 0 10px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* modal box */
 .xdialog-box{ border-radius: 0px; box-shadow: none}
@@ -114,7 +230,31 @@ div.resultContainer div.sourceName{background-position:3px 3px;background-repeat
 .wikigeneratedheader {border-bottom: 3px solid $theme.borderColor; margin: 10px 0 0 0; }
 #xwikicontent .wikigeneratedheader {border: 0; margin: 10px 0 ; }
 
-/* profile */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #vertical-tabs ul li.active {border: none; border-top: 1px solid $theme.linkColor; border-bottom: solid 3px $theme.linkColor;}
 #vertical-tabs ul li:hover {background:$theme.backgroundSecondaryColor; }
 
@@ -140,7 +280,9 @@ div.resultContainer div.sourceName{background-position:3px 3px;background-repeat
 
 
 /* compression of similar styles */
+
 ::-webkit-scrollbar-track,.xwikitabbar li:hover{background:$theme.panelHeaderGradientColor}
+
 a,#change a,#change a:visited,#xwikicontent p a,article .resultItem:hover a:visited{color:$theme.linkColor;}
 #change a:hover{color:$theme.panelTextColor}
 #xo-content a:hover,#xwikicontent p a:hover{color: $theme.panelHeaderTextColor}
@@ -149,34 +291,124 @@ form,.xwiki-livetable-container table,.xwiki-livetable-display-header-filter inp
 #sidebar-control-links:hover a:hover,.menu-drop ul li:hover a,#tmCreate:hover a,#tmCreate:hover{color:$theme.buttonPrimaryTextColor}
 #page-meta dl dd,.sourceName{margin-left:10px}
 #page-meta dl dt,.menu-drop strong,article p strong{font-weight:700}
+
+
+
 article .itemTitle,#hierarchy p{margin-top:0}
+
 #sidebar .page-form dt,dd{border:0}
 li.showAllResuts a,#hierarchy a:hover{color:$theme.textColor}
 .showAllResuts .suggestItem,#historycontent-wrapper .buttons{padding:0}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* layout high density tablet/phone equivalent to the next media-query*/
 @media all and (max-width: 1024px) and (min-width: 600px) {
+
+
+
+
+
   .touch header:after{clear:both;content:".";display:block;height:0;visibility:hidden}
   .touch header{position:static;text-align:left;width:40%}
   .touch header h1{display:inline;float:left;margin:10px auto 4px 10px}
   .touch nav#search{float:right;margin:10px;width:40%}
+  
+
+
+
+
+
+
+
+
   .touch section{margin-bottom:20px}
+  
+
+
+
+
+
+
   .touch #viewer{margin:0 10px;width:auto}
   .touch #tmCreate{background:rgba(256,256,256,.5);margin:0}
   .touch #tmCreate a{color:$theme.textColor}
   .touch #tmCreate:hover a{color:$theme.textColor}
+
+
+
+
+
   .touch #page-suplemental,.touch article{box-shadow:none}
+  
+
+
 }
+
+
+
+
+
+
+
 /* layout regular small width */
 @media all and (max-width: 600px) {
+
   header:after{clear:both;content:".";display:block;height:0;visibility:hidden}
   header{position:static;text-align:center;width:95%}
   header h1{margin:10px auto 4px}
   nav#search{margin:0 auto;width:90%}
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   #viewer{margin:0 10px;width:auto}
   #tmCreate{background:rgba(256,256,256,.5);margin:0}
   #tmCreate a{color:$theme.textColor}
   #tmCreate:hover a{color:$theme.textColor}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 /* detailing reponsive */
 @media all and (max-width: 410px) {

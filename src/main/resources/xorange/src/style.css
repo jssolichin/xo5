@@ -6,8 +6,24 @@ article, aside, details, figcaption, figure, footer, header,
 .third{width: 32%}
 .half {width: 48%;}
 
+
+
+
+
+
+
 /* global */
 body{margin:0;overflow-x:hidden;padding:0}
+
+
+
+
+
+
+
+
+
+
 strong {font-weight: 700}
 em {font-style: italic}
 h2,#sidebar-control-links ul li a{font-size:2em;letter-spacing:-2px}
@@ -18,6 +34,15 @@ h2,#sidebar-control-links ul li a{font-size:2em;letter-spacing:-2px}
 {clear:left;content:".";display:block;height:0;visibility:hidden}
 .wikigeneratedheader:before, .buttons:before {clear:left;content:".";display:block;height:0;visibility:hidden}
 /* tied to the js in endpage.vm*/
+/* header + search */
+
+
+
+
+
+
+
+
 /* sidebar control */
 #sidebar{float: right; margin-top: 130px; bottom: 0px; right: 0px;z-index:999; min-width:290px; width:23%;}
 .panel {width: 200px; margin-bottom:10px}
@@ -47,7 +72,7 @@ nav#sidebar-control {height: 20%; padding: 30px 0 0px 0; position: relative;}
 .active-control a {color: $theme.titleColor;}
 #sidebar-control-links:hover .active-control {background:  $theme.textPrimaryColor !important; }
 #sidebar-control-links:hover a {color: $theme.menuLinkColor; !important;}
-#sidebar-control-links:hover a:hover {color: $theme.pageContentBackgroundColor; !important;}
+#sidebar-control-links:hover a:hover {color: $theme.fieldGradientColor; !important;}
 
 /* sidebar content */
 #change{bottom:0;overflow-x:auto;overflow-y:hidden; padding:0 10px 0 10px; position:absolute; top: 230px; }
@@ -58,6 +83,7 @@ nav#sidebar-control {height: 20%; padding: 30px 0 0px 0; position: relative;}
 #change section h2 span{color:$theme.textSecondaryColor;font-weight:700}
 #page-suplemental{background:$theme.pageContentBackgroundColor;box-shadow:inset 30px 0 0 rgba(0,0,0,.1);margin:10px -10px;padding:10px}
 #page-meta{background:url(img/bg.png);font-size:.8em;margin:0 -10px;padding:10px}
+
 .each-comment{background:rgba(255,255,255,.4);font-size:.9em;margin:0 -10px 10px;padding:10px}
 .each-comment:hover, #page-suplemental:hover{background: $theme.highlightColor;}
 .no-rgba .each-comment{background:$theme.panelBackgroundColor}
@@ -80,6 +106,7 @@ nav#sidebar-control {height: 20%; padding: 30px 0 0px 0; position: relative;}
 .menu-drop ul li ul li:before{content:"";margin:0}
 .menu-drop ul li:hover ul{display:block}
 #viewer{padding:0;width:100%}
+
 #viewer ul li ul li{float:left;font-size:1.2em}
 #tmCreate{margin-right:10px}
 #tmCreate a,#tmCreate{color:$theme.titleColor}
@@ -96,7 +123,7 @@ blockquote, .box, .errormessage, .warningmessage, .infomessage, .successmessage,
 .warningmessage {background: $theme.notificationWarningColor; color: $theme.buttonPrimaryTextColor;}
 .errormessage{background:$theme.notificationErrorColor; color: $theme.buttonPrimaryTextColor;}
 .successmessage {background: $theme.notificationSuccessColor;}
-.infomessage {background-image: url("$xwiki.getSkinFile('icons/silk/information.png')");}
+.infomessage {background-image: url("xwiki.getSkinFile('icons/silk/information.png')");}
 .warningmessage {  background-image: url("$xwiki.getSkinFile('icons/silk/error.png')");}
 .errormessage {background-image: url("$xwiki.getSkinFile('icons/silk/exclamation.png')");}
 .successmessage {background-image: url("$xwiki.getSkinFile('icons/silk/tick.png')")}
@@ -106,14 +133,41 @@ blockquote, .box, .errormessage, .warningmessage, .infomessage, .successmessage,
 #gadget-left,#gadget-right{float:left;width:48.5655930376%}
 #gadget-left{margin-left:.7%}
 #gadget-right{float:right;margin-right:.7%}
+
+
+
+
+
 .nextPagination:hover{background:url(/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png) right top!important}
 .prevPagination:hover{background:url(/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png) left top!important}
 .noNextPagination:hover{background:url(/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png) right bottom!important}
 .noPrevPagination:hover{background:url(/xwiki/resources/icons/xwiki/pagination%2Dcontrols.png) left bottom!important}
+
+
+
+
+
+
+
 article sub,article sup{font-size:.8em}
 article sub{vertical-align:sub}
 article table{line-height:1.3em}
 article th{font-weight:bolder;text-align:center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* livetable */
 .table-menu-btn{background:$theme.panelHeaderBackgroundColor;border-bottom:1px solid $theme.borderColor;color:$theme.textColor!important;font-size:.8em;font-weight:700;padding:.2em 1em;text-decoration:none;text-transform:uppercase}
@@ -129,6 +183,52 @@ article th{font-weight:bolder;text-align:center}
 .xwikitabbar li {float:left;margin:0 .3em;padding:.5em; border-bottom:2px solid $theme.panelHeaderBackgroundColor;}
 .xwikitabbar li a:hover{background:none!important}
 .xwikitabbar .active{border-bottom:2px solid $theme.titleColor;position:static}
+
+/* modal box */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* docextras */
 .commenttool a{background:transparent left top no-repeat;display:block;float:left;height:16px;line-height:30px;margin:0 0 0 4px;overflow:hidden;text-indent:30px;width:16px}
@@ -156,13 +256,49 @@ article th{font-weight:bolder;text-align:center}
 .vertical-menu {border: 1px solid $theme.borderColor;border-top-width: 0;float: left;font-size: .857em;/* 14px -> 12px */margin: 0 2.5em 2em 0;width: 20%;}
 #admin-page-content {width: 70%; float: left; margin: 0px  !important;}
 
+
+
+/* blog */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* compression of similar styles */
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+
 .mobile, #sidebar-handle,.enhanced th,.enhanced td{display:none}
+
+
+
+
+
+
+
+
 .version,article sup{vertical-align:super}
 #xwikiuploadfile{width:80%}
 .menu-drop ul{list-style-type:none;margin:0;padding:0}
+
 .xwiki-livetable-display-container,.table-wrapper{position:relative}
+
+
+
 .commentdelete a,.attachment .xwikibuttonlinks a.deletelink{background-image:url(/xwiki/resources/icons/silk/cross.png)}
 .commentedit a,.attachment .xwikibuttonlinks a.editlink{background-image:url(/xwiki/resources/icons/silk/pencil.png)}
 
@@ -189,7 +325,10 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .touch .xwikitabbar li{border-bottom:2px solid $theme.borderColor;margin:0;padding:.5em 0;width:50%}
   .touch .xwikitabbar li a{margin-left:.5em}
   .touch .mobile{display:block}
-  .touch .menu-drop ul li:after,#menu-drop:before{clear:both;content:".";display:block;height:0;visibility:hidden}
+.menu-drop ul li:after,#menu-drop:before{clear:both;content:".";display:block;height:0;visibility:hidden}
+
+
+
   .touch .menu-drop a{color:$theme.pageContentBackgroundColor}
   .touch #sidebar{bottom:auto;height:auto;position:static;width:100%; margin-top: 0;}
   .touch #sidebar-wrapper{background:$theme.backgroundSecondaryColor url(img/bg.png);padding:0 0 0 5%;position:absolute;right:-90%;top:0;width:90%}
@@ -198,7 +337,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .touch .no-csstransforms #sidebar-handle{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);left:0}
   .touch #sidebar-handle h2 a:link,#sidebar-handle h2 a:visited{color:$theme.titleColor}
   .touch #sidebar-handle h2 a:hover{color:$theme.titleColor}
-  .touch #change{bottom:auto;overflow-x:hidden;overflow-y:auto;position:static;top:auto} 
+  .touch #change{bottom:auto;overflow-x:hidden;overflow-y:auto;position:static;top:auto}
+ 
   .touch #sidebar-control-selector{margin:40px 10px 10px}
   .touch #main-area{width:95%}
   .touch .menu-drop{margin:0}
@@ -206,11 +346,16 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .touch .no-rgba .menu-drop ul li{background:$theme.backgroundSecondaryColor}
   .touch .menu-drop ul li:before{content:"";margin:0}
   .touch .breadcrumb-drop{display:inline;float:right}
+ 
+
+
+
   .touch .gadget-title:after{content:' \25BE'; position: absolute; right: 10px; top: 0px;}
   .touch .expanded:after{content:' \25B4'}
   .touch .column li{margin-right:10px!important}
   .touch .column li a,#viewer li a{float:left}
   .touch .column li select,#viewer li select{margin:0 0 0 10px}
+
   .touch #sidebar-control-links,.touch .menu-drop ul li:hover ul,.touch .section-content{display:none}
   .touch .half {width: 98.9%}
 
@@ -226,6 +371,9 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
 @media all and (max-width: 600px) {
   .mobile{display:block}
   .menu-drop ul li:after{clear:both;content:".";display:block;height:0;visibility:hidden}
+
+
+
   .menu-drop a {color:$theme.pageContentBackgroundColor}
   #sidebar{bottom:auto;height:auto;position:static;width:100%; margin-top: 0;}
   #sidebar-wrapper{background:$theme.backgroundSecondaryColor url(img/bg.png);padding:0 0 0 5%;position:absolute;right:-90%;top:0;width:90%}
@@ -243,7 +391,11 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .no-rgba .menu-drop ul li{background:$theme.backgroundSecondaryColor}
   .menu-drop ul li:before{content:"";margin:0}
   .breadcrumb-drop{display:inline;float:right}
- .gadget-title {position: relative;}
+
+
+
+
+  .gadget-title {position: relative;}
   .gadget-title:after{content:' \25BE'; position: absolute; right: 10px; top: 0px;}
   .expanded:after{content:' \25B4'}
   .column li{margin-right:10px!important}
@@ -323,7 +475,7 @@ table.xRichTextEditorTabPanel{background-color:transparent}
 .fullScreenWrapper #mainEditArea{overflow-x:hidden;overflow-y:auto}
 .fullScreenWrapper ul.tabs{position:fixed;width:100%}
 .fullScreenWrapper div.pill-content{margin-top:45px}
-
+#
 /* footer */
 #footerglobal{margin-top:100px}
 .hidden,.metamodifs,#autosaveControl,.edit-meta-tools{display:none!important}
@@ -334,3 +486,5 @@ ul.xlist li.xhighlight:hover,.vertical-menu span:hover{background-color:$theme.h
 .xform input[type=text],.xform input[type=password],.xform select,.xform textarea{width:99%}
 .vertical-menu .group:hover *,.vertical-menu .current-group *,.vertical-menu .current-group :visited,.vertical-menu .current-group :active{color:$theme.panelHeaderTextColor}
 .container-fluid a.noPrevPagination:hover,.container-fluid a.noNextPagination:hover,#contentmenu a.edit:hover{text-decoration:none}
+
+@import url("xwiki.css");
