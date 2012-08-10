@@ -9,7 +9,6 @@
   #else
     #set ($version = $!xwiki.version)
   #end
-
     <div id="sidebar-wrapper">
 
       <div id="sidebar-handle">
@@ -28,11 +27,14 @@
 ##        <footer>
 ##          <p>$!copyright | $!version</p>
 ##        </footer>
-
+#set ($xpage = -1) ## fallback xpage
+#if ($request.queryString) ## if xpage exist, set index of print as xpage
+  #set ( $xpage = $request.queryString.indexOf("xpage=print"))
+#end 
 ## if print preview, no js needed
-#if ($request.queryString.indexOf("xpage=print") < 0) 
-<script>
+#if ($xpage < 0) 
 
+<script>
 document.observe("dom:loaded", function() {
   // initially hide all containers for tab content
  resizeControl();
@@ -50,7 +52,8 @@ function resizeControl () {
     $j( "#sidebar" ).resizable({ minWidth: 290, maxWidth: 800, handles: "w"}).css({'left': $j("#main-area").position().left+$j("#main-area").width(), 'bottom': 0, 'top': ''});
     $j('header').width($j('#sidebar').width());
     $j('#sidebar').css({'top': $j('header').height()-10, 'position':'fixed', 'margin-top': 0});
-    $j('#change').css({'top': 100});
+    $j('#sidebar-control').css({'top':0});
+    $j('#change').css({'top': 100, 'bottom': 0});
 
 
       // .active-control is used to put the current section as the title header (for the dropdown menu)

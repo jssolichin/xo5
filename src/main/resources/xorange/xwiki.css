@@ -25,7 +25,7 @@ a:link, a:active, a:visited { color: $theme.linkColor;}
 
 /* header + search */
 header{min-width:290px;position:fixed;right:0;top:0;width:23%;z-index:999999}
-header h1{font-size:3em;font-weight:700;margin:14px 10px}
+header h1{font-size:3em;font-weight:700;margin:10px}
 nav#search{-moz-background-clip:padding;-webkit-background-clip:padding;background:$theme.pageContentBackgroundColor;background-clip:padding-box;border:10px solid rgba(0,0,0,0.1);margin-top:-10px;padding:5px}
 .no-rgba nav#search{border:10px solid $theme.borderColor}
 form .text-field{border:0;float:left;padding:2px;width:86%}

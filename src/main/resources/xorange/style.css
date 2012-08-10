@@ -24,8 +24,8 @@ h2,#sidebar-control-links ul li a{font-size:2em;letter-spacing:-2px}
 #sidebar .panel {width: 100%}
 .no-js #sidebar{min-width:0}
 #sidebar h3,.xwikipaneltitle{font-size:1.6em;letter-spacing:-1px; color: $theme.panelHeaderTextColor; }
-nav#sidebar-control {height: 20%; padding: 30px 0 0px 0; position: relative;}
-#sidebar-control-icons {margin: 0 0 10px 10px;}
+nav#sidebar-control {height: 20%; padding: 30px 0 0px 0; position: absolute; top: 130px}
+#sidebar-control-icons {margin: 10px 0 0 10px;}
 .sprite{background:url(img/sprite-icons.png) no-repeat;float:left;height:20px;margin-right:20px;position:relative;width:20px}
 .sprite span{color:$theme.linkColor;font-weight:700;position:absolute;right:-10px;top:-5px}
 .sprite-search-png{background-position:0 0}
@@ -50,7 +50,7 @@ nav#sidebar-control {height: 20%; padding: 30px 0 0px 0; position: relative;}
 #sidebar-control-links:hover a:hover {color: $theme.pageContentBackgroundColor; !important;}
 
 /* sidebar content */
-#change{bottom:0;overflow-x:auto;overflow-y:hidden; padding:0 10px 0 10px; position:absolute; top: 230px; }
+#change{overflow-x:auto;overflow-y:hidden; padding:0 10px 0 10px; position:absolute; top: 230px; }
 #change:hover{overflow-y:auto}
 #change h3{margin:10px 0 5px}
 #change ul li a,.panels a{font-size:1.2em;letter-spacing:-1px;text-decoration:none}
