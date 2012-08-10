@@ -38,7 +38,7 @@ input.submit{background:url(img/sprite-icons.png) no-repeat 0 0;border:none;curs
 #viewer ul li ul li{float:left;font-size:1.2em}
 
 /* main content styling */
-article#xo-content,div.suggestItems{border-top:20px solid $theme.linkColor !important; -moz-box-shadow:30px 0 0 rgba(0,0,0,.1);-webkit-box-shadow:30px 0 0 rgba(0,0,0,.1); box-shadow:30px 0 0 rgba(0,0,0,.1)  !important;color:$theme.textColor;font-size:.9em;padding:10px 10px 15px 30px;}
+article#xo-content,div.suggestItems{border-top:20px solid $theme.linkColor; -moz-box-shadow:30px 0 0 rgba(0,0,0,.1);-webkit-box-shadow:30px 0 0 rgba(0,0,0,.1); box-shadow:30px 0 0 rgba(0,0,0,.1);color:$theme.textColor;font-size:.9em;padding:10px 10px 15px 30px;}
 article h1,.xwikimessage legend{font-size:3.5em;margin-bottom:10px}
 .gadget{border:3px solid $theme.borderColor;border-left:0;border-right:0;margin:0 0 10px;padding:10px 0}
 .gadget-title{font-size:2.2em;letter-spacing:-3px;margin-top:0!important}
@@ -83,7 +83,7 @@ a.button {font-size: .85em; background: $theme.buttonPrimaryBackgroundColor;  co
 a.button:hover {color: $theme.buttonSecondaryTextColor !important;}
 
 /* search suggest */
-div.suggestItems{margin-bottom:20px;padding:0 0 10px; position: static;border: none; }
+div.suggestItems{margin-bottom:20px;padding:0 0 10px; position: static;border: none; border-top:20px solid $theme.linkColor !important;  box-shadow:30px 0 0 rgba(0,0,0,.1)  !important;}
 .horizontalLayout div.resultContainer div.results, div.resultContainer div.sourceName{clear:both;background: none;}
 ul.xlist li.showAllResuts div.xitemcontainer{border: none;height: auto;padding-right:0px;padding-top:0px;}
 li.showAllResuts{background:$theme.backgroundSecondaryColor;display:block;float:none!important;font-size:.7em;font-weight:700;text-transform:uppercase; margin-bottom: 10px;}
@@ -155,7 +155,7 @@ li.showAllResuts a,#hierarchy a:hover{color:$theme.textColor}
 .showAllResuts .suggestItem,#historycontent-wrapper .buttons{padding:0}
 
 /* layout high density tablet/phone equivalent to the next media-query*/
-@media all and (max-width: 1024px) and (min-width: 600px) {
+@media only screen and (max-width: 1024px) and (min-width: 600px) {
   .touch header:after{clear:both;content:".";display:block;height:0;visibility:hidden}
   .touch header{position:static;text-align:left;width:40%}
   .touch header h1{display:inline;float:left;margin:10px auto 4px 10px}
@@ -168,7 +168,7 @@ li.showAllResuts a,#hierarchy a:hover{color:$theme.textColor}
   .touch #page-suplemental,.touch article{box-shadow:none}
 }
 /* layout regular small width */
-@media all and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   header:after{clear:both;content:".";display:block;height:0;visibility:hidden}
   header{position:static;text-align:center;width:95%}
   header h1{margin:10px auto 4px}
@@ -179,9 +179,9 @@ li.showAllResuts a,#hierarchy a:hover{color:$theme.textColor}
   #tmCreate:hover a{color:$theme.textColor}
 }
 /* detailing reponsive */
-@media all and (max-width: 410px) {
+@media only screen and (max-width: 410px) {
   .column li{margin-right:0!important}
 }
-@media all and (max-width: 300px) {
+@media only screen and (max-width: 300px) {
   .xwikitabbar li{border-bottom:2px solid #eee;margin:0;padding:.5em 0;width:100%}
 }

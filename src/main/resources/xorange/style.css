@@ -167,11 +167,11 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
 .commentedit a,.attachment .xwikibuttonlinks a.editlink{background-image:url(/xwiki/resources/icons/silk/pencil.png)}
 
 /* live table responsive */
-@media screen and (min-width: 400px) { 
+@media only screen and (min-width: 400px) { 
   .legacy-ie .enhanced th.optional,.legacy-ie .enhanced td.optional{display:inline}
   .enhanced th.optional,.enhanced td.optional{display:table-cell}
 }
-@media screen and (min-width: 800px) {
+@media only screen and (min-width: 800px) {
   .legacy-ie .enhanced th,.legacy-ie .enhanced td{display:inline}
   .enhanced th,.enhanced td{display:table-cell}
 }
@@ -184,7 +184,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .first-column,.last-column,.half{float:none!important;width:100%!important}
 }
 /* layout high density tablet/phone equivalent to the next media-query*/
-@media all and (max-width: 1024px) and (min-width: 600px) {
+@media only screen and (max-width: 1024px) and (min-width: 600px) {
   .touch .sourceName{width:100px}
   .touch .xwikitabbar li{border-bottom:2px solid $theme.borderColor;margin:0;padding:.5em 0;width:50%}
   .touch .xwikitabbar li a{margin-left:.5em}
@@ -216,14 +216,14 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
 
 }
 
-@media all and (max-width: 850px) {
+@media only screen and (max-width: 850px) {
 	.vertical-menu {width: 100%; float: none; }
 	#admin-page-content {width:100%; float: none; }
   	.xwikitabbar li{border-bottom:2px solid $theme.borderColor;margin:0;padding:.5em 0;width:50%}
 	.xwikitabbar li a{margin-left:.5em}
 }
 /* layout regular small width */
-@media all and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   .mobile{display:block}
   .menu-drop ul li:after{clear:both;content:".";display:block;height:0;visibility:hidden}
   .menu-drop a {color:$theme.pageContentBackgroundColor}
@@ -259,10 +259,10 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
 .half {width: 98.9%}
 }
 /* detailing reponsive */
-@media all and (max-width: 410px) {
+@media only screen and (max-width: 410px) {
   .column li{margin-right:0!important}
 }
-@media all and (max-width: 300px) {
+@media only screen and (max-width: 300px) {
   .xwikitabbar li{border-bottom:2px solid #eee;margin:0;padding:.5em 0;width:100%}
 }
 

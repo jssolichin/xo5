@@ -1,0 +1,31 @@
+body{background: none;}
+#search {display: none;}
+#viewer {display: none;}
+#sidebar-control {display: none}
+#template('colorThemeInit.vm')
+#body {width: 100%; margin: 0 auto;}
+header {position: static; padding: 0px; margin: 0px; width: 100%;}
+header h1 {background: $theme.linkColor;  padding: 0px; margin: 0px;}
+#navigation {display: none;}
+#rightPanels {display: none;}
+#edit-wrapper {display: none}
+#export-wrapper {display: none;}
+#history-wrapper {display: none;}
+#commentform {display: none;}
+#AddAttachment {display: none;}
+#tree {display: none}
+#page-meta {background-image: none;}
+#xo-content, #page-suplemental {box-shadow: none !important; -webkit-box-shadow: none !important; -moz-box-shadow: none !important;}
+#xo-content {border-top: 1px solid $theme.linkColor !important;}
+#page-suplemental {margin: 0px; padding: 0px;}
+#comments, #attachments, #information {margin-left: 10px;}
+#tmCreate {display: none;}
+#sidebar, #change {position: static}
+
+   #main-area{width:100%; border-top: 2px solid $theme.linkColor !important;}
+  #sidebar{bottom:auto;height:auto;position:static;width:100%; margin-top: 0; border-top: 1px solid $theme.linkColor;  
+    padding-top: 10px;}
+  #change{bottom:auto;overflow-x:hidden;overflow-y:auto;position:static;top:auto}
+  section{margin-bottom:10px !important; margin-left: 30px;}
+  section h2 {font-size: 1em; letter-spacing: 0px}
+

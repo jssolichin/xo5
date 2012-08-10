@@ -21,7 +21,7 @@
     </div>
   </div>
 
-
+  <div id="tree">
     <dl>
       <dt><h3 class="sub-menu">$msg.get('core.viewers.information.parent')</h3></dt>
       <dd>
@@ -66,7 +66,7 @@
         </dd>
       #end
     </dl>
-
+  </div>
 
 </div>## _information
 </div>## informationcontent
