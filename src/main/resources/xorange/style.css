@@ -196,7 +196,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .touch .menu-drop a{color:$theme.pageContentBackgroundColor}
   .touch #sidebar{bottom:auto;height:auto;position:static;width:100%; margin-top: 0;}
   .touch #sidebar-wrapper{background:$theme.backgroundSecondaryColor url(img/bg.png);padding:0 0 0 5%;position:absolute;right:-90%;top:0;width:90%}
-  .touch #sidebar-handle{display:block;left:-98px;position:absolute;top:200px}
+  .touch #sidebar-handle{display:block;left:-90px;position:absolute;top:200px}
   .touch #sidebar-handle h2{-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);-webkit-transform:rotate(90deg);font-size:1.45em;text-transform:lowercase;transform:rotate(90deg)}
   .touch .no-csstransforms #sidebar-handle{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);left:0}
   .touch #sidebar-handle h2 a:link,#sidebar-handle h2 a:visited{color:$theme.titleColor}
@@ -204,6 +204,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .touch #change{bottom:auto;overflow-x:hidden;overflow-y:auto;position:static;top:auto} 
   .touch #sidebar-control-selector{margin:40px 10px 10px}
   .touch #main-area{width:95%}
+  .touch #viewer {width: 95%}
+  .touch #tmCreate {margin: 0}
   .touch .menu-drop{margin:0}
   .touch .menu-drop ul li{background:rgba(0,0,0,.5);color:$theme.buttonPrimaryTextColor;float:none;margin:5px 0}
   .touch .no-rgba .menu-drop ul li{background:$theme.backgroundSecondaryColor}
@@ -232,7 +234,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .menu-drop a {color:$theme.pageContentBackgroundColor}
   #sidebar{bottom:auto;height:auto;position:static;width:100%; margin-top: 0;}
   #sidebar-wrapper{background:$theme.backgroundSecondaryColor url(img/bg.png);padding:0 0 0 5%;position:absolute;right:-90%;top:0;width:90%}
-  #sidebar-handle{display:block;left:-98px;position:absolute;top:200px}
+  #sidebar-handle{display:block;left:-90px;position:absolute;top:200px}
   #sidebar-handle h2{-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);-webkit-transform:rotate(90deg);font-size:1.45em;text-transform:lowercase;transform:rotate(90deg)}
   .no-csstransforms #sidebar-handle{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);left:0}
   #sidebar-handle h2 a:link,#sidebar-handle h2 a:visited{color:$theme.titleColor}
@@ -241,6 +243,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   section{margin-bottom:20px}
   #sidebar-control-selector{margin:40px 10px 10px}
   #main-area{width:95%}
+  #viewer {width: 95%}
+  #tmCreate {margin: 0}
   .menu-drop{margin:0}
   .menu-drop ul li{background:rgba(0,0,0,.5);color:$theme.pageContentBackgroundColor;float:none;margin:5px 0}
   .no-rgba .menu-drop ul li{background:$theme.backgroundSecondaryColor}

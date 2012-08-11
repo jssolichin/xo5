@@ -125,7 +125,7 @@
 
 #set($createSidebar = 1)
 #if ($request.queryString)
-    #if ($request.queryString.indexOf("xpage=print") > 0)
+    #if ($request.queryString.indexOf("xpage=print") >= 0)
         #set($createSidebar = 0)
     #end
 #end
@@ -134,8 +134,8 @@
 <div id="sidebar-wrapper">
   <div id="sidebar-handle">
     <h2>
-      <a id="to-menu" href="#sidebar">Menu + More</a> &nbsp;//&nbsp;  
-      <a id="to-content" href="#content">Content</a> 
+      <a id="to-menu" href="#sidebar">$msg.get('xe.themes.colors.wizard.mainMenu')</a> &nbsp;//&nbsp;  
+      <a id="to-content" href="#content">$msg.get('core.links.content')</a> 
     </h2>
   </div>
   <div id="sidebar">
