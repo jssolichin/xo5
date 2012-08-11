@@ -34,7 +34,7 @@
     <!-- Add License/Notice files -->
     <fileSet>
       <directory>${basedir}/target/maven-shared-archive-resources/</directory>
-      <outputDirectory>xo5</outputDirectory>
+      <outputDirectory>xorange</outputDirectory>
     </fileSet>
   </fileSets>
 </assembly>
