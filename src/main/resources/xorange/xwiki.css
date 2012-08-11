@@ -65,8 +65,8 @@ th{background:$theme.panelHeaderBackgroundColor;border-right:2px solid $theme.pa
 tr td tr td{padding:.5em}
 th:first-child,td:first-child{text-align:left}
 tbody th,td{border-bottom:1px solid $theme.borderColor}
-#xo-content dt {font-weight: 700; margin: 10px 0 0 0 ; text-transform: uppercase; font-size: .8em; color: $theme.textSecondaryColor;}
-#xo-content dd {font-weight: 400; margin: 3px 0 0 10px;}
+#lb dt, #xo-content dt {font-weight: 700; margin: 10px 0 0 0 ; text-transform: uppercase; font-size: .8em; color: $theme.textSecondaryColor;}
+#lb dd, #xo-content dd {font-weight: 400; margin: 3px 0 0 10px;}
 
 /* modal box */
 .xdialog-box{ border-radius: 0px; box-shadow: none}
@@ -74,6 +74,7 @@ tbody th,td{border-bottom:1px solid $theme.borderColor}
 .xdialog-title dt {padding: 5px;}
 .xdialog-box dt {margin-top: 20px; font-size: .8em; text-transform: uppercase;}
 .xdialog-box dt label {font-weight: 700;}
+.xdialog-box textarea {width: 100%}
 .mail-preview {padding: 10px !important; border-radius: 0px !important; margin-top: 3px; font-size: .8em}
 .mail-preview p {margin-bottom: 10px;}
 input.button, a.button {background: $theme.buttonPrimaryBackgroundColor; border: 1px solid $theme.borderColor; color: $theme.buttonPrimaryTextColor;}
@@ -101,18 +102,23 @@ div.resultContainer div.sourceName{background-position:3px 3px;background-repeat
 #xo-content form h2 {display: inline; background: $theme.panelHeaderBackgroundColor; padding: 1px 10px;}
 .xHint {margin: 0 0 0 3px; font-size: .8em; color: $theme.textColor; display: inline; font-style: italic}
 #xo-content form dl { font-size: 1em; border-top: 2px solid $theme.borderColor}
-#xo-content form dt,form dd,.sourceName,.suggestItem{border-top:1px solid $theme.borderColor;}
-#xo-content form dt,.sourceName{clear:left;float:left;font-weight:700;padding:10px 0;text-align:right;width:140px; position: relative; margin: 0;}
-#xo-content form dt:after{content:":"}
-#xo-content form dt .xHint{display: none;}
-#xo-content form dt:hover .xHint {display: block; font-weight: 400; font-size: .8em; position: absolute; text-align: left; padding: 3px; background: $theme.notificationInfoColor; left: 140px; top:10px; width: 350%; z-index: 9999999}
-#xo-content form dd{margin:0 0 0 150px;padding:10px 0}
+#lb dt, #lb dd, #xo-content form dt,form dd,.sourceName,.suggestItem{border-top:1px solid $theme.borderColor;}
+#lb dt, #xo-content form dt,.sourceName{clear:left;float:left;font-weight:700;padding:10px 0;text-align:right;width:140px; position: relative; margin: 0;}
+#lb dt .xHint, #xo-content form dt .xHint{display: none;}
+#lb dt:hover .xHint, #xo-content form dt:hover .xHint {display: block; font-weight: 400; font-size: .8em; position: absolute; text-align: left; padding: 3px; background: $theme.backgroundSecondaryColor; left: 140px; top:10px; width: 350%; z-index: 9999999}
+#lb dd, #xo-content form dd{margin:0 0 0 150px;padding:10px 0}
 #xo-content fieldset legend{color:$theme.panelHeaderTextColor;font-weight:700}
 .fullScreenEditLink{background:$theme.pageContentBackgroundColor;padding:5px}
 #xo-content form textarea{margin-top:5px;width:80%}
 .buttons{background:$theme.backgroundSecondaryColor;margin:20px 0;padding:20px;}
 .wikigeneratedheader {border-bottom: 3px solid $theme.borderColor; margin: 10px 0 0 0; }
-#xwikicontent .wikigeneratedheader {border: 0; margin: 10px 0 ; }
+.container-justified .wikigeneratedheader {border: 0; margin: 10px 0 ; }
+.dashboard-edit .addgadget, .dashboard-edit .addcontainer {margin: 0 10px 10px 0;}
+.class dd, .object dd {margin-left: 0px;}
+#lb-top, .rounded {display: none}
+#lb .lb-content {padding: 0px;}
+.lb-content p {padding:10px 0; border-bottom: 1px solid $theme.borderColor}
+.lb-content .half {width: 100%}
 
 /* profile */
 #vertical-tabs ul li.active {border: none; border-top: 1px solid $theme.linkColor; border-bottom: solid 3px $theme.linkColor;}
@@ -185,3 +191,4 @@ li.showAllResuts a,#hierarchy a:hover{color:$theme.textColor}
 @media only screen and (max-width: 300px) {
   .xwikitabbar li{border-bottom:2px solid #eee;margin:0;padding:.5em 0;width:100%}
 }
+

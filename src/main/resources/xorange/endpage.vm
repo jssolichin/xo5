@@ -9,194 +9,187 @@
   #else
     #set ($version = $!xwiki.version)
   #end
-    <div id="sidebar-wrapper">
 
-      <div id="sidebar-handle">
-        <h2>
-          <a id="to-menu" href="#sidebar">Menu + More</a> &nbsp;//&nbsp;  
-          <a id="to-content" href="#content">Content</a> 
-        </h2>
-      </div>
-
-      <div id="sidebar">
-        #template("sidebar.vm")
-      </div><!--#sidebar-->
-    </div><!--#sidebar-wrapper-->
-    
 
 ##        <footer>
 ##          <p>$!copyright | $!version</p>
 ##        </footer>
-#set ($xpage = -1) ## fallback xpage
-#if ($request.queryString) ## if xpage exist, set index of print as xpage
-  #set ( $xpage = $request.queryString.indexOf("xpage=print"))
-#end 
-## if print preview, no js needed
-#if ($xpage < 0) 
 
-<script>
-document.observe("dom:loaded", function() {
-  // initially hide all containers for tab content
- resizeControl();
-});
+  #set ($initSidebar = 1)
+#if ($request.queryString)
+  #if ($request.queryString.indexOf("xpage=print") >= 0 || $request.queryString.indexOf("section=Panels.PanelWizard") >= 0) 
+      #set ($initSidebar = 0)
+      #if ($request.queryString.indexOf("xpage=print") >= 0)
+        <div id="sidebar">
+          #template("sidebar.vm")
+        </div><!--#sidebar-->
+      #end
+  #end
+#end
 
-// make sure things are ok even when we adjust window && recheck positions of section when resized-- need to optimize somehow.
-$j(window).resize(function () { 
-  resizeControl();
-});
+#if ($initSidebar == 1)
+    <script>
+      document.observe("dom:loaded", function() {
+        // initially hide all containers for tab content
+       resizeControl();
+      });
 
-// allow resizing of sidebar&create dropdown only if no-touch (provided by modernizr) & greater than 600px
-function resizeControl () {
-  if( $j('html.no-touch').length && $j(window).width() > 600 ) {
-    $j("#main-area").width($j(window).width()-$j("#sidebar").width());
-    $j( "#sidebar" ).resizable({ minWidth: 290, maxWidth: 800, handles: "w"}).css({'left': $j("#main-area").position().left+$j("#main-area").width(), 'bottom': 0, 'top': ''});
-    $j('header').width($j('#sidebar').width());
-    $j('#sidebar').css({'top': $j('header').height()-10, 'position':'fixed', 'margin-top': 0});
-    $j('#sidebar-control').css({'top':0});
-    $j('#change').css({'top': 100, 'bottom': 0});
+      // make sure things are ok even when we adjust window && recheck positions of section when resized-- need to optimize somehow.
+      $j(window).resize(function () { 
+        resizeControl();
+      });
+
+      // allow resizing of sidebar&create dropdown only if no-touch (provided by modernizr) & greater than 600px
+      function resizeControl () {
+        if( $j('html.no-touch').length && $j(window).width() > 600 ) {
+          $j("#main-area").width($j(window).width()-$j("#sidebar").width());
+          $j( "#sidebar" ).resizable({ minWidth: 290, maxWidth: 800, handles: "w"}).css({'left': $j("#main-area").position().left+$j("#main-area").width(), 'bottom': 0, 'top': ''});
+          $j('header').width($j('#sidebar').width());
+          $j('#sidebar').css({'top': $j('header').height()-10, 'position':'fixed', 'margin-top': 0});
+          $j('#change').css({'top': 100});
 
 
-      // .active-control is used to put the current section as the title header (for the dropdown menu)
-      // apply .active-control on click since scroll detection might not be triggered
-      $j("#nav-control ul li").click(function(){
-          $j(".active-control").removeClass('active-control');
-          $j(this).addClass('active-control')
-        });
+            // .active-control is used to put the current section as the title header (for the dropdown menu)
+            // apply .active-control on click since scroll detection might not be triggered
+            $j("#nav-control ul li").click(function(){
+                $j(".active-control").removeClass('active-control');
+                $j(this).addClass('active-control')
+              });
 
-      // indicate which section at while scrolling and apply .active-control to active-control section
-      $j("#change").scroll(function(){
-        // first get position of div from the top. then check if that position has now become 0. if it has become 0, then viewer is in that section. However since, we originally have a title there, we will offset 25 so that the section is activated once the original title go above the view. Additionally, check that it is within the div's position from the top + the height of the div. 
-        $j('#sidebar-control-links ul li').each(function(){
-          var el = $j(this).children('a').attr('href');
-          if($j(el).position().top <= 0 && $j(el).position().top >0-$j(el).height()){
-            $j(".active-control").removeClass('active-control');
-            $j(this).addClass('active-control');
-          }
-        });
-        //the last section is a bit different since if the viewer can no longer scroll, that means he is in the last section. 
-        if($j("#change")[0].scrollHeight - $j("#change").scrollTop() == $j("#change").outerHeight()){
-          $j(".active-control").removeClass('active-control');
-          $j("#sidebar-control-links > ul li:last-child").addClass('active-control')
+            // indicate which section at while scrolling and apply .active-control to active-control section
+            $j("#change").scroll(function(){
+              // first get position of div from the top. then check if that position has now become 0. if it has become 0, then viewer is in that section. However since, we originally have a title there, we will offset 25 so that the section is activated once the original title go above the view. Additionally, check that it is within the div's position from the top + the height of the div. 
+              $j('#sidebar-control-links ul li').each(function(){
+                var el = $j(this).children('a').attr('href');
+                if($j(el).position().top <= 0 && $j(el).position().top >0-$j(el).height()){
+                  $j(".active-control").removeClass('active-control');
+                  $j(this).addClass('active-control');
+                }
+              });
+              //the last section is a bit different since if the viewer can no longer scroll, that means he is in the last section. 
+              if($j("#change")[0].scrollHeight - $j("#change").scrollTop() == $j("#change").outerHeight()){
+                $j(".active-control").removeClass('active-control');
+                $j("#sidebar-control-links > ul li:last-child").addClass('active-control')
+              }
+            });
+
         }
-      });
+        else {
+          $j("#main-area").width('95%');
+          $j('header').width('95%');
+          $j('#sidebar').height('').width('');
+          $j('#sidebar').css({'position':'static'});
+          if(!($j('#sidebar-control-selector').length)) { //checks to make sure only do onece
+            createDrop();
 
-  }
-  else {
-    $j("#main-area").width('95%');
-    $j('header').width('95%');
-    $j('#sidebar').height('').width('');
-    $j('#sidebar').css({'position':'static'});
-    if(!($j('#sidebar-control-selector').length)) { //checks to make sure only do onece
-      createDrop();
+            //mobile implementation
+            // make #sidebar-handle vertically fixed
+            $j(window).scroll(function(){
+                $j( "#sidebar-handle" ).css({
+                  'top': $j(window).scrollTop()+180
+                });
+            });
+            // shortcut to menu/content in #sidebar-handle
+            $j( "#to-menu" ).click(function() {
+                window.scrollTo($j("#sidebar").width(),window.pageYOffset);
+                return false;
+            });
+            $j( "#to-content" ).click(function() {
+                window.scrollTo(0,window.pageYOffset);
+                return false;
+            });
+            // shrink content area on mobile to be toggle able
+            $j('.gadget-title').click(function() {
+                $j(this).next('.gadget-content').slideToggle(200,function() {
+                  $j(this).prev('.gadget-title').toggleClass('expanded');
+                });
+            });
+          }
+        }
 
-      //mobile implementation
-      // make #sidebar-handle vertically fixed
-      $j(window).scroll(function(){
-          $j( "#sidebar-handle" ).css({
-            'top': $j(window).scrollTop()+180
+      }
+
+      function createDrop () {
+      //--- start drop down creator 
+        // Create the dropdown base
+        $j("<select />").addClass('mobile').attr('id', 'sidebar-control-selector').appendTo("#sidebar-control");
+
+        // Create default option "Go to..."
+        $j("<option />", {
+           "selected": "selected",
+           "value"   : "",
+           "text"    : "Go to..."
+        }).appendTo("#sidebar-control-selector");
+
+        // Populate dropdown with menu items
+        $j("#sidebar-control-links ul li a").each(function() {
+         var el = $j(this);
+         $j("<option />", {
+             "value"   : el.attr("href"),
+             "text"    : el.text()
+         }).appendTo("#sidebar-control-selector");
+        });
+
+        //move to targeted drop down
+        $j("#sidebar-control-selector").change(function() {
+          window.location = $j(this).find("option:selected").val();
+        });
+
+        //same thing for breadcrumb
+        $j('#breadcrumb > ul > li').each(function(index){
+          $j("<select />").addClass('mobile breadcrumb-drop').appendTo($j(this));
+          var dropdown= $j(this).find($j('select'));
+          $j("<option />", {
+             "selected": "selected",
+             "value"   : "",
+             "text"    : "Go to..."
+          }).appendTo(dropdown);
+
+          $j(this).find('a').each(function() {
+           var el = $j(this);
+           $j("<option />", {
+               "value"   : el.attr("href"),
+               "text"    : el.text()
+           }).appendTo(dropdown);
           });
-      });
-      // shortcut to menu/content in #sidebar-handle
-      $j( "#to-menu" ).click(function() {
-          window.scrollTo($j("#sidebar").width(),window.pageYOffset);
-          return false;
-      });
-      $j( "#to-content" ).click(function() {
-          window.scrollTo(0,window.pageYOffset);
-          return false;
-      });
-      // shrink content area on mobile to be toggle able
-      $j('.gadget-title').click(function() {
-          $j(this).next('.gadget-content').slideToggle(200,function() {
-            $j(this).prev('.gadget-title').toggleClass('expanded');
+
+          $j($j(this).children($j('select'))).change(function() {
+            window.location = $j(this).find("option:selected").val();
           });
+        });
+
+        $j('#viewer ul li').each(function(index){
+          $j("<select />").addClass('mobile breadcrumb-drop').appendTo($j(this));
+          var dropdown= $j(this).find($j('select'));
+          $j("<option />", {
+             "selected": "selected",
+             "value"   : "",
+             "text"    : "Go to..."
+          }).appendTo(dropdown);
+          
+          $j(this).find('a').each(function() {
+           var el = $j(this);
+           $j("<option />", {
+               "value"   : el.attr("href"),
+               "text"    : el.text()
+           }).appendTo(dropdown);
+          });
+
+          $j($j(this).children($j('select'))).change(function() {
+            window.location = $j(this).find("option:selected").val();
+          });
+        });
+
+      //--- end drop down creator 
+      }
+
+      $j('.globalsearch').keyup(function() {
+        $j('.searchSuggest').removeAttr('style');
+        $j('.searchSuggest').width($j("#main-area").width());
+        $j('.searchSuggest').insertBefore('#xo-content')
       });
-    }
-  }
 
-}
-
-function createDrop () {
-//--- start drop down creator 
-  // Create the dropdown base
-  $j("<select />").addClass('mobile').attr('id', 'sidebar-control-selector').appendTo("#sidebar-control");
-
-  // Create default option "Go to..."
-  $j("<option />", {
-     "selected": "selected",
-     "value"   : "",
-     "text"    : "Go to..."
-  }).appendTo("#sidebar-control-selector");
-
-  // Populate dropdown with menu items
-  $j("#sidebar-control-links ul li a").each(function() {
-   var el = $j(this);
-   $j("<option />", {
-       "value"   : el.attr("href"),
-       "text"    : el.text()
-   }).appendTo("#sidebar-control-selector");
-  });
-
-  //move to targeted drop down
-  $j("#sidebar-control-selector").change(function() {
-    window.location = $j(this).find("option:selected").val();
-  });
-
-  //same thing for breadcrumb
-  $j('#breadcrumb > ul > li').each(function(index){
-    $j("<select />").addClass('mobile breadcrumb-drop').appendTo($j(this));
-    var dropdown= $j(this).find($j('select'));
-    $j("<option />", {
-       "selected": "selected",
-       "value"   : "",
-       "text"    : "Go to..."
-    }).appendTo(dropdown);
-
-    $j(this).find('a').each(function() {
-     var el = $j(this);
-     $j("<option />", {
-         "value"   : el.attr("href"),
-         "text"    : el.text()
-     }).appendTo(dropdown);
-    });
-
-    $j($j(this).children($j('select'))).change(function() {
-      window.location = $j(this).find("option:selected").val();
-    });
-  });
-
-  $j('#viewer ul li').each(function(index){
-    $j("<select />").addClass('mobile breadcrumb-drop').appendTo($j(this));
-    var dropdown= $j(this).find($j('select'));
-    $j("<option />", {
-       "selected": "selected",
-       "value"   : "",
-       "text"    : "Go to..."
-    }).appendTo(dropdown);
-    
-    $j(this).find('a').each(function() {
-     var el = $j(this);
-     $j("<option />", {
-         "value"   : el.attr("href"),
-         "text"    : el.text()
-     }).appendTo(dropdown);
-    });
-
-    $j($j(this).children($j('select'))).change(function() {
-      window.location = $j(this).find("option:selected").val();
-    });
-  });
-
-//--- end drop down creator 
-}
-
-$j('.globalsearch').keyup(function() {
-  $j('.searchSuggest').removeAttr('style');
-  $j('.searchSuggest').width($j("#main-area").width());
-  $j('.searchSuggest').insertBefore('#xo-content')
-});
-
-</script>
+    </script>
 #end
   </body>
 </html>
