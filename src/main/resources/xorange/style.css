@@ -16,19 +16,19 @@ input:hover, textarea:hover {border: 1px solid $theme.linkColor;}
 #xwikiuploadfile, .add-file-input, .add-file-input:hover {border: none;}
 
 /* clearfixes */
-.xwikitabbar:after,.floatcontainer:after,#historycontent-wrapper:after,
+.xwikitabpanescontainer:after, .xwikitabbar:after,.floatcontainer:after,#historycontent-wrapper:after,
 .each-comment:after,#nav-icons:after,#page-actions:after,.menu-drop:after,#xo-content:after,#gadget-container:after,#sidebar-control-links ul li:after
 {clear:left;content:".";display:block;height:0;visibility:hidden}
 .wikigeneratedheader:before, .buttons:before {clear:left;content:".";display:block;height:0;visibility:hidden}
 /* tied to the js in endpage.vm*/
 /* sidebar control */
-#sidebar{float: right; margin-top: 130px; bottom: 0px; right: 0px;z-index:999; min-width:290px; width:23%;}
-.panel {width: 200px; margin-bottom:10px}
-#sidebar .panel {width: 100%}
+#sidebar{bottom:0;float:right;margin-top:130px;min-width:290px;right:0;width:23%;z-index:999}
+.panel{margin-bottom:10px;width:200px}
+#sidebar .panel{width:100%}
 .no-js #sidebar{min-width:0}
-#sidebar h3,.xwikipaneltitle{font-size:1.6em;letter-spacing:-1px; color: $theme.panelHeaderTextColor; }
-nav#sidebar-control {height: 20%; padding: 30px 0 0px 0; position: relative;}
-#sidebar-control-icons {margin: 0 0 10px 10px}
+#sidebar h3,.xwikipaneltitle{color:$theme.panelHeaderTextColor;font-size:1.6em;letter-spacing:-1px}
+nav#sidebar-control{height:20%;padding:30px 0 0;position:relative}
+#sidebar-control-icons{margin:0 0 10px 10px}
 .sprite{background:url(img/sprite-icons.png) no-repeat;float:left;height:20px;margin-right:20px;position:relative;width:20px}
 .sprite span{color:$theme.linkColor;font-weight:700;position:absolute;right:-10px;top:-5px}
 .sprite-search-png{background-position:0 0}
@@ -39,21 +39,21 @@ nav#sidebar-control {height: 20%; padding: 30px 0 0px 0; position: relative;}
 .sprite-information-png{background-position:-31px -31px}
 .sprite-export-png{background-position:-31px 0}
 .sprite-edit-png{background-position:0 -62px}
-#sidebar-control-links {clip: rect(0px 300px 40px 0px); position: absolute; top: 60px; z-index: 999; }
-#sidebar-control-links h2 { padding: 5px; visibility: hidden;}
-#sidebar-control-links:hover {clip: auto;}
-#sidebar-control-links ul {list-style-type: none; margin: 0px; padding: 0px; width: 100%; }
-#sidebar-control-links ul li {background: $theme.menuBackgroundColor; padding: 5px 10px; width: 100%;}
-#sidebar-control-links ul li a {float: left; text-decoration: none; }
-#sidebar-control-links ul li span {color: $theme.textSecondaryColor; margin-left: 3px;}
-.active-control {background: none !important; position: absolute; top: 0px; }
-.active-control a {color: $theme.titleColor;}
-#sidebar-control-links:hover .active-control {background:  $theme.textPrimaryColor !important; }
-#sidebar-control-links:hover a {color: $theme.menuLinkColor; !important;}
-#sidebar-control-links:hover a:hover {color: $theme.pageContentBackgroundColor; !important;}
+#sidebar-control-links{clip:rect(0px300px40px0px);position:absolute;top:60px;z-index:999}
+#sidebar-control-links h2{padding:5px;visibility:hidden}
+#sidebar-control-links:hover{clip:auto}
+#sidebar-control-links ul{list-style-type:none;margin:0;padding:0;width:100%}
+#sidebar-control-links ul li{background:$theme.menuBackgroundColor;padding:5px 10px;width:100%}
+#sidebar-control-links ul li a{float:left;text-decoration:none}
+#sidebar-control-links ul li span{color:$theme.textSecondaryColor;margin-left:3px}
+.active-control{background:none!important;position:absolute;top:0}
+.active-control a{color:$theme.titleColor}
+#sidebar-control-links:hover .active-control{background:$theme.textPrimaryColor!important}
+#sidebar-control-links:hover a{color:$theme.menuLinkColor}
+#sidebar-control-links:hover a:hover{color:$theme.pageContentBackgroundColor}
 
 /* sidebar content */
-#change{bottom:0;overflow-x:auto;overflow-y:hidden; padding:0 10px 0 10px; position:absolute; top: 230px; }
+#change{bottom:0;overflow-x:auto;overflow-y:hidden;padding:0 10px;position:absolute;top:230px}
 #change:hover{overflow-y:auto}
 #change h3{margin:10px 0 5px}
 #change ul li a,.panels a{font-size:1.2em;letter-spacing:-1px;text-decoration:none}
@@ -62,7 +62,7 @@ nav#sidebar-control {height: 20%; padding: 30px 0 0px 0; position: relative;}
 #page-suplemental{background:$theme.pageContentBackgroundColor;box-shadow:inset 30px 0 0 rgba(0,0,0,.1);margin:10px -10px;padding:10px}
 #page-meta{background:url(img/bg.png);font-size:.8em;margin:0 -10px;padding:10px}
 .each-comment{background:rgba(255,255,255,.4);font-size:.9em;margin:0 -10px 10px;padding:10px}
-.each-comment:hover, #page-suplemental:hover{background: $theme.highlightColor;}
+.each-comment:hover,#page-suplemental:hover{background:$theme.highlightColor}
 .no-rgba .each-comment{background:$theme.panelBackgroundColor}
 .each-comment-user img{float:left;margin:0 10px 0 0}
 .each-comment-user h4{font-size:1.4em;letter-spacing:-1px;margin:10px 0 0}
@@ -93,18 +93,16 @@ nav#sidebar-control {height: 20%; padding: 30px 0 0px 0; position: relative;}
 article#xo-content,div.suggestItems{background:$theme.pageContentBackgroundColor;}
 
 /* warnings and messages */
-blockquote, .box, .errormessage, .warningmessage, .infomessage, .successmessage, .plainmessage{background:$theme.backgroundSecondaryColor; color:$theme.textColor;display:block;font-weight: 400; margin:10px -10px 10px -30px;padding:10px 10px 10px 30px}
-.box span,.xwikimessage span, .warningmessage span, .errormessage span {font-weight: 700}
-.plainmessage {padding-left: 50px; background-position: 30px center !important;}
-.warningmessage {background: $theme.notificationWarningColor; color: $theme.buttonPrimaryTextColor;}
-.errormessage{background:$theme.notificationErrorColor; color: $theme.buttonPrimaryTextColor;}
-.successmessage {background: $theme.notificationSuccessColor;}
-.infomessage {background-image: url("$xwiki.getSkinFile('icons/silk/information.png')");}
-.warningmessage {  background-image: url("$xwiki.getSkinFile('icons/silk/error.png')");}
-.errormessage {background-image: url("$xwiki.getSkinFile('icons/silk/exclamation.png')");}
-.successmessage {background-image: url("$xwiki.getSkinFile('icons/silk/tick.png')")}
-.infomessage, .warningmessage, .errormessage, .successmessage {background-position:  8px 9px; background-repeat:  no-repeat;}
-.messagetype {display: none;}
+blockquote,.box,.errormessage,.warningmessage,.infomessage,.successmessage,.plainmessage{background:$theme.backgroundSecondaryColor;color:$theme.textColor;display:block;font-weight:400;margin:10px -10px 10px -30px;padding:10px 10px 10px 30px}
+.box span,.xwikimessage span,.warningmessage span,.errormessage span{font-weight:700}
+.plainmessage{background-position:30px center!important;padding-left:50px}
+.warningmessage{background:$theme.notificationWarningColor;background-image:url($xwiki.getSkinFile('icons/silk/error.png'));color:$theme.buttonPrimaryTextColor}
+.errormessage{background:$theme.notificationErrorColor;background-image:url($xwiki.getSkinFile('icons/silk/exclamation.png'));color:$theme.buttonPrimaryTextColor}
+.successmessage{background:$theme.notificationSuccessColor;background-image:url($xwiki.getSkinFile('icons/silk/tick.png'))}
+.infomessage{background-image:url($xwiki.getSkinFile('icons/silk/information.png'))}
+.infomessage,.warningmessage,.errormessage,.successmessage{background-position:8px 9px;background-repeat:no-repeat}
+.messagetype{display:none}
+
 /* content */
 #gadget-left,#gadget-right{float:left;width:48.5655930376%}
 #gadget-left{margin-left:.7%}
@@ -120,16 +118,17 @@ article th{font-weight:bolder;text-align:center}
 
 /* livetable */
 .table-menu-btn{background:$theme.panelHeaderBackgroundColor;border-bottom:1px solid $theme.borderColor;color:$theme.textColor!important;font-size:.8em;font-weight:700;padding:.2em 1em;text-decoration:none;text-transform:uppercase}
-.table-menu-wrapper{bottom:-1em;left:0;position:absolute}
+.table-menu-wrapper{bottom:-1em;position:absolute;right:0}
 #xo-content .table-menu-wrapper{bottom:-.9em}
-.table-menu{background-color:$theme.panelHeaderBackgroundColor; font-size: .8em;left:0;padding:10px;position:absolute;width:12em}
+.table-menu{background-color:$theme.panelHeaderBackgroundColor;font-size:.8em;left:0;padding:10px;position:absolute;width:12em}
 .table-menu-hidden{left:-999em;right:auto}
+.table-menu ul{list-style-type:none;margin:0}
 .table-menu li{padding:.3em 0}
 .legacy-ie .enhanced th.essential,.legacy-ie .enhanced td.essential{display:inline}
 .enhanced th.essential,.enhanced td.essential{display:table-cell}
 .xwikitabbar{background:$theme.panelHeaderBackgroundColor;list-style-type:none;margin:0;padding:0}
 .xwikitabbar a{text-decoration:none}
-.xwikitabbar li {float:left;margin:0 .3em;padding:.5em; border-bottom:2px solid $theme.panelHeaderBackgroundColor;}
+.xwikitabbar li{border-bottom:2px solid $theme.panelHeaderBackgroundColor;float:left;margin:0 .3em;padding:.5em}
 .xwikitabbar li a:hover{background:none!important}
 .xwikitabbar .active{border-bottom:2px solid $theme.titleColor;position:static}
 
@@ -152,16 +151,16 @@ article th{font-weight:bolder;text-align:center}
 .attachment .xwikibuttonlinks a.viewlink{background-image:url(/xwiki/resources/icons/silk/eye.png)}
 #close-history{float:right;margin:.2em 1em}
 #historycontent-wrapper-helper{background:rgba(0,0,0,.5);display:none;height:100%;left:0;position:fixed;top:0;width:100%;z-index:9999999}
-#historycontent-wrapper, #lb{background:$theme.pageContentBackgroundColor;margin-top:12%;padding:1em;position:relative}
+#historycontent-wrapper,#lb{background:$theme.pageContentBackgroundColor;margin-top:12%;padding:1em;position:relative}
 #historycontent-wrapper .buttonwrapper{float:right;margin:-.8em 0 0}
 
 /* admin profile */
 .vertical-menu {border: 1px solid $theme.borderColor;border-top-width: 0;float: left;font-size: .857em;/* 14px -> 12px */margin: 0 2.5em 2em 0;width: 20%;}
-#admin-page-content {width: 70%; float: left; margin: 0px  !important;}
+#admin-page-content{float:left;margin:0!important;width:70%}
 
 /* compression of similar styles */
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
-.mobile, #sidebar-handle,.enhanced th,.enhanced td{display:none}
+.mobile,#sidebar-handle,.enhanced th,.enhanced td{display:none}
 .version,article sup{vertical-align:super}
 #xwikiuploadfile{width:80%}
 .menu-drop ul{list-style-type:none;margin:0;padding:0}
@@ -178,9 +177,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .legacy-ie .enhanced th,.legacy-ie .enhanced td{display:inline}
   .enhanced th,.enhanced td{display:table-cell}
 }
-
 /* layout reponsive */
-
 @media only screen and (max-width: 1024px) {
   #sidebar,header{width:30%}
   #main-area{width:70%}
@@ -194,31 +191,27 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .touch .mobile{display:block}
   .touch .menu-drop ul li:after,#menu-drop:before{clear:both;content:".";display:block;height:0;visibility:hidden}
   .touch .menu-drop a{color:$theme.pageContentBackgroundColor}
-  .touch #sidebar{bottom:auto;height:auto;position:static;width:100%; margin-top: 0;}
+  .touch #sidebar{bottom:auto;height:auto;margin-top:0;position:static;width:100%}
   .touch #sidebar-wrapper{background:$theme.backgroundSecondaryColor url(img/bg.png);padding:0 0 0 5%;position:absolute;right:-90%;top:0;width:90%}
   .touch #sidebar-handle{display:block;left:-90px;position:absolute;top:200px}
   .touch #sidebar-handle h2{-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);-webkit-transform:rotate(90deg);font-size:1.45em;text-transform:lowercase;transform:rotate(90deg)}
   .touch .no-csstransforms #sidebar-handle{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);left:0}
-  .touch #sidebar-handle h2 a:link,#sidebar-handle h2 a:visited{color:$theme.titleColor}
-  .touch #sidebar-handle h2 a:hover{color:$theme.titleColor}
-  .touch #change{bottom:auto;overflow-x:hidden;overflow-y:auto;position:static;top:auto} 
+  .touch #change{bottom:auto;overflow-x:hidden;overflow-y:auto;position:static;top:auto}
   .touch #sidebar-control-selector{margin:40px 10px 10px}
-  .touch #main-area{width:95%}
-  .touch #viewer {width: 95%}
-  .touch #tmCreate {margin: 0}
-  .touch .menu-drop{margin:0}
   .touch .menu-drop ul li{background:rgba(0,0,0,.5);color:$theme.buttonPrimaryTextColor;float:none;margin:5px 0}
   .touch .no-rgba .menu-drop ul li{background:$theme.backgroundSecondaryColor}
   .touch .menu-drop ul li:before{content:"";margin:0}
   .touch .breadcrumb-drop{display:inline;float:right}
-  .touch .gadget-title:after{content:' \25BE'; position: absolute; right: 10px; top: 0px;}
+  .touch .gadget-title:after{content:' \25BE';position:absolute;right:10px;top:0}
   .touch .expanded:after{content:' \25B4'}
   .touch .column li{margin-right:10px!important}
   .touch .column li a,#viewer li a{float:left}
   .touch .column li select,#viewer li select{margin:0 0 0 10px}
   .touch #sidebar-control-links,.touch .menu-drop ul li:hover ul,.touch .section-content{display:none}
-  .touch .half {width: 98.9%}
-
+  .touch .half{width:98.9%}
+  .touch #sidebar-handle h2 a:link,#sidebar-handle h2 a:visited,.touch #sidebar-handle h2 a:hover{color:$theme.titleColor}
+  .touch #main-area,.touch #viewer{width:95%}
+  .touch #tmCreate,.touch .menu-drop{margin:0}
 }
 
 @media only screen and (max-width: 850px) {
@@ -231,39 +224,35 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
 @media only screen and (max-width: 600px) {
   .mobile{display:block}
   .menu-drop ul li:after{clear:both;content:".";display:block;height:0;visibility:hidden}
-  .menu-drop a {color:$theme.pageContentBackgroundColor}
-  #sidebar{bottom:auto;height:auto;position:static;width:100%; margin-top: 0;}
+  .menu-drop a{color:$theme.pageContentBackgroundColor}
+  #sidebar{bottom:auto;height:auto;margin-top:0;position:static;width:100%}
   #sidebar-wrapper{background:$theme.backgroundSecondaryColor url(img/bg.png);padding:0 0 0 5%;position:absolute;right:-90%;top:0;width:90%}
   #sidebar-handle{display:block;left:-90px;position:absolute;top:200px}
   #sidebar-handle h2{-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);-webkit-transform:rotate(90deg);font-size:1.45em;text-transform:lowercase;transform:rotate(90deg)}
   .no-csstransforms #sidebar-handle{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);left:0}
-  #sidebar-handle h2 a:link,#sidebar-handle h2 a:visited{color:$theme.titleColor}
-  #sidebar-handle h2 a:hover{color:$theme.titleColor}
   #change{bottom:auto;overflow-x:hidden;overflow-y:auto;position:static;top:auto}
   section{margin-bottom:20px}
   #sidebar-control-selector{margin:40px 10px 10px}
-  #main-area{width:95%}
-  #viewer {width: 95%}
-  #tmCreate {margin: 0}
-  .menu-drop{margin:0}
   .menu-drop ul li{background:rgba(0,0,0,.5);color:$theme.pageContentBackgroundColor;float:none;margin:5px 0}
   .no-rgba .menu-drop ul li{background:$theme.backgroundSecondaryColor}
   .menu-drop ul li:before{content:"";margin:0}
   .breadcrumb-drop{display:inline;float:right}
- .gadget-title {position: relative;}
-  .gadget-title:after{content:' \25BE'; position: absolute; right: 10px; top: 0px;}
+  .gadget-title{position:relative}
+  .gadget-title:after{content:' \25BE';position:absolute;right:10px;top:0}
   .expanded:after{content:' \25B4'}
   .column li{margin-right:10px!important}
   #viewer li a{float:left}
   .column li select,#viewer li select{margin:0 0 0 10px}
   #page-suplemental,article{box-shadow:none}
   #sidebar-control-links,.menu-drop ul li:hover ul,.gadget-content{display:none}
-  #vertical-tabs {width: 150px; margin-left: -150px;}
-  #vertical-tabs:hover {margin-left: -30px; padding-left: 30px; margin-right: 10px}
-  .vertical-pane {margin-left: 0px;}
-.vertical-pane {overflow:hidden; text-overflow:clip;}
-.admin-category img {width: 50px;}
-.half {width: 98.9%}
+  #vertical-tabs{margin-left:-150px;width:150px}
+  #vertical-tabs:hover{margin-left:-30px;margin-right:10px;padding-left:30px}
+  .vertical-pane{margin-left:0;overflow:hidden;text-overflow:clip}
+  .admin-category img{width:50px}
+  .half{width:98.9%}
+  #sidebar-handle h2 a:link,#sidebar-handle h2 a:visited,#sidebar-handle h2 a:hover{color:$theme.titleColor}
+  #main-area,#viewer{width:95%}
+  #tmCreate,.menu-drop{margin:0}
 }
 /* detailing reponsive */
 @media only screen and (max-width: 410px) {
@@ -272,7 +261,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
 @media only screen and (max-width: 300px) {
   .xwikitabbar li{border-bottom:2px solid #eee;margin:0;padding:.5em 0;width:100%}
 }
-
+/* xwiki general styling */
 .clearfloats{clear:both;height:1px;margin:-1px 220px 0;overflow:hidden}
 .invisible{visibility:hidden!important}
 .loading{background:transparent url($xwiki.getSkinFile('icons/xwiki/spinner.gif')) no-repeat center}
@@ -330,29 +319,11 @@ table.xRichTextEditorTabPanel{background-color:transparent}
 .fullScreenWrapper #mainEditArea{overflow-x:hidden;overflow-y:auto}
 .fullScreenWrapper ul.tabs{position:fixed;width:100%}
 .fullScreenWrapper div.pill-content{margin-top:45px}
-.icon-button {
-  background: transparent none center center no-repeat;
-  border: 0 none;
-  height: 16px;
-  margin: 0 3px;
-  text-indent: -99999999px;
-  width: 16px;
-}
-
-.icon-button.remove-button {
-  background-image: url("$xwiki.getSkinFile('icons/silk/cross.png')");
-}
-.icon-button.accept-button {
-  background-image: url("$xwiki.getSkinFile('icons/silk/accept.png')");
-}
-.icon-button.search-button {
-  background-image: url("$xwiki.getSkinFile('icons/xwiki/search.png')");
-}
-
-*:disabled, input.disabled, .buttonwrapper a.disabled {
-  opacity: .5;
-  cursor: default;
-}
+.icon-button{background: transparent none center center no-repeat;border: 0 none;height: 16px;margin: 0 3px;text-indent: -99999999px;width: 16px;}
+.icon-button.remove-button{background-image: url("$xwiki.getSkinFile('icons/silk/cross.png')");}
+.icon-button.accept-button{background-image: url("$xwiki.getSkinFile('icons/silk/accept.png')");}
+.icon-button.search-button{background-image: url("$xwiki.getSkinFile('icons/xwiki/search.png')");}
+*:disabled, input.disabled, .buttonwrapper a.disabled {opacity: .5;cursor: default;}
 
 /* footer */
 #footerglobal{margin-top:100px}

@@ -448,7 +448,7 @@ $j( "#sidebar" ).bind( "resizestop", function(event, ui) {
       // add class for scoping styles - cells should be hidden only when JS is on
       table.addClass("enhanced");
       
-      hdrCols.each(function(i){
+      $( "thead th" ).each(function(i){
          var th = $(this),
                id = th.attr("id"), 
                classes = th.attr("class");
@@ -462,7 +462,7 @@ $j( "#sidebar" ).bind( "resizestop", function(event, ui) {
          // assign matching "headers" attributes to the associated cells
          // TEMP - needs to be edited to accommodate colspans
          
-          tbody.find('tr').each(function(){
+          $( "tbody tr" ).each(function(){
             var cell = $(this).find("th, td").eq(i);               
             cell.attr("headers", id);
             if (classes) { cell.addClass(classes); };
@@ -505,7 +505,7 @@ $j( "#sidebar" ).bind( "resizestop", function(event, ui) {
       // if no container specified for the checkboxes, create a "Display" menu      
       if (!o.checkContainer) {
          var menuWrapper = $('<div class="table-menu-wrapper" />'),
-               menuBtn = $('<a href="#" class="table-menu-btn">Display Columns</a>');
+               menuBtn = $('<a href="#" class="table-menu-btn">$msg.get('xe.userdirectory.customizeColumnsTitle')</a>');
                
          menuBtn.click(function(){
             container.toggleClass("table-menu-hidden");            
@@ -524,15 +524,7 @@ $j( "#sidebar" ).bind( "resizestop", function(event, ui) {
       };   
       
               
-   }, // end _create
-    
-   disable: function() {
-      // TBD
-   },
-
-   enable: function() {
-      // TBD
-   }   
+   } // end _create
     
   });
 }( jQuery ) );

@@ -1,4 +1,7 @@
    #template("layoutvars.vm")
+##
+## Which docextras to be called
+##
 
 #if ($xcontext.action != 'edit')
 #if (!$docextras)

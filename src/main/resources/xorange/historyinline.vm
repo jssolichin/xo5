@@ -161,7 +161,6 @@ $xwiki.ssfx.use('uicomponents/pagination/pagination.css', true)##
       
       // add class for scoping styles - cells should be hidden only when JS is on
       table.addClass("enhanced");
-
       
       hdrCols.each(function(i){
          var th = $(this),
@@ -220,7 +219,7 @@ $xwiki.ssfx.use('uicomponents/pagination/pagination.css', true)##
       // if no container specified for the checkboxes, create a "Display" menu      
       if (!o.checkContainer) {
          var menuWrapper = $('<div class="table-menu-wrapper" />'),
-               menuBtn = $('<a href="#" class="table-menu-btn">Display Columns</a>');
+               menuBtn = $('<a href="#" class="table-menu-btn">$msg.get('xe.userdirectory.customizeColumnsTitle')</a>');
                
          menuBtn.click(function(){
             container.toggleClass("table-menu-hidden");            

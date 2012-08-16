@@ -30,6 +30,7 @@ nav#search{-moz-background-clip:padding;-webkit-background-clip:padding;backgrou
 .no-rgba nav#search{border:10px solid $theme.borderColor}
 form .text-field{border:0;float:left;padding:2px;width:86%}
 input.submit{background:url(img/sprite-icons.png) no-repeat 0 0;border:none;cursor:pointer;display:block;float:left;line-height:16px;margin:3px;overflow:hidden;padding:0;text-indent:-999px;width:20px}
+#search input:hover{border:none}
 #headerlanguages{float:right}
 
 /* breadcrumb/login . provides drop down */
@@ -38,7 +39,7 @@ input.submit{background:url(img/sprite-icons.png) no-repeat 0 0;border:none;curs
 #viewer ul li ul li{float:left;font-size:1.2em}
 
 /* main content styling */
-article#xo-content,div.suggestItems{border-top:20px solid $theme.linkColor; -moz-box-shadow:30px 0 0 rgba(0,0,0,.1);-webkit-box-shadow:30px 0 0 rgba(0,0,0,.1); box-shadow:30px 0 0 rgba(0,0,0,.1);color:$theme.textColor;font-size:.9em;padding:10px 10px 15px 30px;}
+article#xo-content,div.suggestItems{-moz-box-shadow:30px 0 0 rgba(0,0,0,.1);-webkit-box-shadow:30px 0 0 rgba(0,0,0,.1);border-top:20px solid $theme.linkColor;box-shadow:30px 0 0 rgba(0,0,0,.1);color:$theme.textColor;font-size:.9em;padding:10px 10px 15px 30px}
 article h1,.xwikimessage legend{font-size:3.5em;margin-bottom:10px}
 .gadget{border:3px solid $theme.borderColor;border-left:0;border-right:0;margin:0 0 10px;padding:10px 0}
 .gadget-title{font-size:2.2em;letter-spacing:-3px;margin-top:0!important}
@@ -55,7 +56,7 @@ article h6{color:$theme.panelTextColor;font-size:1em;letter-spacing:-1px}
 .xwikimessage{margin:0;padding:0}
 .xwikimessage legend{padding-bottom:10px}
 .xwikimessage p{margin:0 -10px}
-article .itemTitle a{color: $theme.titleColor;text-decoration:none}
+article .itemTitle a{color:$theme.titleColor;text-decoration:none}
 article .resultItem{border-bottom:1px solid $theme.borderColor;margin:0;padding:10px 0}
 article .resultItem a:visited{color:$theme.textSecondaryColor}
 article .resultItem:hover .itemTitle a:visited{color:$theme.titleColor}
@@ -65,8 +66,8 @@ th{background:$theme.panelHeaderBackgroundColor;border-right:2px solid $theme.pa
 tr td tr td{padding:.5em}
 th:first-child,td:first-child{text-align:left}
 tbody th,td{border-bottom:1px solid $theme.borderColor}
-#lb dt, #xo-content dt {font-weight: 700; margin: 10px 0 0 0 ; text-transform: uppercase; font-size: .8em; color: $theme.textSecondaryColor;}
-#lb dd, #xo-content dd {font-weight: 400; margin: 3px 0 0 10px;}
+#lb dt,#xo-content dt{color:$theme.textSecondaryColor;font-size:.8em;font-weight:700;margin:10px 0 0;text-transform:uppercase}
+#lb dd,#xo-content dd{font-weight:400;margin:3px 0 0 10px}
 
 /* modal box */
 .xdialog-box{ border-radius: 0px; box-shadow: none}
@@ -84,72 +85,78 @@ a.button {font-size: .85em; background: $theme.buttonPrimaryBackgroundColor;  co
 a.button:hover {color: $theme.buttonSecondaryTextColor !important;}
 
 /* search suggest */
-div.suggestItems{margin-bottom:20px;padding:0 0 10px; position: static;border: none; border-top:20px solid $theme.linkColor !important;  box-shadow:30px 0 0 rgba(0,0,0,.1)  !important;}
-.horizontalLayout div.resultContainer div.results, div.resultContainer div.sourceName{clear:both;background: none;}
-ul.xlist li.showAllResuts div.xitemcontainer{border: none;height: auto;padding-right:0px;padding-top:0px;}
-li.showAllResuts{background:$theme.backgroundSecondaryColor;display:block;float:none!important;font-size:.7em;font-weight:700;text-transform:uppercase; margin-bottom: 10px;}
-.suggestItem{margin-top:-.2em;padding:5px}
-.suggestItem{border-top:1px solid $theme.backgroundSecondaryColor;margin-right:10px}
-.suggestItem .value{font-size:1.2em;}
+div.suggestItems{border:none;border-top:20px solid $theme.linkColor!important;box-shadow:30px 0 0 rgba(0,0,0,.1)!important;margin-bottom:20px;padding:0 0 10px;position:static}
+.horizontalLayout div.resultContainer div.results,div.resultContainer div.sourceName{background:none;clear:both}
+ul.xlist li.showAllResuts div.xitemcontainer{border:none;height:auto;padding-right:0;padding-top:0}
+li.showAllResuts{background:$theme.backgroundSecondaryColor;display:block;float:none!important;font-size:.7em;font-weight:700;margin-bottom:10px;text-transform:uppercase}
+.suggestItem{border-top:1px solid $theme.backgroundSecondaryColor;margin-right:10px;margin-top:-.2em;padding:5px}
+.suggestItem .value{font-size:1.2em}
 .suggestItem .info{color:$theme.textSecondaryColor;font-size:.78em;font-style:italic;margin-top:3px}
 div.resultContainer div.sourceName{background-position:3px 3px;background-repeat:no-repeat}
 .horizontalLayout div.resultContainer div.sourceName{background-position:right center;float:left;padding-right:25px;text-align:right}
 
 /* edit */
 #change-context{border:5px solid $theme.backgroundSecondaryColor;padding:0!important;width:auto}
-#hierarchy{background: $theme.backgroundSecondaryColor;display:block;font-size:.8em;font-weight:700;margin:-10px -10px 10px -30px;padding:5px 10px 5px 30px;text-transform:uppercase}
+#hierarchy{background:$theme.backgroundSecondaryColor;display:block;font-size:.8em;font-weight:700;margin:-10px -10px 10px -30px;padding:5px 10px 5px 30px;text-transform:uppercase}
 #hierarchy a{color:$theme.titleColor;text-decoration:none}
-#xo-content form h2 {display: inline; background: $theme.panelHeaderBackgroundColor; padding: 1px 10px;}
-.xHint {margin: 0 0 0 3px; font-size: .8em; color: $theme.textColor; display: inline; font-style: italic}
-#xo-content form dl { font-size: 1em; border-top: 2px solid $theme.borderColor}
-#lb dt, #lb dd, #xo-content form dt,form dd,.sourceName,.suggestItem{border-top:1px solid $theme.borderColor;}
-#lb dt, #xo-content form dt,.sourceName{clear:left;float:left;font-weight:700;padding:10px 0;text-align:right;width:140px; position: relative; margin: 0;}
-#lb dt .xHint, #xo-content form dt .xHint{display: none;}
-#lb dt:hover .xHint, #xo-content form dt:hover .xHint {display: block; font-weight: 400; font-size: .8em; position: absolute; text-align: left; padding: 3px; background: $theme.backgroundSecondaryColor; left: 140px; top:10px; width: 350%; z-index: 9999999}
-#lb dd, #xo-content form dd{margin:0 0 0 150px;padding:10px 0}
+#xo-content form h2{background:$theme.pandiv.suggestItems{border:none;border-top:20px solid $theme.linkColor!important;box-shadow:30px 0 0 rgba(0,0,0,.1)!important;display:inline;margin-bottom:20px;padding:0 0 10px;position:static}
+.horizontalLayout div.resultContainer div.results,div.resultContainer div.sourceName{background:none;clear:both}
+ul.xlist li.showAllResuts div.xitemcontainer{border:none;height:auto;padding-right:0;padding-top:0}
+li.showAllResuts{background:$theme.backgroundSecondaryColor;display:block;float:none!important;font-size:.7em;font-weight:700;margin-bottom:10px;text-transform:uppercase}
+.suggestItem{border-top:1px solid $theme.backgroundSecondaryColor;margin-right:10px;margin-top:-.2em;padding:5px}
+.suggestItem .value{font-size:1.2em}
+.suggestItem .info{color:$theme.textSecondaryColor;font-size:.78em;font-style:italic;margin-top:3px}
+div.resultContainer div.sourceName{background-position:3px 3px;background-repeat:no-repeat}
+.horizontalLayout div.resultContainer div.sourceName{background-position:right center;float:left;padding-right:25px;text-align:right}
+.xHint{color:$theme.textColor;display:inline;font-size:.8em;font-style:italic;margin:0 0 0 3px}
+#xo-content form dl{border-top:2px solid $theme.borderColor;font-size:1em}
+#lb dt,#lb dd,#xo-content form dt,form dd,.sourceName,.suggestItem{border-top:1px solid $theme.borderColor}
+#lb dt,#xo-content form dt,.sourceName{clear:left;float:left;font-weight:700;margin:0;padding:10px 0;position:relative;text-align:right;width:140px}
+#lb dt:hover .xHint,#xo-content form dt:hover .xHint{background:$theme.backgroundSecondaryColor;display:block;font-size:.8em;font-weight:400;left:140px;padding:3px;position:absolute;text-align:left;top:10px;width:350%;z-index:9999999}
+#lb dd,#xo-content form dd{margin:0 0 0 150px;padding:10px 0}
 #xo-content fieldset legend{color:$theme.panelHeaderTextColor;font-weight:700}
 .fullScreenEditLink{background:$theme.pageContentBackgroundColor;padding:5px}
 #xo-content form textarea{margin-top:5px;width:80%}
-.buttons{background:$theme.backgroundSecondaryColor;margin:20px 0;padding:20px;}
-.wikigeneratedheader {border-bottom: 3px solid $theme.borderColor; margin: 10px 0 0 0; }
-.container-justified .wikigeneratedheader {border: 0; margin: 10px 0 ; }
-.dashboard-edit .addgadget, .dashboard-edit .addcontainer {margin: 0 10px 10px 0;}
-.class dd, .object dd {margin-left: 0px;}
-#lb-top, .rounded {display: none}
-#lb .lb-content {padding: 0px;}
-.lb-content p {padding:10px 0; border-bottom: 1px solid $theme.borderColor}
-.lb-content .half {width: 100%}
+.buttons{background:$theme.backgroundSecondaryColor;margin:20px 0;padding:20px}
+.wikigeneratedheader{border-bottom:3px solid $theme.borderColor;margin:10px 0 0}
+.gadget .wikigeneratedheader{border:0;margin:10px 0}
+.dashboard-edit .addgadget,.dashboard-edit .addcontainer{margin:0 10px 10px 0}
+.class dd,.object dd{margin-left:0}
+#lb .lb-content{padding:0}
+.lb-content p{border-bottom:1px solid $theme.borderColor;padding:10px 0}
+.lb-content .half{width:100%}
+#lb dt .xHint,#xo-content form dt .xHint,#lb-top,.rounded{display:none}
 
 /* profile */
 #vertical-tabs ul li.active {border: none; border-top: 1px solid $theme.linkColor; border-bottom: solid 3px $theme.linkColor;}
 #vertical-tabs ul li:hover {background:$theme.backgroundSecondaryColor; }
 
 /* blog */
-.blogDay {border-top: 3px solid $theme.borderColor; padding-bottom: 10px}
-.blogdate {margin: -13px 0 0 -56px; border: 5px solid $theme.borderColor; background:$theme.borderColor; font-size: 1em;}
-.blogdate .month, .blogdate .year {font-size: 1em; color: $theme.textSecondaryColor !important;}
-.blogdate .day {background: none}
-.hentry {margin-left: 10px;}
-.entry-title {font-size: 2.5em; border-bottom: 1px solid $theme.borderColor; padding: 0 0 .35em 0 !important; margin: 0!important;}
-.entry-summary p, .entry-content p {font-size: 1.2em}
-.entry-summary ul, .entry-content p {margin-top:10px; margin-bottom: 10px;}
-.entry-summary li ul, .entry-content p, .entry-summary li ol {margin-top:0px;}
-.entry-footer {text-align: right; margin-top: .25em !important; padding: .5em 0; border-bottom: 2px solid $theme.borderColor; }
-.entry-footer address {display: inline}
-#xwikicontent form {border: 1px solid $theme.borderColor; border-left: 0px; border-right: 0px; margin: .35em 0 ; padding: .35em 0 .3em;}
-.gwt-MenuBar-vertical, .gwt-MenuItemSeparator {border: none !important}
-.gwt-MenuBarPopup table {background: $theme.backgroundSecondaryColor}
-.gwt-MenuBar td {border: 0px !important;}
-.menuPopupTopCenter, .menuPopupBottomCenter {height: 2px;}
-.blog-entry-toolbox {padding:3px; background: $theme.backgroundSecondaryColor; margin: -10px 0 10px 10px;}
-.hentry + .hentry {padding-top: .7em !important; border-top: 2px solid $theme.borderColor !important;}
+.blogDay{border-top:3px solid $theme.borderColor;padding-bottom:10px}
+.blogdate{background:$theme.borderColor;border:5px solid $theme.borderColor;font-size:1em;margin:-13px 0 0 -56px}
+.blogdate .month,.blogdate .year{color:$theme.textSecondaryColor!important;font-size:1em}
+.blogdate .day{background:none}
+.hentry{margin-left:10px}
+.entry-title{border-bottom:1px solid $theme.borderColor;font-size:2.5em;margin:0!important;padding:0 0 .35em!important}
+.entry-summary p,.entry-content p{font-size:1.2em}
+.entry-summary ul,.entry-content p{margin-bottom:10px;margin-top:10px}
+.entry-summary li ul,.entry-content p,.entry-summary li ol{margin-top:0}
+.entry-footer{border-bottom:2px solid $theme.borderColor;margin-top:.25em!important;padding:.5em 0;text-align:right}
+.entry-footer address{display:inline}
+#xwikicontent form{border:1px solid $theme.borderColor;border-left:0;border-right:0;margin:.35em 0;padding:.35em 0 .3em}
+.gwt-MenuBar-vertical,.gwt-MenuItemSeparator{border:none!important}
+.gwt-MenuBarPopup table{background:$theme.backgroundSecondaryColor}
+.gwt-MenuBar td{border:0!important}
+.menuPopupTop,.menuPopupBottom{display:none}
+.blog-entry-toolbox{background:$theme.backgroundSecondaryColor;margin:-10px 0 10px 10px;padding:3px}
+.hentry + .hentry{border-top:2px solid $theme.borderColor!important;padding-top:.7em!important}
 
 
 /* compression of similar styles */
 ::-webkit-scrollbar-track,.xwikitabbar li:hover{background:$theme.panelHeaderGradientColor}
-a,#change a,#change a:visited,#xwikicontent p a,article .resultItem:hover a:visited{color:$theme.linkColor;}
+a,#change a,#change a:visited,#xwikicontent p a,article .resultItem:hover a:visited{color:$theme.linkColor}
 #change a:hover{color:$theme.panelTextColor}
-#xo-content a:hover,#xwikicontent p a:hover{color: $theme.panelHeaderTextColor}
+#xo-content a:hover,#xwikicontent p a:hover{color:$theme.panelHeaderTextColor}
 .menu-drop a{color:$theme.textColor;text-decoration:none}
 form,.xwiki-livetable-container table,.xwiki-livetable-display-header-filter input,.enhanced,#historycontent-wrapper table{width:100%}
 #sidebar-control-links:hover a:hover,.menu-drop ul li:hover a,#tmCreate:hover a,#tmCreate:hover{color:$theme.buttonPrimaryTextColor}
@@ -169,9 +176,8 @@ li.showAllResuts a,#hierarchy a:hover{color:$theme.textColor}
   .touch section{margin-bottom:20px}
   .touch #viewer{margin:0 10px;width:auto}
   .touch #tmCreate{background:rgba(256,256,256,.5);margin:0}
-  .touch #tmCreate a{color:$theme.textColor}
-  .touch #tmCreate:hover a{color:$theme.textColor}
   .touch #page-suplemental,.touch article{box-shadow:none}
+  .touch #tmCreate a,.touch #tmCreate:hover a{color:$theme.textColor}
 }
 /* layout regular small width */
 @media only screen and (max-width: 600px) {
@@ -181,8 +187,7 @@ li.showAllResuts a,#hierarchy a:hover{color:$theme.textColor}
   nav#search{margin:0 auto;width:90%}
   #viewer{margin:0 10px;width:auto}
   #tmCreate{background:rgba(256,256,256,.5);margin:0}
-  #tmCreate a{color:$theme.textColor}
-  #tmCreate:hover a{color:$theme.textColor}
+  #tmCreate a,#tmCreate:hover a{color:$theme.textColor}
 }
 /* detailing reponsive */
 @media only screen and (max-width: 410px) {
