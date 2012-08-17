@@ -1,5 +1,6 @@
-@import url("xwiki.css");
 #template('colorThemeInit.vm')
+@import url("xwiki.css");
+
 article, aside, details, figcaption, figure, footer, header,
   hgroup, menu, nav, section { display: block; } /*html 5*/
 .full,.half, .third, #admin-page-content .full, #admin-page-content .half, #admin-page-content .third{width:99.8%}
@@ -39,7 +40,7 @@ nav#sidebar-control{height:20%;padding:30px 0 0;position:relative}
 .sprite-information-png{background-position:-31px -31px}
 .sprite-export-png{background-position:-31px 0}
 .sprite-edit-png{background-position:0 -62px}
-#sidebar-control-links{clip:rect(0px300px40px0px);position:absolute;top:60px;z-index:999}
+#sidebar-control-links{clip:rect(0px 300px 40px 0px);position:absolute;top:60px;z-index:999}
 #sidebar-control-links h2{padding:5px;visibility:hidden}
 #sidebar-control-links:hover{clip:auto}
 #sidebar-control-links ul{list-style-type:none;margin:0;padding:0;width:100%}

@@ -1,4 +1,3 @@
-
 #template('colorThemeInit.vm')
 
 ::-webkit-scrollbar {width: 10px; height: 10px;}
@@ -99,7 +98,7 @@ div.resultContainer div.sourceName{background-position:3px 3px;background-repeat
 #change-context{border:5px solid $theme.backgroundSecondaryColor;padding:0!important;width:auto}
 #hierarchy{background:$theme.backgroundSecondaryColor;display:block;font-size:.8em;font-weight:700;margin:-10px -10px 10px -30px;padding:5px 10px 5px 30px;text-transform:uppercase}
 #hierarchy a{color:$theme.titleColor;text-decoration:none}
-#xo-content form h2{background:$theme.pandiv.suggestItems{border:none;border-top:20px solid $theme.linkColor!important;box-shadow:30px 0 0 rgba(0,0,0,.1)!important;display:inline;margin-bottom:20px;padding:0 0 10px;position:static}
+#xo-content form h2 {display: inline; background: $theme.panelHeaderBackgroundColor; padding: 1px 10px;}
 .horizontalLayout div.resultContainer div.results,div.resultContainer div.sourceName{background:none;clear:both}
 ul.xlist li.showAllResuts div.xitemcontainer{border:none;height:auto;padding-right:0;padding-top:0}
 li.showAllResuts{background:$theme.backgroundSecondaryColor;display:block;float:none!important;font-size:.7em;font-weight:700;margin-bottom:10px;text-transform:uppercase}
