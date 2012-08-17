@@ -46,7 +46,7 @@
           $j( "#sidebar" ).resizable({ minWidth: 290, maxWidth: 800, handles: "w"}).css({'left': $j("#main-area").position().left+$j("#main-area").width(), 'bottom': 0, 'top': ''});
           $j('header').width($j('#sidebar').width());
           $j('#sidebar').css({'top': 130, 'position':'fixed', 'margin-top': 0});
-          $j('#change').css({'top': 100});
+          $j('#change').css({'top': 100, 'bottom':0});
 
           // .active-control is used to put the current section as the title header (for the dropdown menu)
           // apply .active-control on click since scroll detection might not be triggered
