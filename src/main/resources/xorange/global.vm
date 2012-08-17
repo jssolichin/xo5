@@ -33,6 +33,7 @@
   ##
   <div class="menu-drop" id="viewer">
     <ul>
+      #if($xwiki.isMultiLingual())
       <li id="languages">
 #set($defaultLanguage = "$!{doc.getDefaultLanguage()}")
 #if($defaultLanguage == '')
@@ -54,6 +55,7 @@
   #end
         </ul>
       </li>
+      #end
 
 <div class="column">
   #if (!$xcontext.action.startsWith('login'))

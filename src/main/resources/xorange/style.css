@@ -23,12 +23,12 @@ input:hover, textarea:hover {border: 1px solid $theme.linkColor;}
 .wikigeneratedheader:before, .buttons:before {clear:left;content:".";display:block;height:0;visibility:hidden}
 /* tied to the js in endpage.vm*/
 /* sidebar control */
-#sidebar{bottom:0;float:right;margin-top:130px;min-width:290px;right:0;width:23%;z-index:999}
+#sidebar{bottom:0;float:right;margin-top:130px;right:0;width:23%;z-index:999}
 .panel{margin-bottom:10px;width:200px}
 #sidebar .panel{width:100%}
 .no-js #sidebar{min-width:0}
 #sidebar h3,.xwikipaneltitle{color:$theme.panelHeaderTextColor;font-size:1.6em;letter-spacing:-1px}
-nav#sidebar-control{height:20%;padding:30px 0 0;position:relative}
+nav#sidebar-control{height:20%;padding:40px 0 0;position:relative}
 #sidebar-control-icons{margin:0 0 10px 10px}
 .sprite{background:url(img/sprite-icons.png) no-repeat;float:left;height:20px;margin-right:20px;position:relative;width:20px}
 .sprite span{color:$theme.linkColor;font-weight:700;position:absolute;right:-10px;top:-5px}
@@ -179,6 +179,9 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .enhanced th,.enhanced td{display:table-cell}
 }
 /* layout reponsive */
+@media only screen and (max-width: 1280px) {
+  nav#sidebar-control {padding: 25px 0 0}
+}
 @media only screen and (max-width: 1024px) {
   #sidebar,header{width:30%}
   #main-area{width:70%}

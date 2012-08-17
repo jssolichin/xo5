@@ -23,12 +23,12 @@ a:link, a:active, a:visited { color: $theme.linkColor;}
 #xo-content dl:after, .globalsearch:after, form dd:after,.search:after {clear:left;content:".";display:block;height:0;visibility:hidden}
 
 /* header + search */
-header{min-width:290px;position:fixed;right:0;top:0;width:23%;z-index:999999}
+header{position:fixed;right:0;top:0;width:23%;z-index:999999}
 header h1{font-size:3em;font-weight:700;margin:10px}
 nav#search{-moz-background-clip:padding;-webkit-background-clip:padding;background:$theme.pageContentBackgroundColor;background-clip:padding-box;border:10px solid rgba(0,0,0,0.1);margin-top:-10px;padding:5px}
 .no-rgba nav#search{border:10px solid $theme.borderColor}
-form .text-field{border:0;float:left;padding:2px;width:86%}
-input.submit{background:url(img/sprite-icons.png) no-repeat 0 0;border:none;cursor:pointer;display:block;float:left;line-height:16px;margin:3px;overflow:hidden;padding:0;text-indent:-999px;width:20px}
+form .text-field{border:0;float:left;padding:2px;width:70%}
+input.submit{background:url(img/sprite-icons.png) no-repeat 0 0;border:none;cursor:pointer;display:block;float:right;line-height:16px;margin:3px;overflow:hidden;padding:0;text-indent:-999px;width:20px}
 #search input:hover{border:none}
 #headerlanguages{float:right}
 
@@ -178,10 +178,13 @@ li.showAllResuts a,#hierarchy a:hover{color:$theme.textColor}
   .touch #page-suplemental,.touch article{box-shadow:none}
   .touch #tmCreate a,.touch #tmCreate:hover a{color:$theme.textColor}
 }
+@media only screen and (max-width: 850px) {
+  form .text-field {width: 78%}
+}
 /* layout regular small width */
 @media only screen and (max-width: 600px) {
   header:after{clear:both;content:".";display:block;height:0;visibility:hidden}
-  header{position:static;text-align:center;width:95%}
+  header{position:static;text-align:center;width:95% !important}
   header h1{margin:10px auto 4px}
   nav#search{margin:0 auto;width:90%}
   #viewer{margin:0 10px;width:auto}
