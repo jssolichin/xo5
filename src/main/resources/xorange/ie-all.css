@@ -1,0 +1,10 @@
+h1,h2,h3,h4,h5,h6,.xwikimessage legend{color: $theme.titleColor; font-weight:700;letter-spacing:0px;margin:0;padding:0}
+h1{font-size:1em;}
+
+h3{font-size:1em;}
+h4{font-size:1em;}
+h5{font-size:1em;}
+h6{font-size:1em;}
+
+#sidebar.xlist {font-size: .8em; font-weight: 400;}
+

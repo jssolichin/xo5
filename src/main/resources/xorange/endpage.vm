@@ -29,8 +29,8 @@
 
 #if ($initSidebar == 1)
     <script>
+
       document.observe("dom:loaded", function() {
-        // initially hide all containers for tab content
        resizeControl();
       });
 
@@ -43,7 +43,7 @@
       function resizeControl () {
         if( $j('html.no-touch').length && $j(window).width() > 600 ) {
           $j("#main-area").width($j(window).width()-$j("#sidebar").width());
-          $j( "#sidebar" ).resizable({ minWidth: 290, maxWidth: 800, handles: "w"}).css({'left': $j("#main-area").position().left+$j("#main-area").width(), 'bottom': 0, 'top': ''});
+          $j( "#sidebar" ).resizable({ minWidth: 290, maxWidth: 800, handles: "w"}).css({'left': $j("#main-area").position().left+$j("#main-area").width(), 'bottom': 0, 'top': '0'});
           $j('header').width($j('#sidebar').width());
           $j('#sidebar').css({'top': 130, 'position':'fixed', 'margin-top': 0});
           $j('#change').css({'top': 100, 'bottom':0});
