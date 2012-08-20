@@ -1,4 +1,4 @@
-text#*
+#*
  * commentsinline.vm Shows document comments and gives the user an oppertunity to add a comment.
  * To include this template in a document you may specify:
  *
