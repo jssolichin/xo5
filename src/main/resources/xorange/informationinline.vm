@@ -11,10 +11,10 @@
 <div id="page-suplemental">
     <div id="page-meta">
       <dl>
-        <dt>Last Modified:</dt>
-         <dd><a href="#">$xwiki.getUserName($tdoc.author)</a> on <time datetime="$xwiki.formatDate($tdoc.date)">$xwiki.formatDate($tdoc.date)</time></dd></br>
-        <dt>Created: </dt>
-         <dd>$xwiki.getUserName($tdoc.creator) on <time datetime="$xwiki.formatDate($tdoc.creationDate)">$xwiki.formatDate($tdoc.creationDate)</time></dd></br>
+        <dt>$msg.get('lastmodifiedby'):</dt>
+         <dd>$xwiki.getUserName($tdoc.author) $msg.get('lastmodifiedon') <time datetime="$xwiki.formatDate($tdoc.date,"YYYY-MM-dd")">$xwiki.formatDate($tdoc.date)</time></dd>
+        <dt>$msg.get('xe.blog.code.createdby'): </dt>
+         <dd>$xwiki.getUserName($tdoc.creator) $msg.get('lastmodifiedon') <time datetime="$xwiki.formatDate($tdoc.creationDate,"YYYY-MM-dd")">$xwiki.formatDate($tdoc.creationDate)</time></dd>
        <dt>$msg.get('core.tags.list.label')</dt>
          #template("documentTags.vm")
       </dl>
@@ -23,7 +23,7 @@
 
   <div id="tree">
     <dl>
-      <dt><h3 class="sub-menu">$msg.get('core.viewers.information.parent')</h3></dt>
+      <dt class="sub-menu">$msg.get('core.viewers.information.parent')</dt>
       <dd>
         ## <input type="text" id="xwikidocparentinput2" name="parent" value="$!tdoc.parent" size="30"/>
         #if("$!tdoc.parent" != '')
@@ -32,10 +32,9 @@
           $msg.get('core.viewers.information.noParent')
         #end
       </dd>
-      <dt><h3 class="sub-menu">$msg.get('core.viewers.information.children')<h3></dt>
+      <dt class="sub-menu">$msg.get('core.viewers.information.children')</dt>
       <dd>
-        #set($children = $doc.getChildren())
-        #if($children.size() > 0)
+        #set($children = $doc.getChildren())        #if($children.size() > 0)
           #displayDocumentList($children true $blacklistedSpaces)
         #else
           $msg.get('core.viewers.information.noChildren')
@@ -46,7 +45,7 @@
   
     <dl>
       #if($tdoc.realLanguage != $doc.realLanguage)
-        <dt><h3 class="sub-menu">$msg.get('core.viewers.information.translationCreation', [$tdoc.realLanguage])</h3></dt>
+        <dt class="sub-menu">$msg.get('core.viewers.information.translationCreation', [$tdoc.realLanguage])</dt>
         <dd>$msg.get('core.viewers.information.translationCreationData', [$xwiki.getUserName($tdoc.creator), $xwiki.formatDate($tdoc.creationDate)])</dd>
       #end
       #if($isAdvancedUser)

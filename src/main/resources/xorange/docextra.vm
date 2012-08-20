@@ -13,25 +13,26 @@
 				#end
 				</h2>
 				<div id="$docextra.get(2).toLowerCase()">
-				<ul>
-			        <li id="${docextra.get(0)}tab">
-			            <a id="${docextra.get(0)}link" href="$doc.getURL('view', "viewer=${docextra.get(1)}")">
-			              $msg.get('xe.invitation.displayMessageTable.showHistory')
-			            </a>
-			         </li>
-				</ul>
-			    <div id="docextrapanes">
-			    	<div id="historycontent-wrapper-helper">
-<div id="historycontent-wrapper">
-  <span id="close-history">
-    <a href="$doc.getURL()" id="close-modal" title="$msg.get('xe.themes.colors.wizard.close')">$msg.get('xe.themes.colors.wizard.close')</a>
-  </span>
-			        <div id="Historypane" class="hidden empty">
+					<ul>
+				        <li id="${docextra.get(0)}tab">
+				            <a id="${docextra.get(0)}link" href="$doc.getURL('view', "viewer=${docextra.get(1)}")">
+				              $msg.get('xe.invitation.displayMessageTable.showHistory')
+				            </a>
+				         </li>
+					</ul>
+				    <div id="docextrapanes">
+				    	<div id="historycontent-wrapper-helper">
+							<div id="historycontent-wrapper">
+								<span id="close-history">
+								    <a href="$doc.getURL()" id="close-modal" title="$msg.get('xe.themes.colors.wizard.close')">$msg.get('xe.themes.colors.wizard.close')</a>
+								</span>
+						        <div id="Historypane" class="hidden empty">
 
-			        </div>
-			    </div>
-			</div>
-			    </div>
+						        </div>
+						    </div>
+						</div>
+				    </div>
+				</div>
 			</section>
 
 			<script type="text/javascript">

@@ -7,12 +7,10 @@
 <?xml version="1.0" encoding="$xwiki.encoding" ?>
 ## TODO this should be more specific
 #if("$!request.noDoctype" != "true")
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 #end
 <html xmlns="http://www.w3.org/1999/xhtml" lang="$xcontext.language" xml:lang="$xcontext.language">
   <head>
-
     ## ---------------------------------------------------------------------------------------------------------------
     ## Ensure that the Content-Type meta directive is the first one in the header.
     ## See http://www.w3.org/International/tutorials/tutorial-char-enc/
@@ -132,12 +130,6 @@
 
 #if ($createSidebar ==1 )
 <div id="sidebar-wrapper">
-  <div id="sidebar-handle">
-    <h2>
-      <a id="to-menu" href="#sidebar">$msg.get('xe.themes.colors.wizard.mainMenu')</a> &nbsp;//&nbsp;  
-      <a id="to-content" href="#content">$msg.get('core.links.content')</a> 
-    </h2>
-  </div>
   <div id="sidebar">
     #template("sidebar.vm")
   </div><!--#sidebar-->
@@ -147,4 +139,3 @@
 <div id="main-area">
     #template("menuview.vm")
     <article id="xo-content">
-

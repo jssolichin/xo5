@@ -42,36 +42,14 @@
   #end
   #if ($hasComment && $showcomments)
     #submenuitem("$doc.getURL('view', 'viewer=comments')" $msg.get('core.menu.create.comment') 'tmCreateComment', '')
-    <script type="text/javascript">
-      //<![CDATA[
-        document.observe('xwiki:dom:loaded', function() {
-          $('tmCreateComment').observe('click', function(event) {
-            event.stop();
-            XWiki.displayDocExtra('Comments', 'commentsinline.vm', true);
-            return false;
-          });
-        });
-      //]]>
-    </script>
     #set ($hasPreviousMenuSection = true)
   #end
   #if ($hasEdit && $showattachments)
     #submenuitem("$doc.getURL('view', 'viewer=attachments')" $msg.get('core.menu.create.attachment') 'tmCreateAttachment', '')
-    <script type="text/javascript">
-      //<![CDATA[
-        document.observe('xwiki:dom:loaded', function() {
-          $('tmCreateAttachment').observe('click', function(event) {
-            event.stop();
-            XWiki.displayDocExtra('Attachments', 'attachmentsinline.vm', true);
-            return false;
-          });
-        });
-      //]]>
-    </script>
     #set ($hasPreviousMenuSection = true)
   #end
   #xwikitopmenuentryend()
-#end
+
 ##
 ## Main Wiki
 ##
@@ -257,6 +235,37 @@
     #submenuitem($doc.getURL('delete', $!languageparams) $msg.get('core.menu.delete') 'tmActionDelete', '')
   #end
   #xwikitopmenuentryend()
+#end
+  </ul>
+</div><!--breadcrumb-->
+
+## script placed out here for validation
+  #if ($hasComment && $showcomments)
+    <script type="text/javascript">
+      //<![CDATA[
+        document.observe('xwiki:dom:loaded', function() {
+          $('tmCreateComment').observe('click', function(event) {
+            event.stop();
+            XWiki.displayDocExtra('Comments', 'commentsinline.vm', true);
+            return false;
+          });
+        });
+      //]]>
+    </script>
+  #end
+  #if ($hasEdit && $showattachments)
+    <script type="text/javascript">
+      //<![CDATA[
+        document.observe('xwiki:dom:loaded', function() {
+          $('tmCreateAttachment').observe('click', function(event) {
+            event.stop();
+            XWiki.displayDocExtra('Attachments', 'attachmentsinline.vm', true);
+            return false;
+          });
+        });
+      //]]>
+    </script>
+  #end
   #if ($canDelete && $keyboardShortcutsEnabled)
     <script type="text/javascript">
       //<![CDATA[
@@ -266,7 +275,6 @@
     </script>
   #end
 #end
-  </ul>
-</div><!--breadcrumb-->
+
 
 #end

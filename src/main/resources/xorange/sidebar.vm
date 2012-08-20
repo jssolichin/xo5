@@ -67,7 +67,7 @@
 ## Display control links
 ##
       <div id="sidebar-control-links">
-        <h2 style="visibility: hidden">x</h2>
+        <h2 style="visibility: hidden">Menu</h2>
         <ul>
           <li id="navigation-link" class="active-control"><a href="#navigation">$msg.get('rendering.macroCategory.Navigation')</a></li>
 
@@ -107,6 +107,7 @@
           #template('leftpanels.vm')
           <div class="clear"></div>
           #template('rightpanels.vm')
+        </nav>
   </section>
 
   #if($xcontext.action == 'edit' && $editor != 'inline')

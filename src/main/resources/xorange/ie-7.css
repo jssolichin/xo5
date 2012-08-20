@@ -1,0 +1,17 @@
+.menu-drop ul li {position: relative}
+.menu-drop ul li ul {left: 5px; top: 1.2em}
+
+#change {overflow-y: auto}
+#sidebar .xlist,#sidebar .xlist li {float: none;margin: 0px;padding: 0px}
+
+#sidebar-control-icons{margin:40px 0 0px 10px}
+#sidebar-control-links:hover{clip:rect(0px 300px 80000px 0px);}
+
+@media only screen and (max-width: 600px) {
+	body { position: static;}
+	.menu-drop ul li {position: static;}
+	#viewer {float: right;margin-right: 10px; width: 40%}
+	#viewer select {padding: 0 0 0 10px}
+	#breadcrumb select {margin: -24px 5px 0 0}
+	#main-area {overflow: none;}
+}

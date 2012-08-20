@@ -22,7 +22,7 @@
     #submenuitem($doc.getURL('edit', 'editor=rights') $msg.get('core.menu.edit.rights') 'tmEditRights', '')
     #submenuitem($doc.getURL('edit', 'editor=object') $msg.get('core.menu.edit.object') 'tmEditObject', '')
     #submenuitem($doc.getURL('edit', 'editor=class') $msg.get('core.menu.edit.class') 'tmEditClass', '')
-    </li>
+    </ul>
   #else ## !isAdvanced
     #xwikitopmenuentry('' $currentEditorTitle 'tmCurrentEditor' "$currentEditorId hasIcon")
   #end

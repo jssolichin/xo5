@@ -23,11 +23,11 @@ input:hover, textarea:hover {border: 1px solid $theme.linkColor;}
 .wikigeneratedheader:before, .buttons:before {clear:left;content:".";display:block;height:0;visibility:hidden}
 /* tied to the js in endpage.vm*/
 /* sidebar control */
-#sidebar{float:right;margin-top:130px;right:0;width:23%;z-index:999}
+#sidebar{float:right;margin-top:130px;right:0;width:23%;z-index:1; position: relative;}
 .panel{margin-bottom:10px;width:200px}
 #sidebar .panel{width:100%}
 .no-js #sidebar{min-width:0}
-#sidebar h3,.xwikipaneltitle{color:$theme.panelHeaderTextColor;font-size:1.6em;letter-spacing:-1px}
+.sub-menu,.xwikipaneltitle{color:$theme.panelHeaderTextColor;font-size:1.6em;letter-spacing:-1px}
 nav#sidebar-control{height:20%;padding:40px 0 0;position:relative}
 #sidebar-control-icons{margin:0 0 10px 10px}
 .sprite{background:url(img/sprite-icons.png) no-repeat;float:left;height:20px;margin-right:20px;position:relative;width:20px}
@@ -40,10 +40,10 @@ nav#sidebar-control{height:20%;padding:40px 0 0;position:relative}
 .sprite-information-png{background-position:-31px -31px}
 .sprite-export-png{background-position:-31px 0}
 .sprite-edit-png{background-position:0 -62px}
-#sidebar-control-links{clip:rect(0px 300px 40px 0px);position:absolute;top:60px;z-index:999}
+#sidebar-control-links{clip:rect(0px 300px 40px 0px);position:absolute;top:60px;z-index:100}
 #sidebar-control-links h2{padding:5px;visibility:hidden}
 #sidebar-control-links:hover{clip:auto}
-#sidebar-control-links ul{list-style-type:none;margin:0;padding:0;width:100%}
+#sidebar-control-links ul{list-style-type:none;margin:0;padding:0;width:100%; background:$theme.menuBackgroundColor;}
 #sidebar-control-links ul li{background:$theme.menuBackgroundColor;padding:5px 10px;width:100%}
 #sidebar-control-links ul li a{float:left;text-decoration:none}
 #sidebar-control-links ul li span{color:$theme.textSecondaryColor;margin-left:3px}
@@ -54,9 +54,9 @@ nav#sidebar-control{height:20%;padding:40px 0 0;position:relative}
 #sidebar-control-links:hover a:hover{color:$theme.pageContentBackgroundColor}
 
 /* sidebar content */
-#change{overflow-x:auto;overflow-y:hidden;padding:0 10px;position:absolute;top:230px}
+#change{overflow-x:auto;overflow-y:hidden;padding:0 10px;position:absolute;top:230px;z-index: -100}
 #change:hover{overflow-y:auto}
-#change h3{margin:10px 0 5px}
+.sub-menu{margin:10px 0 5px}
 #change ul li a,.panels a{font-size:1.2em;letter-spacing:-1px;text-decoration:none}
 #change section{margin-bottom:100px}
 #change section h2 span{color:$theme.textSecondaryColor;font-weight:700}
@@ -70,13 +70,13 @@ nav#sidebar-control{height:20%;padding:40px 0 0;position:relative}
 .each-comment legend{font-weight:700;margin-bottom:10px}
 
 /* breadcrumb/login . provides drop down */
-.menu-drop{margin-right:-30px;padding:5px 10px;position:relative;z-index:1}
+.menu-drop{margin-right:-30px;padding:5px 10px;}
 .menu-drop ul li{float:left;font-weight:700;padding:5px}
 .menu-drop ul li span{font-weight:400;margin-right:2px}
 .menu-drop ul li:hover{background:$theme.buttonPrimaryBackgroundColor; color:$theme.buttonSecondaryBackgroundColor}
-.menu-drop ul li ul{background:$theme.buttonPrimaryBackgroundColor; display:none;font-size:.8em;margin:5px 0 0 -5px;padding:5px;position:absolute}
+.menu-drop ul li ul{background:$theme.buttonPrimaryBackgroundColor; display:none;font-size:.8em;margin:5px 0 0 -5px;padding:5px;position:absolute; z-index: 100}
 .no-rgba .menu-drop ul li ul li:hover{background:$theme.buttonPrimaryTextColor}
-.menu-drop ul li ul hr,#sidebar section hr{height:1px;visibility:hidden}
+.menu-drop ul li ul .sub-separator,#sidebar section .sub-separator{height:1px;visibility:hidden}
 .menu-drop ul li ul a{color:$theme.buttonPrimaryTextColor;text-decoration:none}
 .menu-drop ul li ul li{float:none}
 .menu-drop ul li ul li:hover {background: $theme.buttonSecondaryBackgroundColor }
@@ -88,10 +88,11 @@ nav#sidebar-control{height:20%;padding:40px 0 0;position:relative}
 #tmCreate{margin-right:10px}
 #tmCreate a,#tmCreate{color:$theme.titleColor}
 #tmCreate:after{content:" + "}
+.separator {display: none}
 
 /* main content styling */
-#main-area {width: 77%}
-article#xo-content,div.suggestItems{background:$theme.pageContentBackgroundColor;}
+#main-area {width: 77%; position: relative; z-index: 1}
+article#xo-content,div.suggestItems{background:$theme.pageContentBackgroundColor; }
 
 /* warnings and messages */
 blockquote,.box,.errormessage,.warningmessage,.infomessage,.successmessage,.plainmessage{background:$theme.backgroundSecondaryColor;color:$theme.textColor;display:block;font-weight:400;margin:10px -10px 10px -30px;padding:10px 10px 10px 30px}
@@ -197,13 +198,13 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .touch .menu-drop a{color:$theme.pageContentBackgroundColor}
   .touch #sidebar{bottom:auto;height:auto;margin-top:0;position:static;width:100%}
   .touch #sidebar-wrapper{background:$theme.backgroundSecondaryColor url(img/bg.png);padding:0 0 0 5%;position:absolute;right:-90%;top:0;width:90%}
-  .touch #sidebar-handle{display:block;left:-90px;position:absolute;top:200px}
-  .touch #sidebar-handle h2{-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);-webkit-transform:rotate(90deg);font-size:1.45em;text-transform:lowercase;transform:rotate(90deg)}
-  .touch .no-csstransforms #sidebar-handle{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);left:0}
+  .touch #sidebar-handle{background: #fff;border-bottom: 2px solid $theme.linkColor; display:block;left:-90px;padding: 5px;position:absolute;top:-10px; z-index: 9999999;}
+  .touch #sidebar-handle h2{font-size:1.2em;text-transform:lowercase}
   .touch #change{bottom:auto;overflow-x:hidden;overflow-y:auto;position:static;top:auto}
   .touch #sidebar-control-selector{margin:40px 10px 10px}
   .touch .menu-drop ul li{background:rgba(0,0,0,.5);color:$theme.buttonPrimaryTextColor;float:none;margin:5px 0}
-  .touch .no-rgba .menu-drop ul li{background:$theme.backgroundSecondaryColor}
+  .touch .no-rgba .menu-drop ul li{background:$theme.buttonPrimaryBackgroundColor}
+  .touch .no-rgba #tmCreate {background:$theme.buttonSecondaryBackgroundColor}
   .touch .menu-drop ul li:before{content:"";margin:0}
   .touch .breadcrumb-drop{display:inline;float:right}
   .touch .gadget-title:after{content:' \25BE';position:absolute;right:10px;top:0}
@@ -231,14 +232,14 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .menu-drop a{color:$theme.pageContentBackgroundColor}
   #sidebar{bottom:auto;height:auto;margin-top:0;position:static;width:100%}
   #sidebar-wrapper{background:$theme.backgroundSecondaryColor url(img/bg.png);padding:0 0 0 5%;position:absolute;right:-90%;top:0;width:90%}
-  #sidebar-handle{display:block;left:-90px;position:absolute;top:200px}
-  #sidebar-handle h2{-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);-webkit-transform:rotate(90deg);font-size:1.45em;text-transform:lowercase;transform:rotate(90deg)}
-  .no-csstransforms #sidebar-handle{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);left:0}
+  #sidebar-handle{background: #fff;border-bottom: 2px solid $theme.linkColor; display:block;right:-60px;padding: 5px;position:absolute;top:0px; z-index: 9999999;}
+  #sidebar-handle h2{font-size:1.2em;text-transform:lowercase}
   #change{bottom:auto;overflow-x:hidden;overflow-y:auto;position:static;top:auto}
   section{margin-bottom:20px}
   #sidebar-control-selector{margin:40px 10px 10px}
   .menu-drop ul li{background:rgba(0,0,0,.5);color:$theme.pageContentBackgroundColor;float:none;margin:5px 0}
-  .no-rgba .menu-drop ul li{background:$theme.backgroundSecondaryColor}
+  .no-rgba .menu-drop ul li{background:$theme.buttonPrimaryBackgroundColor}
+  .no-rgba #tmCreate {background:$theme.buttonSecondaryBackgroundColor}
   .menu-drop ul li:before{content:"";margin:0}
   .breadcrumb-drop{display:inline;float:right}
   .gadget-title{position:relative}
@@ -266,7 +267,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
   .xwikitabbar li{border-bottom:2px solid #eee;margin:0;padding:.5em 0;width:100%}
 }
 /* xwiki general styling */
-.clearfloats{clear:both;height:1px;margin:-1px 220px 0;overflow:hidden}
+.clearfloats{clear:both;height:1px;margin:-1px 220px 0;overflow:hidden; _height : 1%;}
 .invisible{visibility:hidden!important}
 .loading{background:transparent url($xwiki.getSkinFile('icons/xwiki/spinner.gif')) no-repeat center}
 .separator{margin:0 10px;padding-top:3px}

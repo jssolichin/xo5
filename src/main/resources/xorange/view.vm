@@ -13,16 +13,13 @@
   #if("$!viewer" == '')
     #set($viewer = 'content')
   #end
-  <div class="main layoutsubsection">
-  <div id="mainContentArea">
+
   #if($viewer == 'content')
     #template("contentview.vm")
   #else
     #template("${viewer}.vm")
   #end
   <div class="clearfloats"></div>
-  </div>## mainContentArea
-  
-  </div>## main
+ 
   #template("endpage.vm")
 #end

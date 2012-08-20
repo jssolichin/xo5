@@ -23,7 +23,7 @@
       <div class="globalsearch">
         <label class="hidden" for="headerglobalsearchinput">$msg.get('panels.search.inputLabel')</label>
         <input class="globalsearchinput withTip text-field" id="headerglobalsearchinput" name="text"  type="text" value="$msg.get('panels.search.inputText')"/>
-        <input type="submit" class="submit" value="$msg.get('panels.search.submit')" value="$msg.get('panels.search.submit')" alt="$msg.get('panels.search.submit')"/>
+        <input type="submit" class="submit" value="$msg.get('panels.search.submit')" />
       </div>
     </form>
   </nav>
@@ -57,7 +57,7 @@
       </li>
       #end
 
-<div class="column">
+
   #if (!$xcontext.action.startsWith('login'))
     #if ($isGuest)
       #set ($loginurl = $xwiki.getURL('XWiki.XWikiLogin', 'login', "xredirect=$escapetool.url($xwiki.relativeRequestURL)"))
@@ -93,7 +93,7 @@
     #xwikitopmenuentryend()
   #end
   #end
-</div>
+
 </ul>
   </div>
  

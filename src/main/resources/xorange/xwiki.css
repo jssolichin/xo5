@@ -8,7 +8,7 @@
 
 /* global */
 body{background:$theme.pageBackgroundColor url(img/bg.png);color:$theme.textColor;font-family:sans-serif;}
-h1,h2,h3,h4,h5,h6,#sidebar-control-links ul li,.xwikimessage legend{color: $theme.titleColor; font-weight:700;letter-spacing:-4px;margin:0;padding:0}
+h1,h2,h3,h4,h5,h6,#sidebar-control-links ul li,.xwikimessage legend, .sub-menu{color: $theme.titleColor; font-weight:700;letter-spacing:-4px;margin:0;padding:0}
 h1{font-size:2.5em;}
 h2{font-size:2.2em;}
 h3{font-size:2em;}
@@ -39,9 +39,9 @@ input.submit{background:url(img/sprite-icons.png) no-repeat 0 0;border:none;curs
 
 /* main content styling */
 article#xo-content,div.suggestItems{-moz-box-shadow:30px 0 0 rgba(0,0,0,.1);-webkit-box-shadow:30px 0 0 rgba(0,0,0,.1);border-top:20px solid $theme.linkColor;box-shadow:30px 0 0 rgba(0,0,0,.1);color:$theme.textColor;font-size:.9em;padding:10px 10px 15px 30px}
-article h1,.xwikimessage legend{font-size:3.5em;margin-bottom:10px}
+article h1,.xwikimessage legend{font-size:3.5em !important;margin-bottom:10px}
 .gadget{border:3px solid $theme.borderColor;border-left:0;border-right:0;margin:0 0 10px;padding:10px 0}
-.gadget-title{font-size:2.2em;letter-spacing:-3px;margin-top:0!important}
+.gadget-title{font-size:2.2em !important;letter-spacing:-3px;margin-top:0!important}
 article p{color:$theme.textColor;font-size:.9em;line-height:1.3em;margin-top:10px}
 article ul,article ol{line-height:1.3em;list-style-position:inside;list-style-type:disc;margin:5px 1.5em}
 article ol{list-style-type:decimal}
@@ -129,6 +129,7 @@ div.resultContainer div.sourceName{background-position:3px 3px;background-repeat
 /* profile */
 #vertical-tabs ul li.active {border: none; border-top: 1px solid $theme.linkColor; border-bottom: solid 3px $theme.linkColor;}
 #vertical-tabs ul li:hover {background:$theme.backgroundSecondaryColor; }
+#vertical-panes h1{font-size: 2em !important; letter-spacing: -2px !important}
 
 /* blog */
 .blogDay{border-top:3px solid $theme.borderColor;padding-bottom:10px}
@@ -175,6 +176,7 @@ li.showAllResuts a,#hierarchy a:hover{color:$theme.textColor}
   .touch section{margin-bottom:20px}
   .touch #viewer{margin:0 10px;width:auto}
   .touch #tmCreate{background:rgba(256,256,256,.5);margin:0}
+  .touch .no-rgba  #tmCreate{background:#000}
   .touch #page-suplemental,.touch article{box-shadow:none}
   .touch #tmCreate a,.touch #tmCreate:hover a{color:$theme.textColor}
 }
@@ -189,6 +191,7 @@ li.showAllResuts a,#hierarchy a:hover{color:$theme.textColor}
   nav#search{margin:0 auto;width:90%}
   #viewer{margin:0 10px;width:auto}
   #tmCreate{background:rgba(256,256,256,.5);margin:0}
+  .no-rgba  #tmCreate{background:#000}
   #tmCreate a,#tmCreate:hover a{color:$theme.textColor}
 }
 /* detailing reponsive */

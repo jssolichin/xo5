@@ -81,10 +81,10 @@ if (XWiki && XWiki.WebDAV) { XWiki.WebDAV.displayDavLinks($('_attachments')); }
     <legend>$msg.get('core.viewers.attachments.upload.title')</legend>
     ## Temporarily disabled, until we fix attachment name handling
     ## <div><label id="xwikiuploadnamelabel" for="xwikiuploadname">$msg.get('core.viewers.attachments.upload.filename')</label></div>
-    <div><input id="xwikiuploadname" type="hidden" name="filename" value="" size="40"/></div>
+    <div><input id="xwikiuploadname" type="hidden" name="filename"/></div>
     <div>
       <label class="hidden" for="xwikiuploadfile">$msg.get('core.viewers.attachments.upload.file')</label>
-      <input id="xwikiuploadfile" type="file" name="filepath" value="" class="uploadFileInput" />
+      <input id="xwikiuploadfile" type="file" name="filepath" class="uploadFileInput" />
     </div>
     
     <div>

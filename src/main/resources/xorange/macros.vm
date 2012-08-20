@@ -35,7 +35,6 @@
     #set ($linktextwords = $linktext.split($sep))
     <span class="tmetype">$linktextwords.get(0): </span><a class="tme hastype" href="$actionurl"><strong>$linktextwords.get(1)</strong></a>
   #end
-</span>
 #end
 
 ###
@@ -65,14 +64,14 @@
 ###    Toplevel Menu entry separator
 ###
 #macro(xwikitopmenuseparator)
-<span class="separator" style="float:left">&raquo;</span>
+<li class="separator">&raquo;</li>
 #end
 
 ###
 ###    Menu submenu separator
 ###
 #macro(submenuseparator)
-<hr>
+<li class="sub-separator">--</li>
 #end
 
 ###

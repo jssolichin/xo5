@@ -1,4 +1,4 @@
-#*
+text#*
  * commentsinline.vm Shows document comments and gives the user an oppertunity to add a comment.
  * To include this template in a document you may specify:
  *
@@ -174,8 +174,8 @@ $xwiki.jsfx.use('uicomponents/viewers/comments.js', {'forceSkinAction': true, 'l
 
    <form action="$doc.getURL('commentadd', "xpage=view&amp;viewer=comments#commentform")" method="post">
     <fieldset class="expanded" id="commentform">
+            <legend>$msg.get('core.viewers.comments.add.title')</legend>
     <div class="each-comment">
-      <legend>$msg.get('core.viewers.comments.add.title')</legend>
     <div class="each-comment-content">
       <textarea id='${xCommentClass}_comment' rows='5' cols="27" name='${xCommentClass}_comment'>$!comment</textarea>
     </div>

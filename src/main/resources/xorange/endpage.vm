@@ -10,6 +10,13 @@
     #set ($version = $!xwiki.version)
   #end
 
+<div id="sidebar-handle">
+    <h2>
+      <a id="to-menu" href="#sidebar">$msg.get('xe.themes.colors.wizard.mainMenu')</a> &nbsp;//&nbsp;  
+      <a id="to-content" href="#content">$msg.get('core.links.content')</a> 
+    </h2>
+  </div>
+  
 
 ##        <footer>
 ##          <p>$!copyright | $!version</p>
@@ -85,7 +92,7 @@
             // make #sidebar-handle vertically fixed
             $j(window).scroll(function(){
                 $j( "#sidebar-handle" ).css({
-                  'top': $j(window).scrollTop()+180
+                  'top': $j(window).scrollTop()
                 });
             });
             // shortcut to menu/content in #sidebar-handle
